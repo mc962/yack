@@ -2,9 +2,9 @@
 
 ## A Slack Clone
 
-**Heroku Link**: '#'
+**Heroku Link**: [Heroku](#)
 
-**Trello Link**: '#'
+**Trello Link**: [Trello](https://trello.com/b/lUbW6RjD/yack-fullstack)
 
 ### Minimum Viable Product:
 Yack is a Slack-based real-time messaging application for communication
