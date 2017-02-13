@@ -13,6 +13,7 @@
     signUp: {errors: []},
     logIn: {errors: []},
     createMessage: {}
+    editMessage: { content: content }
   },
 ///////////
   channels: {

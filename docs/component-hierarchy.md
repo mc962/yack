@@ -1,44 +1,65 @@
-#Component Hierarchy#
+# Component Hierarchy
 
 
-##Components
+## Components
 
-###<AuthFormContainer>###
-- <Sign in>
-- <Sign up>
+#### AuthFormContainer
+    <Sign in>
+    <Sign up>
 
-###<Home>###
+#### Home
 
 
-###<PersonalDetailsContainer>###
-- <ProfileMenu>
-    - Username
+#### PersonalDetailsContainer
+    - requestUser
+    <ProfileMenu>
+      - user.username
+    <SignOutForm>
+      - user.id
 
-###<ChannelSelectionContainer>###
+#### ChannelSelectionContainer
     - <Channels>
-    - <DirectMessage>
+      - requestChannels
+      - roomTitle
+    - <DirectMessages>
+    - requestDirectMessages
+      - roomTitle
 
-###<ChannelInformationContainer>###
--  <ChannelInformation>
-      - ChannelTitle
--  <Search> (Bonus)
+#### NewChannelForm
 
-###<MessagesContainer>###
-- <MessagesDisplay>
-- <MessagesDisplayItem>
-- messages
-- <MessageInput>
+#### DirectMessagesForm
+    - users
 
+#### ChannelInformationContainer
+    -  <ChannelInformation>
+          - channelTitle
+          - channelType
+    -  <Search (Bonus)>
 
-##Routes
+#### MessagesContainer
+    - requestChannelMessages
+    - <MessagesDisplay>
+      - messages
+      - <MessagesDisplayItem>
+        - message.content
+        - message.id
+        - user.email (for gravatars as avatar picture, default is blank face)
+    - <MessageInputForm>
+      - user.id
+      - user.email (for gravatars, not yet decided)
+
+#### Emojis (Bonus)
+
+## Routes
  path                   | component
  -----------------------|--------------------------------------------------------
+ "/"                    | "Home"
 "/sign-in"              | "AuthFormContainer"
 "/sign-up"              | "AuthFormContainer"
-"/"                     | "Home"
 "/channels"             | "ChannelSelectionContainer, PersonalDetailsContainer"
 "/channels/:channelId"  | "ChannelInformationContainer, MessagesContainer"
 
 
-
+- <abcd> - <> brackets represent a component
+- some text - represents props they may need
 <!-- going to a different channel changes the route, messages will not -->
