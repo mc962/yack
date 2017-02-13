@@ -36,7 +36,7 @@ and seed data.
 <hr>
 
 ### Design Documents
-- [Wireframes](wireframes.md)
+- [Wireframes](/wireframes/)
 - [Component Hierarchy](component-hierarchy.md)
 - [Sample State](sample-state.md)
 - [Schema](schema.md)
