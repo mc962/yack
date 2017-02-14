@@ -25,13 +25,10 @@ column name     | data type | details
 ----------------|-----------|--------------------------
 id              | integer   | not null, primary key
 room_title      | string    | not null, indexed, unique
+room_type       | text      | not null
 purpose         | text      |
 
-
 <hr/>
-
-_Possible join table between users and chatrooms, pending confirmation of
-mechanics of Websockets implementation_
 
 ## user_chatrooms
 column name     | data type | details

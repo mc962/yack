@@ -52,11 +52,12 @@ and seed data.
 #### Phase 2: Implement Chatroom, Message MVC on backend (1/2 day)
 **Objective**: Setup models and associations for the corresponding data models. Start on front-end implementation for the rest of the day.
 
-#### Phase 3: Begin implementation of main chat page with Messages and MessageInput components (1.5 days)
-**Objective**: Set up components relating to displaying messages and inputting new messages in order to test basic (not real-time) chat functionality. Begin implementing basic CSS for future containers.
+#### Phase 3: Begin implementation of main chat page with Channel Selection, Channels, and Direct Message components. (2 days)
+**Objective**: Set up components relating to displaying Channels and Direct Messages. Add form components for creation of new Channels and Direct Messages. Begin implementing basic CSS for future containers.
 
-#### Phase 4: Continue implementation of main chat page with Channel Selection, Channels, and Direct Message components. (2 days)
-**Objective**: Set up components relating to displaying Channels and Direct Messages. Add form components for creation of new Channels and Direct Messages. Continue implementing and refining CSS for current and future containers.
+#### Phase 4: Continue implementation of main chat page with Messages and MessageInput components (1.5 days)
+**Objective**: Set up components relating to displaying messages and inputting new messages in order to test basic (not real-time) chat functionality. Continue implementing and refining CSS for current and future containers.
+
 
 #### Phase 5: Real-time chat implementation utilizing ActionCable (2 days)
 **Objective**: Users will be able to send and receive messages in real-time utilizing ActionCable, the Rails 5 implementation of the WebSockets protocol. Polish up CSS if time.
@@ -66,10 +67,10 @@ and seed data.
 
 #### Bonus: Implement Bonus Features as time allows (1-2 days)
 **Objectives**:
-- Give users emojis using Gemoji gem.
+- Implement notifications for when users receive a message addressed to them.
 - Give users ability for email-based account activation and password recovery through ActionMailer and additional database columns for an activation digest and activation status.
+- Give users emojis using Gemoji gem.
 - Show users as online/offline in real-time, also with ActionCable
 - Give users ability to upload attachments with Paperclip gem.
 - Give users ability to change profile color scheme with a basic color picker
 - Implement Search Bar component to allow users to search for particular messages (possibly by preset keywords).
-- Implement notifications for when users receive a message addressed to them.
