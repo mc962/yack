@@ -4,11 +4,11 @@
 ## Components
 
 #### AuthFormContainer
-    <Sign in>
-    <Sign up>
+    <SessionFormContainer>
+      <SessionForm>
 
-#### Home
-
+#### HomeContainer
+    <Home>
 
 #### PersonalDetailsContainer
     - requestUser

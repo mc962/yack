@@ -8,7 +8,10 @@ import { Link } from 'react-router';
      super(props);
      this.state= {
        username: "",
-       password: ""
+       password: "",
+       first_name: "",
+       last_name: "",
+       email: ""
      };
 
      this.handleInputChange = this.handleInputChange.bind(this);
@@ -23,7 +26,6 @@ import { Link } from 'react-router';
    }
 
    redirect(newRoute) {
-     e.preventDefault();
      this.props.router.push(newRoute);
    }
 
@@ -32,7 +34,7 @@ import { Link } from 'react-router';
      const user = Object.assign({}, this.state);
 
      this.props.processForm(user).then(() => this.redirect('/'),
-        this.setState({username: "", password: ""}));
+    this.setState({username: "", password: "", email: "", first_name: "", last_name: ""}));
    }
 
    render() {
@@ -62,13 +64,13 @@ import { Link } from 'react-router';
              <input type='text' id='username' onChange={this.handleInputChange} value={this.state.username} />
 
              <label htmlFor='first-name'>First Name</label>
-             <input type='text' id='first-name' onChange={this.handleInputChange} value={this.state.firstName} />
+             <input type='text' id='first_name' onChange={this.handleInputChange} value={this.state.first_name} />
 
              <label htmlFor='last-name'>Last Name</label>
-             <input type='text' id='last-name' onChange={this.handleInputChange} value={this.state.lastName} />
+             <input type='text' id='last_name' onChange={this.handleInputChange} value={this.state.last_name} />
 
              <label htmlFor='email'>Email</label>
-             <input type='text' id='email' onChange={this.handleInputChange} value={this.state.email} />
+             <input type='email' id='email' onChange={this.handleInputChange} value={this.state.email} />
 
              <label htmlFor='password'>Password</label>
              <input type='password' id='password' onChange={this.handleInputChange} value={this.state.password} />

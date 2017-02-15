@@ -2,7 +2,7 @@
 
 ## A Slack Clone
 
-**Heroku Link**: [Heroku](#)
+**Heroku Link**: [Heroku](https://slacking-yack.herokuapp.com)
 
 **Trello Link**: [Trello](https://trello.com/b/lUbW6RjD/yack-fullstack)
 
@@ -26,12 +26,13 @@ and seed data.
 7. Production README
 
 #### Bonus
-8. Emojis
-9. Password Recovery
-10. Attachments
-11. Color Picker
-12. Search Messages
-13. Notifications
+8. Notifications
+9. Email-based account-activations/account recovery
+10. Emojis
+11. Password Recovery
+12. Attachments
+13. Color Picker
+14. Search Messages
 
 <hr>
 

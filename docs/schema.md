@@ -28,7 +28,6 @@ room_title      | string    | not null, indexed, unique
 room_type       | text      | not null
 purpose         | text      |
 
-<hr/>
 
 ## user_chatrooms
 column name     | data type | details
