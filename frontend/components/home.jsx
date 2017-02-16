@@ -20,6 +20,7 @@ class Home extends React.Component {
         <div className="home-container">
           <header className='home-bar'>
             <h2>{ `Welcome, lazy ${this.props.currentUser.username}` }</h2>
+            <SidebarSelectorContainer />
             <form className='logout-button' onSubmit={this.submitLogout}>
               <input type='submit' value='Logout' />
             </form>
@@ -27,6 +28,33 @@ class Home extends React.Component {
           <img src={images.majestic_yak} alt='Majestic yak' className='background' />
         </div>
       );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     } else {
       return(
         <div className='home-container entry-links'>

@@ -10,6 +10,10 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id]) ## in jbuilder we will grab usr info and assoc.
+    render json: @user
+  end
   # def update
   # end
   #

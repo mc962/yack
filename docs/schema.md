@@ -25,7 +25,7 @@ column name     | data type | details
 ----------------|-----------|--------------------------
 id              | integer   | not null, primary key
 room_title      | string    | not null, indexed, unique
-room_type       | string    | not null
+room_type       | string    | not null, indexed
 purpose         | string    |
 
 

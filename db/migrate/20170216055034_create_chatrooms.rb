@@ -7,6 +7,7 @@ class CreateChatrooms < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :room_title, unique: true
+    add_index :chatrooms, :room_title, unique: true
+    add_index :chatrooms, :room_type
   end
 end
