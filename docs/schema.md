@@ -25,11 +25,11 @@ column name     | data type | details
 ----------------|-----------|--------------------------
 id              | integer   | not null, primary key
 room_title      | string    | not null, indexed, unique
-room_type       | text      | not null
-purpose         | text      |
+room_type       | string    | not null
+purpose         | string    |
 
 
-## user_chatrooms
+## user_chats
 column name     | data type | details
 ----------------|-----------|--------------------------
 id              | integer   | not null, primary key
