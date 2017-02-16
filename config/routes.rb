@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
 
   namespace :api, defaults: {format: :json} do
-    resource :users, only: [:create, :show]
+    resources :users, only: [:create, :show]
   end
 
   namespace :api, default: {format: :json} do
@@ -14,5 +14,5 @@ Rails.application.routes.draw do
     resource :channels, only: [:index, :create, :update, :destroy]
   end
 
-  
+
 end

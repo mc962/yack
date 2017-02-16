@@ -1,6 +1,8 @@
 import React from 'react';
+// import PublicChannel from './public_channel';
 import { Link } from 'react-router';
 
+import Display from './display.jsx';
 class Home extends React.Component {
   constructor(props) {
 
@@ -17,42 +19,10 @@ class Home extends React.Component {
 
     if (this.props.currentUser) {
       return(
-        <div className="home-container">
-          <header className='home-bar'>
-            <h2>{ `Welcome, lazy ${this.props.currentUser.username}` }</h2>
-            <SidebarSelectorContainer />
-            <form className='logout-button' onSubmit={this.submitLogout}>
-              <input type='submit' value='Logout' />
-            </form>
-          </header>
-          <img src={images.majestic_yak} alt='Majestic yak' className='background' />
-        </div>
+          <section className="display-container">
+            <Display tempUserName={currentUser.username} />
+          </section>
       );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     } else {

@@ -1,1 +1,0 @@
-json.username user.username

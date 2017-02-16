@@ -20,6 +20,7 @@ export const signup = (user) => {
 };
 
 export const login = (user) => {
+
   return (dispatch) => {
     return APIUtil.login(user).then(
       (fetchedUser) => {dispatch(receiveCurrentUser(fetchedUser));

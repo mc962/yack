@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!(@user)
-      render json: @user
+      render :show
     else
       render(json: @user.errors.full_messages, status: 422)
     end
@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id]) ## in jbuilder we will grab usr info and assoc.
-    render json: @user
+    render :show
   end
   # def update
   # end

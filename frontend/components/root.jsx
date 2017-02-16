@@ -20,6 +20,7 @@ const Root = ({ store }) => {
           <IndexRoute component={HomeContainer} />
           <Route path="/login" component={ SessionFormContainer } onEnter={_redirectIfLogggedIn} />
           <Route path="/signup" component={ SessionFormContainer } onEnter={_redirectIfLogggedIn} />
+
         </Route>
       </Router>
     </Provider>
@@ -32,3 +33,4 @@ const Root = ({ store }) => {
 }
 
 export default Root;
+// on enter, if logged in, redirect  to the messages
