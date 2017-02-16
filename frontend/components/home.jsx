@@ -24,15 +24,24 @@ class Home extends React.Component {
               <input type='submit' value='Logout' />
             </form>
           </header>
+          <img src={images.majestic_yak} alt='Majestic yak' className='background' />
         </div>
       );
     } else {
       return(
         <div className='home-container entry-links'>
           <header className='home-bar'>
-            <Link to="signup">Sign Up</Link>
-            <Link to="login">Log In</Link>
+            <img src={images.cartoon_yak} alt="A yak" className='home-yak-logo' />
+            <div className='home-login-link'>
+              <Link to="login" className='login-anchor'>Log In</Link>
+            </div>
           </header>
+          <div className='signup-box'>
+            <div className="signup-link">
+              <Link to="signup" className="signup-anchor">Sign Up</Link>
+            </div>
+          </div>
+          <img src={images.majestic_yak} alt='Majestic yak' className='background' />
         </div>
       );
     }
