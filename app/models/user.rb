@@ -6,7 +6,6 @@
 #  username        :string           not null
 #  first_name      :string           not null
 #  last_name       :string           not null
-#  email           :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  created_at      :datetime         not null
@@ -14,7 +13,7 @@
 #
 
 class User < ApplicationRecord
-  validates :username, :first_name, :last_name, :email, :session_token, presence: true
+  validates :username, :first_name, :last_name, :session_token, presence: true
   validates :password_digest, presence: { message: "Password can't be blank."}
   validates :password, length: { minimum: 6, allow_nil: true }
 

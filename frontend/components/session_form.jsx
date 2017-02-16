@@ -11,7 +11,6 @@ import { Link } from 'react-router';
        password: "",
        first_name: "",
        last_name: "",
-       email: ""
      };
 
      this.handleInputChange = this.handleInputChange.bind(this);
@@ -34,7 +33,7 @@ import { Link } from 'react-router';
      const user = Object.assign({}, this.state);
 
      this.props.processForm(user).then(() => this.redirect('/'),
-    this.setState({username: "", password: "", email: "", first_name: "", last_name: ""}));
+    this.setState({username: "", password: "", first_name: "", last_name: ""}));
    }
 
    render() {
@@ -45,7 +44,7 @@ import { Link } from 'react-router';
          });
        }
        let altActionLink = '';
-           if (this.props.formType === 'login') {             
+           if (this.props.formType === 'login') {
              altActionLink = '/signup';
            } else if (this.props.formType === 'signup') {
              altActionLink = '/login';
@@ -73,9 +72,11 @@ import { Link } from 'react-router';
 
                <div className='session-form-section'>
                  <div className= 'full-name'>
-                   <label htmlFor='full-name' className='full-name-label'>Your name</label>
-                   <input type='text' className='name-input session-input field-input' id='full-name' placeholder='First Name' onChange={this.handleInputChange} value={this.state.first_name} />
-                   <input type='text' className='name-input session-input field-input' id='full-name' placeholder='Last Name' onChange={this.handleInputChange} value={this.state.last_name} />
+                   <div className='full-name-label'>Your name</div>
+                   <label htmlFor='full-name' className='full-name-label'>
+                   <input type='text' className='name-input session-input field-input' id='first_name' placeholder='First Name' onChange={this.handleInputChange} value={this.state.first_name} />
+                   <input type='text' className='name-input session-input field-input' id='last_name' placeholder='Last Name' onChange={this.handleInputChange} value={this.state.last_name} />
+                   </label>
                  </div>
 
                </div>
