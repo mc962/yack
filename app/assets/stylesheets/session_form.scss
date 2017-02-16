@@ -1,0 +1,193 @@
+.form-container {
+  background-color: #F9F9F9;
+  width: 100%;
+  height: 130vh;
+
+}
+.session-form {
+  display: block;
+  width: 630px;
+  height: 600px;
+  border: 1px solid #E8E8E8;
+  border-radius: 4px;
+  margin: auto;
+  font-family: 'Lato', sans-serif;
+  background-color: #FFFFFF;
+  position: relative;
+  top: 115px;
+}
+
+.sigunup-form {
+  height: 745px;
+}
+
+.login-form {
+  height: 465px;
+}
+
+
+.session-form-section{
+  margin-top: 30px;
+  margin-left: 0;
+  margin-right: 0;
+}
+.full-name-label,
+.session-input-label {
+  display: block;
+  // text-align: center;
+  color: #555459;
+  margin-bottom: 20px;
+}
+
+.session-input {
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 370px;
+  height: 50px;
+  border: 1px solid #C5C5C5;
+  border-radius: 4px;
+}
+
+.form-heading {
+  text-align: center;
+  display: block;
+  font-size: 2em;
+  margin-top: 45px;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: #555459;
+}
+
+.form-submit {
+  background-color: #2AB27B;
+  font-size: 20px;
+  // border-radius: .25rem;
+  border-radius: 4px;
+  width: 370px;
+  height: 50px;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 16pt;
+  font-weight: 900;
+  margin-top: 20px;
+
+}
+
+
+.full-name {
+  width: 370px;
+  margin: auto;
+}
+
+.name-input {
+  text-indent: 10px;
+  width: 175px;
+
+}
+
+.username-input {
+  text-indent: 10px;
+}
+
+.password-input {
+  text-indent: 10px;
+}
+// /*not sure if this is right*/
+input.name-input {
+  margin-right: 8px;
+  display: inline;
+  width: 175px;
+}
+
+.username-label-input {
+  text-align: left;
+  margin: auto;
+  width: 370px;
+}
+.password-label-input {
+  text-align: left;
+  margin: auto;
+  width: 370px
+}
+
+.signin-instructions {
+  display: block;
+  font-size: 1em;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  color: #555459;
+}
+
+.signin-instructions strong{
+  font-weight: bold;
+}
+
+input.field-input:hover {
+  border: 1px solid #2780f8;
+}
+
+input.field-input:focus {
+  box-shadow: 0 0 1px #2780f8;
+  border-color: #2780f8;
+}
+
+/////////////////////////////////////////////////
+.session-form-header {
+  width: 100%;
+  height: 70px;
+  background-color: #FFFFFF;
+  margin-bottom: 45px;
+  box-shadow: 0 1px 1px #e5e5e5;
+  font-family: 'Lato', sans-serif;
+  position: fixed;
+  z-index: 100;
+}
+
+.login-button-link {
+  border: 3px solid #808080;
+
+
+  border-radius: 4px;
+  width: 73px;
+  height: 35px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
+  float: right;
+
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.login-link {
+  color: #808080;
+  font-weight: 600;
+}
+
+.yak-logo {
+  width: 60px;
+  height: 60px;
+  margin: 6px;
+
+  float: left;
+}
+//
+div.login-button-link:hover {
+  border: 3px solid #555459;
+  color: #555459;
+}
+// button color #2AB27B
+// form background #FFFFFF
+// page background #F9F9F9
+// same for header
+// <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+// width: 1270
+// height: 70

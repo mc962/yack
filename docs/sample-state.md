@@ -44,12 +44,10 @@
   // this is the only time the app really retrieves
   // messages, when the user is on the current channel,
   // can check by confirming on slack
-  currenChannel: {
-    messages: {
-      1: { content: content },
-      2: { content: content },
-      3: { content: content }
-    }
+  currenChannel: {    
+    1: { content: content },
+    2: { content: content },
+    3: { content: content }    
   }
 ///////////
 }

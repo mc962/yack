@@ -9,7 +9,7 @@ class Home extends React.Component {
   }
 
   submitLogout(e) {
-    e.preventDefault();    
+    e.preventDefault();
     this.props.logout();
   }
 
@@ -17,18 +17,22 @@ class Home extends React.Component {
 
     if (this.props.currentUser) {
       return(
-        <div>
-          <h2>{ `Welcome, lazy ${this.props.currentUser.username}` }</h2>
-          <form onSubmit={this.submitLogout}>
-            <input type='submit' value='Logout' />
-          </form>
+        <div className="home-container">
+          <header className='home-bar'>
+            <h2>{ `Welcome, lazy ${this.props.currentUser.username}` }</h2>
+            <form className='logout-button' onSubmit={this.submitLogout}>
+              <input type='submit' value='Logout' />
+            </form>
+          </header>
         </div>
       );
     } else {
       return(
-        <div>
-          <Link to="signup">Sign Up</Link>
-          <Link to="login">Log In</Link>
+        <div className='home-container entry-links'>
+          <header className='home-bar'>
+            <Link to="signup">Sign Up</Link>
+            <Link to="login">Log In</Link>
+          </header>
         </div>
       );
     }

@@ -51,48 +51,90 @@ import { Link } from 'react-router';
              altActionLink = '/login';
            }
 
+
 ////////////////////////
     let form;
      if (this.props.formType === 'signup') {
        form = (
-         <div>
-           <h1>Sign Up</h1>
-           <ul className='error-list'>{errList}</ul>
-           <Link to={'/login'}>Login</Link>
-           <form onSubmit={this.handleSubmit}>
-             <label htmlFor='username'>Username</label>
-             <input type='text' id='username' onChange={this.handleInputChange} value={this.state.username} />
+         <div className='form-container'>
+           <header className= 'session-form-header'>
+             <div className='yak-logo'>
+               <img src={images.cartoon_yak} alt="A yak" />
+             </div>
+             <div className='login-button-link'>
+               <Link className="login-link" to={'/signup'}>Sign In</Link>
+             </div>
+           </header>
 
-             <label htmlFor='first-name'>First Name</label>
-             <input type='text' id='first_name' onChange={this.handleInputChange} value={this.state.first_name} />
+           <form className='session-form signup-form' onSubmit={this.handleSubmit}>
+             <h1 className='form-heading'>Sign Up</h1>
 
-             <label htmlFor='last-name'>Last Name</label>
-             <input type='text' id='last_name' onChange={this.handleInputChange} value={this.state.last_name} />
+             <div className="form-main">
 
-             <label htmlFor='email'>Email</label>
-             <input type='email' id='email' onChange={this.handleInputChange} value={this.state.email} />
+               <div className='session-form-section'>
+                 <div className= 'full-name'>
+                   <label htmlFor='full-name' className='full-name-label'>Your name</label>
+                   <input type='text' className='name-input session-input field-input' id='full-name' placeholder='First Name' onChange={this.handleInputChange} value={this.state.first_name} />
+                   <input type='text' className='name-input session-input field-input' id='full-name' placeholder='Last Name' onChange={this.handleInputChange} value={this.state.last_name} />
+                 </div>
 
-             <label htmlFor='password'>Password</label>
-             <input type='password' id='password' onChange={this.handleInputChange} value={this.state.password} />
+               </div>
 
-             <input type='submit' value='Sign Up' />
+               <div className='session-form-section'>
+                 <div className='username-label-input'>
+                   <label htmlFor='username' className='session-input-label'>Username</label>
+                   <input type='text' className='session-input field-input username-input' id='username' placeholder='awesomePerson' onChange={this.handleInputChange} value={this.state.username} />
+                 </div>
+
+                 <div className='password-label-input'>
+                   <label htmlFor='password' className='session-input-label'>Password</label>
+                   <input type='password' className='session-input field-input password-input' id='password' placeholder='password' onChange={this.handleInputChange} value={this.state.password} />
+                 </div>
+
+               </div>
+             </div>
+
+
+
+
+             <input type='submit' className='form-submit session-input' value='Sign Up' />
+
            </form>
+
          </div>
        )
      } else if (this.props.formType === 'login') {
        form = (
-         <div>
-           <h1>Log In</h1>
-           <ul className='error-list'>{errList}</ul>
-           <Link to={'/signup'}>Sign Up</Link>
-           <form onSubmit={this.handleSubmit}>
-             <label htmlFor='username'>Username</label>
-             <input type='text' id='username' onChange={this.handleInputChange} value={this.state.username} />
+         <div className='form-container'>
+           <header className= 'session-form-header'>
+             <div className='yak-logo'>
+               <img src={images.cartoon_yak} alt="A yak" />
+             </div>
+             <div className='login-button-link'>
+               <Link className="login-link" to={'/signup'}>Sign Up</Link>
+             </div>
+           </header>
 
-             <label htmlFor='password'>Password</label>
-             <input type='password' id='password' onChange={this.handleInputChange} value={this.state.password} />
+           <form className='session-form login-form' onSubmit={this.handleSubmit}>
+             <h1 className='form-heading'>Sign In</h1>
 
-             <input type='submit' value='Sign In' />
+             <div className='session-form-section'>
+               <div className='form-main'>
+                 <h4 className='signin-instructions'>Enter your <strong>username</strong> and <strong>password.</strong></h4>
+                 <div className='username-label-input'>
+                   <input type='text' className='session-input field-input username-input' id='username' placeholder='awesomePerson' onChange={this.handleInputChange} value={this.state.username} />
+                 </div>
+
+                 <div className='password-label-input'>
+                   <input type='password' className='session-input field-input password-input' id='password' placeholder='password' onChange={this.handleInputChange} value={this.state.password} />
+                 </div>
+
+               </div>
+
+
+             </div>
+
+             <input type='submit' className='form-submit session-input' value='Sign In' />
            </form>
          </div>
        )

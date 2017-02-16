@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def require_logged_in
     unless logged_in?
-      render json: { base: ['Not signed in.'] }
+      render json: { errors: ['Not signed in.'] }
     end
   end
 
