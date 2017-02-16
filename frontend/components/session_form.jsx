@@ -45,7 +45,7 @@ import { Link } from 'react-router';
          });
        }
        let altActionLink = '';
-           if (this.props.formType === 'login') {
+           if (this.props.formType === 'login') {             
              altActionLink = '/signup';
            } else if (this.props.formType === 'signup') {
              altActionLink = '/login';
@@ -62,7 +62,7 @@ import { Link } from 'react-router';
                <img src={images.cartoon_yak} alt="A yak" />
              </div>
              <div className='login-button-link'>
-               <Link className="login-link" to={'/signup'}>Sign In</Link>
+               <Link className="login-link" to={altActionLink}>Sign In</Link>
              </div>
            </header>
 
@@ -111,7 +111,7 @@ import { Link } from 'react-router';
                <img src={images.cartoon_yak} alt="A yak" />
              </div>
              <div className='login-button-link'>
-               <Link className="login-link" to={'/signup'}>Sign Up</Link>
+               <Link className="login-link" to={altActionLink}>Sign Up</Link>
              </div>
            </header>
 
