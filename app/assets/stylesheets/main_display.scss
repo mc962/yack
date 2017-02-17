@@ -1,14 +1,51 @@
-.profile-information {
-  width: 220px;
-  height: 60px;
-  background-color: #4D394B;
-  display: inline-block;
-  float: left;
+.display-container {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+
 }
 
-header.channel-information {
+.profile-information {
+  position: absolute;
+  width: 220px;
+
   height: 60px;
-  margin-left: 220px;
-  display: inline-block;
-  float: left;
+
+  background-color: #4D394B;
+
+  top: 0px;
+  left: 0px;
+}
+
+.channel-selection {
+  position: absolute;
+  background-color: #4D394B;
+  width: 220px;
+  height: 100vh;
+  top: 60px;
+  left: 0px;
+}
+.current-channel-container {
+  position: absolute;
+  display: block;
+}
+
+.channel-information {
+  position: absolute;
+  height: 60px;
+  width: 1380px;
+  left: 220px;
+  top: 0px;
+  display: block;
+
+  background-color: yellow;
+
+}
+.messages-container {
+  position: absolute;
+  background-color: purple;
+  width: 1380px;
+  height: 720px;
+  top: 60px;
+  left: 220px
 }

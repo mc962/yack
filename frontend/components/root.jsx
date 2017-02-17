@@ -5,8 +5,8 @@ import App from './app';
 import SessionFormContainer from './session_form_container';
 import HomeContainer from './home_container';
 import Display from './display';
-import CurrentChannel from './current_channel';
-import CurrentChannelContainer from './current_channel_container'
+import CurrentChannel from './current_channel/current_channel';
+import CurrentChannelContainer from './current_channel/current_channel_container'
 const Root = ({ store }) => {
   const _redirectIfLogggedIn = (nextState, replace) => {
     if (store.getState().session.currentUser) {
@@ -20,10 +20,11 @@ const Root = ({ store }) => {
       <Router history={ hashHistory }>
         <Route path="/" component= { App }>
           <IndexRoute component={HomeContainer} />
-          <Route path="/login" component={ SessionFormContainer } onEnter={_redirectIfLogggedIn} />
-          <Route path="/signup" component={ SessionFormContainer } onEnter={_redirectIfLogggedIn} />
-          <Route path="/channels" component={ Display }/>
+          <Route path="login" component={ SessionFormContainer } onEnter={_redirectIfLogggedIn} />
+          <Route path="signup" component={ SessionFormContainer } onEnter={_redirectIfLogggedIn} />
+          <Route path="channels" component={ Display }>
             <Route path=":id" component={ CurrentChannelContainer } />
+          </Route>
         </Route>
       </Router>
     </Provider>

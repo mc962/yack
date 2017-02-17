@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 
   let errors = state.session.errors;
 
-  let form = ownProps.route.path.slice(1); // might lead to a dependency on pathname shape in future, consider refactoring
+  let form = ownProps.route.path; // might lead to a dependency on pathname shape in future, consider refactoring
   return {
     loggedIn: loginStatus,
     errors: errors,
@@ -24,9 +24,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   let sendForm;
 
-  if (ownProps.route.path === '/login') {
+  if (ownProps.route.path === 'login') {
     sendForm = (user) => dispatch(login(user));
-  } else if (ownProps.route.path === '/signup') {
+  } else if (ownProps.route.path === 'signup') {
     sendForm = (user) => dispatch(signup(user));
   }
 

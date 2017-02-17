@@ -6,7 +6,7 @@ const mapStateToProps = (state, ownProps) => {
   let channelName;
   let channelId;
   if (ownProps.params) {
-    channelName = currentUser.channels[ownProps.params.id];
+    channelName = state.session.currentUser.channels[ownProps.params.id];
     channelId = ownProps.params.id;
   } else {
     channelName = "";
@@ -19,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  
+
   let currentChannelId;
   if (ownProps.params) {
     currentChannelId = ownProps.params.id

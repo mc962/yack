@@ -1,6 +1,98 @@
 .sidebar-channels {
   background-color: #4D394B;
-  width: 220px;
-  height: 100vh;
-  margin-top: 60px;
+  color: #AB9BA9
+  // margin-top: 60px;
+}
+.channel-type {
+  font-family: 'Lato', sans-serif;
+  text-indent: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+// ///////////////////
+span.public-channels-button:hover {
+
+  color: #FFFFFF;
+  span.public-channels-count {
+    color: #A59BA4;
+  }
+}
+
+.public-channels-button {
+  margin-right: 3px;
+  font-family: 'Lato', sans-serif;
+}
+
+.public-channels-count {
+  color: #7a6778;
+
+  font-size: 14px;
+  text-align: left;
+  margin-left: 3px;
+
+}
+
+/////////////////////////////////////////
+
+.channels-list {
+  font-family: 'Lato', sans-serif;
+  text-indent: 15px;
+}
+
+.channel-element {
+  width: 205px;
+  height: 25px;
+  margin-bottom: 5px;
+  a {
+    font-size: 16px;
+  }
+
+}
+
+.general-channels {
+  margin-top: 5px;
+  margin-bottom: 40px;
+}
+
+.channel-element {
+// handle scrollling with overflow
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.selected-channel-element {
+  background-color: #4C9689;
+}
+
+li.general-channel-element:hover {
+  background-color: #3e313c;
+}
+
+
+button.direct-messages-button:hover {
+  color: #FFFFFF
+}
+li.dm-channel-element:hover {
+  background-color: #3e313c;
+}
+
+.new-dm-button {
+  color: #7a6778;
+  float: right;
+  margin-right: 20px;
+  border: 2px solid #7a6778;
+  height: 15px;
+  width: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 900;
+}
+button.new-dm-button:hover {
+    color: #A59BA4;
+    border: 2px solid #A59BA4;
+}
+.dm-channel-element {
+
 }

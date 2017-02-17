@@ -1,28 +1,30 @@
 import React from 'react'
-import ChannelPickerContainer from './channel_picker_container';
-import CurrentChannelContainer from './current_channel_container';
-import CurrentChannel from './current_channel';
-const Display = () => {
+import ChannelPickerContainer from './channel_picker/channel_picker_container';
+import CurrentChannelContainer from './current_channel/current_channel_container';
+import CurrentChannel from './current_channel/current_channel';
+import ProfileContainer from './profile/profile_container'
+const Display = ({children}) => {
 
 
     return(
       <div className='display-container'>
-        <div className='profile-informaiton'>
-
+        <div className='profile-information'>
+          <ProfileContainer />
+          Welcome lazy user!
+          {/* at the moment, this isnt a component, so probably doesnt reset until refresh*/}
         </div>
-
-
-        <header className='channel-information'>
-          <h2>{ `Welcome, lazy ${currentUser.username}` }</h2>
-
-        </header>
-
 
         <sidebar className='channel-selection'>
             <ChannelPickerContainer />
         </sidebar>
+
         <section className='current-channel-container'>
-          <CurrentChannelContainer />
+          <header className='channel-information'>
+            This is my current channel
+          </header>
+          <section className='messages-container'>
+            {children}
+          </section>
         </section>
 
       </div>

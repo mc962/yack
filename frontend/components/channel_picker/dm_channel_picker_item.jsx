@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const DMChannelPickerItem = ({roomTitle, channelId}) => {
   return (
-    <li className='dm-channel-element'>
+    <li className='dm-channel-element channel-element'>
       <Link to={`/channels/${channelId}`}>
         {roomTitle}
       </Link>

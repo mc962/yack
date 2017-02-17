@@ -10,6 +10,7 @@
 #
 
 class UserChat < ApplicationRecord
+  validates :user, :chatroom, presence: true
   belongs_to :user
   belongs_to :chatroom
 end

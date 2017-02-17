@@ -53,6 +53,7 @@ import { Link } from 'react-router';
 
 ////////////////////////
     let form;
+    
      if (this.props.formType === 'signup') {
        form = (
          <div className='form-container'>

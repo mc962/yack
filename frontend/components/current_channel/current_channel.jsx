@@ -9,9 +9,9 @@ class CurrentChannel extends React.Component {
   }
   render() {
 
-    // debugger
 
-    return <div>STUFF THINGS</div>
+
+    return <div>Channel {this.props.channelId}</div>
 
   }
 }
