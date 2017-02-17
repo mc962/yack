@@ -11,7 +11,7 @@ class CurrentChannel extends React.Component {
 
     // debugger
 
-    return <div>!</div>
+    return <div>STUFF THINGS</div>
 
   }
 }

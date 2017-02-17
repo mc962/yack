@@ -1,8 +1,8 @@
 import React from 'react'
 import ChannelPickerContainer from './channel_picker_container';
-// import CurrentChannelContainer from './current_channel_container';
+import CurrentChannelContainer from './current_channel_container';
 import CurrentChannel from './current_channel';
-const Display = ({ children }) => {
+const Display = () => {
 
 
     return(
@@ -22,7 +22,7 @@ const Display = ({ children }) => {
             <ChannelPickerContainer />
         </sidebar>
         <section className='current-channel-container'>
-          <CurrentChannel />
+          <CurrentChannelContainer />
         </section>
 
       </div>
