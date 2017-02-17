@@ -31,7 +31,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 
   return {
-    processForm: sendForm
+    processForm: sendForm,
+    guestLogin: (user) => dispatch(login(user))
   };
 };
 

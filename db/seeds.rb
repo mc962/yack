@@ -33,3 +33,7 @@ UserChat.new(user_id: u2.id, chatroom_id: c2.id).save!
 UserChat.new(user_id: u1.id, chatroom_id: c3.id).save!
 UserChat.new(user_id: u1.id, chatroom_id: c4.id).save!
 UserChat.new(user_id: u2.id, chatroom_id: c5.id).save!
+UserChat.new(user_id: guest_user.id, chatroom_id: c1.id).save!
+UserChat.new(user_id: guest_user.id, chatroom_id: c2.id).save!
+UserChat.new(user_id: guest_user.id, chatroom_id: c4.id).save!
+UserChat.new(user_id: guest_user.id, chatroom_id: c5.id).save!

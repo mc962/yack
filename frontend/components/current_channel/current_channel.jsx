@@ -11,7 +11,7 @@ class CurrentChannel extends React.Component {
 
 
 
-    return <div>Channel {this.props.channelId}</div>
+    return <div className="dummyclass">Channel {this.props.channelId}</div>
 
   }
 }

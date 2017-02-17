@@ -20,7 +20,7 @@ class Profile extends React.Component {
     return(
         <section className="profile">
           <form className='logout-button' onSubmit={this.submitLogout}>
-            <input type='submit' value='Broken Logout' />
+            <input type='submit' value='Logout' />
           </form>
           <h3>{this.props.currentUser.username}</h3>
 

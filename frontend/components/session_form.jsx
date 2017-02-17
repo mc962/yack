@@ -30,8 +30,10 @@ import { Link } from 'react-router';
    }
 
    handleGuestSubmit(e) {
-     e.preventDefault()
-    //  this.props.login
+     e.preventDefault();
+     const user = { username: 'Guest', password: 'wizardhat1'};
+     this.props.guestLogin(user).then(() => this.redirect('/'));
+
    }
 
    handleSubmit(e) {
@@ -103,7 +105,7 @@ import { Link } from 'react-router';
              </div>
 
 
-             <div className='guest-login'>Click <button onClick={handleGuestSubmit} className='guest-login-button'>here</button> to login as a guest.</div>
+             <div className='guest-login'>Click <button onClick={this.handleGuestSubmit} className='guest-login-button'>here</button> to login as a guest.</div>
 
              <input type='submit' className='form-submit session-input' value='Sign Up' />
 
@@ -142,6 +144,8 @@ import { Link } from 'react-router';
 
              </div>
 
+             <div className='guest-login'>Click <button onClick={this.handleGuestSubmit} className='guest-login-button'>here</button> to login as a guest.</div>
+             
              <input type='submit' className='form-submit session-input' value='Sign In' />
            </form>
          </div>
