@@ -8,6 +8,9 @@ u1.save!
 u2 = User.new(username: 'bill', first_name: 'billy', last_name: 'buildman', password: 'builder')
 u2.save!
 
+guest_user = User.new(username: 'Guest', first_name: 'Anon', last_name: 'Anonymous', password: 'wizardhat1')
+guest_user.save!
+
 c1 = Chatroom.new(room_title: 'general', room_type: 'general', purpose: 'main public chat')
 c1.save!
 c2 = Chatroom.new(room_title: 'builders', room_type: 'general', purpose: "Bob's domain")

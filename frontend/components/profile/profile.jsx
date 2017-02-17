@@ -1,6 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
-export default class Profile extends React.Component {
+class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.submitLogout = this.submitLogout.bind(this)
@@ -27,3 +28,5 @@ export default class Profile extends React.Component {
     );
   }
 }
+
+export default withRouter(Profile)

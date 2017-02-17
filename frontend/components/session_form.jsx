@@ -14,6 +14,7 @@ import { Link } from 'react-router';
      };
 
      this.handleInputChange = this.handleInputChange.bind(this);
+     this.handleGuestSubmit = this.handleGuestSubmit.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
      this.redirect = this.redirect.bind(this);
    }
@@ -26,6 +27,11 @@ import { Link } from 'react-router';
 
    redirect(newRoute) {
      this.props.router.push(newRoute);
+   }
+
+   handleGuestSubmit(e) {
+     e.preventDefault()
+    //  this.props.login
    }
 
    handleSubmit(e) {
@@ -53,7 +59,7 @@ import { Link } from 'react-router';
 
 ////////////////////////
     let form;
-    
+
      if (this.props.formType === 'signup') {
        form = (
          <div className='form-container'>
@@ -97,7 +103,7 @@ import { Link } from 'react-router';
              </div>
 
 
-
+             <div className='guest-login'>Click <button onClick={handleGuestSubmit} className='guest-login-button'>here</button> to login as a guest.</div>
 
              <input type='submit' className='form-submit session-input' value='Sign Up' />
 
