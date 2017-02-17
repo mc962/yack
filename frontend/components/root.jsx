@@ -4,7 +4,9 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import SessionFormContainer from './session_form_container';
 import HomeContainer from './home_container';
-
+import Display from './display';
+import CurrentChannel from './current_channel';
+// import CurrentChannel from './current_channel'
 const Root = ({ store }) => {
   const _redirectIfLogggedIn = (nextState, replace) => {
     if (store.getState().session.currentUser) {
@@ -20,7 +22,8 @@ const Root = ({ store }) => {
           <IndexRoute component={HomeContainer} />
           <Route path="/login" component={ SessionFormContainer } onEnter={_redirectIfLogggedIn} />
           <Route path="/signup" component={ SessionFormContainer } onEnter={_redirectIfLogggedIn} />
-
+          <Route path="/channels" component={ Display }/>
+            <Route path="/channels/:id" component={ CurrentChannel } />          
         </Route>
       </Router>
     </Provider>

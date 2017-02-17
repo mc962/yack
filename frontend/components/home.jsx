@@ -20,7 +20,11 @@ class Home extends React.Component {
     if (this.props.currentUser) {
       return(
           <section className="display-container">
+            <form className='logout-button' onSubmit={this.submitLogout}>
+              <input type='submit' value='Logout' />
+            </form>
             <Display tempUserName={currentUser.username} />
+
           </section>
       );
 

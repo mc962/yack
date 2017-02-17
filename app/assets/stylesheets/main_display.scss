@@ -1,5 +1,14 @@
-.sidebar-channels {
-  background-color: #4D394B;
+.profile-information {
   width: 220px;
-  height: 100vh;
+  height: 60px;
+  background-color: #4D394B;
+  display: inline-block;
+  float: left;
+}
+
+header.channel-information {
+  height: 60px;
+  margin-left: 220px;
+  display: inline-block;
+  float: left;
 }

@@ -1,29 +1,34 @@
 import React from 'react'
 import ChannelPickerContainer from './channel_picker_container';
+// import CurrentChannelContainer from './current_channel_container';
+import CurrentChannel from './current_channel';
+const Display = ({ children }) => {
 
-export default class Display extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
-  render() {
     return(
       <div className='display-container'>
+        <div className='profile-informaiton'>
+
+        </div>
+
+
         <header className='channel-information'>
-          <h2>{ `Welcome, lazy ${this.props.tempUserName}` }</h2>
-          <form className='logout-button' onSubmit={this.submitLogout}>
-            <input type='submit' value='Logout' />
-          </form>
+          <h2>{ `Welcome, lazy ${currentUser.username}` }</h2>
+
         </header>
+
+
         <sidebar className='channel-selection'>
             <ChannelPickerContainer />
         </sidebar>
-        <div className='message-container'>
-
-        </div>
+        <section className='current-channel-container'>
+          <CurrentChannel />
+        </section>
 
       </div>
     )
 
-  }
+
 }
+
+export default Display;

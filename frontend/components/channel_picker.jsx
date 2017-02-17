@@ -22,16 +22,20 @@ render() {    // get an array of the channel elmenets
 
     return (
       <div className='sidebar-channels'>
-        <div className='general-channels'>          
+        <div className='general-channels'>
           <label>Channels
             <ul className='general-channels-list'>
               {generalChannelElements}
             </ul>
           </label>
         </div>
-        <ul className='dm-channels'>
-          {dmChannelElements}
-        </ul>
+        <div className='dm-channels'>
+          <label>Direct Messages
+            <ul className='dm-channels-list'>
+              {dmChannelElements}
+            </ul>
+          </label>
+        </div>
       </div>
     )
   }
