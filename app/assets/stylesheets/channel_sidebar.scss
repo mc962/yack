@@ -64,9 +64,10 @@ span.public-channels-button:hover {
 
 .selected-channel-element {
   background-color: #4C9689;
+  color: #FFFFFF
 }
 
-li.general-channel-element:hover {
+li.general-hoverable:hover {
   background-color: #3e313c;
 }
 
@@ -74,7 +75,7 @@ li.general-channel-element:hover {
 button.direct-messages-button:hover {
   color: #FFFFFF
 }
-li.dm-channel-element:hover {
+li.dm-hoverable:hover {
   background-color: #3e313c;
 }
 

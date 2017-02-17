@@ -1,9 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 
-const DMChannelPickerItem = ({roomTitle, channelId}) => {
+const DMChannelPickerItem = ({roomTitle, channelId, params}) => {
+  let classList = 'dm-channel-element channel-element';
+  if (channelId === parseInt(params.id)) {
+    classList += " selected-channel-element"
+  } else {
+    classList = 'dm-channel-element channel-element dm-hoverable'
+  }
+
   return (
-    <li className='dm-channel-element channel-element'>
+    <li className={classList}>
       <Link to={`/channels/${channelId}`}>
         {roomTitle}
       </Link>
@@ -11,4 +18,4 @@ const DMChannelPickerItem = ({roomTitle, channelId}) => {
   )
 };
 
-export default DMChannelPickerItem
+export default withRouter(DMChannelPickerItem)

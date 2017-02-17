@@ -9,10 +9,10 @@ export default class Profile extends React.Component {
   submitLogout(e) {
     e.preventDefault();
     this.props.logout();
-    if (session.currentUser) {
+
       // not sure if this is a good way to handle things
-      this.props.router.push('/')
-    }
+    this.props.router.push('/')
+
   }
 
   render() {

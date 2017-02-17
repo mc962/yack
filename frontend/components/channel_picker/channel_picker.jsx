@@ -10,11 +10,8 @@ class ChannelPicker extends React.Component {
 
   }
 
-
-
 render() {    // get an array of the channel elmenets
     const generalChannelElements = this.props.generalMessageChannels.map((channel, idx) => {
-
       return (
         <GeneralChannelPickerItem key={idx} roomTitle={channel.room_title} channelId={channel.id} />
       );
@@ -25,6 +22,7 @@ render() {    // get an array of the channel elmenets
         <DMChannelPickerItem key={idx} roomTitle={channel.room_title} channelId={channel.id} />
       );
     });
+
     return (
 
       <div className='sidebar-channels'>

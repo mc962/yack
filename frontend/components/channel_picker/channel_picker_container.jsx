@@ -3,7 +3,7 @@ import {getGeneralChannels, getDirectMessageChannels} from '../../reducers/selec
 import ChannelPicker from './channel_picker'
 
 const mapStateToProps = (state) => {
-  
+
   return {
     generalMessageChannels: getGeneralChannels(state),
     directMessageChannels: getDirectMessageChannels(state)
