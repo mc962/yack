@@ -94,6 +94,30 @@ button.new-dm-button:hover {
     color: #A59BA4;
     border: 2px solid #A59BA4;
 }
-.dm-channel-element {
+.x-icon {
 
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.esc-text {
+  font-size: 14px;
+}
+
+.modal-close-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50px;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  color: #717274;
+
+  float: right;
+  margin-top: 35px;
+  margin-right: 40px;
+}
+
+button.modal-close-btn:hover {
+  background-color: #E8E8E8;
 }

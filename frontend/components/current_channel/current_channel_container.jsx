@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
 
-    fetchChannelPosts: (currentChannelId) => dispatch(currentChannelId)
+    // fetchChannelPosts: (currentChannelId) => dispatch(currentChannelId)
   }
 }
 

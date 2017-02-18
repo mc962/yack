@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 
 import { signup, login, logout } from './actions/session_actions';
 
@@ -11,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.currentUser) {
     const preloadedState = { session: {currentUser: window.currentUser } };
     store = configureStore(preloadedState);
-  } else {    
+  } else {
     store = configureStore();
   }
-  // const store = configureStore()
+  Modal.setAppElement(document.body);
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
   // window.store = store;

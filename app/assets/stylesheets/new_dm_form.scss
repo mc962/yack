@@ -1,0 +1,78 @@
+.dm-users-search {
+  margin-right: 20px;
+  margin-bottom: 30px;
+  width: 560px;
+  height: 50px;
+  border: 1px solid #c5c5c5;
+  border-radius: 4px;
+  text-indent: 15px;
+}
+
+.new-dm-submit {
+  height: 50px;
+  width:  60px;
+  background-color: #CDCECE;
+  text-align: center;
+  border-radius: 4px;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+}
+
+.modal-form {
+  align-items: center;
+  margin-top: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 660px;
+  height: 300px;
+}
+
+.dm-form-heading {
+  font-size: 30px;
+  font-weight: 900;
+  font-family: 'Lato', sans-serif;
+  color: #2C2D30;
+  margin-bottom: 40px;
+}
+
+.users-heading {
+  text-align: left;
+  margin-left: 3px;
+  padding-bottom: 10px;
+  font-family: 'Lato', sans-serif;
+  color: #CDCECE
+}
+.user-table-element {
+  border-top: 1px solid #E8E8E8;
+  width: 605px;
+  height: 65px;
+  border-radius: 4px;
+}
+
+li.user-table-element:hover {
+  border: 1px solid #D3ECFA;
+  background-color: rgb(237, 247, 253);
+}
+
+.dm-user-picture {
+  display: inline-block;
+  margin: 15px;
+  background-color: yellow;
+  border-radius: 4px;
+  height: 35px;
+  width: 35px;
+}
+
+.dm-username {
+  display: inline-block;
+  margin-right: 5px;
+  font-family: 'Lato', sans-serif;
+  color: #555459;
+}
+
+.dm-user-fullname {
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  color: #CDCECE
+}

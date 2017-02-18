@@ -8,4 +8,19 @@ class Api::ChatroomsController < ApplicationController
     @chatroom = Chatroom.find(params[:id])
     render :show
   end
+
+  def create
+    @chatroom = Chatroom.new(chatroom_params)
+    if @chatroom.save
+      render :show
+    else
+      render(json: @chatroom.errors.full_messages, status: 422)
+    end
+  end
+end
+
+private
+
+def chatroom_params
+  params.require(:chatroom).permit(:room_title, :room_type, :purpose)
 end

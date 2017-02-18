@@ -1,13 +1,21 @@
-export const fetchChannels = () => {
+export const fetchAllChannels = () => {
   return $.ajax({
     method: 'GET',
-    url: '/channels'
+    url: '/api/chatrooms'
   })
 }
 
-export const fetchCurrentChannel = (channelId) => {
+export const fetchCurrentChannel = (chatroomId) => {
   return $.ajax({
     method: "GET",
-    url: `/channels/${channelId}`
+    url: `/api/chatrooms/${chatroomId}`
+  })
+}
+
+export const createChannel = (chatroom) => {
+  return $.ajax({
+    method: 'POST',
+    url: "/api/chatrooms",
+    data: { chatroom }
   })
 }
