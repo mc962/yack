@@ -8,18 +8,18 @@
 .profile-information {
   // position: absolute;
 
-
+  flex-direction: column;
   background-color: #4D394B;
-
-  top: 0px;
-  left: 0px;
+  background-color: red;
+  height: 60px;
+  width: 220px
 }
 
 .channel-selection {
   // position: absolute;
   flex-direction: column;
   background-color: #4D394B;
-  width: 14%;
+  width: 220px;
   height: 100%;
   top: 60px;
   left: 0px;
@@ -32,10 +32,10 @@
 
 .channel-information {
   // position: absolute;
-  height: 5%;
+  height: 60px;
   // width: 1380px;
   flex-direction: column;
-  left: 220px;
+  width: 100%;
   top: 0px;
   display: block;
 

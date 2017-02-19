@@ -12,10 +12,12 @@ const Display = ({children}) => {
 
         <sidebar className='channel-selection'>
           <div className='profile-information'>
-            <ProfileContainer />    
-            {/* at the moment, this isnt a component, so probably doesnt reset until refresh*/}
+            <ProfileContainer />
           </div>
+          <div>
+
             <ChannelPickerContainer />
+          </div>
         </sidebar>
 
         <section className='current-channel-container'>
