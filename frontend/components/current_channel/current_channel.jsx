@@ -38,6 +38,7 @@ class CurrentChannel extends React.Component {
     }
 
 
+
     return (
       <div className='current-channel-sections'>
         <header className='channel-information'>

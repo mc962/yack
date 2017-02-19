@@ -13,7 +13,7 @@ const Display = ({children}) => {
         <sidebar className='channel-selection'>
           <div className='profile-information'>
             <ProfileContainer />
-          </div>          
+          </div>
             <ChannelPickerContainer />
         </sidebar>
 
@@ -22,7 +22,6 @@ const Display = ({children}) => {
           <section className='current-channel-container'>
             {children}
           </section>
-
 
       </div>
     )
