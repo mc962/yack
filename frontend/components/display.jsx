@@ -8,13 +8,13 @@ const Display = ({children}) => {
 
     return(
       <div className='display-container'>
-        <div className='profile-information'>
-          <ProfileContainer />
-          Welcome lazy user!
-          {/* at the moment, this isnt a component, so probably doesnt reset until refresh*/}
-        </div>
+
 
         <sidebar className='channel-selection'>
+          <div className='profile-information'>
+            <ProfileContainer />    
+            {/* at the moment, this isnt a component, so probably doesnt reset until refresh*/}
+          </div>
             <ChannelPickerContainer />
         </sidebar>
 

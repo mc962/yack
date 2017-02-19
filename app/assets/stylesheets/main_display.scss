@@ -1,15 +1,13 @@
 .display-container {
   width: 100%;
   height: 100vh;
-  position: absolute;
-
+  // position: absolute;
+  display: flex;
 }
 
 .profile-information {
-  position: absolute;
-  width: 220px;
+  // position: absolute;
 
-  height: 60px;
 
   background-color: #4D394B;
 
@@ -18,22 +16,25 @@
 }
 
 .channel-selection {
-  position: absolute;
+  // position: absolute;
+  flex-direction: column;
   background-color: #4D394B;
-  width: 220px;
-  height: 100vh;
+  width: 14%;
+  height: 100%;
   top: 60px;
   left: 0px;
 }
 .current-channel-container {
-  position: absolute;
+  // position: absolute;
+  width: 86%;
   display: block;
 }
 
 .channel-information {
-  position: absolute;
-  height: 60px;
-  width: 1380px;
+  // position: absolute;
+  height: 5%;
+  // width: 1380px;
+  flex-direction: column;
   left: 220px;
   top: 0px;
   display: block;
@@ -42,10 +43,10 @@
 
 }
 .messages-container {
-  position: absolute;
+  display: flex;
   background-color: purple;
-  width: 1380px;
-  height: 720px;
+  // width: 1380px;
+  height: 95%;
   top: 60px;
   left: 220px
 }

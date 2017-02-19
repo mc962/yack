@@ -8,7 +8,7 @@
   text-indent: 15px;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
   margin-bottom: 6px;
 }
 // ///////////////////
@@ -84,11 +84,12 @@ li.dm-hoverable:hover {
   float: right;
   margin-right: 20px;
   border: 2px solid #7a6778;
-  height: 15px;
-  width: 15px;
+  height: 14px;
+  width: 14px;
   border-radius: 10px;
   text-align: center;
   font-weight: 900;
+  line-height: 2px;
 }
 button.new-dm-button:hover {
     color: #A59BA4;
