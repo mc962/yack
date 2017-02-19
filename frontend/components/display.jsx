@@ -13,21 +13,16 @@ const Display = ({children}) => {
         <sidebar className='channel-selection'>
           <div className='profile-information'>
             <ProfileContainer />
-          </div>
-          <div>
-
+          </div>          
             <ChannelPickerContainer />
-          </div>
         </sidebar>
 
-        <section className='current-channel-container'>
-          <header className='channel-information'>
-            This is my current channel
-          </header>
-          <section className='messages-container'>
+
+
+          <section className='current-channel-container'>
             {children}
           </section>
-        </section>
+
 
       </div>
     )

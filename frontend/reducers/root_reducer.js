@@ -5,7 +5,8 @@ import UsersReducer from './users_reducer';
 
 const rootReducer = combineReducers({
   session: SessionReducer,
-  users: UsersReducer
+  users: UsersReducer,
+  currentChannel: ChannelsReducer
 })
 
 export default rootReducer;

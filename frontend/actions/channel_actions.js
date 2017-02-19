@@ -15,7 +15,7 @@ export const fetchCurrentChannel = (channelId) => {
 }
 
 export const fetchAllChannels = () => {
-  
+
   return (dispatch) => {
     return APIUtil.fetchAllChannels().then((receivedChannels) => {
       return dispatch(receiveAllChannels(receivedChannels))
@@ -31,10 +31,11 @@ export const createChannel = (chatroom) => {
   }
 }
 
-export const receiveCurrentChannel = (channel) => {
+export const receiveCurrentChannel = (currentChannel) => {
+
   return {
     type: RECEIVE_CURRENT_CHANNEL,
-    channel
+    currentChannel
   }
 }
 

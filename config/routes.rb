@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, default: {format: :json} do
-    resources :chatrooms, only: [:index, :create, :update, :destroy] do
+    resources :chatrooms, only: [:index, :create, :show, :update, :destroy] do
       resources :messages, only: [:index, :create]
     end
     resources :messages, only: [:patch, :delete]
