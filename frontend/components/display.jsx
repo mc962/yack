@@ -26,7 +26,7 @@ const Display = ({children}) => {
             {children}
           </section>
         </section>
-
+        
       </div>
     )
 

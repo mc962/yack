@@ -11,7 +11,15 @@ class CurrentChannel extends React.Component {
 
 
 
-    return <div className="dummyclass">Channel {this.props.channelId}</div>
+    return (
+      <div>
+        <div>Channel {this.props.channelId}</div>
+        <footer className='new-message-form-container'>
+
+        </footer>
+
+      </div>
+    )
 
   }
 }
