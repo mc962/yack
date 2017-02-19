@@ -7,6 +7,7 @@ export const RECEIVE_CURRENT_CHANNEL = "RECEIVE_CURRENT_CHANNEL";
 export const CREATE_CHANNEL = "CREATE_CHANNEL";
 
 export const fetchCurrentChannel = (channelId) => {
+  
   return (dispatch) => {
     return APIUtil.fetchCurrentChannel(channelId).then((fetchedChannel) => {
       return dispatch(receiveCurrentChannel(fetchedChannel))

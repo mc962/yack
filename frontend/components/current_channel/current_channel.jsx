@@ -15,15 +15,6 @@ class CurrentChannel extends React.Component {
 
   }
 
-  componentWillReceiveProps(newProps) {
-    const channelId = parseInt(this.props.params.id)
-    const newPropsId = parseInt(newProps.params.id)
-    const paramsId = parseInt(this.props.params.id)
-    // debugger
-    if (newPropsId !== paramsId) {
-      this.props.fetchCurrentChannel(channelId);
-    }
-  }
 
   render() {
 

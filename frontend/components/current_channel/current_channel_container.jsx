@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
   let users;
   // debugger
   if (state.currentChannel.fetchedChannel) {
+    
     messages = state.currentChannel.fetchedChannel.messages
     users = state.users.users;
   } else {

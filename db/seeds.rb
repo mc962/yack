@@ -27,6 +27,10 @@ Message.new(content: 'A dangerous dragon', user_id: u2.id, chatroom_id: c2.id).s
 Message.new(content: 'A pretty butterfly', user_id: u1.id, chatroom_id: c1.id).save!
 Message.new(content: 'A super star', user_id: u1.id, chatroom_id: c1.id).save!
 Message.new(content: 'A big brownie', user_id: u2.id, chatroom_id: c2.id).save!
+Message.new(content: 'A fantastic four', user_id: u1.id, chatroom_id: c4.id).save!
+Message.new(content: 'A terrible two', user_id: u1.id, chatroom_id: c4.id).save!
+Message.new(content: "A weird wonder", user_id: u2.id, chatroom_id: c5.id).save!
+Message.new(content: 'A silly spot', user_id: u2.id, chatroom_id: c5.id).save!
 
 UserChat.new(user_id: u1.id, chatroom_id: c1.id).save!
 UserChat.new(user_id: u2.id, chatroom_id: c2.id).save!

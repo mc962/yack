@@ -1,11 +1,11 @@
 
 .channel-information {
-  // position: absolute;
 
-  // width: 1380px;
   width: 100%;
+  min-height: 60px;
   height: 60px;
 
   flex-direction: column;
   display: flex;
   background-color: yellow;
+}

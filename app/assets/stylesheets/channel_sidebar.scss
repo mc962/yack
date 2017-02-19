@@ -1,6 +1,9 @@
 .sidebar-channels {
   background-color: #4D394B;
-  color: #AB9BA9
+  color: #AB9BA9;
+  display: flex;
+  flex-direction: column;
+
   // margin-top: 60px;
 }
 .channel-type {
@@ -38,44 +41,28 @@ span.public-channels-button:hover {
 
 .channels-list {
   font-family: 'Lato', sans-serif;
-  text-indent: 15px;
+  // text-indent: 15px;
+  flex-direction: column;
 }
 
-.channel-element {
-  width: 205px;
-  height: 25px;
-  margin-bottom: 5px;
-  a {
-    font-size: 16px;
-  }
 
-}
 
 .general-channels {
   margin-top: 5px;
   margin-bottom: 40px;
 }
 
-.channel-element {
-// handle scrollling with overflow
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
 
 .selected-channel-element {
   background-color: #4C9689;
-  color: #FFFFFF
-}
-
-li.general-hoverable:hover {
-  background-color: #3e313c;
+  color: #FFFFFF;
 }
 
 
 button.direct-messages-button:hover {
   color: #FFFFFF
 }
-li.dm-hoverable:hover {
+button.dm-hoverable:hover {
   background-color: #3e313c;
 }
 
@@ -121,4 +108,29 @@ button.new-dm-button:hover {
 
 button.modal-close-btn:hover {
   background-color: #E8E8E8;
+}
+
+
+.element-text {
+  margin-bottom: 3px;
+}
+
+.channel-element {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: 205px;
+  height: 25px;
+  margin-bottom: 5px;
+
+  span {
+    font-size: 16px;
+
+  }
+  li {
+    text-indent: 15px;
+  }
+}
+
+button.general-hoverable:hover {
+  background-color: #3e313c;
 }

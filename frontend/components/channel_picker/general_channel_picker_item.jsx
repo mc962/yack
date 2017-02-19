@@ -1,29 +1,44 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import { Link, withRouter, hashHistory } from 'react-router';
 
-const GeneralChannelPickerItem = ({roomTitle, channelId, params}) => {
-  let classList = 'general-channel-element channel-element';
-
-  if (channelId === parseInt(params.id)) {
-    classList += " selected-channel-element"
-  } else {
-    classList = 'general-channel-element channel-element general-hoverable'
+class GeneralChannelPickerItem extends React.Component {
+  constructor(props) {
+    super(props)
+    this.linkClickHandler = this.linkClickHandler.bind(this);
   }
 
-  let listEl = (
-    <li className={classList}>
-       <Link to={`/channels/${channelId}`}>
-        {roomTitle}
-      </Link>
-    </li>
-  )
+  linkClickHandler(e) {
+
+    e.preventDefault();
+    const newChannelId = parseInt(this.props.params.id);
+    this.props.fetchCurrentChannel(this.props.channelId);
+    hashHistory.push(`/channels/${this.props.channelId}`)
+  }
+
+
+  render() {
+    let classList = 'general-channel-element channel-element';
+    let channelId = this.props.channelId
+    if (channelId === parseInt(this.props.params.id)) {
+      classList += " selected-channel-element"
+    } else {
+      classList = 'general-channel-element channel-element general-hoverable'
+    }
+
+    let listEl = (
+      <button className={classList} onClick={this.linkClickHandler}>
+      <li className='element-text'>
+          <span>{this.props.roomTitle}</span>
+      </li>
+    </button>
+    )
 
 
 
-  return (
-    listEl
-  )
-};
-
+    return (
+      listEl
+    )
+  }
+}
 
 export default withRouter(GeneralChannelPickerItem)

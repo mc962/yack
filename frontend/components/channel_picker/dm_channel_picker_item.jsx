@@ -1,21 +1,41 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import { Link, withRouter, hashHistory } from 'react-router';
 
-const DMChannelPickerItem = ({roomTitle, channelId, params}) => {
-  let classList = 'dm-channel-element channel-element';
-  if (channelId === parseInt(params.id)) {
-    classList += " selected-channel-element"
-  } else {
-    classList = 'dm-channel-element channel-element dm-hoverable'
+class DMChannelPickerItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.linkClickHandler = this.linkClickHandler.bind(this);
   }
 
-  return (
-    <li className={classList}>
-      <Link to={`/channels/${channelId}`}>
-        {roomTitle}
-      </Link>
-    </li>
-  )
-};
+  linkClickHandler(e) {
+
+    e.preventDefault();
+    const newChannelId = parseInt(this.props.params.id);
+    this.props.fetchCurrentChannel(this.props.channelId);
+    hashHistory.push(`/channels/${this.props.channelId}`)
+  }
+  render() {
+    let classList = 'dm-channel-element channel-element';
+    let channelId = this.props.channelId
+    if (channelId === parseInt(this.props.params.id)) {
+      classList += " selected-channel-element"
+    } else {
+      classList = 'dm-channel-element channel-element dm-hoverable'
+    }
+
+    let listEl = (
+
+      <button className={classList} onClick={this.linkClickHandler}>
+      <li className='element-text'>
+          {this.props.roomTitle}
+      </li>
+    </button>
+    )
+
+    return (
+      listEl
+    )
+  }
+}
 
 export default withRouter(DMChannelPickerItem)

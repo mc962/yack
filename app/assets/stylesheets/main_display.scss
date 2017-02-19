@@ -1,14 +1,8 @@
 .display-container {
   width: 100%;
-<<<<<<< HEAD
   height: 100vh;
-  // position: absolute;
-  display: flex;
-=======
-  height: 100%;
-  position: absolute;
 
->>>>>>> 32040837b4e379f4ef694812ad0f7e6b5cf2048a
+  display: flex;
 }
 
 .profile-information {
@@ -48,20 +42,11 @@
   width: 100%;
 
 }
-<<<<<<< HEAD
 .current-channel-sections {
 }
 .new-messages-form-container {
   display: flex;
   flex-direction: column;
-  background-color: blue;
-=======
-.messages-container {
-  position: absolute;
-  background-color: #FFFFFF;
-  width: 1380px;
-  height: 100%;
-  top: 60px;
-  left: 220px
->>>>>>> 32040837b4e379f4ef694812ad0f7e6b5cf2048a
+  background-color: green;
+  height: 80px;
 }
