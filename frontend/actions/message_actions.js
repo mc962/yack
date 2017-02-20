@@ -8,6 +8,7 @@ export const createMessage = (message) => {
   return (dispatch) => {
     return APIUtil.createMessage(message).then(
       (createdMessage) => {
+        
         return dispatch(receiveMessage(createdMessage));
       }
     )

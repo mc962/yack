@@ -23,7 +23,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     roomTitle: roomTitle,
     channelId: channelId,
-    users: users
+    users: users,
+    channel: ownProps.channel
   }
 }
 

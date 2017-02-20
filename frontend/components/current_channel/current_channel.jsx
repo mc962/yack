@@ -1,3 +1,5 @@
+/* globals Pusher */
+
 import React from 'react';
 import MessageItem from './message_item';
 import { withRouter } from 'react-router';
@@ -8,14 +10,32 @@ class CurrentChannel extends React.Component {
 
   }
   componentDidMount(){
+    const channelId = parseInt(this.props.params.id)
+    this.props.fetchCurrentChannel(channelId);
+    //not positive on const
+    this.pusher = new Pusher('ed4f630c935baafe26a6', {
+      encrypted: true
+    });
 
+    let channel = this.pusher.subscribe(`channel_${channelId}`);
+    channel.bind('message_published', (data) => {
+      // alert(data.message);
+      this.props.fetchCurrentChannel(channelId);
+    });
+  }
+
+  componentWillReceiveProps(newProps) {
     const channelId = parseInt(this.props.params.id)
 
-    this.props.fetchCurrentChannel(channelId);
+    if (this.props.messages !== newProps.messages) {
+      // this.props.fetchCurrentChannel(channelId);
+    }
 
   }
 
-
+  componentWillUnmount() {
+    this.pusher.unsubscribe(`channel_${channelId}`)
+  }
   render() {
 
   let messageElements;

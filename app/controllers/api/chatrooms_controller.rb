@@ -1,4 +1,15 @@
 class Api::ChatroomsController < ApplicationController
+  def create
+    @chatroom = Chatroom.new(chatroom_params)
+    if @chatroom.save
+
+      
+      render :show
+    else
+      render(json: @chatroom.errors.full_messages, status: 422)
+    end
+  end
+
   def index
     @chatrooms = Chatroom.all
     render :index
@@ -9,14 +20,6 @@ class Api::ChatroomsController < ApplicationController
     render :show
   end
 
-  def create
-    @chatroom = Chatroom.new(chatroom_params)
-    if @chatroom.save
-      render :show
-    else
-      render(json: @chatroom.errors.full_messages, status: 422)
-    end
-  end
 end
 
 private
