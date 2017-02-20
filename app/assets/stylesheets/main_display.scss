@@ -30,7 +30,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: purple;
+  background-color: #FFFFFF;
 
 }
 .messages-container {
@@ -47,6 +47,8 @@
 .new-messages-form-container {
   display: flex;
   flex-direction: column;
-  background-color: green;
+  background-color: #FFFFFF;
+
+  width: 100%;
   height: 80px;
 }

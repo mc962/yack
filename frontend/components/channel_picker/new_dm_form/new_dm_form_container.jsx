@@ -6,9 +6,15 @@ import { getDirectMessageChannels } from '../../../reducers/selectors';
 // recommend just a user search for now, can do dm search if have time later
 const mapStateToProps = (state) => {
   const recentDirectMessages= getDirectMessageChannels(state)
-
+  let fetchedUsers;
+  
+  if (state.users.users.users) {
+    fetchedUsers = Object.keys(state.users.users.users).map((id) => state.users.users.users[id])
+  } else {
+    fetchedUsers = []
+  }
   return {
-    fetchedUsers: state.users,
+    fetchedUsers: fetchedUsers,
     recentDirectMessages: recentDirectMessages
   }
 }

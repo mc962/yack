@@ -5,28 +5,30 @@ import { fetchCurrentChannel } from '../../actions/channel_actions';
 
 const mapStateToProps = (state, ownProps) => {
 
-  // let channelName;
+  let channelName;
   let channelId;
   let messages;
   let users;
-  // debugger
+  
   if (state.currentChannel.fetchedChannel) {
-    
+
     messages = state.currentChannel.fetchedChannel.messages
-    users = state.users.users;
+    users = state.currentChannel.fetchedChannel.users
+
   } else {
     messages = [];
   }
 
   if (ownProps.params) {
-    // channelName = state.session.currentUser.channels[ownProps.params.id];
+    channelName = state.session.currentUser.channels[ownProps.params.id];
     channelId = ownProps.params.id;
   } else {
-    // channelName = "";
+    channelName = "";
     channelId = 0;
   }
+
   return {
-    // channelName: channelName,
+    channelName: channelName,
     channelId: channelId,
     messages: messages,
     users: users

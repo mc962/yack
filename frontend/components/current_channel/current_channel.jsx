@@ -1,7 +1,7 @@
 import React from 'react';
 import MessageItem from './message_item';
 import { withRouter } from 'react-router';
-
+import NewMessageFormContainer from './new_message/new_message_container';
 class CurrentChannel extends React.Component {
   constructor(props) {
     super(props)
@@ -19,10 +19,21 @@ class CurrentChannel extends React.Component {
   render() {
 
   let messageElements;
+  let channelUsers = this.props.users;
+  let username;
     if (this.props.messages) {
 
       messageElements = this.props.messages.map((message, idx) => {
-        return <MessageItem key={idx} userId={message.user_id} content={message.content} />
+
+
+        const userId = parseInt(message.user_id)
+        if (userId && channelUsers[userId]) {
+
+          username=channelUsers[userId].username;
+        } else {
+          username=""
+        }
+        return <MessageItem key={idx} username={username} content={message.content} />
       })
     } else {
       return <div className='no-messages'></div>
@@ -33,7 +44,7 @@ class CurrentChannel extends React.Component {
     return (
       <div className='current-channel-sections'>
         <header className='channel-information'>
-          This is my current channel: Channel {this.props.channelId}
+          This is my current channel: Channel {this.props.roomTitle}
         </header>
         <section className='messages-container'>
           <ul className='channel-messages-list'>
@@ -41,7 +52,7 @@ class CurrentChannel extends React.Component {
           </ul>
         </section>
         <footer className='new-messages-form-container'>
-          Bob
+          <NewMessageFormContainer />
         </footer>
       </div>
     )

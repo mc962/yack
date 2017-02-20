@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :chatrooms, only: [:index, :create, :show, :update, :destroy] do
       resources :messages, only: [:index, :create]
     end
-    resources :messages, only: [:patch, :delete]
+    resources :messages, only: [:update, :destroy] ## not sure if this is routed properly
   end
 
 

@@ -5,7 +5,7 @@ import {
 import { merge } from 'lodash';
 import {RECEIVE_ALL_USERS} from '../actions/user_actions';
 
-const initialState = {users: []}
+const initialState = {users: {}}
 
 const UsersReducer = (state = initialState, action ) => {
 

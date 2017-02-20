@@ -13,7 +13,7 @@ export default class NewDMForm extends React.Component {
 
   componentDidMount() {
 /// this isnt running when it needs to
-    this.props.fetchAllUsers().then()
+    this.props.fetchAllUsers()
   }
 
   handleModalSubmit(e) {
@@ -22,11 +22,15 @@ export default class NewDMForm extends React.Component {
 
 
   render() {
-
+    let availableUsers;
     /// might want to refactor here so we dont need to go through so many levels
-    const availableUsers = this.props.fetchedUsers.users.map((user, idx) => {
-      return <UserItem key={idx} username={user.username} userId={user.id} firstName={user.first_name} lastName={user.last_name} />
-    })
+    if (this.props.fetchedUsers) {
+       availableUsers = this.props.fetchedUsers.map((user, idx) => {
+        return <UserItem key={idx} username={user.username} userId={user.id} firstName={user.first_name} lastName={user.last_name} />
+      })
+    } else {
+      availableUsers = []
+    }
 
     return (
       <div className="modal-form">

@@ -1,0 +1,41 @@
+.new-message-form {
+  margin-left: 20px;
+  border: 2px solid #E0E0E0;
+  border-radius: 6px;
+  height: 40px;
+  font-family: 'Lato', sans-serif;
+  line-height: 20px;
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
+}
+
+input.message-input-field:focus {
+  border: 2px solid #bbbdbf;
+  .attachments-btn {
+    // border-right: 2px solid #bbbdbf;
+  }
+}
+
+.message-input-field {
+  text-indent: 8px;
+  width: 100%
+}
+
+.attachments-btn {
+  width: 45px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  border-right: 2px solid #E0E0E0;
+  color: #a7a7a7;
+  font-size: 28px;
+  font-weight: 400;
+  font-family: 'Lato', sans-serif;
+}
+
+div.attachments-btn:hover {
+  color: #E0E0E0;
+  background-color: #56B68B;
+
+}
