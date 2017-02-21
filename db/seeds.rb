@@ -3,41 +3,120 @@ Chatroom.destroy_all
 Message.destroy_all
 UserChat.destroy_all
 
-u1 = User.new(username: 'bob', first_name: 'bobby', last_name: 'buildman', password: 'builder')
-u1.save!
-u2 = User.new(username: 'bill', first_name: 'billy', last_name: 'buildman', password: 'builder')
-u2.save!
 
-guest_user = User.new(username: 'Guest', first_name: 'Anon', last_name: 'Anonymous', password: 'wizardhat1')
+20.times do
+  begin
+    randNum = rand(7)
+
+    case randNum
+    when 0
+      username = Faker::StarWars.character
+      first_name = Faker::StarWars.droid
+      last_name = Faker::StarWars.droid
+      email= Faker::Internet.safe_email
+      password = Faker::Internet.password(6)
+    when 1
+      username = Faker::Pokemon.name
+      first_name = Faker::Pokemon.name
+      last_name = Faker::Pokemon.name
+      email= Faker::Internet.safe_email
+      password = Faker::Internet.password(6)
+    when 2
+      username= Faker::LordOfTheRings.character
+      first_name= Faker::LordOfTheRings.character
+      last_name= Faker::LordOfTheRings.character
+      email= Faker::Internet.safe_email
+      password= Faker::Internet.password(6)
+    when 3
+      username= Faker::Cat.name
+      first_name= Faker::Cat.name
+      last_name= Faker::Cat.name
+      email= Faker::Internet.safe_email
+      password= Faker::Internet.password(6)
+    when 4
+      username= Faker::Ancient.god
+      first_name= Faker::Ancient.god
+      last_name= Faker::Ancient.god
+      email= Faker::Internet.safe_email
+      password= Faker::Internet.password(6)
+    when 5
+      username= Faker::Ancient.primordial
+      first_name= Faker::Ancient.primordial
+      last_name= Faker::Ancient.primordial
+      email= Faker::Internet.safe_email
+      password= Faker::Internet.password(6)
+    when 6
+      username= Faker::Ancient::titan
+      first_name= Faker::Ancient::titan
+      last_name= Faker::Ancient::titan
+      email= Faker::Internet.safe_email
+      password= Faker::Internet.password(6)
+    end
+
+    User.new(username: username, first_name: first_name, last_name: last_name, email: email, password: password).save!
+
+  rescue
+    retry
+  end
+end
+guest_user = User.new(username: 'Guest', first_name: 'Anon', last_name: 'Anonymous', email: 'guest@guestables.com', password: 'wizardhat1')
 guest_user.save!
 
-c1 = Chatroom.new(room_title: 'general', room_type: 'general', purpose: 'main public chat')
-c1.save!
-c2 = Chatroom.new(room_title: 'builders', room_type: 'general', purpose: "Bob's domain")
-c2.save!
-c3 = Chatroom.new(room_title: 'destroyers', room_type: 'general', purpose: "Bill's domain")
-c3.save!
-c4 = Chatroom.new(room_title: 'joiners', room_type: 'direct_message', purpose: "Bob's domain")
-c4.save!
-c5 = Chatroom.new(room_title: 'sleepers', room_type: 'direct_message', purpose: "Sleeping, of course!")
-c5.save!
 
-Message.new(content: 'A pretty butterfly', user_id: u1.id, chatroom_id: c1.id).save!
-Message.new(content: 'A dangerous dragon', user_id: u2.id, chatroom_id: c2.id).save!
-Message.new(content: 'A pretty butterfly', user_id: u1.id, chatroom_id: c1.id).save!
-Message.new(content: 'A super star', user_id: u1.id, chatroom_id: c1.id).save!
-Message.new(content: 'A big brownie', user_id: u2.id, chatroom_id: c2.id).save!
-Message.new(content: 'A fantastic four', user_id: u1.id, chatroom_id: c4.id).save!
-Message.new(content: 'A terrible two', user_id: u1.id, chatroom_id: c4.id).save!
-Message.new(content: "A weird wonder", user_id: u2.id, chatroom_id: c5.id).save!
-Message.new(content: 'A silly spot', user_id: u2.id, chatroom_id: c5.id).save!
 
-UserChat.new(user_id: u1.id, chatroom_id: c1.id).save!
-UserChat.new(user_id: u2.id, chatroom_id: c2.id).save!
-UserChat.new(user_id: u1.id, chatroom_id: c3.id).save!
-UserChat.new(user_id: u1.id, chatroom_id: c4.id).save!
-UserChat.new(user_id: u2.id, chatroom_id: c5.id).save!
-UserChat.new(user_id: guest_user.id, chatroom_id: c1.id).save!
-UserChat.new(user_id: guest_user.id, chatroom_id: c2.id).save!
-UserChat.new(user_id: guest_user.id, chatroom_id: c4.id).save!
-UserChat.new(user_id: guest_user.id, chatroom_id: c5.id).save!
+general_chat = Chatroom.new(room_title: 'general', room_type: 'general', purpose: 'main public chat').save!
+9.times do
+  begin
+    randNum = rand(3)
+    case randNum
+    when 0
+      room_title = Faker::StarWars.planet.downcase.delete(' ')
+    when 1
+      room_title = Faker::LordOfTheRings.location.downcase.delete(' ')
+    when 2
+      room_title = Faker::GameOfThrones.city.downcase.delete(' ')
+    end
+    room_type = ['general', 'direct_message'].sample
+    purpose = Faker::Hipster.sentence(5)
+
+    Chatroom.new(room_title: room_title, room_type: room_type, purpose: purpose).save!
+  rescue
+    retry
+  end
+
+end
+
+
+gen_chat_id = Chatroom.find_by(room_title: 'general').id
+User.all.each do |user|
+  chatroom_id = nil
+  until chatroom_id && chatroom_id != gen_chat_id
+    chatroom_id = Chatroom.all.sample.id
+  end
+  UserChat.new(user_id: user.id, chatroom_id: chatroom_id).save! ### add anyone to any channel but gen chat
+  UserChat.new(user_id: user.id, chatroom_id: gen_chat_id).save! ### then add to gen chat, this way we avoid double genchat adding
+end
+
+User.all.each do |user|
+  5.times do
+    randNum = rand(5)
+    case randNum
+    when 0
+      content = Faker::StarWars.quote
+    when 1
+      content = Faker::StarWars.wookie_sentence
+    when 2
+      content = Faker::ChuckNorris.fact
+    when 3
+      content = Faker::Friends.quote
+    when 4
+      content = Faker::TwinPeaks.quote
+    end
+
+
+    chatroom_id = Chatroom.all.sample.id
+
+    Message.new(content: content, user_id: user.id, chatroom_id: chatroom_id).save!
+  end
+
+end

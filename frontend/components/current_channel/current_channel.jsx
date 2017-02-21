@@ -43,6 +43,7 @@ class CurrentChannel extends React.Component {
 
   componentWillUnmount() {
     // this.pusher.unsubscribe(`channel_${channelId}`)
+    
     this.channel.unsubscribe();
   }
   render() {

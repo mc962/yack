@@ -11,6 +11,7 @@ import { Link } from 'react-router';
        password: "",
        first_name: "",
        last_name: "",
+       email: ""
      };
 
      this.handleInputChange = this.handleInputChange.bind(this);
@@ -41,7 +42,7 @@ import { Link } from 'react-router';
      const user = Object.assign({}, this.state);
 
      this.props.processForm(user).then(() => this.redirect('/'),
-    this.setState({username: "", password: "", first_name: "", last_name: ""}));
+    this.setState({username: "", password: "", first_name: "", last_name: "", email: ""}));
    }
 
    render() {
@@ -101,6 +102,11 @@ import { Link } from 'react-router';
                    <input type='password' className='session-input field-input password-input' id='password' placeholder='password' onChange={this.handleInputChange} value={this.state.password} />
                  </div>
 
+                 <div className='email-label-input'>
+                   <label htmlFor='email' className='session-input-label'>Email</label>
+                   <input type="email" className='session-input field-input email-input' id='email' placeholder='you@awesome.com' onChange={this.handleInputChange} value={this.state.email} />
+                 </div>
+
                </div>
              </div>
 
@@ -138,6 +144,7 @@ import { Link } from 'react-router';
                  <div className='password-label-input'>
                    <input type='password' className='session-input field-input password-input' id='password' placeholder='password' onChange={this.handleInputChange} value={this.state.password} />
                  </div>
+
 
                </div>
 
