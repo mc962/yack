@@ -3,11 +3,13 @@ import React from 'react'
 const MessageItem = ({username, content}) => {
 
   return (
-    <li className='message-element'>
+    
+
+      <li className='message-element'>
 
         <div className='user-picture'>:)</div>
 
-      <div className='message-text'>
+        <div className='message-text'>
 
 
           <div className ='message-author'>{username}</div>
@@ -17,7 +19,8 @@ const MessageItem = ({username, content}) => {
 
 
 
-    </li>
+      </li>
+
   )
 }
 export default MessageItem;

@@ -22,7 +22,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :messages
-  has_many :user_chats
+  has_many :user_chats, dependent: :destroy
 
   has_many :chatrooms, through: :user_chats, source: :chatroom
 

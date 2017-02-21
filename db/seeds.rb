@@ -62,6 +62,8 @@ end
 guest_user = User.new(username: 'Guest', first_name: 'Anon', last_name: 'Anonymous', email: 'guest@guestables.com', password: 'wizardhat1')
 guest_user.save!
 
+test_user = User.new(username: 'Test', first_name: 'Tester', last_name: 'Testing', email: 'test@tester.com', password: 'wizardhat2')
+test_user.save!
 
 
 general_chat = Chatroom.new(room_title: 'general', room_type: 'general', purpose: 'main public chat').save!
@@ -88,14 +90,17 @@ end
 
 
 gen_chat_id = Chatroom.find_by(room_title: 'general').id
-User.all.each do |user|
-  chatroom_id = nil
-  until chatroom_id && chatroom_id != gen_chat_id
-    chatroom_id = Chatroom.all.sample.id
+
+  Chatroom.all.each do |chatroom|
+    UserChat.new(user_id: guest_user.id, chatroom_id: chatroom.id).save!
+    UserChat.new(user_id: test_user.id, chatroom_id: chatroom.id).save!
+    User.all.each do |user|
+      unless user.id == guest_user.id || user.id == test_user.id
+        UserChat.new(user_id: user.id, chatroom_id: chatroom.id).save!
+      end
+    end
   end
-  UserChat.new(user_id: user.id, chatroom_id: chatroom_id).save! ### add anyone to any channel but gen chat
-  UserChat.new(user_id: user.id, chatroom_id: gen_chat_id).save! ### then add to gen chat, this way we avoid double genchat adding
-end
+
 
 User.all.each do |user|
   5.times do
@@ -108,13 +113,13 @@ User.all.each do |user|
     when 2
       content = Faker::ChuckNorris.fact
     when 3
-      content = Faker::Friends.quote
-    when 4
       content = Faker::TwinPeaks.quote
+    when 4
+      content = Faker::Company.bs
     end
 
 
-    chatroom_id = Chatroom.all.sample.id
+    chatroom_id = user.chatrooms.sample.id
 
     Message.new(content: content, user_id: user.id, chatroom_id: chatroom_id).save!
   end

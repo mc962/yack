@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
 
+  overflow: auto;
+// annoying horizontal overflow issues start HERE!!!!
 }
 .message-element {
-  width: 100%;
+
   height: 48px;
   // display: flex;
   // flex-direction: row;
@@ -15,7 +15,8 @@
   // margin-top: 10px;
   display: flex;
   align-content: flex-start;
-  
+
+
 }
 
 li.message-element:hover {
@@ -47,8 +48,12 @@ li.message-element:hover {
 }
 
 .message-content {
-  // display: flex;
-  // flex-direction: row;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  margin-right: 55px;
+  flex-wrap: wrap;
+  margin-bottom: auto;
 }
 
 .message-author {
@@ -64,4 +69,8 @@ li.message-element:hover {
   flex-direction: column;
   height: 100%;
   width: 100%;
+}
+
+.message-input-field {
+
 }
