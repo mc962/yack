@@ -5,7 +5,8 @@
 
 }
 .session-form {
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: 630px;
   height: 600px;
   border: 1px solid #E8E8E8;
@@ -39,6 +40,11 @@
   margin-bottom: 20px;
 }
 
+.full-name-label {
+  display: flex;
+  flex-direction: row;
+}
+
 .session-input {
   margin-bottom: 10px;
   display: block;
@@ -55,7 +61,7 @@
   display: block;
   font-size: 2em;
   margin-top: 45px;
-  margin-bottom: 0.67em;
+  // margin-bottom: 0.67em;
   margin-left: 0;
   margin-right: 0;
   font-weight: bold;
@@ -117,7 +123,7 @@ input.name-input {
 .signin-instructions {
   display: block;
   font-size: 1em;
-  margin-top: 1.33em;
+  // margin-top: 1.33em;
   margin-bottom: 1.33em;
   margin-left: 0;
   margin-right: 0;
@@ -191,4 +197,6 @@ div.login-button-link:hover {
 
 .guest-login-button {
   color: #2AB27B;
+  display: inline;
+  cursor: pointer;
 }

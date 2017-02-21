@@ -12,16 +12,24 @@ class CurrentChannel extends React.Component {
   componentDidMount(){
     const channelId = parseInt(this.props.params.id)
     this.props.fetchCurrentChannel(channelId);
-    //not positive on const
-    this.pusher = new Pusher('ed4f630c935baafe26a6', {
-      encrypted: true
-    });
 
-    let channel = this.pusher.subscribe(`channel_${channelId}`);
-    channel.bind('message_published', (data) => {
-      // alert(data.message);
-      this.props.fetchCurrentChannel(channelId);
-    });
+    // this.pusher = new Pusher('ed4f630c935baafe26a6', {
+    //   encrypted: true
+    // });
+    //
+    // let channel = this.pusher.subscribe(`channel_${channelId}`);
+    // channel.bind('message_published', (data) => {
+    //   // alert(data.message);
+    //   this.props.fetchCurrentChannel(channelId);
+    // });
+
+    App.messages = App.cable.subscriptions.create('MessagesChannel', {
+      received: (data) => {
+        // alert(data.message)
+        this.props.fetchCurrentChannel(this.props.params.id);
+      }
+    })
+    this.channel = App.messages;
   }
 
   componentWillReceiveProps(newProps) {
@@ -34,7 +42,8 @@ class CurrentChannel extends React.Component {
   }
 
   componentWillUnmount() {
-    this.pusher.unsubscribe(`channel_${channelId}`)
+    // this.pusher.unsubscribe(`channel_${channelId}`)
+    this.channel.unsubscribe();
   }
   render() {
 

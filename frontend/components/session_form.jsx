@@ -82,10 +82,10 @@ import { Link } from 'react-router';
                <div className='session-form-section'>
                  <div className= 'full-name'>
                    <div className='full-name-label'>Your name</div>
-                   <label htmlFor='full-name' className='full-name-label'>
-                   <input type='text' className='name-input session-input field-input' id='first_name' placeholder='First Name' onChange={this.handleInputChange} value={this.state.first_name} />
-                   <input type='text' className='name-input session-input field-input' id='last_name' placeholder='Last Name' onChange={this.handleInputChange} value={this.state.last_name} />
-                   </label>
+                   <div htmlFor='full-name' className='full-name-label'>
+                     <input type='text' className='name-input session-input field-input' id='first_name' placeholder='First Name' onChange={this.handleInputChange} value={this.state.first_name} />
+                     <input type='text' className='name-input session-input field-input' id='last_name' placeholder='Last Name' onChange={this.handleInputChange} value={this.state.last_name} />
+                   </div>
                  </div>
 
                </div>
@@ -105,7 +105,7 @@ import { Link } from 'react-router';
              </div>
 
 
-             <div className='guest-login'>Click <button onClick={this.handleGuestSubmit} className='guest-login-button'>here</button> to login as a guest.</div>
+             <div className='guest-login'>Click <div onClick={this.handleGuestSubmit} className='guest-login-button'>here</div> to login as a guest.</div>
 
              <input type='submit' className='form-submit session-input' value='Sign Up' />
 
@@ -144,8 +144,8 @@ import { Link } from 'react-router';
 
              </div>
 
-             <div className='guest-login'>Click <button onClick={this.handleGuestSubmit} className='guest-login-button'>here</button> to login as a guest.</div>
-             
+             <div className='guest-login'>Click <div onClick={this.handleGuestSubmit} className='guest-login-button'>here</div> to login as a guest.</div>
+
              <input type='submit' className='form-submit session-input' value='Sign In' />
            </form>
          </div>
