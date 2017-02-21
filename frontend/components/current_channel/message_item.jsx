@@ -11,7 +11,7 @@ const MessageItem = ({username, content}) => {
 
 
           <div className ='message-author'>{username}</div>
-          <div className='message-content'>{content}</div>
+          <div className='message-content dont-break-out'>{content}</div>
         </div>
 
 

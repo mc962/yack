@@ -23,12 +23,12 @@
   background-color: #FFFFFF;
 
 }
-body {background-color: #F9F9F9}
-
-.signup-form {
-  height: 100%;
-
-}
+// body {background-color: #F9F9F9}
+//
+// .signup-form {
+//   height: 100%;
+//
+// }
 
 .login-form {
   // height: 465px;
@@ -36,7 +36,6 @@ body {background-color: #F9F9F9}
 
 
 .session-form-section{
-  margin-top: 30px;
   margin-left: 0;
   margin-right: 0;
 
@@ -54,6 +53,7 @@ body {background-color: #F9F9F9}
 }
 
 .full-name-label {
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
 }
@@ -155,6 +155,7 @@ input.name-input {
   margin-right: 0;
   text-align: center;
   color: #555459;
+  margin-top: 30px;
 }
 
 .signin-instructions strong{

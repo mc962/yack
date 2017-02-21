@@ -5,7 +5,9 @@ class Api::SessionsController < ApplicationController
       login!(@user)
       render "/api/users/show"
     else
-      render(json: ["invalid credentials"], status: 401)
+      short_errors = sym_to_s(@user.errors)
+
+      render(json: short_errors, status: 401)
     end
   end
 
@@ -16,6 +18,15 @@ class Api::SessionsController < ApplicationController
       render json: @user
     else
       render(json: ["You are not signed in"], status: 404)
+    end
+  end
+
+
+  private
+
+  def sym_to_s(errors)
+    str_errors = errors.map do |error|
+      error.to_s
     end
   end
 end

@@ -9,11 +9,13 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     gen_chat = Chatroom.find_by(room_title: 'general')
     if @user.save
-      UserChat.new(user_id: @user.id, chatroom_id: gen_chat.id)
+      # UserChat.new(user_id: @user.id, chatroom_id: gen_chat.id).save
       login!(@user)
       render :show
     else
-      render(json: @user.errors.full_messages, status: 422)
+      short_errors = sym_to_s(@user.errors)
+
+      render(json: short_errors, status: 422)
     end
   end
 
@@ -26,6 +28,14 @@ class Api::UsersController < ApplicationController
   #
   # def destroy
   # end
+
+private
+
+def sym_to_s(errors)
+  str_errors = errors.map do |error|
+    error.to_s
+  end
+end
 
 
 end
