@@ -113,6 +113,7 @@ button.modal-close-btn:hover {
 
 .element-text {
   margin-bottom: 3px;
+  width: 100%
 }
 
 .channel-element {
@@ -121,7 +122,9 @@ button.modal-close-btn:hover {
   width: 205px;
   height: 25px;
   margin-bottom: 5px;
-
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   span {
     font-size: 16px;
 

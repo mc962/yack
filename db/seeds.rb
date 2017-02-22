@@ -61,6 +61,8 @@ UserChat.destroy_all
 end
 guest_user = User.new(username: 'Guest', first_name: 'Anon', last_name: 'Anonymous', email: 'guest@guestables.com', password: 'wizardhat1')
 guest_user.save!
+test_user = User.new(username: 'Test', first_name: 'Tester', last_name: 'Testing', email: 'test@testables.com', password: 'wizardhat2')
+test_user.save!
 
 
 

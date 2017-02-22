@@ -1,32 +1,34 @@
 import { connect } from 'react-redux';
-import NewDMForm from './new_dm_form'
+import NewDMForm from './new_dm_form';
 import { createChannel } from '../../../actions/channel_actions';
 import { fetchAllUsers } from '../../../actions/user_actions';
 import { getDirectMessageChannels } from '../../../reducers/selectors';
 // recommend just a user search for now, can do dm search if have time later
 const mapStateToProps = (state) => {
-  const recentDirectMessages= getDirectMessageChannels(state)
+  const recentDirectMessages= getDirectMessageChannels(state);
   let fetchedUsers;
-  
+
   if (state.users.users.users) {
-    fetchedUsers = Object.keys(state.users.users.users).map((id) => state.users.users.users[id])
+    fetchedUsers = state.users.users.users;
   } else {
-    fetchedUsers = []
+    fetchedUsers = {};
   }
+  let currentUserId = state.session.currentUser.id;
   return {
     fetchedUsers: fetchedUsers,
-    recentDirectMessages: recentDirectMessages
-  }
-}
+    recentDirectMessages: recentDirectMessages,
+    currentUserId: currentUserId
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllUsers: () => dispatch(fetchAllUsers()),
     createChannel: (channel) => dispatch(createChannel(channel))
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewDMForm)
+)(NewDMForm);

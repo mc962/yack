@@ -5,9 +5,9 @@ class Api::SessionsController < ApplicationController
       login!(@user)
       render "/api/users/show"
     else
-      short_errors = sym_to_s(@user.errors)
+      # short_errors = sym_to_s(@user.errors)
 
-      render(json: short_errors, status: 401)
+      render(json: ['Sorry, you entered an incorrect email address or password.'], status: 401)
     end
   end
 

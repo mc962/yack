@@ -15,7 +15,7 @@ class Chatroom < ApplicationRecord
   validates :room_title, uniqueness: true
   validates :room_type, inclusion: { in: %w(general direct_message) }
 
-  has_many :messages
+  has_many :messages, -> {order(created_at: :asc)} ### -> is shorthand for lambda creation, like proc for making a Proc
   has_many :user_chats
   has_many :users, through: :user_chats, source: :user
 

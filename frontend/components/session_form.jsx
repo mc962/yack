@@ -38,18 +38,22 @@ import { Link } from 'react-router';
    }
 
    handleSubmit(e) {
-     e.preventDefault()
+     e.preventDefault();
      const user = Object.assign({}, this.state);
 
      this.props.processForm(user).then(() => this.redirect('/'),
     this.setState({username: "", password: "", first_name: "", last_name: "", email: ""}));
+    this.props.clearErrors();
+
+
+    /////////////////errors dont get cleared///////////errros need some work
    }
 
    render() {
      let errList = [];
      if (this.props.errors) {
        errList = this.props.errors.map((err, idx) => {
-         return <li key={idx}>{err}</li>;
+         return <li className='entry-form-error' key={idx}>{err}</li>;
          });
        }
        let altActionLink = '';
@@ -62,6 +66,12 @@ import { Link } from 'react-router';
 
 ////////////////////////
     let form;
+    let errorClass ;
+    if (errList.length > 0) {
+      errorClass= ' errorable';
+    } else {
+      errorClass = '';
+    }
 
      if (this.props.formType === 'signup') {
        form = (
@@ -84,8 +94,8 @@ import { Link } from 'react-router';
                  <div className= 'full-name'>
                    <div className='full-name-label'>Your name</div>
                    <div htmlFor='full-name' className='full-name-label'>
-                     <input type='text' className='name-input session-input field-input' id='first_name' placeholder='First Name' onChange={this.handleInputChange} value={this.state.first_name} />
-                     <input type='text' className='name-input session-input field-input' id='last_name' placeholder='Last Name' onChange={this.handleInputChange} value={this.state.last_name} />
+                     <input type='text' className={'name-input session-input field-input' + errorClass} id='first_name' placeholder='First Name' onChange={this.handleInputChange} value={this.state.first_name} />
+                     <input type='text' className={'name-input session-input field-input' + errorClass} id='last_name' placeholder='Last Name' onChange={this.handleInputChange} value={this.state.last_name} />
                    </div>
                  </div>
 
@@ -94,18 +104,19 @@ import { Link } from 'react-router';
                <div className='session-form-section'>
                  <div className='username-label-input'>
                    <label htmlFor='username' className='session-input-label'>Username</label>
-                   <input type='text' className='session-input field-input username-input' id='username' placeholder='awesomePerson' onChange={this.handleInputChange} value={this.state.username} />
-                 </div>
-
-                 <div className='password-label-input'>
-                   <label htmlFor='password' className='session-input-label'>Password</label>
-                   <input type='password' className='session-input field-input password-input' id='password' placeholder='password' onChange={this.handleInputChange} value={this.state.password} />
+                   <input type='text' className={'session-input field-input username-input' + errorClass} id='username' placeholder='awesomePerson' onChange={this.handleInputChange} value={this.state.username} />
                  </div>
 
                  <div className='email-label-input'>
                    <label htmlFor='email' className='session-input-label'>Email</label>
-                   <input type="email" className='session-input field-input email-input' id='email' placeholder='you@awesome.com' onChange={this.handleInputChange} value={this.state.email} />
+                   <input type="email" className={'session-input field-input email-input' + errorClass} id='email' placeholder='you@awesome.com' onChange={this.handleInputChange} value={this.state.email} />
                  </div>
+
+                 <div className='password-label-input'>
+                   <label htmlFor='password' className='session-input-label'>Password</label>
+                   <input type='password' className={'session-input field-input password-input' + errorClass} id='password' placeholder='password' onChange={this.handleInputChange} value={this.state.password} />
+                 </div>
+
 
                </div>
              </div>
@@ -118,7 +129,7 @@ import { Link } from 'react-router';
            </form>
 
          </div>
-       )
+       );
      } else if (this.props.formType === 'login') {
        form = (
          <div className='form-container'>
@@ -130,33 +141,39 @@ import { Link } from 'react-router';
                <Link className="login-link" to={altActionLink}>Sign Up</Link>
              </div>
            </header>
+           <div className='login-form-container'>
 
-           <form className='session-form login-form' onSubmit={this.handleSubmit}>
-             <h1 className='form-heading'>Sign In</h1>
+             <form className='session-form login-form' onSubmit={this.handleSubmit}>
+               <div className='form-errors'>
+                 {errList}
+               </div>
+               <h1 className='form-heading'>Sign In</h1>
 
-             <div className='session-form-section'>
-               <div className='form-main'>
-                 <h4 className='signin-instructions'>Enter your <strong>username</strong> and <strong>password.</strong></h4>
-                 <div className='username-label-input'>
-                   <input type='text' className='session-input field-input username-input' id='username' placeholder='awesomePerson' onChange={this.handleInputChange} value={this.state.username} />
-                 </div>
+               <div className='session-form-section'>
+                 <div className='form-main'>
+                   <h4 className='signin-instructions'>Enter your <strong>username</strong> and <strong>password.</strong></h4>
+                   <div className='username-label-input'>
+                     <input type='text' className='session-input field-input username-input' id='username' placeholder='awesomePerson' onChange={this.handleInputChange} value={this.state.username} />
+                   </div>
 
-                 <div className='password-label-input'>
-                   <input type='password' className='session-input field-input password-input' id='password' placeholder='password' onChange={this.handleInputChange} value={this.state.password} />
+                   <div className='password-label-input'>
+                     <input type='password' className='session-input field-input password-input' id='password' placeholder='password' onChange={this.handleInputChange} value={this.state.password} />
+                   </div>
+
+
                  </div>
 
 
                </div>
 
+               <div className='guest-login'>Click <div onClick={this.handleGuestSubmit} className='guest-login-button'>here</div> to login as a guest.</div>
 
-             </div>
+               <input type='submit' className='form-submit session-input' value='Sign In' />
+             </form>
 
-             <div className='guest-login'>Click <div onClick={this.handleGuestSubmit} className='guest-login-button'>here</div> to login as a guest.</div>
-
-             <input type='submit' className='form-submit session-input' value='Sign In' />
-           </form>
+           </div>
          </div>
-       )
+       );
      }
 
      return form;

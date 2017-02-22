@@ -6,14 +6,14 @@ import { withRouter } from 'react-router';
 import NewMessageFormContainer from './new_message/new_message_container';
 class CurrentChannel extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
   }
   componentDidMount(){
-    const channelId = parseInt(this.props.params.id)
+    const channelId = parseInt(this.props.params.id);
     this.props.fetchCurrentChannel(channelId);
 
-    // this.pusher = new Pusher('ed4f630c935baafe26a6', {
+    // this.pusher = new Pusher('<NOKEYFORYOU>', {
     //   encrypted: true
     // });
     //
@@ -28,12 +28,12 @@ class CurrentChannel extends React.Component {
         // alert(data.message)
         this.props.fetchCurrentChannel(this.props.params.id);
       }
-    })
+    });
     this.channel = App.messages;
   }
 
   componentWillReceiveProps(newProps) {
-    const channelId = parseInt(this.props.params.id)
+    const channelId = parseInt(this.props.params.id);
 
     if (this.props.messages !== newProps.messages) {
       // this.props.fetchCurrentChannel(channelId);
@@ -43,7 +43,7 @@ class CurrentChannel extends React.Component {
 
   componentWillUnmount() {
     // this.pusher.unsubscribe(`channel_${channelId}`)
-    
+
     this.channel.unsubscribe();
   }
   render() {
@@ -56,17 +56,17 @@ class CurrentChannel extends React.Component {
       messageElements = this.props.messages.map((message, idx) => {
 
 
-        const userId = parseInt(message.user_id)
+        const userId = parseInt(message.user_id);
         if (userId && channelUsers[userId]) {
 
           username=channelUsers[userId].username;
         } else {
-          username=""
+          username="";
         }
-        return <MessageItem key={idx} username={username} content={message.content} />
-      })
+        return <MessageItem key={idx} username={username} content={message.content} />;
+      });
     } else {
-      return <div className='no-messages'></div>
+      return <div className='no-messages'></div>;
     }
 
 
@@ -85,7 +85,7 @@ class CurrentChannel extends React.Component {
           <NewMessageFormContainer />
         </footer>
       </div>
-    )
+    );
   }
 }
 

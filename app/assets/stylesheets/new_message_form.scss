@@ -14,13 +14,14 @@
 
 input.message-input-field:focus {
   border: 2px solid #bbbdbf;
-  .attachments-btn {
-    // border-right: 2px solid #bbbdbf;
+  button.attachments-btn {
+    border-right: 2px solid #bbbdbf;
   }
 }
 
 .message-input-field {
   text-indent: 8px;
+  width: 100%
 }
 
 .attachments-btn {
