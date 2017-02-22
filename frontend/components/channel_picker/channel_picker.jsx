@@ -10,30 +10,18 @@ import NewDMFormContainer from './new_dm_form/new_dm_form_container';
 // ask about how to link things in
 class ChannelPicker extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.handleNewDMClick = this.handleNewDMClick.bind(this);
     this.handleEscape = this.handleEscape.bind(this);
     /// change this back to false when finished styling
-    this.state = {modalOpen: false}
+    this.state = {modalOpen: false};
   }
 
-  //
-  componentWillReceiveProps(newProps) {
-    // const channelId = parseInt(this.props.params.id)
-    // const newPropsId = parseInt(newProps.params.id)
-    //
-    // // debugger
-    // if (newPropsId !== channelId) {
-    //
-    //   this.props.fetchCurrentChannel(channelId)
-    // }
-    // debugger
-  }
 
   handleNewDMClick(e) {
-    e.preventDefault()
+    e.preventDefault();
     this.handleEscape = this.handleEscape.bind(this);
-    this.setState({ modalOpen: true })
+    this.setState({ modalOpen: true });
   }
 
   handleEscape(e) {
@@ -61,7 +49,7 @@ class ChannelPicker extends React.Component {
           bottom: '0%',
           left: '0%'
         }
-      }
+      };
 
       return (
 
@@ -94,7 +82,7 @@ class ChannelPicker extends React.Component {
 
           </div>
         </div>
-      )
+      );
     }
 }
 

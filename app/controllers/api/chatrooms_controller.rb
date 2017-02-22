@@ -1,9 +1,13 @@
 class Api::ChatroomsController < ApplicationController
   def create
-    @chatroom = Chatroom.new(chatroom_params)
-    if @chatroom.save
 
-      
+    @chatroom = Chatroom.new(chatroom_params)
+
+
+    if @chatroom.save!
+      params[:chatroom][:user_ids].each do |user_id|
+        UserChat.new(user_id: user_id.to_i, chatroom_id: @chatroom.id).save!
+      end
       render :show
     else
       render(json: @chatroom.errors.full_messages, status: 422)

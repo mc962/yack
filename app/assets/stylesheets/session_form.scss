@@ -1,13 +1,41 @@
 
+.form-errors {
+  list-style: none;
+  margin-bottom: 20px;
+  margin-top: 25px;
+  font-family: 'Lato', sans-serif;
+
+}
+.entry-form-error {
+  text-align: center;
+
+  align-items: flex-start;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh
+  // overflow: hidden;
+}
+
+
+
+
 .form-container {
   background-color: #F9F9F9;
   width: 100%;
+
   // height: 100vh;
-  // height: 130vh;
+  // height: 100%;
+  height: 100vh;
 
-
-  display: block;
+  display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .session-form {
@@ -24,20 +52,21 @@
   background-color: #FFFFFF;
 
 }
-body {background-color: #F9F9F9}
-
+// body {background-color: #F9F9F9}
+//
+// .signup-form {
+//   height: 100%;
+//
+// }
 .signup-form {
-  height: 100%;
-
+  margin-top: 20px;
 }
-
 .login-form {
   // height: 465px;
 }
 
 
 .session-form-section{
-  margin-top: 30px;
   margin-left: 0;
   margin-right: 0;
 
@@ -55,6 +84,7 @@ body {background-color: #F9F9F9}
 }
 
 .full-name-label {
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
 }
@@ -156,6 +186,7 @@ input.name-input {
   margin-right: 0;
   text-align: center;
   color: #555459;
+  margin-top: 30px;
 }
 
 .signin-instructions strong{
@@ -176,7 +207,7 @@ input.field-input:focus {
   width: 100%;
   height: 70px;
   background-color: #FFFFFF;
-  margin-bottom: 45px;
+  // margin-bottom: 45px;
   box-shadow: 0 1px 1px #e5e5e5;
   font-family: 'Lato', sans-serif;
   // position: fixed;
@@ -228,4 +259,10 @@ div.login-button-link:hover {
   color: #2AB27B;
   display: inline;
   cursor: pointer;
+}
+
+
+.errorable {
+  border: 1px solid #CB5234;
+  background-color: #FFF6F6;
 }
