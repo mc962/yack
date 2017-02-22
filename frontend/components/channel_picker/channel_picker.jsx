@@ -14,19 +14,19 @@ class ChannelPicker extends React.Component {
     this.handleNewDMClick = this.handleNewDMClick.bind(this);
     this.handleEscape = this.handleEscape.bind(this);
     /// change this back to false when finished styling
-    this.state = {modalOpen: false};
+    this.state = {modalIsOpen: false};
   }
 
 
   handleNewDMClick(e) {
     e.preventDefault();
-    this.handleEscape = this.handleEscape.bind(this);
-    this.setState({ modalOpen: true });
+    // this.handleEscape = this.handleEscape.bind(this);
+    this.setState({ modalIsOpen: true });
   }
 
   handleEscape(e) {
     e.preventDefault();
-    this.setState({ modalOpen: false} );
+    this.setState({ modalIsOpen: false} );
   }
 
   render() {    // get an array of the channel elmenets
@@ -70,10 +70,14 @@ class ChannelPicker extends React.Component {
             <button onClick={this.handleNewDMClick} className='new-dm-button'>+</button>
 
             <Modal
-              isOpen={this.state.modalOpen} contentLabel="Modal"
-              style={modalChannels}>
+              isOpen={this.state.modalIsOpen} contentLabel="Modal"
+              style={modalChannels}
+              onRequestClose={this.handleEscape}
+              >
+
               <button className='modal-close-btn' onClick={this.handleEscape}><div className='x-icon'>x</div><div className='esc-text'>esc</div></button>
               <NewDMFormContainer />
+
             </Modal>
 
               <ul className='dm-channels-list channels-list'>

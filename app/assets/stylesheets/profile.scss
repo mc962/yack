@@ -1,0 +1,162 @@
+.profile-information {
+  // position: absolute;
+
+  flex-direction: column;
+  background-color: #4D394B;
+
+  height: 60px;
+  width: 220px;
+  font-family: 'Lato', sans-serif;
+
+}
+
+div.profile-information:hover {
+  background-color: #3E313C;
+  div.profile-username {
+    color: #FFFFFF;
+  }
+
+  i.fa-chevron-down {
+    color: white;
+  }
+}
+
+.hideable-menu {
+  display: none;
+  z-index: 100;
+}
+
+.popover-mask {
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 5
+}
+
+.hidden-popover {
+  display: none;
+}
+
+.transparent-popover {
+  display: transparent
+}
+
+.profile-menu {
+  position: fixed;
+  top: 45px;
+  left: 15px;
+  background-color: white;
+  width: 220px;
+  height: 140px;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+  z-index: 100;
+  padding: 20px;
+}
+
+.personal-profile-info {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 13px;
+}
+
+.profile-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-menu-picture {
+  height: 35px;
+  width: 35px;
+  background-color: green;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-top: 3px
+}
+
+.menu-toggle-btn {
+  // background-color: white;
+  height: 60px;
+  width: 220px;;
+  // background-color: green;
+  cursor: pointer;
+  // display: transparent;
+  // z-index: 5;
+}
+
+.displayed-btn-text{
+  padding-left: 15px;
+  padding-top: 12px;
+  position: fixed;
+  top: 0px;
+  cursor: pointer;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.team-name {
+  color: #FFFFFF;
+  font-size: 20px;
+}
+
+.yack-logo-text {
+  display: flex;
+  flex-direction: row;
+}
+
+i.fa-chevron-down {
+  margin-left: 7px;
+  margin-top: 7px;
+  font-size: 8px;
+
+  color: #a09a9f;
+}
+
+
+.profile-username {
+  color: #8e7c8c;
+  font-size: 13px;
+  //////
+  text-indent: 2px;
+}
+
+.menu-items {
+  width: 100%;
+}
+
+.menu-element {
+  border-radius: 4px;
+  text-indent: 8px;
+  padding-top: 2px;
+  padding-bottom: 5px;
+  width: 100%
+}
+
+form.menu-element:hover {
+  background-color: #2D9EE0;
+  color: #FFFFFF;
+}
+
+.name-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.normal-name {
+  color: #555459;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.at-name {
+  color: #a0a0a2;
+
+}
+
+input.logout-button-input {
+  width: 100%;
+}

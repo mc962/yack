@@ -44,7 +44,7 @@ export default class NewDMForm extends React.Component {
 
     const chatroom = {room_title: room_title, room_type: room_type, purpose: room_purpose, user_ids: userIds};
     this.props.createChannel(chatroom);
-    this.setState({letterVal: "", submittableUsers: {}})
+    this.setState({letterVal: "", submittableUsers: {}});
     this.setState({ modalOpen: false} );
   }
 

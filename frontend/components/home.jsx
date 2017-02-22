@@ -7,13 +7,13 @@ class Home extends React.Component {
   constructor(props) {
 
     super(props);
-    this.submitLogout = this.submitLogout.bind(this);
+    // this.submitLogout = this.submitLogout.bind(this);
   }
 
-  submitLogout(e) {
-    e.preventDefault();
-    this.props.logout();
-  }
+  // submitLogout(e) {
+  //   e.preventDefault();
+  //   this.props.logout();
+  // }
 
   render() {
 

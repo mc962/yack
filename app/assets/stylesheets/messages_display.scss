@@ -9,7 +9,7 @@
 .message-element {
 
 
-  height: 48px;
+  // height: 48px;
 
   width: 100%;
 
@@ -44,6 +44,7 @@
   -webkit-hyphens: auto;
   hyphens: auto;
 
+
 }
 
 li.message-element:hover {
@@ -54,7 +55,7 @@ li.message-element:hover {
 .user-picture {
   height: 35px;
   width: 35px;
-  // min-width: 35px;
+  min-width: 35px;
 
 
   margin-top: 7px;
