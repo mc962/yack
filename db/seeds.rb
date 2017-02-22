@@ -3,9 +3,8 @@ Chatroom.destroy_all
 Message.destroy_all
 UserChat.destroy_all
 
-
-20.times do
-  begin
+users = []
+while users.length < 20
     randNum = rand(7)
 
     case randNum
@@ -53,24 +52,22 @@ UserChat.destroy_all
       password= Faker::Internet.password(6)
     end
 
-    User.new(username: username, first_name: first_name, last_name: last_name, email: email, password: password).save!
+    u = User.new(username: username, first_name: first_name, last_name: last_name, email: email, password: password)
 
-  rescue
-    retry
-  end
+    users << u if u.save
 end
 guest_user = User.new(username: 'Guest', first_name: 'Anon', last_name: 'Anonymous', email: 'guest@guestables.com', password: 'wizardhat1')
-guest_user.save!
+guest_user.save
 test_user = User.new(username: 'Test', first_name: 'Tester', last_name: 'Testing', email: 'test@testables.com', password: 'wizardhat2')
-test_user.save!
+test_user.save
 
-test_user = User.new(username: 'Test', first_name: 'Tester', last_name: 'Testing', email: 'test@tester.com', password: 'wizardhat2')
-test_user.save!
+# test_user = User.new(username: 'Test', first_name: 'Tester', last_name: 'Testing', email: 'test@tester.com', password: 'wizardhat2')
+# test_user.save!
 
 
-general_chat = Chatroom.new(room_title: 'general', room_type: 'general', purpose: 'main public chat').save!
-9.times do
-  begin
+general_chat = Chatroom.new(room_title: 'general', room_type: 'general', purpose: 'main public chat').save
+chatrooms = []
+while chatrooms.length < 9
     randNum = rand(3)
     case randNum
     when 0
@@ -83,10 +80,9 @@ general_chat = Chatroom.new(room_title: 'general', room_type: 'general', purpose
     room_type = ['general', 'direct_message'].sample
     purpose = Faker::Hipster.sentence(5)
 
-    Chatroom.new(room_title: room_title, room_type: room_type, purpose: purpose).save!
-  rescue
-    retry
-  end
+    c = Chatroom.new(room_title: room_title, room_type: room_type, purpose: purpose)
+
+    chatrooms << c if c.save
 
 end
 
@@ -94,11 +90,11 @@ end
 gen_chat_id = Chatroom.find_by(room_title: 'general').id
 
   Chatroom.all.each do |chatroom|
-    UserChat.new(user_id: guest_user.id, chatroom_id: chatroom.id).save!
-    UserChat.new(user_id: test_user.id, chatroom_id: chatroom.id).save!
+    UserChat.new(user_id: guest_user.id, chatroom_id: chatroom.id).save
+    UserChat.new(user_id: test_user.id, chatroom_id: chatroom.id).save
     User.all.each do |user|
       unless user.id == guest_user.id || user.id == test_user.id
-        UserChat.new(user_id: user.id, chatroom_id: chatroom.id).save!
+        UserChat.new(user_id: user.id, chatroom_id: chatroom.id).save
       end
     end
   end
@@ -123,7 +119,7 @@ User.all.each do |user|
 
     chatroom_id = user.chatrooms.sample.id
 
-    Message.new(content: content, user_id: user.id, chatroom_id: chatroom_id).save!
+    Message.new(content: content, user_id: user.id, chatroom_id: chatroom_id).save
   end
 
 end

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 
 
- export default class SessionForm extends React.Component {
+class SessionForm extends React.Component {
    constructor(props) {
      super(props);
      this.state= {
@@ -43,12 +43,18 @@ import { Link } from 'react-router';
 
      this.props.processForm(user).then(() => this.redirect('/'),
     this.setState({username: "", password: "", first_name: "", last_name: "", email: ""}));
-    this.props.clearErrors();
+
 
 
     /////////////////errors dont get cleared///////////errros need some work
    }
 
+   componentWillReceiveProps(newProps) {
+
+     if (this.props.route.path !== newProps.route.path) {
+       this.props.clearErrors();
+     }
+   }
    render() {
      let errList = [];
      if (this.props.errors) {
@@ -131,6 +137,12 @@ import { Link } from 'react-router';
          </div>
        );
      } else if (this.props.formType === 'login') {
+       let errClass;
+       if (errList.length > 0) {
+         errClass = " errBar";
+       } else {
+         errClass = "";
+       }
        form = (
          <div className='form-container'>
            <header className= 'session-form-header'>
@@ -144,7 +156,7 @@ import { Link } from 'react-router';
            <div className='login-form-container'>
 
              <form className='session-form login-form' onSubmit={this.handleSubmit}>
-               <div className='form-errors'>
+               <div className={'form-errors' + errClass}>
                  {errList}
                </div>
                <h1 className='form-heading'>Sign In</h1>
@@ -181,3 +193,5 @@ import { Link } from 'react-router';
 
    }
  }
+
+ export default withRouter(SessionForm);
