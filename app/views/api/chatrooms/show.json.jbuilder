@@ -1,4 +1,4 @@
-json.extract! @chatroom, :room_title, :room_type, :purpose, :messages
+json.extract! @chatroom, :id, :room_title, :room_type, :purpose, :messages
 
   users_hash = {}
 

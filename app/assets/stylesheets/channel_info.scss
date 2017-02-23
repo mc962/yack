@@ -1,1 +1,27 @@
-// #E8E8E8;
+.information-container {
+    font-family: 'Lato', sans-serif;
+    border-bottom: 1px solid #e8e8e8;
+    height: 60px;
+    padding-top: 15px;
+}
+
+.room-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.room-text-container {
+  margin-left: 23px;
+}
+
+.room-stats {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.fa-user-o {
+  margin-top: 1px;
+  margin-right: 5px;
+
+}

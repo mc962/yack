@@ -13,15 +13,27 @@
 .new-dm-container {
   display: flex;
   flex-direction: row;
-
+  width: 80%;
 
 }
+
+.new-gm-container {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+}
+
+
 .dm-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
+.gm-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .new-dm-submit {
   height: 50px;
   width:  60px;
@@ -73,6 +85,14 @@
   color: #2C2D30;
   margin-bottom: 40px;
 }
+
+.gm-form-heading {
+  font-size: 30px;
+  font-weight: 900;
+  font-family: 'Lato', sans-serif;
+  color: #2C2D30;
+  margin-bottom: 40px;
+}
 .input-border {
   border: 1px solid #c5c5c5;
   display: flex;
@@ -105,6 +125,16 @@ input.dm-users-search:active {
   margin-top: 7px;
   margin-bottom: 30px;
 }
+
+.channels-heading {
+  text-align: left;
+  margin-left: 3px;
+  padding-bottom: 10px;
+  font-family: 'Lato', sans-serif;
+  color: #CDCECE;
+  margin-top: 7px;
+  margin-bottom: 30px;
+}
 .user-table-element {
   border-top: 1px solid #E8E8E8;
   width: 605px;
@@ -113,7 +143,20 @@ input.dm-users-search:active {
   overflow-y: auto;
 }
 
+.chatroom-table-element {
+  border-top: 1px solid #E8E8E8;
+  width: 605px;
+  height: 65px;
+  border-radius: 4px;
+  overflow-y: auto;
+}
+
 li.user-table-element:hover {
+  border: 1px solid #D3ECFA;
+  background-color: rgb(237, 247, 253);
+}
+
+li.chatroom-table-element:hover {
   border: 1px solid #D3ECFA;
   background-color: rgb(237, 247, 253);
 }
@@ -149,6 +192,7 @@ li.user-table-element:hover {
   color: #FFFFFF;
   height: 25px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .user-token-list {
@@ -156,4 +200,12 @@ li.user-table-element:hover {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.dm-user-info {
+  cursor: pointer;
+}
+
+.submittableButton {
+  background-color: #29AE78;
 }

@@ -7,6 +7,7 @@ class NewMessageForm extends React.Component {
     this.handleNewMessageSubmit = this.handleNewMessageSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.placeholderHandler = this.placeholderHandler.bind(this);
+  
     this.state = {content: ''};
   }
 
@@ -16,6 +17,7 @@ class NewMessageForm extends React.Component {
     const value = e.currentTarget.value;
     this.setState({[e.currentTarget.id]: value});
   }
+
 
   placeholderHandler(e) {
     e.preventDefault();

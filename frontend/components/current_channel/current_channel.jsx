@@ -1,9 +1,10 @@
 /* globals Pusher */
-
 import React from 'react';
 import MessageItem from './message_item';
 import { withRouter } from 'react-router';
 import NewMessageFormContainer from './new_message/new_message_container';
+import ChannelInfoContainer from '../channel_info/channel_info_container';
+
 class CurrentChannel extends React.Component {
   constructor(props) {
     super(props);
@@ -33,12 +34,7 @@ class CurrentChannel extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    const channelId = parseInt(this.props.params.id);
-
-    if (this.props.messages !== newProps.messages) {
-      // this.props.fetchCurrentChannel(channelId);
-    }
-
+  
   }
 
   componentWillUnmount() {
@@ -74,7 +70,7 @@ class CurrentChannel extends React.Component {
     return (
       <div className='current-channel-sections'>
         <header className='channel-information'>
-          This is my current channel: Channel {this.props.roomTitle}
+          <ChannelInfoContainer />
         </header>
         <section className='messages-container'>
           <ul className='channel-messages-list'>
