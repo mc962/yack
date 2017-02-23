@@ -2,7 +2,9 @@ import React from 'react';
 import Modal from 'react-modal';
 import UserItem from './user_item';
 import { merge } from 'lodash';
-import { createChannel } from '../../../actions/channel_actions'
+import { createChannel } from '../../../actions/channel_actions';
+import { withRouter } from 'react-router';
+import { _size } from 'lodash';
 // import AutoCompleteSearch from './autocomplete_search';
 // stick modal in parent container
 
@@ -14,15 +16,16 @@ export default class NewDMForm extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleItemClick = this.handleItemClick.bind(this);
     this.deleteTokenHandler = this.deleteTokenHandler.bind(this);
+    this.redirect = this.redirect.bind(this);
     this.state = {letterVal: "", submittableUsers: {}};
   }
 
   componentDidMount() {
-/// this isnt running when it needs to
+
     this.props.fetchAllUsers();
   }
 
-  handleInputChange (e) {
+  handleInputChange(e) {
     let val = e.currentTarget.value;
     this.setState({letterVal: val});
   }
@@ -43,9 +46,19 @@ export default class NewDMForm extends React.Component {
     let room_title = names.join(', ');
 
     const chatroom = {room_title: room_title, room_type: room_type, purpose: room_purpose, user_ids: userIds};
-    this.props.createChannel(chatroom);
+
+    this.props.createChannel(chatroom).then((receivedChannel) => {
+
+      this.redirect(receivedChannel);
+
+    }).then(this.props.handleEscape());
+
     this.setState({letterVal: "", submittableUsers: {}});
-    this.setState({ modalOpen: false} );
+  }
+
+  redirect(channel) {
+
+    this.props.router.push(`/channels/${channel.currentChannel.id}`);
   }
 
   deleteTokenHandler(e) {
@@ -111,13 +124,21 @@ export default class NewDMForm extends React.Component {
     });
 
     let availableUsers;
+    let submittableColor;
     // /// might want to refactor here so we dont need to go through so many levels
     if (this.props.fetchedUsers) {
     availableUsers = this.matches(this.props.fetchedUsers);
 
     } else {
       availableUsers = [];
+
     }
+    if (availableUsers.length < _.size(this.props.fetchedUsers)) {
+      submittableColor = ' submittableButton';
+    } else {
+      submittableColor = '';
+    }
+
     return (
       <div className="modal-form">
 
@@ -132,7 +153,7 @@ export default class NewDMForm extends React.Component {
 
                   <input type='text' className='dm-users-search' placeholder={Object.keys(this.state.submittableUsers).length === 0 ? 'Find or start a conversation' : ""} onChange={this.handleInputChange} value={this.state.letterVal}/>
                 </div>
-              <input type='submit' className='new-dm-submit' value='Go' />
+                <input type='submit' className={'new-dm-submit' + submittableColor} value='Go' />
             </div>
               <h4 className='users-heading'>Available Users</h4>
               <ul className='selectable-users'>

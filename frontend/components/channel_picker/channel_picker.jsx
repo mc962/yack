@@ -7,26 +7,34 @@ import DMChannelPickerItem from './dm_channel_picker_item';
 
 import Modal from 'react-modal';
 import NewDMFormContainer from './new_dm_form/new_dm_form_container';
-// ask about how to link things in
+
+import GMListContainer from './gm_list/gm_list_container';
+
 class ChannelPicker extends React.Component {
   constructor(props) {
     super(props);
     this.handleNewDMClick = this.handleNewDMClick.bind(this);
+    this.handleNewGCClick = this.handleNewGCClick.bind(this);
     this.handleEscape = this.handleEscape.bind(this);
     /// change this back to false when finished styling
-    this.state = {modalIsOpen: false};
+    this.state = {dmModalIsOpen: false, gmModalIsOpen: false};
   }
 
 
   handleNewDMClick(e) {
     e.preventDefault();
     // this.handleEscape = this.handleEscape.bind(this);
-    this.setState({ modalIsOpen: true });
+    this.setState({ dmModalIsOpen: true });
   }
 
-  handleEscape(e) {
-    e.preventDefault();
-    this.setState({ modalIsOpen: false} );
+  handleNewGCClick(e) {
+    // e.preventDefault();
+    // this.setState({gmModalIsOpen: true});
+  }
+
+  handleEscape() {
+
+    this.setState({ dmModalIsOpen: false, gmModalIsOpen: false } );
   }
 
   render() {    // get an array of the channel elmenets
@@ -56,27 +64,46 @@ class ChannelPicker extends React.Component {
         <div className='sidebar-channels'>
           <div className='general-channels'>
             <span className='public-channels-button'>
-              <button className='channel-type'>Channels
+              <button className='channel-type' onClick={this.handleNewGCClick}>Channels
                 <span className='public-channels-count'>({this.props.generalMessageChannels.length})</span>
               </button>
             </span>
-              <ul className='general-channels-list channels-list'>
-                {generalChannelElements}
-              </ul>
-
-          </div>
-          <div className='dm-channels'>
-            <button className='channel-type direct-messages-button'>Direct Messages</button>
-            <button onClick={this.handleNewDMClick} className='new-dm-button'>+</button>
 
             <Modal
-              isOpen={this.state.modalIsOpen} contentLabel="Modal"
+              isOpen={this.state.gmModalIsOpen} contentLabel="GMModal"
               style={modalChannels}
               onRequestClose={this.handleEscape}
               >
 
               <button className='modal-close-btn' onClick={this.handleEscape}><div className='x-icon'>x</div><div className='esc-text'>esc</div></button>
-              <NewDMFormContainer />
+              <GMListContainer handleEscape={this.handleEscape} />
+
+            </Modal>
+
+
+
+              <ul className='general-channels-list channels-list'>
+                {generalChannelElements}
+              </ul>
+
+          </div>
+
+
+
+
+
+          <div className='dm-channels'>
+            <button className='channel-type direct-messages-button'>Direct Messages</button>
+            <button onClick={this.handleNewDMClick} className='new-dm-button'>+</button>
+
+            <Modal
+              isOpen={this.state.dmModalIsOpen} contentLabel="DMModal"
+              style={modalChannels}
+              onRequestClose={this.handleEscape}
+              >
+
+              <button className='modal-close-btn' onClick={this.handleEscape}><div className='x-icon'>x</div><div className='esc-text'>esc</div></button>
+              <NewDMFormContainer handleEscape={this.handleEscape} />
 
             </Modal>
 

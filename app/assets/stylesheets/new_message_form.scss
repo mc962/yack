@@ -13,11 +13,10 @@
 }
 
 input.message-input-field:focus {
-  border: 2px solid #bbbdbf;
-  button.attachments-btn {
-    border-right: 2px solid #bbbdbf;
-  }
+  border: 1px solid #bbbdbf;
+
 }
+
 
 .message-input-field {
   text-indent: 8px;
@@ -34,6 +33,7 @@ input.message-input-field:focus {
   font-size: 28px;
   font-weight: 400;
   font-family: 'Lato', sans-serif;
+  cursor: pointer;
 }
 
 div.attachments-btn:hover {

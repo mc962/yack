@@ -1,19 +1,25 @@
 import React from 'react';
 // import PublicChannel from './public_channel';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 
 import Display from './display.jsx';
 class Home extends React.Component {
   constructor(props) {
-
     super(props);
-    // this.submitLogout = this.submitLogout.bind(this);
+    this.loginHandler = this.loginHandler.bind(this);
+    this.signupHandler = this.signupHandler.bind(this);
+
   }
 
-  // submitLogout(e) {
-  //   e.preventDefault();
-  //   this.props.logout();
-  // }
+  loginHandler(e) {
+    e.preventDefault();
+    this.props.router.push('login');
+  }
+
+  signupHandler(e) {
+    e.preventDefault();
+    this.props.router.push('signup');
+  }
 
   render() {
 
@@ -32,12 +38,12 @@ class Home extends React.Component {
           <header className='home-bar'>
             <img src={images.cartoon_yak} alt="A yak" className='home-yak-logo' />
             <div className='home-login-link'>
-              <Link to="login" className='login-anchor'>Log In</Link>
+              <div onClick={this.loginHandler} className='login-anchor'>Log In</div>
             </div>
           </header>
           <div className='signup-box'>
             <div className="signup-link">
-              <Link to="signup" className="signup-anchor">Sign Up</Link>
+              <div onClick={this.signupHandler} className='signup-anchor'>Sign Up</div>
             </div>
           </div>
           <img src={images.majestic_yak} alt='Majestic yak' className='background' />
@@ -47,4 +53,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);
