@@ -55,13 +55,13 @@ class SessionForm extends React.Component {
        this.props.clearErrors();
      }
    }
+   //  if (this.props.errors) {
+   //    errList = this.props.errors.map((err, idx) => {
+   //      return <li className='entry-form-error' key={idx}>{err}</li>;
+   //      });
+   //    }
    render() {
      let errList = [];
-     if (this.props.errors) {
-       errList = this.props.errors.map((err, idx) => {
-         return <li className='entry-form-error' key={idx}>{err}</li>;
-         });
-       }
        let altActionLink = '';
            if (this.props.formType === 'login') {
              altActionLink = '/signup';
