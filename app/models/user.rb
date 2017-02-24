@@ -11,15 +11,17 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  email           :string           not null
+#  gravatar_url    :string
 #
 
 class User < ApplicationRecord
-  validates :username, :first_name, :last_name, :email, :session_token, presence: true
+  validates :username, :first_name, :last_name, :email, :session_token, :gravatar_url, presence: true
   validates :username, uniqueness: true
   validates :password_digest, presence: { message: "Password can't be blank."}
   validates :password, length: { minimum: 6, allow_nil: true }
 
   after_initialize :ensure_session_token
+  before_validation :ensure_gravatar_url
 
   has_many :messages
   has_many :user_chats, dependent: :destroy
@@ -39,6 +41,14 @@ class User < ApplicationRecord
       return nil
     end
   end
+
+  def self.gravatar_for(user, options = { size: 35})
+    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+    size = options[:size]
+    "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+
+  end
+
 
   attr_reader :password
 
@@ -62,11 +72,17 @@ class User < ApplicationRecord
     self.session_token
   end
 
+
+
   private
 
   def ensure_session_token
     self.session_token ||= User.generate_session_token
   end
 
+  def ensure_gravatar_url
+    self.gravatar_url ||= User.gravatar_for(self)
+    
+  end
 
 end

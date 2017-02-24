@@ -10,13 +10,12 @@ export const START_LOADING_ALL_CHANNELS = "START_LOADING_ALL_CHANNELS";
 
 export const CREATE_CHANNEL = "CREATE_CHANNEL";
 
-export const fetchCurrentChannel = (channelId) => {
+export const fetchCurrentChannel = (channelId) => (dispatch) => {
+  dispatch(startLoadingCurrentChannel());
 
-  return (dispatch) => {
     return APIUtil.fetchCurrentChannel(channelId).then((fetchedChannel) => {
       return dispatch(receiveCurrentChannel(fetchedChannel));
     });
-  };
 };
 
 export const fetchAllChannels = () => {
@@ -35,8 +34,20 @@ export const createChannel = (chatroom) => {
   };
 };
 
-export const receiveCurrentChannel = (currentChannel) => {
+export const joinChannel = (chatroom) => {
+  return (dispatch) => {
+    return APIUtil.joinChannel(chatroom).then((receivedChannel) => {
+      return dispatch(receiveCurrentChannel(receivedChannel));
+    });
+  };
+};
 
+export const startLoadingCurrentChannel = () => ({
+  type: START_LOADING_CURRENT_CHANNEL
+});
+
+
+export const receiveCurrentChannel = (currentChannel) => {
   return {
     type: RECEIVE_CURRENT_CHANNEL,
     currentChannel

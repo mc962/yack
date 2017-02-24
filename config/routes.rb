@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   mount ActionCable.server => '/cable'
-  
+
   root to: 'static_pages#root'
 
   namespace :api, defaults: {format: :json} do
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:update, :destroy] ## not sure if this is routed properly
   end
 
-
+  post '/api/chatrooms/join-channel/:id',  to: 'api/chatrooms#join_channel', defaults: {format: :json}
 
 
 end

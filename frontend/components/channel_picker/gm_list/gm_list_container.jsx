@@ -1,23 +1,24 @@
 import GMList from './gm_list';
 import { connect } from 'react-redux';
-import { fetchAllChannels } from '../../../actions/channel_actions';
+import { fetchAllChannels, joinChannel } from '../../../actions/channel_actions';
 
 const mapStateToProps = (state) => {
+  const currentUser = state.session.currentUser;
   let fetchedChannels = {};
-  if (state.currentUser) {
-    for (let i = 0; i < state.currentUser.channels.length; i++) {
-      fetchedChannels[state.currentUser.channels[i].id] = state.currentUser.channels[i];
-    }
+  if (state.allChannels) {
+    fetchedChannels = state.allChannels.chatrooms;
   }
-debugger
+
   return {
-    fetchedChannels: fetchedChannels
+    fetchedChannels: fetchedChannels,
+    currentUser: currentUser
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchAllChannels: () => dispatch(fetchAllChannels())
+    fetchAllChannels: () => dispatch(fetchAllChannels()),
+    joinChannel: (user_chat) => dispatch(joinChannel(user_chat))
   };
 };
 

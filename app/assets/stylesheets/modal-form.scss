@@ -13,13 +13,13 @@
 .new-dm-container {
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 100%;
 
 }
 
 .new-gm-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 80%;
 }
 
@@ -28,6 +28,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%
 }
 .gm-form {
   display: flex;
@@ -71,6 +72,50 @@
   text-indent: 15px;
 }
 
+.gm-input {
+  height: 40px;
+  border: 1px solid #c5c5c5;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  border-radius: 4px;
+  text-indent: 4
+
+}
+
+.fa-search {
+  display: flex;
+  flex-direction: row;
+  color: #A9A9AE;
+  vertical-align: center;
+  margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 10px;
+}
+
+div.gm-input:hover {
+  border: 1px solid #2780F8;
+}
+input.gm-channels-search:active {
+  div.gm-input {
+      border: 1px solid #2780F8;
+  }
+}
+
+.input-border {
+  border: 1px solid #c5c5c5;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  // height: 50px;
+  min-height: 50px;
+  flex-wrap: wrap;
+  border-radius: 4px;
+  padding: 3px;
+}
+
 .user-search-box {
   display: flex;
   flex-direction: row;
@@ -93,18 +138,10 @@
   color: #2C2D30;
   margin-bottom: 40px;
 }
-.input-border {
-  border: 1px solid #c5c5c5;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  // height: 50px;
-  min-height: 50px;
-  flex-wrap: wrap;
-  border-radius: 4px;
-  padding: 3px;
-}
 
+.gm-channels-search {
+  width: 90%;
+}
 // div.input-border:active {
 //   border: 1px solid rgb(39, 128, 248);
 // }
@@ -140,15 +177,23 @@ input.dm-users-search:active {
   width: 605px;
   height: 65px;
   border-radius: 4px;
-  overflow-y: auto;
+
+  // overflow-y: auto;
 }
 
+.chatroom-info {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  height: 100%;
+}
 .chatroom-table-element {
   border-top: 1px solid #E8E8E8;
   width: 605px;
   height: 65px;
   border-radius: 4px;
-  overflow-y: auto;
+
+
 }
 
 li.user-table-element:hover {
@@ -164,6 +209,7 @@ li.chatroom-table-element:hover {
 .dm-user-picture {
   display: inline-block;
   margin: 15px;
+
   background-color: yellow;
   border-radius: 4px;
   height: 35px;
@@ -175,12 +221,14 @@ li.chatroom-table-element:hover {
   margin-right: 5px;
   font-family: 'Lato', sans-serif;
   color: #555459;
+  margin-top: 20px;
 }
 
 .dm-user-fullname {
   display: inline-block;
   font-family: 'Lato', sans-serif;
   color: #CDCECE;
+  margin-top: 20px;
 }
 
 .user-token {
@@ -204,6 +252,10 @@ li.chatroom-table-element:hover {
 
 .dm-user-info {
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+
+
 }
 
 .submittableButton {

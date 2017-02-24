@@ -21,7 +21,6 @@ export default class NewDMForm extends React.Component {
   }
 
   componentDidMount() {
-
     this.props.fetchAllUsers();
   }
 
@@ -48,17 +47,17 @@ export default class NewDMForm extends React.Component {
     const chatroom = {room_title: room_title, room_type: room_type, purpose: room_purpose, user_ids: userIds};
 
     this.props.createChannel(chatroom).then((receivedChannel) => {
+      const newChannelId = receivedChannel.currentChannel.id;
 
-      this.redirect(receivedChannel);
-
+      this.redirect(newChannelId);
     }).then(this.props.handleEscape());
 
-    this.setState({letterVal: "", submittableUsers: {}});
+    // this.setState({letterVal: "", submittableUsers: {}});
   }
 
-  redirect(channel) {
+  redirect(channelId) {
 
-    this.props.router.push(`/channels/${channel.currentChannel.id}`);
+    this.props.router.push(`/channels/${channelId}`);
   }
 
   deleteTokenHandler(e) {
@@ -101,7 +100,7 @@ export default class NewDMForm extends React.Component {
     let matchings = [];
     if (this.state.letterVal.length === 0) {
       matchings = arrayUsers.map((user, idx) => {
-        return <UserItem key={idx} username={user.username} userId={user.id} firstName={user.first_name} lastName={user.last_name} handleItemClick={this.handleItemClick} />;
+        return <UserItem key={idx} username={user.username} userId={user.id} firstName={user.first_name} lastName={user.last_name} gravatarUrl={user.gravatar_url} handleItemClick={this.handleItemClick} />;
       });
       return matchings;
     } else {
@@ -109,7 +108,7 @@ export default class NewDMForm extends React.Component {
         let substring = user.username.slice(0, this.state.letterVal.length);
         if (substring.toLowerCase() === this.state.letterVal.toLowerCase()) {
           matchings.push(
-            <UserItem key={idx} username={user.username} userId={user.id} firstName={user.first_name} lastName={user.last_name} handleItemClick={this.handleItemClick} />
+            <UserItem key={idx} username={user.username} userId={user.id} firstName={user.first_name} lastName={user.last_name} gravatarUrl={user.gravatar_url} handleItemClick={this.handleItemClick} />
           );
         }
       });

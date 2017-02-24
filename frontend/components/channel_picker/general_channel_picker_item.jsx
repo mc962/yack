@@ -3,7 +3,7 @@ import { Link, withRouter, hashHistory } from 'react-router';
 
 class GeneralChannelPickerItem extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.linkClickHandler = this.linkClickHandler.bind(this);
   }
 
@@ -12,33 +12,33 @@ class GeneralChannelPickerItem extends React.Component {
     e.preventDefault();
     const newChannelId = parseInt(this.props.params.id);
     this.props.fetchCurrentChannel(this.props.channelId);
-    hashHistory.push(`/channels/${this.props.channelId}`)
+    hashHistory.push(`/channels/${this.props.channelId}`);
   }
 
 
   render() {
     let classList = 'general-channel-element channel-element';
-    let channelId = this.props.channelId
+    let channelId = this.props.channelId;
     if (channelId === parseInt(this.props.params.id)) {
-      classList += " selected-channel-element"
+      classList += " selected-channel-element";
     } else {
-      classList = 'general-channel-element channel-element general-hoverable'
+      classList = 'general-channel-element channel-element general-hoverable';
     }
 
     let listEl = (
       <button className={classList} onClick={this.linkClickHandler}>
       <li className='element-text'>
-          <span>{this.props.roomTitle}</span>
+          <span># {this.props.roomTitle}</span>
       </li>
     </button>
-    )
+  );
 
 
 
     return (
       listEl
-    )
+    );
   }
 }
 
-export default withRouter(GeneralChannelPickerItem)
+export default withRouter(GeneralChannelPickerItem);

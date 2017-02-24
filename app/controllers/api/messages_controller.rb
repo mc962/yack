@@ -1,12 +1,12 @@
 class Api::MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
-    if @message.save!
+    if @message.save
       # Pusher.trigger("channel_#{@message.chatroom_id}", 'message_published', {})
       ActionCable.server.broadcast 'messages',
         message: @message
 
-        
+
         render :index
     else
       render(json: @message.errors.full_messages, status: 422)

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import CurrentChannel from './current_channel';
-
+import currentUserLoading from '../../actions/session_actions';
 import { fetchCurrentChannel } from '../../actions/channel_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -27,11 +27,13 @@ const mapStateToProps = (state, ownProps) => {
     channelId = 0;
   }
 
+
   return {
     channelName: channelName,
     channelId: channelId,
     messages: messages,
-    users: users
+    users: users,
+    loading: state.loading.currentChannelLoading
   };
 };
 

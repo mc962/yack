@@ -10,7 +10,11 @@ const GMListItem = ({roomTitle, chatroomId, dateCreated, numUsers, handleItemCli
       <div className='chatroom-info'>
         <div className='room-title'>{roomTitle}</div>
         <div className='date-created'>{dateCreated}</div>
-        <div className='num-users'>{numUsers}</div>
+        <div className= 'people-stats'>
+          <i className="fa fa-user-o" aria-hidden="true"></i>
+          <div className='num-users'>{numUsers}</div>
+
+        </div>
       </div>
 
 

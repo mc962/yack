@@ -32,6 +32,7 @@ class Profile extends React.Component {
   }
 
   render() {
+    
     return(
         <section className="profile">
 
@@ -58,7 +59,7 @@ class Profile extends React.Component {
               <div className='profile-menu'>
                 <div className='personal-profile-info'>
                   <div className='profile-menu-picture'>
-                    :)
+                    <img className='profile-menu-picture gravatar-picture' src={this.props.currentUser.gravatar_url} alt={this.props.currentUser.username} />
                   </div>
                   <div className='name-text'>
                     <div className='normal-name'>{this.props.currentUser.username}</div>

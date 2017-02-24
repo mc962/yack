@@ -10,9 +10,11 @@ export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
+export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
 
-export const signup = (user) => {
-  return (dispatch) => {
+export const signup = (user) => (dispatch) => {
+  dispatch(startLoadingCurrentUser());
+
     return APIUtil.signup(user).then(
       (fetchedUser)=>{
         return dispatch(receiveCurrentUser(fetchedUser));
@@ -22,20 +24,17 @@ export const signup = (user) => {
       }
     );
   };
-};
 
-export const login = (user) => {
+export const login = (user) => (dispatch) => {
+  dispatch(startLoadingCurrentUser());
 
-  return (dispatch) => {
-    return APIUtil.login(user).then(
-      (fetchedUser) => {dispatch(receiveCurrentUser(fetchedUser));
-      },
-      (fetchedErrors) => {
-        return dispatch(receiveErrors(fetchedErrors.responseJSON));
-      }
-    );
-  };
-
+  return APIUtil.login(user).then(
+    (fetchedUser) => {dispatch(receiveCurrentUser(fetchedUser));
+    },
+    (fetchedErrors) => {
+      return dispatch(receiveErrors(fetchedErrors.responseJSON));
+    }
+  );
 };
 
 export const logout = () => {
@@ -50,6 +49,15 @@ export const logout = () => {
     );
   };
 };
+
+export const fetchCurrentUser = (userId) => {
+  return (dispatch) => {
+    return APIUtil.fetchCurrentUser(userId).then((fetchedUser) => {
+      return dispatch(receiveCurrentUser(fetchedUser));
+    });
+  };
+};
+
 
 export const receiveCurrentUser = (currentUser) => {
   return {
@@ -70,3 +78,7 @@ export const clearErrors = () => {
     type: CLEAR_ERRORS
   };
 };
+
+export const startLoadingCurrentUser = () => ({
+  type: START_LOADING_CURRENT_USER
+});

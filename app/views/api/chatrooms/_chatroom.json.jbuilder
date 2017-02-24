@@ -1,1 +1,3 @@
-json.extract! chatroom, :id, :room_title, :users, :created_at
+json.extract! chatroom, :id, :room_title, :created_at
+
+json.num_users chatroom.users.length

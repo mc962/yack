@@ -2,7 +2,7 @@ User.destroy_all
 Chatroom.destroy_all
 Message.destroy_all
 UserChat.destroy_all
-
+# create new user, THEN manually set the gravatar url, so that validation sees we have it already and doesnt replace it, also get rid of twin peaks
 users = []
 while users.length < 20
     randNum = rand(7)
@@ -14,46 +14,53 @@ while users.length < 20
       last_name = Faker::StarWars.droid
       email= Faker::Internet.safe_email
       password = Faker::Internet.password(6)
+      gravatar_url = Faker::Avatar.image('35x35')
     when 1
       username = Faker::Pokemon.name
       first_name = Faker::Pokemon.name
       last_name = Faker::Pokemon.name
       email= Faker::Internet.safe_email
       password = Faker::Internet.password(6)
+      gravatar_url = Faker::Avatar.image('35x35')
     when 2
       username= Faker::LordOfTheRings.character
       first_name= Faker::LordOfTheRings.character
       last_name= Faker::LordOfTheRings.character
       email= Faker::Internet.safe_email
       password= Faker::Internet.password(6)
+      gravatar_url = Faker::Avatar.image('35x35')
     when 3
       username= Faker::Cat.name
       first_name= Faker::Cat.name
       last_name= Faker::Cat.name
       email= Faker::Internet.safe_email
       password= Faker::Internet.password(6)
+      gravatar_url = Faker::Avatar.image('35x35')
     when 4
       username= Faker::Ancient.god
       first_name= Faker::Ancient.god
       last_name= Faker::Ancient.god
       email= Faker::Internet.safe_email
       password= Faker::Internet.password(6)
+      gravatar_url = Faker::Avatar.image('35x35')
     when 5
       username= Faker::Ancient.primordial
       first_name= Faker::Ancient.primordial
       last_name= Faker::Ancient.primordial
       email= Faker::Internet.safe_email
       password= Faker::Internet.password(6)
+      gravatar_url = Faker::Avatar.image('35x35')
     when 6
       username= Faker::Ancient::titan
       first_name= Faker::Ancient::titan
       last_name= Faker::Ancient::titan
       email= Faker::Internet.safe_email
       password= Faker::Internet.password(6)
+      gravatar_url = Faker::Avatar.image('35x35')
     end
 
     u = User.new(username: username, first_name: first_name, last_name: last_name, email: email, password: password)
-
+    u.gravatar_url = gravatar_url
     users << u if u.save
 end
 guest_user = User.new(username: 'Guest', first_name: 'Anon', last_name: 'Anonymous', email: 'guest@guestables.com', password: 'wizardhat1')
@@ -101,8 +108,8 @@ gen_chat_id = Chatroom.find_by(room_title: 'general').id
 
 
 User.all.each do |user|
-  5.times do
-    randNum = rand(5)
+  4.times do
+    randNum = rand(4)
     case randNum
     when 0
       content = Faker::StarWars.quote
@@ -111,8 +118,6 @@ User.all.each do |user|
     when 2
       content = Faker::ChuckNorris.fact
     when 3
-      content = Faker::TwinPeaks.quote
-    when 4
       content = Faker::Company.bs
     end
 

@@ -28,16 +28,18 @@ class ChannelPicker extends React.Component {
   }
 
   handleNewGCClick(e) {
-    // e.preventDefault();
-    // this.setState({gmModalIsOpen: true});
+    e.preventDefault();
+    this.setState({gmModalIsOpen: true});
   }
 
   handleEscape() {
-
-    this.setState({ dmModalIsOpen: false, gmModalIsOpen: false } );
+    const currentUserId = this.props.currentUser.id;
+    this.setState({ dmModalIsOpen: false, gmModalIsOpen: false }, ((currentUser) => this.props.fetchCurrentUser(this.props.currentUser.id)) );
   }
 
+
   render() {    // get an array of the channel elmenets
+
       const generalChannelElements = this.props.generalMessageChannels.map((channel, idx) => {
         return (
           <GeneralChannelPickerItem key={idx} roomTitle={channel.room_title} channelId={channel.id} fetchCurrentChannel={(channelId) => this.props.fetchCurrentChannel(channelId)}/>

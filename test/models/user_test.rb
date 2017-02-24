@@ -11,6 +11,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  email           :string           not null
+#  gravatar_url    :string
 #
 
 require 'test_helper'

@@ -37,6 +37,10 @@ span.public-channels-button:hover {
 
 }
 
+.people-stats {
+  display: flex;
+  flex-direction: row;
+}
 /////////////////////////////////////////
 
 .channels-list {
@@ -113,7 +117,8 @@ button.modal-close-btn:hover {
 
 .element-text {
   margin-bottom: 3px;
-  width: 100%
+  width: 100%;
+  font-family: 'Lato', sans-serif;
 }
 
 .channel-element {

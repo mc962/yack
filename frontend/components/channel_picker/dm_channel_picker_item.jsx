@@ -12,15 +12,15 @@ class DMChannelPickerItem extends React.Component {
     e.preventDefault();
     const newChannelId = parseInt(this.props.params.id);
     this.props.fetchCurrentChannel(this.props.channelId);
-    hashHistory.push(`/channels/${this.props.channelId}`)
+    hashHistory.push(`/channels/${this.props.channelId}`);
   }
   render() {
     let classList = 'dm-channel-element channel-element';
-    let channelId = this.props.channelId
+    let channelId = this.props.channelId;
     if (channelId === parseInt(this.props.params.id)) {
-      classList += " selected-channel-element"
+      classList += " selected-channel-element";
     } else {
-      classList = 'dm-channel-element channel-element dm-hoverable'
+      classList = 'dm-channel-element channel-element dm-hoverable';
     }
 
     let listEl = (
@@ -30,12 +30,12 @@ class DMChannelPickerItem extends React.Component {
           {this.props.roomTitle}
       </li>
     </button>
-    )
+  );
 
     return (
       listEl
-    )
+    );
   }
 }
 
-export default withRouter(DMChannelPickerItem)
+export default withRouter(DMChannelPickerItem);

@@ -11,6 +11,7 @@
 
 class UserChat < ApplicationRecord
   validates :user, :chatroom, presence: true
+  validates :user, uniqueness: {scope: :chatroom, message: "Only join a chatroom once"}
   belongs_to :user
   belongs_to :chatroom
 end

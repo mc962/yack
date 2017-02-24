@@ -4,6 +4,7 @@ import MessageItem from './message_item';
 import { withRouter } from 'react-router';
 import NewMessageFormContainer from './new_message/new_message_container';
 import ChannelInfoContainer from '../channel_info/channel_info_container';
+import LoadingIcon from '../../loading_icon';
 
 class CurrentChannel extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class CurrentChannel extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-  
+
   }
 
   componentWillUnmount() {
@@ -59,7 +60,8 @@ class CurrentChannel extends React.Component {
         } else {
           username="";
         }
-        return <MessageItem key={idx} username={username} content={message.content} />;
+        
+        return <MessageItem key={idx} username={username} content={message.content} gravatarUrl={channelUsers[userId].gravatar_url} />;
       });
     } else {
       return <div className='no-messages'></div>;
@@ -67,21 +69,26 @@ class CurrentChannel extends React.Component {
 
 
 
-    return (
-      <div className='current-channel-sections'>
-        <header className='channel-information'>
-          <ChannelInfoContainer />
-        </header>
-        <section className='messages-container'>
-          <ul className='channel-messages-list'>
-            {messageElements}
-          </ul>
-        </section>
-        <footer className='new-messages-form-container'>
-          <NewMessageFormContainer />
-        </footer>
-      </div>
-    );
+        return this.props.loading ?
+          <LoadingIcon /> :
+
+
+          <div className='current-channel-sections'>
+            <header className='channel-information'>
+              <ChannelInfoContainer />
+            </header>
+            <section className='messages-container'>
+              <ul className='channel-messages-list'>
+                {messageElements}
+              </ul>
+            </section>
+            <footer className='new-messages-form-container'>
+              <NewMessageFormContainer />
+            </footer>
+          </div>
+
+
+
   }
 }
 

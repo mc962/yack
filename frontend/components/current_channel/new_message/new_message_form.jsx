@@ -7,7 +7,7 @@ class NewMessageForm extends React.Component {
     this.handleNewMessageSubmit = this.handleNewMessageSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.placeholderHandler = this.placeholderHandler.bind(this);
-  
+
     this.state = {content: ''};
   }
 
@@ -28,7 +28,7 @@ class NewMessageForm extends React.Component {
   handleNewMessageSubmit(e) {
     e.preventDefault();
     let message = this.state;
-    message.user_id = currentUser.id;
+    message.user_id = this.props.currentUser.id;
 
     message.chatroom_id = parseInt(this.props.params.id);
 
@@ -37,7 +37,7 @@ class NewMessageForm extends React.Component {
   }
 
   render() {
-    // debugger
+  
     return (
       <form className='new-message-form' onSubmit={this.handleNewMessageSubmit}>
         <div className='attachments-btn' onClick={this.placeholderHandler}>+</div>

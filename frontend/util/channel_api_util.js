@@ -19,3 +19,12 @@ export const createChannel = (chatroom) => {
     data: { chatroom }
   });
 };
+
+export const joinChannel = (user_chat) => {
+
+  return $.ajax({
+    method: 'POST',
+    url: `/api/chatrooms/join-channel/${user_chat.chatroom_id}`,
+    data: { user_chat }
+  });
+};

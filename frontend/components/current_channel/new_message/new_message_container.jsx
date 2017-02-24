@@ -7,36 +7,38 @@ const mapStateToProps = (state, ownProps) => {
   let channelId;
   let roomTitle;
   let users;
+  let currentUser;
 
   if (ownProps.params) {
-    channelId = parseInt(ownProps.params.id)
+    channelId = parseInt(ownProps.params.id);
   }
 
   if (state.currentChannel.fetchedChannel) {
 
     roomTitle = state.currentChannel.fetchedChannel.room_title;
-    users = state.currentChannel.fetchedChannel.users
+    users = state.currentChannel.fetchedChannel.users;
 
   }
-
+  currentUser = state.session.currentUser;
 
   return {
     roomTitle: roomTitle,
     channelId: channelId,
     users: users,
-    channel: ownProps.channel
-  }
-}
+    channel: ownProps.channel,
+    currentUser: currentUser
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
 
 
   return {
     createMessage: (newMessage) => dispatch(createMessage(newMessage))
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewMessageForm)
+)(NewMessageForm);

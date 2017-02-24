@@ -12,7 +12,7 @@ const ChannelsReducer = (state = initialState, action) => {
     case RECEIVE_ALL_CHANNELS:
       return Object.assign({}, state, action.channels);
     case RECEIVE_CURRENT_CHANNEL:
-
+      
       return Object.assign({}, state, {fetchedChannel: action.currentChannel});
 
     default:

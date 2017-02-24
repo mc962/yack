@@ -1,13 +1,13 @@
 import React from 'react'
 
-const MessageItem = ({username, content}) => {
+const MessageItem = ({username, content, gravatarUrl}) => {
 
   return (
-    
+
 
       <li className='message-element'>
 
-        <div className='user-picture'>:)</div>
+        <img className='user-picture' src={gravatarUrl} alt={username} />
 
         <div className='message-text'>
 

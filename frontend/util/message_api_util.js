@@ -3,5 +3,5 @@ export const createMessage = (message) =>  {
     method: 'POST',
     url: `/api/chatrooms/${message.chatroom_id}/messages`,
     data: { message }
-  })
-}
+  });
+};

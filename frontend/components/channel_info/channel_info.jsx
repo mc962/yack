@@ -16,8 +16,9 @@ export default class ChannelInfo extends React.Component {
           <div className='room-stats'>
             <i className="fa fa-user-o" aria-hidden="true"></i>
             <div className='users-number'>{this.props.numUsers}</div>
+            <div className='line-separator'>|</div>
+            <div className='room-purpose'>{this.props.roomPurpose}</div>
           </div>
-
         </div>
       </section>
     );
