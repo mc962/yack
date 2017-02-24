@@ -27,7 +27,7 @@ class DMChannelPickerItem extends React.Component {
 
       <button className={classList} onClick={this.linkClickHandler}>
       <li className='element-text'>
-          {this.props.roomTitle}
+          <img src={images.cartoon_yak} alt="A yak" className='dm-yak' />{this.props.roomTitle}
       </li>
     </button>
   );

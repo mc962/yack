@@ -41,7 +41,11 @@ class Home extends React.Component {
               <div onClick={this.loginHandler} className='login-anchor'>Log In</div>
             </div>
           </header>
+
+
           <div className='signup-box'>
+            <h1 className='site-title'>Yack</h1>
+            <h2 className='slogan'>Do talk back</h2>
             <div className="signup-link">
               <div onClick={this.signupHandler} className='signup-anchor'>Sign Up</div>
             </div>

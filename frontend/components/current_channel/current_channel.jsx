@@ -1,5 +1,6 @@
 /* globals Pusher */
 import React from 'react';
+import ReactDom from 'react-dom';
 import MessageItemContainer from './message_item_container';
 import { withRouter } from 'react-router';
 import NewMessageFormContainer from './new_message/new_message_container';
@@ -34,9 +35,20 @@ class CurrentChannel extends React.Component {
     this.channel = App.messages;
   }
 
-  componentWillReceiveProps(newProps) {
-
+  componentWillUpdate() {
+    // const node = ReactDom.findDOMNode(this.refs.secretdiv);
+    // this.shouldScrollBottom = node.scrollTop + node.offsetHeight ===  node.scrollHeight;
+    // ////essentially checks if we are at bottom, if true, then we should scroll bottom
   }
+
+  componentDidUpdate() {
+    // el = document.getElementById('hidden-div');
+    // debugger
+    // el.scrollTop = el.scrollHeight
+  }
+
+
+
 
   componentWillUnmount() {
     // this.pusher.unsubscribe(`channel_${channelId}`)
@@ -85,6 +97,7 @@ class CurrentChannel extends React.Component {
             <footer className='new-messages-form-container'>
               <NewMessageFormContainer />
             </footer>
+            <div id='hidden-div'></div>
           </div>
 
 

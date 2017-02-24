@@ -61,7 +61,7 @@ li.message-element:hover {
   margin-top: 7px;
   margin-bottom: 15px;
   margin-left: 27px;
-  background-color: red;
+
   border-radius: 4px;
 }
 
@@ -135,4 +135,17 @@ li.message-element:hover {
 
 .hideable-btn {
   display: hidden;
+}
+
+.hidden-div {
+  display: hidden;
+}
+
+.green-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #38978d;
+  margin-left: 17px;
+  border-radius: 50px;
+  margin-right: 5px;
 }

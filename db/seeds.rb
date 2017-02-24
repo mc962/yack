@@ -14,49 +14,49 @@ while users.length < 20
       last_name = Faker::StarWars.droid
       email= Faker::Internet.safe_email
       password = Faker::Internet.password(6)
-      gravatar_url = Faker::Avatar.image('35x35')
+      gravatar_url = Faker::Avatar.image
     when 1
       username = Faker::Pokemon.name
       first_name = Faker::Pokemon.name
       last_name = Faker::Pokemon.name
       email= Faker::Internet.safe_email
       password = Faker::Internet.password(6)
-      gravatar_url = Faker::Avatar.image('35x35')
+      gravatar_url = Faker::Avatar.image
     when 2
       username= Faker::LordOfTheRings.character
       first_name= Faker::LordOfTheRings.character
       last_name= Faker::LordOfTheRings.character
       email= Faker::Internet.safe_email
       password= Faker::Internet.password(6)
-      gravatar_url = Faker::Avatar.image('35x35')
+      gravatar_url = Faker::Avatar.image
     when 3
       username= Faker::Cat.name
       first_name= Faker::Cat.name
       last_name= Faker::Cat.name
       email= Faker::Internet.safe_email
       password= Faker::Internet.password(6)
-      gravatar_url = Faker::Avatar.image('35x35')
+      gravatar_url = Faker::Avatar.image
     when 4
       username= Faker::Ancient.god
       first_name= Faker::Ancient.god
       last_name= Faker::Ancient.god
       email= Faker::Internet.safe_email
       password= Faker::Internet.password(6)
-      gravatar_url = Faker::Avatar.image('35x35')
+      gravatar_url = Faker::Avatar.image
     when 5
       username= Faker::Ancient.primordial
       first_name= Faker::Ancient.primordial
       last_name= Faker::Ancient.primordial
       email= Faker::Internet.safe_email
       password= Faker::Internet.password(6)
-      gravatar_url = Faker::Avatar.image('35x35')
+      gravatar_url = Faker::Avatar.image
     when 6
       username= Faker::Ancient::titan
       first_name= Faker::Ancient::titan
       last_name= Faker::Ancient::titan
       email= Faker::Internet.safe_email
       password= Faker::Internet.password(6)
-      gravatar_url = Faker::Avatar.image('35x35')
+      gravatar_url = Faker::Avatar.image
     end
 
     u = User.new(username: username, first_name: first_name, last_name: last_name, email: email, password: password)
@@ -72,7 +72,7 @@ test_user.save
 # test_user.save!
 
 
-general_chat = Chatroom.new(room_title: 'general', room_type: 'general', purpose: 'main public chat').save
+general_chat = Chatroom.new(room_title: 'general', room_type: 'general', purpose: 'Main Public Chat').save
 chatrooms = []
 while chatrooms.length < 9
     randNum = rand(3)
@@ -85,7 +85,7 @@ while chatrooms.length < 9
       room_title = Faker::GameOfThrones.city.downcase.delete(' ')
     end
     room_type = ['general', 'direct_message'].sample
-    purpose = Faker::Hipster.sentence(5)
+    purpose = Faker::Commerce.department
 
     c = Chatroom.new(room_title: room_title, room_type: room_type, purpose: purpose)
 
@@ -106,10 +106,10 @@ gen_chat_id = Chatroom.find_by(room_title: 'general').id
     end
   end
 
-
+  
 User.all.each do |user|
-  4.times do
-    randNum = rand(4)
+  5.times do
+    randNum = rand(5)
     case randNum
     when 0
       content = Faker::StarWars.quote
@@ -119,6 +119,8 @@ User.all.each do |user|
       content = Faker::ChuckNorris.fact
     when 3
       content = Faker::Company.bs
+    when 4
+      content = Faker::Hacker.say_something_smart
     end
 
 

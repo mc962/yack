@@ -9,10 +9,12 @@ class MessageItem extends React.Component {
 
   }
   editClickHandler(e) {
-    // e.preventDefault();
+    e.preventDefault();
     // updateMessage(this.props.messageId).then(
     //   this.props.fetchCurrentChannel(this.props.channelId)
     // );
+    console.log('Also not yet implemented. But you can always destroy and start fresh. Once more, a random number for your troubles.');
+    console.log(Math.floor((Math.random(42)*10)));
   }
 
   deleteClickHandler(e) {
@@ -53,7 +55,7 @@ class MessageItem extends React.Component {
         </li>
 
     );
-    
+
   }
 }
 

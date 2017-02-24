@@ -32,7 +32,7 @@ class ChannelInfo extends React.Component {
       <section className='information-container'>
         <div className='room-text-container'>
 
-          <div className='room-title'>#{this.props.roomTitle}</div>
+          <div className='info-room-title'>#{this.props.roomTitle}</div>
 
           <div className='room-stats'>
             <i className="fa fa-user-o" aria-hidden="true"></i>

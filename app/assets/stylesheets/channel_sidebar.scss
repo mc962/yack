@@ -119,6 +119,13 @@ button.modal-close-btn:hover {
   margin-bottom: 3px;
   width: 100%;
   font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: row;
+}
+
+.dm-yak {
+  margin-right: 3px;
+  margin-left: 10px;
 }
 
 .channel-element {
@@ -141,4 +148,9 @@ button.modal-close-btn:hover {
 
 button.general-hoverable:hover {
   background-color: #3e313c;
+}
+
+.dm-yak {
+  max-width: 20px;
+  max-height: 20px;
 }
