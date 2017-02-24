@@ -10,7 +10,7 @@ class Api::ChatroomsController < ApplicationController
       end
       render :show
     else
-    
+
       render(json: @chatroom.errors.full_messages, status: 422)
     end
 
@@ -21,7 +21,7 @@ class Api::ChatroomsController < ApplicationController
     render :index
   end
 
-  def show
+  def show    
 
     @chatroom = Chatroom.find(params[:id])
     render :show
@@ -38,6 +38,16 @@ class Api::ChatroomsController < ApplicationController
     end
   end
 
+  def leave_channel
+    @chatroom = Chatroom.find(params[:user_chat][:chatroom_id])
+    subscription = UserChat.find_subscription({user_id: params[:user_chat][:user_id], chatroom_id: params[:user_chat][:chatroom_id]})
+
+    if subscription
+      subscription.first.destroy
+    end
+
+    render :show
+  end
 end
 
 private

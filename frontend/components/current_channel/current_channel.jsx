@@ -1,6 +1,6 @@
 /* globals Pusher */
 import React from 'react';
-import MessageItem from './message_item';
+import MessageItemContainer from './message_item_container';
 import { withRouter } from 'react-router';
 import NewMessageFormContainer from './new_message/new_message_container';
 import ChannelInfoContainer from '../channel_info/channel_info_container';
@@ -60,8 +60,8 @@ class CurrentChannel extends React.Component {
         } else {
           username="";
         }
-        
-        return <MessageItem key={idx} username={username} content={message.content} gravatarUrl={channelUsers[userId].gravatar_url} />;
+
+        return <MessageItemContainer key={idx} username={username} content={message.content} messageId={message.id} gravatarUrl={channelUsers[userId].gravatar_url} fetchCurrentChannel={this.props.fetchCurrentChannel} channelId={ this.props.params.id} />;
       });
     } else {
       return <div className='no-messages'></div>;

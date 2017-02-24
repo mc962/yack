@@ -1,6 +1,7 @@
 import {
   CREATE_MESSAGE,
-  RECEIVE_MESSAGE
+  RECEIVE_MESSAGE,
+  REMOVE_MESSAGE
 } from '../actions/message_actions';
 
 import { merge } from 'lodash';
@@ -12,6 +13,10 @@ const MessageReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_MESSAGE:
       return Object.assign({}, state, action.receivedMessage );
+    case REMOVE_MESSAGE:
+      let nextState = Object.assign({}, state);
+      delete nextState[action.receivedMessage.id];
+      return nextState;
     default:
       return state;
   }

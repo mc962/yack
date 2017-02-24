@@ -37,12 +37,14 @@ class NewMessageForm extends React.Component {
   }
 
   render() {
-  
+
     return (
-      <form className='new-message-form' onSubmit={this.handleNewMessageSubmit}>
-        <div className='attachments-btn' onClick={this.placeholderHandler}>+</div>
-        <input type='text' className='message-input-field' id='content' onChange={this.handleChange} placeholder={`Message #${this.props.roomTitle}`} value={this.state.content} />
-      </form>
+      <div>        
+        <form className='new-message-form' onSubmit={this.handleNewMessageSubmit}>
+          <div className='attachments-btn' onClick={this.placeholderHandler}>+</div>
+          <input type='text' className='message-input-field' id='content' onChange={this.handleChange} placeholder={`Message #${this.props.roomTitle}`} value={this.state.content} />
+        </form>
+      </div>
     );
   }
 }

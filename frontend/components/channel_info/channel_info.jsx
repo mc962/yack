@@ -1,11 +1,32 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
-export default class ChannelInfo extends React.Component {
+class ChannelInfo extends React.Component {
   constructor(props) {
     super(props);
+    this.leaveHandler = this.leaveHandler.bind(this);
+    this.redirect = this.redirect.bind(this);
+  }
+
+  leaveHandler(e) {
+    e.preventDefault();
+
+    this.props.leaveChannel({chatroom_id: this.props.roomId, user_id: this.props.currentUser}).then((receivedChannel) => {
+      this.redirect();
+    }).then(this.props.fetchAllChannels());
+  }
+
+  redirect() {
+    this.props.router.push(`/channels`);
   }
 
   render() {
+    let btnTxt;
+    if (this.props.roomTitle) {
+      btnTxt = 'Leave Channel';
+    } else {
+      btnTxt = '';
+    }
 
     return(
       <section className='information-container'>
@@ -19,8 +40,12 @@ export default class ChannelInfo extends React.Component {
             <div className='line-separator'>|</div>
             <div className='room-purpose'>{this.props.roomPurpose}</div>
           </div>
+
+          <div className='leave-channel-btn' onClick={this.leaveHandler}>{btnTxt}</div>
         </div>
       </section>
     );
   }
 }
+
+export default withRouter(ChannelInfo);

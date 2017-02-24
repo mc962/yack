@@ -53,18 +53,23 @@ class GMList extends React.Component {
     let arrayChannels = Object.keys(chatrooms).map((id) => chatrooms[id]);
 
     let matchings = [];
+    let months = ['Januaruy', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'December'];
     if (this.state.letterVal.length === 0) {
       matchings = arrayChannels.map((chatroom, idx) => {
-        return <GMListItem key={idx} roomTitle={chatroom.room_title} chatroomId={chatroom.id} dateCreated={chatroom.date_created} numUsers={chatroom.num_users} handleItemClick={this.handleItemClick} />;
+        let date = new Date(chatroom.created_at);
+
+        let parsedDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getUTCFullYear()}`;
+        return <GMListItem key={idx} roomTitle={chatroom.room_title} chatroomId={chatroom.id} dateCreated={parsedDate} numUsers={chatroom.num_users} handleItemClick={this.handleItemClick} />;
       });
       return matchings;
     } else {
       arrayChannels.forEach((chatroom, idx )=> {
-
+        let date = new Date(chatroom.created_at);
+        let parsedDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getUTCFullYear()}`;
         let substring = chatroom.room_title.slice(0, this.state.letterVal.length);
         if (substring.toLowerCase() === this.state.letterVal.toLowerCase()) {
           matchings.push(
-            <GMListItem key={idx} roomTitle={chatroom.room_title} chatroomId={chatroom.id} dateCreate={chatroom.date_created} numUsers={chatroom.num_users} handleItemClick={this.handleItemClick} />
+            <GMListItem key={idx} roomTitle={chatroom.room_title} chatroomId={chatroom.id} dateCreated={parsedDate} numUsers={chatroom.num_users} handleItemClick={this.handleItemClick} />
           );
         }
       });

@@ -19,11 +19,24 @@ class Api::MessagesController < ApplicationController
   end
 
   def update
-    @message = Message.find(params[:id])
+    @message = current_user.messages.find(params[:id])
+
+    if @message.update_attributes
+      render :index
+    else
+      render(json: @message.errors.full_messages, status: 422)
+    end
   end
 
+
+
   def destroy
-    @message = Message.find(params[:id])
+    @message = current_user.messages.find(params[:id])
+    @chatroom = @message.chatroom
+    if @message
+      @message.destroy
+    end
+    render '/api/chatrooms/show'
   end
 
   private
@@ -31,4 +44,5 @@ class Api::MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content, :user_id, :chatroom_id)
   end
+
 end

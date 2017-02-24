@@ -30,3 +30,22 @@
   margin-left: 3px;
   margin-right: 3px;
 }
+
+.leave-channel-btn {
+  text-align: center;
+  float: right;
+  padding: 4px;
+  width: 105px;
+  height: 20px;
+  color: white;
+  background-color: #29AE78;
+  border: 1px solid #E8E8E8;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 4%;
+  top: 40px;
+}
+
+div.leave-channel-btn:hover {
+  border: 1px solid #FF0000;
+}

@@ -14,4 +14,10 @@ class UserChat < ApplicationRecord
   validates :user, uniqueness: {scope: :chatroom, message: "Only join a chatroom once"}
   belongs_to :user
   belongs_to :chatroom
+
+  def self.find_subscription(subscription)
+
+    UserChat.where(user_id: subscription[:user_id])
+    .where(chatroom_id: subscription[:chatroom_id])
+  end
 end
