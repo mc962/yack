@@ -22,37 +22,24 @@ class CurrentChannel extends React.Component {
     //
     // let channel = this.pusher.subscribe(`channel_${channelId}`);
     // channel.bind('message_published', (data) => {
-    //   // alert(data.message);
     //   this.props.fetchCurrentChannel(channelId);
     // });
 
     App.messages = App.cable.subscriptions.create('MessagesChannel', {
       received: (data) => {
-        // alert(data.message)
         this.props.fetchCurrentChannel(this.props.params.id);
       }
     });
     this.channel = App.messages;
   }
 
-  componentWillUpdate() {
-    // const node = ReactDom.findDOMNode(this.refs.secretdiv);
-    // this.shouldScrollBottom = node.scrollTop + node.offsetHeight ===  node.scrollHeight;
-    // ////essentially checks if we are at bottom, if true, then we should scroll bottom
-  }
 
   componentDidUpdate() {
     if (this.bottomDiv) {
 
       this.bottomDiv.scrollIntoView();
     }
-
-    // debugger
-    // el.scrollTop = el.scrollHeight
   }
-
-
-
 
   componentWillUnmount() {
     // this.pusher.unsubscribe(`channel_${channelId}`)
@@ -67,45 +54,39 @@ class CurrentChannel extends React.Component {
     if (this.props.messages) {
 
       messageElements = this.props.messages.map((message, idx) => {
-
-
         const userId = parseInt(message.user_id);
         if (userId && channelUsers[userId]) {
-
           username=channelUsers[userId].username;
         } else {
           username="";
         }
-
-        return <MessageItemContainer key={idx} username={username} content={message.content} messageId={message.id} gravatarUrl={channelUsers[userId].gravatar_url} fetchCurrentChannel={this.props.fetchCurrentChannel} channelId={ this.props.params.id} />;
+        return <MessageItemContainer key={idx}
+                                      username={username}
+                                      content={message.content}
+                                      messageId={message.id}
+                                      gravatarUrl={channelUsers[userId].gravatar_url}
+                                      fetchCurrentChannel={this.props.fetchCurrentChannel}
+                                      channelId={ this.props.params.id} />;
       });
     } else {
       return <div className='no-messages'></div>;
     }
-
-
-
-        return this.props.loading ?
-          <LoadingIcon /> :
-
-
-          <div className='current-channel-sections'>
-            <header className='channel-information'>
-              <ChannelInfoContainer />
-            </header>
-            <section className='messages-container' id='messages-container'>
-              <ul className='channel-messages-list'>
-                {messageElements}
-              </ul>
-              <div ref={node => this.bottomDiv = node }></div>
-            </section>
-            <footer className='new-messages-form-container'>
-              <NewMessageFormContainer />
-            </footer>
-          </div>
-
-
-
+    return this.props.loading ?
+      <LoadingIcon /> :
+      <div className='current-channel-sections'>
+        <header className='channel-information'>
+          <ChannelInfoContainer />
+        </header>
+        <section className='messages-container' id='messages-container'>
+          <ul className='channel-messages-list'>
+            {messageElements}
+          </ul>
+          <div ref={node => this.bottomDiv = node }></div>
+        </section>
+        <footer className='new-messages-form-container'>
+          <NewMessageFormContainer />
+        </footer>
+      </div>
   }
 }
 

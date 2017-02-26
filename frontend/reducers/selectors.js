@@ -1,4 +1,5 @@
 export const getGeneralChannels = ({session}) => {
+  
   const unfilteredGenChannels = session.currentUser.channels
   let generalChannels = [];
   for (let i = 0; i < unfilteredGenChannels.length; i++) {
