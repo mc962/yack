@@ -42,7 +42,11 @@ class CurrentChannel extends React.Component {
   }
 
   componentDidUpdate() {
-    // el = document.getElementById('hidden-div');
+    if (this.bottomDiv) {
+
+      this.bottomDiv.scrollIntoView();
+    }
+
     // debugger
     // el.scrollTop = el.scrollHeight
   }
@@ -89,15 +93,15 @@ class CurrentChannel extends React.Component {
             <header className='channel-information'>
               <ChannelInfoContainer />
             </header>
-            <section className='messages-container'>
+            <section className='messages-container' id='messages-container'>
               <ul className='channel-messages-list'>
                 {messageElements}
               </ul>
+              <div ref={node => this.bottomDiv = node }></div>
             </section>
             <footer className='new-messages-form-container'>
               <NewMessageFormContainer />
             </footer>
-            <div id='hidden-div'></div>
           </div>
 
 
