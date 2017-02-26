@@ -8,16 +8,13 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     gen_chat = Chatroom.find_by(room_title: 'general')
-    if @user.save!
-
+    if @user.save
       # UserChat.new(user_id: @user.id, chatroom_id: gen_chat.id).save
       login!(@user)
-
-
       render :show
     else
       short_errors = sym_to_s(@user.errors)
-
+      
       render(json: short_errors, status: 422)
     end
   end

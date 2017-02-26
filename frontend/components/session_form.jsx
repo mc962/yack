@@ -55,13 +55,38 @@ class SessionForm extends React.Component {
        this.props.clearErrors();
      }
    }
-   //  if (this.props.errors) {
-   //    errList = this.props.errors.map((err, idx) => {
-   //      return <li className='entry-form-error' key={idx}>{err}</li>;
-   //      });
-   //    }
+
    render() {
      let errList = [];
+     let firstNameErr = '';
+     let lastNameErr = '';
+     let userNameErr = '';
+     let emailErr = '';
+     let passwordErr = '';
+
+
+     if (this.props.errors) {
+      //  errList = this.props.errors.map((err, idx) => {
+      //    return <li className='entry-form-error' key={idx}>{err}</li>;
+      //    });
+
+          if (this.props.errors.includes('first_name')){
+            firstNameErr = ' errorable';
+          }
+          if (this.props.errors.includes('last_name')) {
+            lastNameErr = ' errorable';
+            }
+          if (this.props.errors.includes('username')) {
+            userNameErr = ' errorable';
+          }
+          if (this.props.errors.includes('email')) {
+            emailErr = ' errorable';
+          }
+          if (this.props.errors.includes('password')) {
+            passwordErr = ' errorable';
+          }
+        }
+
        let altActionLink = '';
            if (this.props.formType === 'login') {
              altActionLink = '/signup';
@@ -100,8 +125,8 @@ class SessionForm extends React.Component {
                  <div className= 'full-name'>
                    <div className='full-name-label'>Your name</div>
                    <div htmlFor='full-name' className='full-name-label'>
-                     <input type='text' className={'name-input session-input field-input' + errorClass} id='first_name' placeholder='First Name' onChange={this.handleInputChange} value={this.state.first_name} />
-                     <input type='text' className={'name-input session-input field-input' + errorClass} id='last_name' placeholder='Last Name' onChange={this.handleInputChange} value={this.state.last_name} />
+                     <input type='text' className={'name-input session-input field-input' + firstNameErr} id='first_name' placeholder='First Name' onChange={this.handleInputChange} value={this.state.first_name} />
+                     <input type='text' className={'name-input session-input field-input' + lastNameErr} id='last_name' placeholder='Last Name' onChange={this.handleInputChange} value={this.state.last_name} />
                    </div>
                  </div>
 
@@ -110,17 +135,17 @@ class SessionForm extends React.Component {
                <div className='session-form-section'>
                  <div className='username-label-input'>
                    <label htmlFor='username' className='session-input-label'>Username</label>
-                   <input type='text' className={'session-input field-input username-input' + errorClass} id='username' placeholder='awesomePerson' onChange={this.handleInputChange} value={this.state.username} />
+                   <input type='text' className={'session-input field-input username-input' + userNameErr} id='username' placeholder='awesomePerson' onChange={this.handleInputChange} value={this.state.username} />
                  </div>
 
                  <div className='email-label-input'>
                    <label htmlFor='email' className='session-input-label'>Email</label>
-                   <input type="email" className={'session-input field-input email-input' + errorClass} id='email' placeholder='you@awesome.com' onChange={this.handleInputChange} value={this.state.email} />
+                   <input type="email" className={'session-input field-input email-input' + emailErr} id='email' placeholder='you@awesome.com' onChange={this.handleInputChange} value={this.state.email} />
                  </div>
 
                  <div className='password-label-input'>
                    <label htmlFor='password' className='session-input-label'>Password</label>
-                   <input type='password' className={'session-input field-input password-input' + errorClass} id='password' placeholder='password' onChange={this.handleInputChange} value={this.state.password} />
+                   <input type='password' className={'session-input field-input password-input' + passwordErr} id='password' placeholder='password' onChange={this.handleInputChange} value={this.state.password} />
                  </div>
 
 

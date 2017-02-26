@@ -10,10 +10,10 @@ const mapStateToProps = (state, ownProps) => {
   } else {
     loginStatus = false;
   }
-
+  
   let errors = state.session.errors;
 
-  let form = ownProps.route.path; // might lead to a dependency on pathname shape in future, consider refactoring
+  let form = ownProps.route.path;
   return {
     loggedIn: loginStatus,
     errors: errors,
