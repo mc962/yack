@@ -25,7 +25,7 @@ class MessageItem extends React.Component {
       this.props.fetchCurrentChannel(this.props.channelId)
     );
   }
-//gravatar url shows up, but picture does not
+
   render() {
     return (
 

@@ -13,26 +13,23 @@ class Profile extends React.Component {
   openMenu(e) {
     e.preventDefault();
     this.setState({popoverDisplay: ' transparent-popover-popover', menuDisplay: ''});
-    // this.popoverDisplay = ' transparent-popover';
-    // this.menuDisplay = '';
+
   }
   closeMenu(e) {
     e.preventDefault();
     this.setState({popoverDisplay: ' hidden-popover', menuDisplay: ' hideable-menu'});
-    // this.popoverDisplay = ' hidden-popover';
-    // this.menuDisplay = ' hideable-menu';
   }
   submitLogout(e) {
     e.preventDefault();
     this.props.logout();
 
-      // not sure if this is a good way to handle things
+
     this.props.router.push('/');
 
   }
 
   render() {
-    
+
     return(
         <section className="profile">
 
@@ -51,9 +48,6 @@ class Profile extends React.Component {
           </div>
 
             <div className={'popover-mask' + this.state.popoverDisplay} onClick={this.closeMenu}></div>
-
-
-
 
             <div className={this.state.menuDisplay}>
               <div className='profile-menu'>

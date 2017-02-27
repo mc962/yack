@@ -28,27 +28,16 @@ class CurrentChannel extends React.Component {
 
     App.messages = App.cable.subscriptions.create('MessagesChannel', {
       received: (data) => {
-        // alert(data.message)
         this.props.fetchCurrentChannel(this.props.params.id);
       }
     });
     this.channel = App.messages;
   }
-
-  componentWillUpdate() {
-    // const node = ReactDom.findDOMNode(this.refs.secretdiv);
-    // this.shouldScrollBottom = node.scrollTop + node.offsetHeight ===  node.scrollHeight;
-    // ////essentially checks if we are at bottom, if true, then we should scroll bottom
-  }
-
   componentDidUpdate() {
     if (this.bottomDiv) {
 
       this.bottomDiv.scrollIntoView();
     }
-
-    // debugger
-    // el.scrollTop = el.scrollHeight
   }
 
 
@@ -82,9 +71,6 @@ class CurrentChannel extends React.Component {
     } else {
       return <div className='no-messages'></div>;
     }
-
-
-
         return this.props.loading ?
           <LoadingIcon /> :
 

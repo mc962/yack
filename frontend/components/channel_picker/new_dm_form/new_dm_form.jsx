@@ -5,8 +5,6 @@ import { merge } from 'lodash';
 import { createChannel } from '../../../actions/channel_actions';
 import { withRouter } from 'react-router';
 import { _size } from 'lodash';
-// import AutoCompleteSearch from './autocomplete_search';
-// stick modal in parent container
 
 export default class NewDMForm extends React.Component {
   constructor(props) {
@@ -52,7 +50,7 @@ export default class NewDMForm extends React.Component {
       this.redirect(newChannelId);
     }).then(this.props.handleEscape());
 
-    // this.setState({letterVal: "", submittableUsers: {}});
+
   }
 
   redirect(channelId) {
@@ -124,7 +122,7 @@ export default class NewDMForm extends React.Component {
 
     let availableUsers;
     let submittableColor;
-    // /// might want to refactor here so we dont need to go through so many levels
+  
     if (this.props.fetchedUsers) {
     availableUsers = this.matches(this.props.fetchedUsers);
 

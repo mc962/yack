@@ -7,7 +7,6 @@ class GMList extends React.Component {
     this.submitModal = this.submitModal.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleItemClick = this.handleItemClick.bind(this);
-    // this.deleteTokenHandler = this.deleteTokenHandler.bind(this);
     this.redirect = this.redirect.bind(this);
 
     this.state = {letterVal: "", selectedChannelId: ""};
@@ -31,7 +30,6 @@ class GMList extends React.Component {
       const newChannelId = receivedChannel.currentChannel.id;
       this.redirect(newChannelId);
     }).then(this.props.handleEscape());
-    // this.setState({letterVal: "", selectedChannelId: ""});
   }
 
   redirect(channelId) {
@@ -79,7 +77,6 @@ class GMList extends React.Component {
 
 
   render() {
-    // let arrayChannels = Object.keys(this.state.)
 
     let availableChannels;
     let submittableColor;
@@ -120,5 +117,3 @@ class GMList extends React.Component {
   }
 }
 export default withRouter(GMList);
-// post to custom route to custom action in Chatroom controller,
-// will need new apitul/thunkaction

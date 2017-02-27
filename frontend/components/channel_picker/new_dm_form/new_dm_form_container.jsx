@@ -4,7 +4,7 @@ import { createChannel } from '../../../actions/channel_actions';
 import { fetchAllUsers } from '../../../actions/user_actions';
 import { getDirectMessageChannels } from '../../../reducers/selectors';
 import { withRouter } from 'react-router';
-// recommend just a user search for now, can do dm search if have time later
+
 const mapStateToProps = (state) => {
   const recentDirectMessages= getDirectMessageChannels(state);
   let fetchedUsers;
