@@ -1,7 +1,7 @@
 {
   "name": "yack",
   "version": "1.0.0",
-  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "description": "[http://www.slacking-yack.com/][Yack]",
   "main": "webpack.config.js",
   "directories": {
     "doc": "docs",
@@ -12,9 +12,7 @@
     "npm": "3.10.10"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack",
-    "postinstall": "./node_modules/.bin/webpack"
+    "heroku-postbuild": "webpack --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
