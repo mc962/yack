@@ -1,7 +1,8 @@
 import {
   RECEIVE_CURRENT_CHANNEL,
   RECEIVE_ALL_CHANNELS,
-  REMOVE_CHANNEL
+  REMOVE_CHANNEL,
+  RECEIVE_CHANNEL_MESSAGES
 } from '../actions/channel_actions';
 
 import { merge } from 'lodash';
@@ -13,8 +14,11 @@ const ChannelsReducer = (state = initialState, action) => {
     case RECEIVE_ALL_CHANNELS:
       return Object.assign({}, state, action.channels);
     case RECEIVE_CURRENT_CHANNEL:
-
       return Object.assign({}, state, {fetchedChannel: action.currentChannel});
+    case RECEIVE_CHANNEL_MESSAGES:
+
+
+      return Object.assign({}, state, {fetchedMessages: action.receivedChannelMessages});
     case REMOVE_CHANNEL:
       let nextState = Object.assign({}, state);
       delete nextState[action.channel.id];

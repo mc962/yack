@@ -4,6 +4,7 @@ import { leaveChannel, fetchAllChannels } from '../../actions/channel_actions';
 import { _size } from 'lodash';
 
 const mapStateToProps = (state) => {
+  
   let roomTitle;
   let roomUsers;
   let roomPurpose;

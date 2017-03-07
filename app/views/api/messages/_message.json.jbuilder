@@ -1,2 +1,2 @@
-json.extract! message, :content, :user_id, :channel_id
+json.extract! message, :id, :content, :user_id, :chatroom_id
 #not sure if need channel id

@@ -7,18 +7,18 @@ const mapStateToProps = (state, ownProps) => {
 
   let channelName;
   let channelId;
-  let messages;
+  // let messages;
   let users;
-
   if (state.currentChannel.fetchedChannel) {
 
-    messages = state.currentChannel.fetchedChannel.messages;
+    // messages = state.currentChannel.fetchedChannel.messages;
     users = state.currentChannel.fetchedChannel.users;
 
-  } else {
-    messages = [];
-  }
+   } //else {
+  //   messages = [];
+  // }
 
+  
   if (ownProps.params) {
     channelName = state.session.currentUser.channels[ownProps.params.id];
     channelId = ownProps.params.id;
@@ -31,7 +31,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     channelName: channelName,
     channelId: channelId,
-    messages: messages,
+    // messages: messages,
     users: users,
     loading: state.loading.currentChannelLoading
   };

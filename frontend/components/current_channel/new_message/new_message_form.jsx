@@ -32,7 +32,9 @@ class NewMessageForm extends React.Component {
 
     message.chatroom_id = parseInt(this.props.params.id);
 
-    this.props.createMessage(message);
+    this.props.createMessage(message).then(
+      this.setState( {content: ''} )
+    );
   }
 
   render() {

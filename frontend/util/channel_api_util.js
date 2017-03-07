@@ -30,10 +30,18 @@ export const joinChannel = (user_chat) => {
 };
 
 export const leaveChannel = (user_chat) => {
-  
+
   return $.ajax({
     method: 'DELETE',
     url: `/api/chatrooms/leave-channel/${user_chat.chatroom_id}`,
     data: { user_chat }
   });
 };
+
+///
+export const fetchChannelMessages = (chatroomId) => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/chatrooms/channel-messages/${chatroomId}`
+  })
+}

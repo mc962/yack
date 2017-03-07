@@ -21,10 +21,17 @@ class Api::ChatroomsController < ApplicationController
     render :index
   end
 
-  def show    
+  def show
 
     @chatroom = Chatroom.find(params[:id])
     render :show
+  end
+
+  def channel_messages
+    # @channel_messages = Message.where(chatroom_id: params[:id]).order(created_at: :asc)
+    @chatroom = Chatroom.find(params[:id])
+
+    render :messages
   end
 
   def join_channel

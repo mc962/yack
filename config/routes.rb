@@ -24,4 +24,5 @@ Rails.application.routes.draw do
 
   delete '/api/chatrooms/leave-channel/:id', to: 'api/chatrooms#leave_channel', defaults: {format: :json}
 
+  get '/api/chatrooms/channel-messages/:id', to: 'api/chatrooms#channel_messages', defaults: {format: :json}
 end

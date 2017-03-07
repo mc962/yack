@@ -9,6 +9,8 @@ export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
 
 export const START_RECEIVING_MESSAGE = 'START_RECEIVING_MESSAGE';
 
+
+
 export const createMessage = (message) => {
   return (dispatch) => {
     return APIUtil.createMessage(message).then(
@@ -38,6 +40,8 @@ export const deleteMessage = (message) => {
     );
   };
 };
+
+
 
 export const receiveMessage = (receivedMessage) => {
   return {

@@ -13,6 +13,9 @@ export const CREATE_CHANNEL = "CREATE_CHANNEL";
 export const JOIN_CHANNEL = 'JOIN_CHANNEL';
 export const REMOVE_CHANNEL = 'REMOVE_CHANNEL';
 
+export const FETCH_CHANNEL_MESSAGES = 'FETCH_CHANNEL_MESSAGES';
+export const RECEIVE_CHANNEL_MESSAGES = 'RECEIVE_CHANNEL_MESSAGES';
+
 export const fetchCurrentChannel = (channelId) => (dispatch) => {
   dispatch(startLoadingCurrentChannel());
 
@@ -46,13 +49,25 @@ export const joinChannel = (chatroom) => {
 };
 
 export const leaveChannel = (chatroom) => {
-  
+
   return (dispatch) => {
     return APIUtil.leaveChannel(chatroom).then((receivedChannel) => {
       return dispatch(removeChannel(receivedChannel));
     });
   };
 };
+
+export const fetchChannelMessages = (channelId) => {
+  return (dispatch) => {
+    return APIUtil.fetchChannelMessages(channelId).then(
+      (fetchedMessages) => {
+        return dispatch(receiveChannelMessages(fetchedMessages))
+      }
+    );
+  };
+};
+
+
 
 export const startLoadingCurrentChannel = () => ({
   type: START_LOADING_CURRENT_CHANNEL
@@ -79,3 +94,12 @@ export const removeChannel = (channel) => {
     channel
   };
 };
+
+
+
+export const receiveChannelMessages = (receivedChannelMessages) => {
+  return {
+    type: RECEIVE_CHANNEL_MESSAGES,
+    receivedChannelMessages
+  }
+}

@@ -4,6 +4,7 @@ import React from 'react';
 class MessageItem extends React.Component {
   constructor(props) {
     super(props);
+    
     this.editClickHandler = this.editClickHandler.bind(this);
     this.deleteClickHandler = this.deleteClickHandler.bind(this);
 
@@ -21,9 +22,8 @@ class MessageItem extends React.Component {
     e.preventDefault();
     let messagePackage = {id: this.props.messageId, chatroom_id: this.props.channelId};
 
-    this.props.deleteMessage(messagePackage).then(
-      this.props.fetchCurrentChannel(this.props.channelId)
-    );
+    this.props.deleteMessage(messagePackage); /// might need a follow up method
+
   }
 
   render() {

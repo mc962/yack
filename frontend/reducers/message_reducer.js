@@ -10,7 +10,7 @@ const initialState = {}; // this part might not work right
 
 const MessageReducer = (state = initialState, action) => {
   Object.freeze(state);
-  switch (action.type) {
+  switch (action.type) {    
     case RECEIVE_MESSAGE:
       return Object.assign({}, state, action.receivedMessage );
     case REMOVE_MESSAGE:
