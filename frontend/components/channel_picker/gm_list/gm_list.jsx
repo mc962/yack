@@ -16,6 +16,8 @@ class GMList extends React.Component {
     this.props.fetchAllChannels();
   }
 
+
+
   handleInputChange(e) {
     let val = e.currentTarget.value;
     this.setState({letterVal: val});
@@ -26,10 +28,13 @@ class GMList extends React.Component {
     const userId = this.props.currentUser.id;
     const user_chat = {chatroom_id: chatroomId, user_id: userId};
 
+
     this.props.joinChannel(user_chat).then((receivedChannel) => {
       const newChannelId = receivedChannel.currentChannel.id;
+
       this.redirect(newChannelId);
-    }).then(this.props.handleEscape());
+    })
+    .then(this.props.handleEscape());
   }
 
   redirect(channelId) {

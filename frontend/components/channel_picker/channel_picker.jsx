@@ -34,8 +34,17 @@ class ChannelPicker extends React.Component {
 
   handleEscape() {
     const currentUserId = this.props.currentUser.id;
-    this.setState({ dmModalIsOpen: false, gmModalIsOpen: false }, ((currentUser) => this.props.fetchCurrentUser(this.props.currentUser.id)) );
+    this.setState({ dmModalIsOpen: false, gmModalIsOpen: false })
+
   }
+
+  // componentWillUpdate(prevProps) {
+  //
+  //   if (prevProps === this.props) {
+  //     this.props.fetchCurrentUser(this.props.currentUser.id)
+  //
+  //   }
+  // }
 
 
   render() {    // get an array of the channel elmenets
