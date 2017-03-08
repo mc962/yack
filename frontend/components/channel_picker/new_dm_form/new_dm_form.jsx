@@ -73,12 +73,17 @@ export default class NewDMForm extends React.Component {
 
     let userId = e.currentTarget.value;
     let name = this.props.fetchedUsers[userId].username;
-
+    
+    let userUrl = this.props.fetchedUsers[userId].gravatar_url;
     let numUsers = Object.keys(this.state.submittableUsers).length;
 
     if (numUsers < 7) {
       clickedUser[userId] = (
-        <div className= 'user-token' onClick={this.deleteTokenHandler} id={userId} key={userId}>{name}</div>
+        <div className='user-token' onClick={this.deleteTokenHandler} id={userId} key={userId}>
+          <div className='tiny-profile-picture'><img src={userUrl} /></div>
+          <div className='token-name'>{name}</div>
+          <div className='token-x'>x</div>
+        </div>
       );
 
     }

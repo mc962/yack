@@ -16,6 +16,7 @@ const mapStateToProps = (state) => {
     fetchedUsers = {};
   }
   let currentUserId = state.session.currentUser.id;
+
   return {
     fetchedUsers: fetchedUsers,
     recentDirectMessages: recentDirectMessages,

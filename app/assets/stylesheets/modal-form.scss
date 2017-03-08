@@ -236,12 +236,15 @@ li.chatroom-table-element:hover {
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 3px;
-  padding: 3px;
+  padding: 1px;
   background-color: #2D9EE0;
   color: #FFFFFF;
   height: 25px;
   border-radius: 4px;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Lato', sans-serif;
 }
 
 .user-token-list {
@@ -249,6 +252,26 @@ li.chatroom-table-element:hover {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.tiny-profile-picture {
+  height: 25px;
+  width: 25px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+
+}
+
+.token-name {
+  margin-right: 10px;
+  margin-left: 7px;
+  line-height: 23px;
+}
+
+.token-x {
+  text-indent: 5px;
+  direction: rtl;
+  line-height: 23px;
 }
 
 .dm-user-info {
