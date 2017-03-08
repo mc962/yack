@@ -30,7 +30,7 @@ class Api::ChatroomsController < ApplicationController
   def channel_messages
     # @channel_messages = Message.where(chatroom_id: params[:id]).order(created_at: :asc)
     @chatroom = Chatroom.includes(messages: [:user]).find(params[:id])
-    
+
     render :messages
   end
 
@@ -38,7 +38,7 @@ class Api::ChatroomsController < ApplicationController
     @chatroom = Chatroom.find(params[:id])
     @join_user = UserChat.new(chatroom_id: params[:user_chat][:chatroom_id], user_id: params[:user_chat][:user_id])
 
-    if @join_user.save!
+    if @join_user.save
       render :show
     else
       render(json: ["Invalid params."], status: 422)

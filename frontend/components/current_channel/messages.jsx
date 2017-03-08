@@ -17,7 +17,7 @@ class Messages extends React.Component {
     // let channel = this.pusher.subscribe(`channel_${channelId}`);
     // channel.bind('message_published', (data) => {
     //   // alert(data.message);
-    //   this.props.fetchCurrentChannel(channelId);
+    //   this.props.fetchChannelMessages(this.props.channelId);
     // });
     App.messages = App.cable.subscriptions.create('MessagesChannel', {
       received: (data) => {

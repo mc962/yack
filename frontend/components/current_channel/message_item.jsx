@@ -11,9 +11,7 @@ class MessageItem extends React.Component {
   }
   editClickHandler(e) {
     e.preventDefault();
-    // updateMessage(this.props.messageId).then(
-    //   this.props.fetchCurrentChannel(this.props.channelId)
-    // );
+
     console.log('Also not yet implemented. But you can always destroy and start fresh. Once more, a random number for your troubles.');
     console.log(Math.floor((Math.random(42)*10)));
   }
@@ -22,7 +20,7 @@ class MessageItem extends React.Component {
     e.preventDefault();
     let messagePackage = {id: this.props.messageId, chatroom_id: this.props.channelId};
 
-    this.props.deleteMessage(messagePackage); /// might need a follow up method
+    this.props.deleteMessage(messagePackage); 
 
   }
 
