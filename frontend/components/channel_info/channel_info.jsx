@@ -10,10 +10,11 @@ class ChannelInfo extends React.Component {
 
   leaveHandler(e) {
     e.preventDefault();
-
-    this.props.leaveChannel({chatroom_id: this.props.roomId, user_id: this.props.currentUser}).then((receivedChannel) => {
+    const currentUserId = this.props.currentUserId;
+    this.props.leaveChannel({chatroom_id: this.props.roomId, user_id: this.props.currentUserId}).then((receivedChannel) => {
+      this.props.fetchCurrentUser(currentUserId)
       this.redirect();
-    }).then(this.props.fetchAllChannels());
+      })
   }
 
   redirect() {

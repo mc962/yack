@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
 import ChannelInfo from './channel_info';
 import { leaveChannel, fetchAllChannels } from '../../actions/channel_actions';
+import { fetchCurrentUser } from '../../actions/session_actions';
+
 import { _size } from 'lodash';
 
 const mapStateToProps = (state) => {
-  
+
   let roomTitle;
   let roomUsers;
   let roomPurpose;
@@ -33,14 +35,15 @@ const mapStateToProps = (state) => {
     numUsers: roomUsers,
     roomPurpose: roomPurpose,
     roomId: roomId,
-    currentUser: currentUserId
+    currentUserId: currentUserId
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     leaveChannel: (channel) => dispatch(leaveChannel(channel)),
-    fetchAllChannels: () => dispatch(fetchAllChannels())
+    fetchAllChannels: () => dispatch(fetchAllChannels()),
+    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId))
   };
 };
 
