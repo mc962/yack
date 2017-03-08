@@ -29,8 +29,8 @@ class Api::ChatroomsController < ApplicationController
 
   def channel_messages
     # @channel_messages = Message.where(chatroom_id: params[:id]).order(created_at: :asc)
-    @chatroom = Chatroom.find(params[:id])
-
+    @chatroom = Chatroom.includes(messages: [:user]).find(params[:id])
+    
     render :messages
   end
 
@@ -48,7 +48,7 @@ class Api::ChatroomsController < ApplicationController
   def leave_channel
     @chatroom = Chatroom.find(params[:user_chat][:chatroom_id])
     subscription = UserChat.find_subscription({user_id: params[:user_chat][:user_id], chatroom_id: params[:user_chat][:chatroom_id]})
-    
+
     if subscription
       subscription.first.destroy
     end

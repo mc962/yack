@@ -4,7 +4,7 @@ import React from 'react';
 class MessageItem extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.editClickHandler = this.editClickHandler.bind(this);
     this.deleteClickHandler = this.deleteClickHandler.bind(this);
 
@@ -27,11 +27,38 @@ class MessageItem extends React.Component {
   }
 
   render() {
+    let pictureSpot;
+    if (this.props.gravatarUrl === '') {
+      pictureSpot = <div className='gutter'></div>
+    } else {
+      pictureSpot = <img src={this.props.gravatarUrl} alt={this.props.username} className='user-picture' />
+    }
+
+    let channelMessageActions;
+
+    if (this.props.userId !== this.props.currentUserId) {
+      channelMessageActions = <div className='no-actions'></div>
+    } else {
+
+          channelMessageActions = (
+          <div className='message-actions hoverable-btns'>
+            <div className='msg-edit-btn'>
+              <i className="fa fa-pencil" aria-hidden="true" onClick={this.editClickHandler}></i>
+            </div>
+            <div className='msg-delete-btn'>
+              <i className="fa fa-trash-o" aria-hidden="true" onClick={this.deleteClickHandler}></i>
+            </div>
+          </div>
+        )
+
+    }
+
+
     return (
 
         <li className='message-element'>
           <div className='message-info'>
-            <img className='user-picture' src={this.props.gravatarUrl} alt={this.props.username} />
+            {pictureSpot}
 
             <div className='message-text'>
 
@@ -41,15 +68,8 @@ class MessageItem extends React.Component {
             </div>
 
           </div>
-          <div className='message-actions'>
-            <div className='msg-edit-btn'>
-              <i className="fa fa-pencil" aria-hidden="true" onClick={this.editClickHandler}></i>
-            </div>
-            <div className='msg-delete-btn'>
-              <i className="fa fa-trash-o" aria-hidden="true" onClick={this.deleteClickHandler}></i>
-            </div>
-          </div>
 
+          {channelMessageActions}
 
 
         </li>

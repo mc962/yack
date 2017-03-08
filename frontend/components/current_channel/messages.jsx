@@ -47,22 +47,36 @@ class Messages extends React.Component {
     let channelId = this.props.channelId;
       if (this.props.messages) {
 
+        let prevMessage;
+
         messageElements = this.props.messages.map((message, idx) => {
 
-          const userId = parseInt(message.user_id);
-          if (userId && channelUsers[userId]) {
+          // const userId = parseInt(message.user_id);
+          // if (userId && channelUsers[userId]) {
+          //
+          //   username=channelUsers[userId].username;
+          // } else {
+          //   username="";
+          // }
 
-            username=channelUsers[userId].username;
-          } else {
-            username="";
+
+          // let userImageLink = channelUsers[userId] ? channelUsers[userId].gravatar_url : window.images.cartoon_yak
+          let userImageLink = message.user_url;
+          let name = message.username;
+          if (prevMessage) {
+            if (prevMessage.username === message.username) {
+              userImageLink = ''
+              name = ''
+            }
           }
 
+          prevMessage = message;
           return <MessageItemContainer key={idx}
-                                       username={username}
+                                       username={name}
                                        content={message.content}
                                        messageId={message.id}
-                                       gravatarUrl={channelUsers[userId].gravatar_url}
-                                       fetchCurrentChannel={this.props.fetchCurrentChannel}
+                                       gravatarUrl={userImageLink}
+                                       userId={message.user_id}
                                        channelId={channelId} />;
         });
       } else {

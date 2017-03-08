@@ -3,6 +3,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router';
 
 import Display from './display.jsx';
+
 class Home extends React.Component {
   constructor(props) {
     super(props);

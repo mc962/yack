@@ -9,7 +9,9 @@ const mapStateToProps = (state, ownProps) => {
     content: ownProps.content,
     messageId: ownProps.messageId,
     gravatarUrl: ownProps.gravatarUrl,
-    channelId: ownProps.channelId
+    channelId: ownProps.channelId,
+    currentUserId: state.session.currentUser.id,
+    userId: ownProps.userId
   };
 };
 
