@@ -7,7 +7,7 @@ const UserItem = ({username, userId, firstName, lastName, gravatarUrl, handleIte
   let listEl = (
     <li className='user-table-element' onClick={handleItemClick} value={userId}>
       <div className='dm-user-info'>
-
+        
         <img className='dm-user-picture' src={gravatarUrl} alt={username} />
         <div className='dm-username'>{username}</div>
         <div className='dm-user-fullname'>{firstName} {lastName}</div>

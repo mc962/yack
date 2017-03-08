@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllChannels: () => dispatch(fetchAllChannels()),
     joinChannel: (user_chat) => dispatch(joinChannel(user_chat)),
-    fetchCurrentUser: (userId) => fetchCurrentUser(userId)
+    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId))
   };
 };
 

@@ -36,9 +36,9 @@ class Api::ChatroomsController < ApplicationController
 
   def join_channel
     @chatroom = Chatroom.find(params[:id])
-    join_user = UserChat.new(chatroom_id: params[:user_chat][:chatroom_id], user_id: params[:user_chat][:user_id])
+    @join_user = UserChat.new(chatroom_id: params[:user_chat][:chatroom_id], user_id: params[:user_chat][:user_id])
 
-    if join_user.save!
+    if @join_user.save!
       render :show
     else
       render(json: ["Invalid params."], status: 422)

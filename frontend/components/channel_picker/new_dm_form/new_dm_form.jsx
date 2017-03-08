@@ -46,7 +46,7 @@ export default class NewDMForm extends React.Component {
 
     this.props.createChannel(chatroom).then((receivedChannel) => {
       const newChannelId = receivedChannel.currentChannel.id;
-
+      this.props.fetchCurrentUser(this.props.currentUserId);
       this.redirect(newChannelId);
     }).then(this.props.handleEscape());
 
@@ -122,7 +122,7 @@ export default class NewDMForm extends React.Component {
 
     let availableUsers;
     let submittableColor;
-  
+
     if (this.props.fetchedUsers) {
     availableUsers = this.matches(this.props.fetchedUsers);
 

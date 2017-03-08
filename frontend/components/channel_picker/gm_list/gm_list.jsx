@@ -30,11 +30,12 @@ class GMList extends React.Component {
 
 
     this.props.joinChannel(user_chat).then((receivedChannel) => {
-      const newChannelId = receivedChannel.currentChannel.id;
 
+      const newChannelId = receivedChannel.currentChannel.id;
+      this.props.fetchCurrentUser(userId) ////////////////remove hardcoded USER ID!!!!!!!
       this.redirect(newChannelId);
+      this.props.handleEscape()
     })
-    .then(this.props.handleEscape());
   }
 
   redirect(channelId) {

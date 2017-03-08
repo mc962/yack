@@ -34,17 +34,18 @@ class ChannelPicker extends React.Component {
 
   handleEscape() {
     const currentUserId = this.props.currentUser.id;
+
     this.setState({ dmModalIsOpen: false, gmModalIsOpen: false })
+
 
   }
 
-  // componentWillUpdate(prevProps) {
-  //
-  //   if (prevProps === this.props) {
-  //     this.props.fetchCurrentUser(this.props.currentUser.id)
-  //
-  //   }
-  // }
+  componentWillUpdate(prevProps) {
+
+    // if (prevProps !== this.props) {
+
+    // }
+  }
 
 
   render() {    // get an array of the channel elmenets
@@ -104,7 +105,7 @@ class ChannelPicker extends React.Component {
 
 
           <div className='dm-channels'>
-            <button className='channel-type direct-messages-button'>Direct Messages</button>
+            <button onClick={this.handleNewDMClick} className='channel-type direct-messages-button'>Direct Messages</button>
             <button onClick={this.handleNewDMClick} className='new-dm-button'>+</button>
 
             <Modal

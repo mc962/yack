@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchCurrentChannel: (currentChannelId) => dispatch(fetchCurrentChannel(currentChannelId)),
     fetchAllChannels: () => dispatch(fetchAllChannels()),
     fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId))
-    
+
   };
 };
 
