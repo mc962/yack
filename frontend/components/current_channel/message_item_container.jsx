@@ -16,8 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    updateMessage: (message) => dispatch(updateMessage(message)),
+  return {    
     deleteMessage: (messageData) => dispatch(deleteMessage(messageData))
     // fetchCurrentChannel: ownProps.fetchCurrentChannel
   };

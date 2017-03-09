@@ -4,8 +4,9 @@ class Api::MessagesController < ApplicationController
     if @message.save
       # Pusher.trigger("channel_#{@message.chatroom_id}", 'message_published', {})
       ActionCable.server.broadcast 'messages',
-        message: @message
-        render :index
+      message: @message
+      
+      render :index
     else
       render(json: @message.errors.full_messages, status: 422)
     end
@@ -22,7 +23,10 @@ class Api::MessagesController < ApplicationController
   def update
     @message = current_user.messages.find(params[:id])
 
-    if @message.update_attributes
+    if @message.update_attributes(message_params)
+      ActionCable.server.broadcast 'messages',
+      message: @message
+
       render :index
     else
       render(json: @message.errors.full_messages, status: 422)

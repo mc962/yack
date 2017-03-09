@@ -5,6 +5,7 @@ import MessageItemContainer from './message_item_container';
 class Messages extends React.Component {
   constructor(props) {
     super(props)
+
   }
 
   componentDidMount() {
@@ -51,16 +52,6 @@ class Messages extends React.Component {
 
         messageElements = this.props.messages.map((message, idx) => {
 
-          // const userId = parseInt(message.user_id);
-          // if (userId && channelUsers[userId]) {
-          //
-          //   username=channelUsers[userId].username;
-          // } else {
-          //   username="";
-          // }
-
-
-          // let userImageLink = channelUsers[userId] ? channelUsers[userId].gravatar_url : window.images.cartoon_yak
           let userImageLink = message.user_url;
           let name = message.username;
           if (prevMessage) {

@@ -23,7 +23,7 @@ export const createMessage = (message) => {
 
 export const updateMessage = (message) => {
   return (dispatch) => {
-    return APIUtil.updateMessage(message.id).then(
+    return APIUtil.updateMessage(message).then(
       (updatedMessage) => {
         return dispatch(receiveMessage(updatedMessage));
       }

@@ -1,26 +1,35 @@
 import React from 'react';
-
+import EditMessageContainer from './new_message/edit_message_container';
 
 class MessageItem extends React.Component {
   constructor(props) {
     super(props);
 
+    // editClickHandler is for the button in the messageItem component
+    // while submitEditHandler is for the button in the edit message form
     this.editClickHandler = this.editClickHandler.bind(this);
+    this.submitEditHandler = this.submitEditHandler.bind(this);
     this.deleteClickHandler = this.deleteClickHandler.bind(this);
 
+    this.state = { editable: false }
   }
+
+  // render message content OR edit form
   editClickHandler(e) {
     e.preventDefault();
 
-    console.log('Also not yet implemented. But you can always destroy and start fresh. Once more, a random number for your troubles.');
-    console.log(Math.floor((Math.random(42)*10)));
+    this.setState({editable: true})
+  }
+
+  submitEditHandler() {    
+    this.setState({editable: false})
   }
 
   deleteClickHandler(e) {
     e.preventDefault();
     let messagePackage = {id: this.props.messageId, chatroom_id: this.props.channelId};
 
-    this.props.deleteMessage(messagePackage); 
+    this.props.deleteMessage(messagePackage);
 
   }
 
@@ -51,28 +60,30 @@ class MessageItem extends React.Component {
 
     }
 
+    let renderableContent;
+    if (this.state.editable) {
 
-    return (
-
+      renderableContent = <EditMessageContainer userId={this.props.currentUserId}
+                                                chatroomId={this.props.channelId}
+                                                content={this.props.content}
+                                                messageId={this.props.messageId}
+                                                submitEditHandler={this.submitEditHandler}/>
+    } else {
+      renderableContent = (
         <li className='message-element'>
           <div className='message-info'>
             {pictureSpot}
-
             <div className='message-text'>
-
-
               <div className ='message-author'>{this.props.username}</div>
               <div className='message-content dont-break-out'>{this.props.content}</div>
             </div>
-
           </div>
-
           {channelMessageActions}
-
-
         </li>
+      );
+    }
 
-    );
+    return renderableContent;
 
   }
 }

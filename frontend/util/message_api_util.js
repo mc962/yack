@@ -6,9 +6,9 @@ export const createMessage = (message) =>  {
   });
 };
 
-export const editMessage = (message) => {
+export const updateMessage = (message) => {
   return $.ajax({
-    method: 'UPDATE',
+    method: 'PATCH',
     url: `/api/chatrooms/${message.chatroom_id}/messages/${message.id}`,
     data: { message }
   });
