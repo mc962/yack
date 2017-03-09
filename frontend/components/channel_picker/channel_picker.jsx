@@ -16,14 +16,13 @@ class ChannelPicker extends React.Component {
     this.handleNewDMClick = this.handleNewDMClick.bind(this);
     this.handleNewGCClick = this.handleNewGCClick.bind(this);
     this.handleEscape = this.handleEscape.bind(this);
-    /// change this back to false when finished styling
+
     this.state = {dmModalIsOpen: false, gmModalIsOpen: false};
   }
 
 
   handleNewDMClick(e) {
     e.preventDefault();
-    // this.handleEscape = this.handleEscape.bind(this);
     this.setState({ dmModalIsOpen: true });
   }
 
@@ -40,15 +39,7 @@ class ChannelPicker extends React.Component {
 
   }
 
-  componentWillUpdate(prevProps) {
-
-    // if (prevProps !== this.props) {
-
-    // }
-  }
-
-
-  render() {    // get an array of the channel elmenets
+  render() {  
 
       const generalChannelElements = this.props.generalMessageChannels.map((channel, idx) => {
         return (

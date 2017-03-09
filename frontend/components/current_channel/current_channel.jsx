@@ -16,19 +16,10 @@ class CurrentChannel extends React.Component {
   componentDidMount(){
     const channelId = parseInt(this.props.params.id);
     this.props.fetchCurrentChannel(channelId);
-
-
   }
-
-  
-
   render() {
-
-
-
         return this.props.loading ?
           <LoadingIcon /> :
-
 
           <div className='current-channel-sections'>
             <header className='channel-information'>
@@ -40,14 +31,10 @@ class CurrentChannel extends React.Component {
                 channelId={ this.props.params.id} />
             </section>
 
-
             <footer className='new-messages-form-container'>
               <NewMessageFormContainer />
             </footer>
           </div>
-
-
-
   }
 }
 

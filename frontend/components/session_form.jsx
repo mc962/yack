@@ -44,9 +44,6 @@ class SessionForm extends React.Component {
      this.props.processForm(user).then(() => this.redirect('/'),
     this.setState({username: "", password: "", first_name: "", last_name: "", email: ""}));
 
-
-
-    /////////////////errors dont get cleared///////////errros need some work
    }
 
    componentWillReceiveProps(newProps) {
@@ -66,9 +63,6 @@ class SessionForm extends React.Component {
 
 
      if (this.props.errors) {
-      //  errList = this.props.errors.map((err, idx) => {
-      //    return <li className='entry-form-error' key={idx}>{err}</li>;
-      //    });
 
           if (this.props.errors.includes('first_name')){
             firstNameErr = ' errorable';
@@ -120,7 +114,6 @@ class SessionForm extends React.Component {
              <h1 className='form-heading'>Sign Up</h1>
 
              <div className="form-main">
-
                <div className='session-form-section'>
                  <div className= 'full-name'>
                    <div className='full-name-label'>Your name</div>
@@ -129,7 +122,6 @@ class SessionForm extends React.Component {
                      <input type='text' className={'name-input session-input field-input' + lastNameErr} id='last_name' placeholder='Last Name' onChange={this.handleInputChange} value={this.state.last_name} />
                    </div>
                  </div>
-
                </div>
 
                <div className='session-form-section'>
@@ -148,10 +140,8 @@ class SessionForm extends React.Component {
                    <input type='password' className={'session-input field-input password-input' + passwordErr} id='password' placeholder='password' onChange={this.handleInputChange} value={this.state.password} />
                  </div>
 
-
                </div>
              </div>
-
 
              <div className='guest-login'>Click <div onClick={this.handleGuestSubmit} className='guest-login-button'>here</div> to login as a guest.</div>
 
@@ -197,9 +187,7 @@ class SessionForm extends React.Component {
                      <input type='password' className='session-input field-input password-input' id='password' placeholder='password' onChange={this.handleInputChange} value={this.state.password} />
                    </div>
 
-
                  </div>
-
 
                </div>
 

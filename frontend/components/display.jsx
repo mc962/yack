@@ -17,8 +17,6 @@ const Display = ({children}) => {
             <ChannelPickerContainer />
         </sidebar>
 
-
-
           <section className='current-channel-container'>
             {children}
           </section>

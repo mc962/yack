@@ -73,9 +73,6 @@ class Messages extends React.Component {
       } else {
         return <div className='no-messages'></div>;
       }
-
-
-
     return (
     <div>
       <ul className='channel-messages-list'>

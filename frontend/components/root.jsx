@@ -7,6 +7,7 @@ import HomeContainer from './home_container';
 import Display from './display';
 import CurrentChannel from './current_channel/current_channel';
 import CurrentChannelContainer from './current_channel/current_channel_container'
+
 const Root = ({ store }) => {
   const _redirectIfLogggedIn = (nextState, replace) => {
     if (store.getState().session.currentUser) {
@@ -30,11 +31,6 @@ const Root = ({ store }) => {
     </Provider>
   )
 
-
-
-
-
 }
 
 export default Root;
-// on enter, if logged in, redirect  to the messages

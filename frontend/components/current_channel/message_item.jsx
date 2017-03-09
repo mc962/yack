@@ -17,7 +17,6 @@ class MessageItem extends React.Component {
   // render message content OR edit form
   editClickHandler(e) {
     e.preventDefault();
-
     this.setState({editable: true})
   }
 
@@ -30,7 +29,6 @@ class MessageItem extends React.Component {
     let messagePackage = {id: this.props.messageId, chatroom_id: this.props.channelId};
 
     this.props.deleteMessage(messagePackage);
-
   }
 
   render() {

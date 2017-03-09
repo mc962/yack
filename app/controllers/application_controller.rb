@@ -31,6 +31,6 @@ class ApplicationController < ActionController::Base
 
   def user_params
     params.require(:user).permit(:username, :first_name, :last_name, :password, :email)
-    ## bonus password_confirmation, add email back in
+    ## bonus password_confirmation
   end
 end

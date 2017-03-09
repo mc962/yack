@@ -33,8 +33,6 @@ class GeneralChannelPickerItem extends React.Component {
     </button>
   );
 
-
-
     return (
       listEl
     );

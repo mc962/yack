@@ -32,7 +32,6 @@ class Home extends React.Component {
           </section>
       );
 
-
     } else {
       return(
         <div className='home-container entry-links'>
