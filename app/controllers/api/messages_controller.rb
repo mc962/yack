@@ -5,7 +5,7 @@ class Api::MessagesController < ApplicationController
       # Pusher.trigger("channel_#{@message.chatroom_id}", 'message_published', {})
       ActionCable.server.broadcast 'messages',
       message: @message
-      
+
       render :index
     else
       render(json: @message.errors.full_messages, status: 422)
@@ -39,6 +39,8 @@ class Api::MessagesController < ApplicationController
     @message = current_user.messages.find(params[:id])
     @chatroom = @message.chatroom
     if @message
+      ActionCable.server.broadcast 'messages',
+      
       @message.destroy
     end
     render '/api/chatrooms/show'

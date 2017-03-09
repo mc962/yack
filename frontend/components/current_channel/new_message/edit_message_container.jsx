@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => {
     messageChatroomId: ownProps.chatroomId,
     messageUserId: ownProps.userId,
     messageContent: ownProps.content,
-    submitMessageHandler: ownProps.submitMessageHandler
+    userPicture: ownProps.userPicture,
+    editEscapeHandler: ownProps.editEscapeHandler
   }
 }
 

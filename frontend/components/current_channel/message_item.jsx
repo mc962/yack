@@ -6,9 +6,9 @@ class MessageItem extends React.Component {
     super(props);
 
     // editClickHandler is for the button in the messageItem component
-    // while submitEditHandler is for the button in the edit message form
+    // while editEscapeHandler is for the button in the edit message form
     this.editClickHandler = this.editClickHandler.bind(this);
-    this.submitEditHandler = this.submitEditHandler.bind(this);
+    this.editEscapeHandler = this.editEscapeHandler.bind(this);
     this.deleteClickHandler = this.deleteClickHandler.bind(this);
 
     this.state = { editable: false }
@@ -21,7 +21,7 @@ class MessageItem extends React.Component {
     this.setState({editable: true})
   }
 
-  submitEditHandler() {    
+  editEscapeHandler() {
     this.setState({editable: false})
   }
 
@@ -49,11 +49,11 @@ class MessageItem extends React.Component {
 
           channelMessageActions = (
           <div className='message-actions hoverable-btns'>
-            <div className='msg-edit-btn'>
-              <i className="fa fa-pencil" aria-hidden="true" onClick={this.editClickHandler}></i>
+            <div className='msg-edit-btn' onClick={this.editClickHandler}>
+              <i className="fa fa-pencil" aria-hidden="true"></i>
             </div>
-            <div className='msg-delete-btn'>
-              <i className="fa fa-trash-o" aria-hidden="true" onClick={this.deleteClickHandler}></i>
+            <div className='msg-delete-btn' onClick={this.deleteClickHandler}>
+              <i className="fa fa-trash-o" aria-hidden="true"></i>
             </div>
           </div>
         )
@@ -67,7 +67,8 @@ class MessageItem extends React.Component {
                                                 chatroomId={this.props.channelId}
                                                 content={this.props.content}
                                                 messageId={this.props.messageId}
-                                                submitEditHandler={this.submitEditHandler}/>
+                                                userPicture={this.props.gravatarUrl}
+                                                editEscapeHandler={this.editEscapeHandler}/>
     } else {
       renderableContent = (
         <li className='message-element'>
