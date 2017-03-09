@@ -8,7 +8,7 @@ class EditMessageForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.addFocus = this.addFocus.bind(this);
     this.removeFocus = this.removeFocus.bind(this);
-    this.handleEscapeKey = this.handleEscapeKey.bind(this);
+    this.handleInputKeypress = this.handleInputKeypress.bind(this);
 
     this.handleComponentClick = this.handleComponentClick.bind(this);
 
@@ -48,9 +48,11 @@ class EditMessageForm extends React.Component {
     ).then(this.props.editEscapeHandler());
   }
 
-  handleEscapeKey(e) {
+  handleInputKeypress(e) {
     if (e.keyCode === 27) {
       this.props.editEscapeHandler();
+    } else if (e.keyCode === 13) {
+      this.handleEditMessageSubmit(e)
     }
   }
   addFocus(e) {
@@ -94,7 +96,7 @@ class EditMessageForm extends React.Component {
                           onChange={this.handleChange}
                           onFocus={this.addFocus}
                           onBlur={this.removeFocus}
-                          onKeyDown={this.handleEscapeKey}/>
+                          onKeyDown={this.handleInputKeypress}/>
               </div>
               <div className='edit-form-exit-btns'>
                 <div className='cancel-button edit-submit-btn' onClick={this.props.editEscapeHandler}>Cancel</div>
