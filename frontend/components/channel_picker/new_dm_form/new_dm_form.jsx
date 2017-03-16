@@ -15,7 +15,7 @@ export default class NewDMForm extends React.Component {
     this.handleItemClick = this.handleItemClick.bind(this);
     this.deleteTokenHandler = this.deleteTokenHandler.bind(this);
     this.redirect = this.redirect.bind(this);
-    this.state = {letterVal: "", submittableUsers: {}};
+    this.state = {letterVal: "", disabledButton: true, submittableUsers: {}};
   }
 
   componentDidMount() {
@@ -26,6 +26,7 @@ export default class NewDMForm extends React.Component {
     let val = e.currentTarget.value;
     this.setState({letterVal: val});
   }
+
 
   handleModalSubmit(e) {
     e.preventDefault();
@@ -39,7 +40,7 @@ export default class NewDMForm extends React.Component {
     let names = Object.keys(this.state.submittableUsers).map((id) => {
       return this.props.fetchedUsers[id].username;
     });
-    if (!names.includes(this.props.currentUserUsername)) {      
+    if (!names.includes(this.props.currentUserUsername)) {
       names.push(this.props.currentUserUsername)
     }
     let room_title = names.join(', ');
@@ -65,8 +66,9 @@ export default class NewDMForm extends React.Component {
     let undeletedUsers = this.state.submittableUsers;
 
     let userId = parseInt(e.currentTarget.id);
-    undeletedUsers[userId] = undefined;
-    this.setState({submittableUsers: undeletedUsers});
+
+    delete undeletedUsers[userId]
+    this.setState({submittableUsers: undeletedUsers}, this.toggleButtonStatus);
   }
 
   handleItemClick(e) {
@@ -91,13 +93,36 @@ export default class NewDMForm extends React.Component {
     }
 
     let newSubmittedUsersState = merge({}, this.state.submittableUsers, clickedUser);
-    this.setState({submittableUsers: newSubmittedUsersState});
+    this.setState({submittableUsers: newSubmittedUsersState}, this.toggleButtonStatus);
 
   }
 
 
 
+  barFocuser(e) {
+    let searchBar = document.querySelector('.input-border');
+    searchBar.classList.add('focused-searchbar');
+  }
 
+  barBlur(e) {
+    let searchBar = document.querySelector('.input-border');
+    searchBar.classList.remove('focused-searchbar');
+  }
+
+  toggleButtonStatus() {
+
+    let submitButton = document.querySelector('.new-dm-submit')
+    const submittableUsersCount = Object.keys(this.state.submittableUsers).length;
+
+    if (submittableUsersCount > 0) {
+
+      submitButton.classList.add('submittableButton');
+      this.setState({disabledButton: false});
+    } else if (submittableUsersCount === 0) {
+      submitButton.classList.remove('submittableButton')
+      this.setState({disabledButton: true});
+    }
+  }
 
   matches(users) {
     let arrayUsers = Object.keys(users).map((id) => users[id]);
@@ -105,7 +130,13 @@ export default class NewDMForm extends React.Component {
     let matchings = [];
     if (this.state.letterVal.length === 0) {
       matchings = arrayUsers.map((user, idx) => {
-        return <UserItem key={idx} username={user.username} userId={user.id} firstName={user.first_name} lastName={user.last_name} gravatarUrl={user.gravatar_url} handleItemClick={this.handleItemClick} />;
+        return <UserItem key={idx}
+                         username={user.username}
+                         userId={user.id}
+                         firstName={user.first_name}
+                         lastName={user.last_name}
+                         gravatarUrl={user.gravatar_url}
+                         handleItemClick={this.handleItemClick} />;
       });
       return matchings;
     } else {
@@ -113,7 +144,13 @@ export default class NewDMForm extends React.Component {
         let substring = user.username.slice(0, this.state.letterVal.length);
         if (substring.toLowerCase() === this.state.letterVal.toLowerCase()) {
           matchings.push(
-            <UserItem key={idx} username={user.username} userId={user.id} firstName={user.first_name} lastName={user.last_name} gravatarUrl={user.gravatar_url} handleItemClick={this.handleItemClick} />
+            <UserItem key={idx}
+                      username={user.username}
+                      userId={user.id}
+                      firstName={user.first_name}
+                      lastName={user.last_name}
+                      gravatarUrl={user.gravatar_url}
+                      handleItemClick={this.handleItemClick} />
           );
         }
       });
@@ -128,7 +165,7 @@ export default class NewDMForm extends React.Component {
     });
 
     let availableUsers;
-    let submittableColor;
+    // let submittableColor;
 
     if (this.props.fetchedUsers) {
     availableUsers = this.matches(this.props.fetchedUsers);
@@ -137,11 +174,11 @@ export default class NewDMForm extends React.Component {
       availableUsers = [];
 
     }
-    if (availableUsers.length < _.size(this.props.fetchedUsers)) {
-      submittableColor = ' submittableButton';
-    } else {
-      submittableColor = '';
-    }
+    // if (availableUsers.length < _.size(this.props.fetchedUsers)) {
+    //   submittableColor = ' submittableButton';
+    // } else {
+    //   submittableColor = '';
+    // }
 
     return (
       <div className="modal-form">
@@ -155,9 +192,18 @@ export default class NewDMForm extends React.Component {
 
                     {arraySubmittableUsers}
 
-                  <input type='text' className='dm-users-search' placeholder={Object.keys(this.state.submittableUsers).length === 0 ? 'Find or start a conversation' : ""} onChange={this.handleInputChange} value={this.state.letterVal}/>
+                  <input type='text'
+                         className='dm-users-search'
+                         placeholder={Object.keys(this.state.submittableUsers).length === 0 ? 'Find or start a conversation' : ""}
+                         onChange={this.handleInputChange}
+                         value={this.state.letterVal}
+                         onFocus={this.barFocuser}
+                         onBlur={this.barBlur} />
                 </div>
-                <input type='submit' className={'new-dm-submit' + submittableColor} value='Go' />
+                <input type='submit'
+                       className={'new-dm-submit'}
+                       value='Go'
+                       disabled={this.state.disabledButton} />
             </div>
               <h4 className='users-heading'>Available Users</h4>
               <ul className='selectable-users'>

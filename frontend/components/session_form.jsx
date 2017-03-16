@@ -42,7 +42,7 @@ class SessionForm extends React.Component {
      const user = Object.assign({}, this.state);
 
      this.props.processForm(user).then(() => this.redirect('/'),
-    this.setState({username: "", password: "", first_name: "", last_name: "", email: ""}));
+    this.setState({password: ""}));
 
    }
 
@@ -97,6 +97,7 @@ class SessionForm extends React.Component {
     } else {
       errorClass = '';
     }
+    errList = this.props.errors.join(' ');
 
      if (this.props.formType === 'signup') {
        form = (

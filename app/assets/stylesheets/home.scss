@@ -11,7 +11,7 @@
 
 .home-login-link {
  border: 3px solid #29ae78;
-
+ background-color: #29ae78;
  border-radius: 4px;
  width: 73px;
  height: 35px;
@@ -24,6 +24,10 @@
  margin-bottom: 20px;
  margin-top: 15px;
 
+}
+
+div.home-login-link:hover {
+  border: 3px solid #FFFFFF;
 }
 
 .login-anchor {
@@ -44,24 +48,54 @@
 
 .signup-link {
 
- margin: auto;
- margin-top: 5vh;
- margin-left: 20%;
- border: 3px solid white;
+  margin-left: 28%;
+ // margin-left: 40%;
+ // border: 3px solid white;
  padding: 10px;
- width: 205px;
+ width: 50%;
  height: 55px;
- border-radius: 4px;
+ border-radius: 10px;
  cursor: pointer;
- box-shadow: 0 1px 1px #808080;
- background-color: #29ae78;
+ background-color: #3DBD94;
+ color: #FFFFFF;
+
+}
+
+div.signup-link:hover {
+
+  box-shadow: 0 5px 5px #236d54;
 }
 
 .site-title {
- margin-left: 50px;
+ margin-left: 20%;
  font-family: 'Lato', sans-serif;
  font-size: 200px;
+ margin-bottom: 17%;
+ color: #2AB27B;
+
+
+   text-shadow:
+    -1.5px -1.5px 0 #353535,
+     1.5px -1.5px 0 #353535,
+     -1.5px 1.5px 0 #353535,
+      1.5px 1.5px 0 #353535;
+
 }
+
+// .slogan {
+//   margin-left: 25%;
+//   font-family: 'Lato', sans-serif;
+//   font-size: 55px;
+//   margin-bottom: 10%;
+//   // width: 10%;
+//   color: #2AB27B;
+//   text-shadow:
+//    -1.5px -1.5px 0 #353535,
+//     1.5px -1.5px 0 #353535,
+//     -1.5px 1.5px 0 #353535,
+//      1.5px 1.5px 0 #353535;
+//
+// }
 // div.signup-box:hover {
 //   border:
 // }
@@ -95,22 +129,15 @@ img.background {
  flex-direction: column;
  margin-top: 0;
  margin-bottom: 0;
- align-items: flex-start;
+ align-content: flex-start;
 
  width: 40%
-}
-
-.slogan {
- margin-left: 20%;
- font-family: 'Lato', sans-serif;
- font-size: 50px;
- width: 10%;
-
 }
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
  img.background {
    left: 50%;
+   bottom: 30%;
    margin-left: -512px;   /* 50% */
  }
 }
