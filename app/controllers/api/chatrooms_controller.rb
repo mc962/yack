@@ -53,7 +53,9 @@ class Api::ChatroomsController < ApplicationController
       subscription.first.destroy
       @chatroom.rebuild_room_title(params[:user_chat][:username])
       if @chatroom.room_title.split(', ').length == 1
-        @chatroom.destroy
+        if @chatroom.room_type == 'direct_message'
+          @chatroom.destroy
+        end
       else
         @chatroom.save
       end
