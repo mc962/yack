@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
   let roomPurpose;
   let roomId;
   let currentUserId;
+  let roomType;
   if (state.session.currentUser) {
     currentUserId = state.session.currentUser.id;
   } else {
@@ -21,13 +22,16 @@ const mapStateToProps = (state) => {
   if (state.currentChannel.fetchedChannel) {
     roomTitle = state.currentChannel.fetchedChannel.room_title;
     roomUsers = _.size(state.currentChannel.fetchedChannel.users);
-    roomPurpose = state.currentChannel.fetchedChannel.purpose;
+    roomType = state.currentChannel.fetchedChannel.roomType;
     roomId = state.currentChannel.fetchedChannel.id;
+
+    roomPurpose = state.currentChannel.fetchedChannel.purpose;
   } else {
     roomTitle = '';
     roomUsers = '';
-    roomPurpose = '';
+    roomPurpose = '-';
     roomId = '';
+    roomType = ''
   }
 
   return {
@@ -35,6 +39,8 @@ const mapStateToProps = (state) => {
     numUsers: roomUsers,
     roomPurpose: roomPurpose,
     roomId: roomId,
+    roomType: roomType,
+    currentUserUsername: state.session.currentUser.username,
     currentUserId: currentUserId
   };
 };

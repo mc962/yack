@@ -39,7 +39,9 @@ export default class NewDMForm extends React.Component {
     let names = Object.keys(this.state.submittableUsers).map((id) => {
       return this.props.fetchedUsers[id].username;
     });
-
+    if (!names.includes(this.props.currentUserUsername)) {      
+      names.push(this.props.currentUserUsername)
+    }
     let room_title = names.join(', ');
 
     const chatroom = {room_title: room_title, room_type: room_type, purpose: room_purpose, user_ids: userIds};
@@ -73,7 +75,7 @@ export default class NewDMForm extends React.Component {
 
     let userId = e.currentTarget.value;
     let name = this.props.fetchedUsers[userId].username;
-    
+
     let userUrl = this.props.fetchedUsers[userId].gravatar_url;
     let numUsers = Object.keys(this.state.submittableUsers).length;
 

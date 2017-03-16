@@ -14,6 +14,24 @@ class DMChannelPickerItem extends React.Component {
     this.props.fetchCurrentChannel(this.props.channelId);
     hashHistory.push(`/channels/${this.props.channelId}`);
   }
+
+  constructRoomTitle(title) {
+    let titleUsers = title.split(', ')
+    if (titleUsers.length === 1) {
+      if (titleUsers[0] === this.props.currentUserUsername) {
+        return `${this.props.currentUserUsername} (you)`
+      }
+    }
+
+    let roomTitleUsernames = titleUsers.filter((username) => {
+      if (username !== this.props.currentUserUsername) {
+        return username;
+      }
+    });
+
+    return roomTitleUsernames.sort().join(', ');
+  }
+
   render() {
     let classList = 'dm-channel-element channel-element';
     let channelId = this.props.channelId;
@@ -23,11 +41,13 @@ class DMChannelPickerItem extends React.Component {
       classList = 'dm-channel-element channel-element dm-hoverable';
     }
 
+    const filteredRoomTitle = this.constructRoomTitle(this.props.roomTitle)
+
     let listEl = (
 
       <button className={classList} onClick={this.linkClickHandler}>
       <li className='element-text'>
-          <img src={images.cartoon_yak} alt="A yak" className='dm-yak' />{this.props.roomTitle}
+          <img src={images.cartoon_yak} alt="A yak" className='dm-yak' />{filteredRoomTitle}
       </li>
     </button>
   );

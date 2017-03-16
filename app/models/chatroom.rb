@@ -26,4 +26,10 @@ class Chatroom < ApplicationRecord
   def find_by_chatroom_type(type)
     Chatroom.find_by(room_type: type)
   end
+
+  def rebuild_room_title(currentUserUsername)
+    old_room_title_users = self.room_title.split(', ')
+    new_room_title_users = old_room_title_users.select{|username| username != currentUserUsername }
+    self.room_title = new_room_title_users.sort.join(', ')
+  end
 end

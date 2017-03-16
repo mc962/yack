@@ -51,6 +51,12 @@ class Api::ChatroomsController < ApplicationController
 
     if subscription
       subscription.first.destroy
+      @chatroom.rebuild_room_title(params[:user_chat][:username])
+      if @chatroom.room_title.split(', ').length == 1
+        @chatroom.destroy
+      else
+        @chatroom.save
+      end
     end
 
     render :show

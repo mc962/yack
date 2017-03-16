@@ -1,5 +1,7 @@
 # Yack
 
+[Yack Live](www.slacking-yack.com)
+
 ## Summary
 Yack is a Slack-based real-time messaging application for communication between groups. It allows users to post messages and have them immediately read by everyone in the channel, join public channels available to everyone, and create private direct message channels between a user or groups of users.
 

@@ -5,7 +5,7 @@ import MessageItemContainer from './message_item_container';
 import { withRouter } from 'react-router';
 import NewMessageFormContainer from './new_message/new_message_container';
 import ChannelInfoContainer from '../channel_info/channel_info_container';
-import LoadingIcon from '../../loading_icon';
+import LoadingIcon from '../shared/loading_icon';
 import MessagesContainer from './messages_container';
 
 class CurrentChannel extends React.Component {

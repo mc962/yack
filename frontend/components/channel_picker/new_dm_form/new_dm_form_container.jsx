@@ -20,6 +20,7 @@ const mapStateToProps = (state) => {
   return {
     fetchedUsers: fetchedUsers,
     recentDirectMessages: recentDirectMessages,
+    currentUserUsername: currentUser.username,
     currentUserId: currentUserId
   };
 };

@@ -39,7 +39,7 @@ class ChannelPicker extends React.Component {
 
   }
 
-  render() {  
+  render() {
 
       const generalChannelElements = this.props.generalMessageChannels.map((channel, idx) => {
         return (
@@ -49,7 +49,7 @@ class ChannelPicker extends React.Component {
 
       const dmChannelElements = this.props.directMessageChannels.map((channel, idx) => {
         return (
-          <DMChannelPickerItem key={idx} roomTitle={channel.room_title} channelId={channel.id} fetchCurrentChannel={(channelId) => this.props.fetchCurrentChannel(channelId)}/>
+          <DMChannelPickerItem key={idx} roomTitle={channel.room_title} currentUserUsername={this.props.currentUser.username} channelId={channel.id} fetchCurrentChannel={(channelId) => this.props.fetchCurrentChannel(channelId)}/>
         );
       });
 
