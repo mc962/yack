@@ -46,8 +46,14 @@ class ChannelInfo extends React.Component {
     } else {
       btnTxt = '';
     }
+
     if (this.props.roomType === 'direct_message') {
-      filteredRoomTitle = this.constructRoomTitle(filteredRoomTitle);
+      filteredRoomTitle = `${this.constructRoomTitle(filteredRoomTitle)}`;
+      if (this.props.roomTitle.split(', ').length === 1) {
+        filteredRoomTitle = '@' + filteredRoomTitle
+      }
+    } else {
+      filteredRoomTitle = `#${this.props.roomTitle}`;
     }
 
     if (!displayRoomPurpose) {
@@ -57,7 +63,7 @@ class ChannelInfo extends React.Component {
       <section className='information-container'>
         <div className='room-text-container'>
 
-          <div className='info-room-title'>#{filteredRoomTitle}</div>
+          <div className='info-room-title'>{filteredRoomTitle}</div>
 
           <div className='room-stats'>
             <i className="fa fa-user-o" aria-hidden="true"></i>

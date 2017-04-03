@@ -20,9 +20,10 @@ const mapStateToProps = (state) => {
   }
 
   if (state.currentChannel.fetchedChannel) {
+    
     roomTitle = state.currentChannel.fetchedChannel.room_title;
     roomUsers = _.size(state.currentChannel.fetchedChannel.users);
-    roomType = state.currentChannel.fetchedChannel.roomType;
+    roomType = state.currentChannel.fetchedChannel.room_type
     roomId = state.currentChannel.fetchedChannel.id;
 
     roomPurpose = state.currentChannel.fetchedChannel.purpose;
