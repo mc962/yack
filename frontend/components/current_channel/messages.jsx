@@ -68,7 +68,9 @@ class Messages extends React.Component {
                                        messageId={message.id}
                                        gravatarUrl={userImageLink}
                                        userId={message.user_id}
-                                       channelId={channelId} />;
+                                       channelId={channelId}
+                                       createdAt={message.created_at}
+                                       updatedAt={message.updated_at} />;
         });
       } else {
         return <div className='no-messages'></div>;

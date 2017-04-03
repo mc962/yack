@@ -11,13 +11,15 @@ const mapStateToProps = (state, ownProps) => {
     gravatarUrl: ownProps.gravatarUrl,
     channelId: ownProps.channelId,
     currentUserId: state.session.currentUser.id,
-    userId: ownProps.userId
+    userId: ownProps.userId,
+    createdAt: ownProps.createdAt,
+    updatedAt: ownProps.updatedAt
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    deleteMessage: (messageData) => dispatch(deleteMessage(messageData))    
+    deleteMessage: (messageData) => dispatch(deleteMessage(messageData))
   };
 };
 
