@@ -10,7 +10,6 @@ class Messages extends React.Component {
 
   componentDidMount() {
 
-    this.props.fetchChannelMessages(this.props.channelId);
     // this.pusher = new Pusher('<NOKEYFORYOU>', {
     //   encrypted: true
     // });
@@ -21,12 +20,15 @@ class Messages extends React.Component {
     //   this.props.fetchChannelMessages(this.props.channelId);
     // });
     App.messages = App.cable.subscriptions.create('MessagesChannel', {
-      received: (data) => {
-        this.props.fetchChannelMessages(this.props.channelId);
+      received: (receivedMessageData) => {
+//  this here is the issue, EVERY TIME we receive a channel message (or id, we attempt to fetch ti)
+        this.props.fetchChannelMessage(receivedMessageData.message_id, this.props.channelId)
       }
     });
 
     this.channel = App.messages;
+
+    this.props.fetchChannelMessages(this.props.channelId);
   }
 
   componentDidUpdate() {
@@ -41,44 +43,57 @@ class Messages extends React.Component {
 
     this.channel.unsubscribe();
   }
-  render() {
+
+  _processMessages(obj) {
     let messageElements;
-    let channelUsers = this.props.users;
     let username;
+    let prevMessage;
+    let channelUsers = this.props.users;
     let channelId = this.props.channelId;
-      if (this.props.messages) {
+    if (this.props.messages) {
 
-        let prevMessage;
+      ////this.props.messages.map((message, idx) => {
 
-        messageElements = this.props.messages.map((message, idx) => {
-
-          let userImageLink = message.user_url;
-          let name = message.username;
-          if (prevMessage) {
-            if (prevMessage.username === message.username) {
-              userImageLink = ''
-              name = ''
-            }
+      messageElements = Object.keys(this.props.messages).map((message_id, idx) => {
+        let message = this.props.messages[message_id]
+        let userImageLink = message.user_url;
+        let name = message.username;
+        if (prevMessage) {
+          if (prevMessage.username === message.username) {
+            userImageLink = ''
+            name = ''
           }
+        }
 
-          prevMessage = message;
-          return <MessageItemContainer key={idx}
-                                       username={name}
-                                       content={message.content}
-                                       messageId={message.id}
-                                       gravatarUrl={userImageLink}
-                                       userId={message.user_id}
-                                       channelId={channelId}
-                                       createdAt={message.created_at}
-                                       updatedAt={message.updated_at} />;
-        });
-      } else {
-        return <div className='no-messages'></div>;
-      }
+        prevMessage = message;
+        message_id = message_id
+        return <MessageItemContainer key={idx}
+          username={name}
+          content={message.content}
+          messageId={message_id}
+          gravatarUrl={userImageLink}
+          userId={message.user_id}
+          channelId={channelId}
+          createdAt={message.created_at}
+          updatedAt={message.updated_at} />;
+      });
+    } else {
+      messageElements = <div className='no-messages'></div>;
+    }
+    return messageElements;
+  }
+
+  render() {
+    let processedMessages = [];
+    if (this.props.messages) {
+      processedMessages = this._processMessages(this.props.messages)
+
+    }
+    //
     return (
     <div>
       <ul className='channel-messages-list'>
-        {messageElements}
+        {processedMessages}
       </ul>
       <div ref={node => this.bottomDiv = node }></div>
     </div>

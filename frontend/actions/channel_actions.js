@@ -14,7 +14,15 @@ export const JOIN_CHANNEL = 'JOIN_CHANNEL';
 export const REMOVE_CHANNEL = 'REMOVE_CHANNEL';
 
 export const FETCH_CHANNEL_MESSAGES = 'FETCH_CHANNEL_MESSAGES';
+export const FETCH_CHANNEL_MESSAGE = 'FETCH_CHANNEL_MESSAGE';
+
+export const CREATE_CHANNEL_MESSAGE = 'CREATE_CHANNEL_MESSAGE';
+export const UPDATE_CHANNEL_MESSAGE = 'UPDATE_CHANNEL_MESSAGE';
+export const DELETE_CHANNEL_MESSAGE = 'DELETE_CHANNEL_MESSAGE';
+
 export const RECEIVE_CHANNEL_MESSAGES = 'RECEIVE_CHANNEL_MESSAGES';
+export const RECEIVE_CHANNEL_MESSAGE = 'RECEIVE_CHANNEL_MESSAGE';
+export const REMOVE_CHANNEL_MESSAGE = 'REMOVE_CHANNEL_MESSAGE';
 
 export const fetchCurrentChannel = (channelId) => (dispatch) => {
   dispatch(startLoadingCurrentChannel());
@@ -67,6 +75,50 @@ export const fetchChannelMessages = (channelId) => {
   };
 };
 
+export const fetchChannelMessage = (messageId, channelId) => {
+  return (dispatch) => {
+    return APIUtil.fetchChannelMessage(messageId, channelId).then(
+      (fetchedMessage) => {
+        return dispatch(receiveChannelMessage(fetchedMessage))
+      }
+    );
+  };
+};
+
+export const createChannelMessage = (message) => {
+  return (dispatch) => {
+    return APIUtil.createChannelMessage(message).then(
+      (createdMessage) => {
+        return dispatch(receiveChannelMessage(createdMessage))
+      }
+    );
+  };
+};
+
+export const updateChannelMessage = (message) => {
+  return (dispatch) => {
+    return APIUtil.updateChannelMessage(message).then(
+      (updatedMessage) => {
+
+        return dispatch(receiveChannelMessage(updatedMessage))
+      }
+    );
+  };
+};
+
+export const deleteChannelMessage = (message) => {
+  return (dispatch) => {
+    return APIUtil.deleteChannelMessage(message).then(
+      (deletedMessage) => {
+
+        return dispatch(removeChannelMessage(deletedMessage));
+      }
+    )
+  }
+}
+
+
+
 
 
 export const startLoadingCurrentChannel = () => ({
@@ -97,9 +149,25 @@ export const removeChannel = (channel) => {
 
 
 
+
+
 export const receiveChannelMessages = (receivedChannelMessages) => {
   return {
     type: RECEIVE_CHANNEL_MESSAGES,
     receivedChannelMessages
+  }
+}
+
+export const receiveChannelMessage = (receivedChannelMessage) => {
+  return {
+    type: RECEIVE_CHANNEL_MESSAGE,
+    receivedChannelMessage
+  }
+}
+
+export const removechannelMessage =  (removedChannelMessage) => {
+  return {
+    type: REMOVE_CHANNEL_MESSAGE,
+    removedChannelMessage
   }
 }

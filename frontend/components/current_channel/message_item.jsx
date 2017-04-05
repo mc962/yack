@@ -28,7 +28,7 @@ class MessageItem extends React.Component {
     e.preventDefault();
     let messagePackage = {id: this.props.messageId, chatroom_id: this.props.channelId};
 
-    this.props.deleteMessage(messagePackage);
+    this.props.deleteChannelMessage(messagePackage);
   }
 
   _timeStringFormatter(timeString) {
@@ -104,7 +104,7 @@ class MessageItem extends React.Component {
 
     let renderableContent;
     if (this.state.editable) {
-
+      
       renderableContent = <EditMessageContainer userId={this.props.currentUserId}
                                                 chatroomId={this.props.channelId}
                                                 content={this.props.content}

@@ -43,9 +43,8 @@ class EditMessageForm extends React.Component {
     message.chatroom_id = this.props.messageChatroomId;
     message.content = this.state.content;
     message.id = this.props.messageId;
-    this.props.updateMessage(message).then((updatedMessage) => {
-      }
-    ).then(this.props.editEscapeHandler());
+
+    this.props.updateChannelMessage(message).then(this.props.editEscapeHandler());
   }
 
   handleInputKeypress(e) {
