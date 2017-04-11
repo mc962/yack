@@ -55,19 +55,17 @@ class EditMessageForm extends React.Component {
     }
   }
   addFocus(e) {
-    // let el = e.currentTarget
-    // let modifiedClassList = el.classList.split(' ').push('focused-textarea').join(' ')
+
     let editContainer = document.querySelector('.edit-input-container')
     editContainer.classList.add('focused-textarea');
-    // el.classList = modifiedClassList;
+
   }
 
   removeFocus(e) {
-    // let el = e.currentTarget
-    // let modifiedClassList = el.classList.split(' ').filter((el) => el !== 'focused-textarea').join(' ')
+
     let editContainer = document.querySelector('.edit-input-container')
     editContainer.classList.remove('focused-textarea');
-    // el.classList = modifiedClassList;
+    
   }
 
   render() {

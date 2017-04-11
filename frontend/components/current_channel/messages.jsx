@@ -21,8 +21,21 @@ class Messages extends React.Component {
     // });
     App.messages = App.cable.subscriptions.create('MessagesChannel', {
       received: (receivedMessageData) => {
-//  this here is the issue, EVERY TIME we receive a channel message (or id, we attempt to fetch ti)
-        this.props.fetchChannelMessage(receivedMessageData.message_id, this.props.channelId)
+
+        switch (receivedMessageData.message.action) {
+          case 'CREATE':
+            this.props.receiveChannelMessage(receivedMessageData)
+            break;
+          case 'UPDATE':
+            this.props.receiveChannelMessage(receivedMessageData)
+            break;
+          case ('DESTROY'):
+            this.props.removeChannelMessage(receivedMessageData)
+            break;
+          default:
+            // throw 'Invalid Action!'
+
+        }
       }
     });
 
@@ -50,9 +63,9 @@ class Messages extends React.Component {
     let prevMessage;
     let channelUsers = this.props.users;
     let channelId = this.props.channelId;
+
     if (this.props.messages) {
 
-      ////this.props.messages.map((message, idx) => {
 
       messageElements = Object.keys(this.props.messages).map((message_id, idx) => {
         let message = this.props.messages[message_id]
@@ -84,6 +97,7 @@ class Messages extends React.Component {
   }
 
   render() {
+    
     let processedMessages = [];
     if (this.props.messages) {
       processedMessages = this._processMessages(this.props.messages)

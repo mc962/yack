@@ -21,16 +21,23 @@ const ChannelsReducer = (state = initialState, action) => {
     case RECEIVE_CHANNEL_MESSAGES:
       return Object.assign({}, state, {fetchedMessages: action.receivedChannelMessages});
     case RECEIVE_CHANNEL_MESSAGE:
-    
       nextState = {fetchedMessages: {channel_messages: {[action.receivedChannelMessage.message.id]: action.receivedChannelMessage.message}}}
       return merge({}, state, nextState);
     case REMOVE_CHANNEL_MESSAGE:
       nextState = Object.assign({}, state);
-      delete nextState[action.removedChannelMessage.message.id];
-      return nextState
+
+      // Prevents double deletion error from received delete request through thunk action and websocket action
+      // look into how to prevent this
+      const messageData = action.removedChannelMessageData.message
+
+      if (messageData && state.fetchedMessages.channel_messages) {
+        delete nextState.fetchedMessages.channel_messages[messageData.id]
+      }
+      return merge({}, nextState);
     case REMOVE_CHANNEL:
       nextState = Object.assign({}, state);
       delete nextState[action.channel.id];
+
       return nextState;
     default:
       return state;

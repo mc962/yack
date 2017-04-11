@@ -69,6 +69,7 @@ class MessageItem extends React.Component {
 
 
   render() {
+    
     let pictureSpot;
     let pictureDisplayTime
     if (this.props.gravatarUrl === '') {
@@ -104,7 +105,7 @@ class MessageItem extends React.Component {
 
     let renderableContent;
     if (this.state.editable) {
-      
+
       renderableContent = <EditMessageContainer userId={this.props.currentUserId}
                                                 chatroomId={this.props.channelId}
                                                 content={this.props.content}

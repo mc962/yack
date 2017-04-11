@@ -165,9 +165,9 @@ export const receiveChannelMessage = (receivedChannelMessage) => {
   }
 }
 
-export const removechannelMessage =  (removedChannelMessage) => {
+export const removeChannelMessage =  (removedChannelMessageData) => {
   return {
     type: REMOVE_CHANNEL_MESSAGE,
-    removedChannelMessage
+    removedChannelMessageData
   }
 }

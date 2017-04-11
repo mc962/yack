@@ -5,8 +5,10 @@ class Api::MessagesController < ApplicationController
     if @message.save
       # Pusher.trigger("channel_#{@message.chatroom_id}", 'message_published', {})
 
+      broadcasted_message = attach_message_user_info(@message)
+      broadcasted_message['action'] = 'CREATE'
       ActionCable.server.broadcast 'messages',
-      message_id: @message.id
+      message: broadcasted_message
 
 
       render :show
@@ -27,13 +29,13 @@ class Api::MessagesController < ApplicationController
   end
 
   def update
-
-    #  this is still giving me underfined id, which leads to a duplicate messge issue
     @message = current_user.messages.find(params[:id])
 
     if @message.update_attributes(message_params)
+      broadcasted_message = attach_message_user_info(@message)
+      broadcasted_message['action'] = 'UPDATE'
       ActionCable.server.broadcast 'messages',
-      message_id: @message.id
+      message: broadcasted_message
 
       render :show
     else
@@ -47,11 +49,12 @@ class Api::MessagesController < ApplicationController
     # seems to be making a fetch request for particular messge even after deleted, and so returns not found
     @message = current_user.messages.find(params[:id])
     @chatroom = @message.chatroom
+
     if @message
       @message.destroy
-
+      message_action = 'DESTROY'
       ActionCable.server.broadcast 'messages',
-      message_id: @message.id
+      message: {id: @message.id, action: message_action}
     end
     render '/api/chatrooms/show'
   end
@@ -60,6 +63,23 @@ class Api::MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:content, :user_id, :chatroom_id)
+  end
+
+  def attach_message_user_info(message)
+    user_info = {
+                 "username" => message.user.username,
+                 "user_url" => message.user.gravatar_url
+                }
+
+    message_attributes = message.attributes
+    processed_message = message_attributes.merge(user_info)
+    # message_package = {
+    #                    message_info: message,
+    #                    user_info: {
+    #                                 username: message.user.username,
+    #                                 user_url: message.user.gravatar_url
+    #                               }
+    #                   }
   end
 
 end

@@ -18,6 +18,7 @@ class CurrentChannel extends React.Component {
     this.props.fetchCurrentChannel(channelId);
   }
   render() {
+    
         return this.props.loading ?
           <LoadingIcon /> :
 
