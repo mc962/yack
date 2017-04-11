@@ -1,6 +1,7 @@
 import React from 'react';
 import GMListItem from './gm_list_item';
-import { withRouter } from 'react-router';
+import { hashHistory, withRouter } from 'react-router';
+
 class GMList extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +33,7 @@ class GMList extends React.Component {
     this.props.joinChannel(user_chat).then((receivedChannel) => {
 
       const newChannelId = receivedChannel.currentChannel.id;
-      this.props.fetchCurrentUser(userId) ////////////////remove hardcoded USER ID!!!!!!!
+      this.props.fetchCurrentUser(userId)
       this.redirect(newChannelId);
       this.props.handleEscape()
     })
@@ -40,7 +41,7 @@ class GMList extends React.Component {
 
   redirect(channelId) {
 
-    this.props.router.push(`/channels/${channelId}`);
+    hashHistory.push(`/channels/${channelId}`);
   }
 
   handleItemClick(e) {

@@ -7,6 +7,7 @@ class Profile extends React.Component {
     this.submitLogout = this.submitLogout.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
     this.openMenu = this.openMenu.bind(this);
+
     this.state = {popoverDisplay: 'hidden-popover', menuDisplay: 'hideable-menu'};
   }
 
@@ -32,8 +33,6 @@ class Profile extends React.Component {
 
     return(
         <section className="profile">
-
-
           <div className='menu-toggle-btn' onClick={this.openMenu}>
             <div className='displayed-btn-text'>
               <div className='yack-logo-text'>

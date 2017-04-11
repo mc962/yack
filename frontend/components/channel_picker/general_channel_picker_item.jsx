@@ -17,14 +17,15 @@ class GeneralChannelPickerItem extends React.Component {
 
 
   render() {
-    let classList = 'general-channel-element channel-element';
+    let classList = ['general-channel-element', 'channel-element'];
     let channelId = this.props.channelId;
     if (channelId === parseInt(this.props.params.id)) {
-      classList += " selected-channel-element";
+      classList.push("selected-channel-element");
     } else {
-      classList = 'general-channel-element channel-element general-hoverable';
+      classList.push('general-hoverable');
     }
-
+    
+    classList = classList.join(' ')
     let listEl = (
       <button className={classList} onClick={this.linkClickHandler}>
       <li className='element-text'>

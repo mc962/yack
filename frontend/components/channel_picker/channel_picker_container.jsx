@@ -1,8 +1,11 @@
 import { connect } from 'react-redux';
-import {getGeneralChannels, getDirectMessageChannels} from '../../reducers/selectors';
+
+import { getGeneralChannels, getDirectMessageChannels } from '../../reducers/selectors';
+
 import ChannelPicker from './channel_picker';
+
 import { fetchCurrentChannel, fetchAllChannels } from '../../actions/channel_actions';
-import { fetchCurrentUser } from '../../actions/session_actions';
+// import { fetchCurrentUser } from '../../actions/session_actions';
 const mapStateToProps = (state) => {
 
   return {
@@ -16,9 +19,7 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
     fetchCurrentChannel: (currentChannelId) => dispatch(fetchCurrentChannel(currentChannelId)),
-    fetchAllChannels: () => dispatch(fetchAllChannels()),
-    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId))
-
+    fetchAllChannels: () => dispatch(fetchAllChannels())
   };
 };
 

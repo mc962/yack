@@ -1,5 +1,5 @@
 import React from 'react';
-// import PublicChannel from './public_channel';
+
 import { Link, withRouter } from 'react-router';
 
 import Display from './display.jsx';
@@ -45,7 +45,7 @@ class Home extends React.Component {
 
           <div className='signup-box'>
             <h1 className='site-title'>Yack</h1>
-            
+
             <div className="signup-link">
               <div onClick={this.signupHandler} className='signup-anchor'>Sign Up</div>
             </div>

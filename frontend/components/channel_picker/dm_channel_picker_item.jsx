@@ -8,11 +8,12 @@ class DMChannelPickerItem extends React.Component {
   }
 
   linkClickHandler(e) {
-
     e.preventDefault();
     const newChannelId = parseInt(this.props.params.id);
-    this.props.fetchCurrentChannel(this.props.channelId);
-    hashHistory.push(`/channels/${this.props.channelId}`);
+    // potential buggy fix
+    this.props.fetchCurrentChannel(this.props.channelId).then(() => {
+      hashHistory.push(`/channels/${this.props.channelId}`);
+    })
   }
 
   constructRoomTitle(title) {
@@ -33,18 +34,19 @@ class DMChannelPickerItem extends React.Component {
   }
 
   render() {
-    let classList = 'dm-channel-element channel-element';
+    let classList = ['dm-channel-element', 'channel-element'];
+
     let channelId = this.props.channelId;
     if (channelId === parseInt(this.props.params.id)) {
-      classList += " selected-channel-element";
+      classList.push(" selected-channel-element");
     } else {
-      classList = 'dm-channel-element channel-element dm-hoverable';
+      classList.push('dm-channel-element channel-element dm-hoverable');
     }
 
+    classList = classList.join(' ')
     const filteredRoomTitle = this.constructRoomTitle(this.props.roomTitle)
 
-    let listEl = (
-
+    const listEl = (
       <button className={classList} onClick={this.linkClickHandler}>
       <li className='element-text'>
           <img src={images.cartoon_yak} alt="A yak" className='dm-yak' />{filteredRoomTitle}

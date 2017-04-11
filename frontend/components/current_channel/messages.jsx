@@ -41,7 +41,11 @@ class Messages extends React.Component {
 
     this.channel = App.messages;
 
+    // check this if messages aren't rendering
+
+
     this.props.fetchChannelMessages(this.props.channelId);
+
   }
 
   componentDidUpdate() {
@@ -97,7 +101,7 @@ class Messages extends React.Component {
   }
 
   render() {
-    
+
     let processedMessages = [];
     if (this.props.messages) {
       processedMessages = this._processMessages(this.props.messages)

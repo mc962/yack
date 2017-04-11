@@ -75,25 +75,20 @@ class ChannelPicker extends React.Component {
             <Modal
               isOpen={this.state.gmModalIsOpen} contentLabel="GMModal"
               style={modalChannels}
-              onRequestClose={this.handleEscape}
-              >
+              onRequestClose={this.handleEscape} >
 
-              <button className='modal-close-btn' onClick={this.handleEscape}><div className='x-icon'>x</div><div className='esc-text'>esc</div></button>
+              <button className='modal-close-btn' onClick={this.handleEscape}>
+                <div className='x-icon'>x</div>
+                <div className='esc-text'>esc</div>
+              </button>
               <GMListContainer handleEscape={this.handleEscape} />
 
             </Modal>
 
-
-
               <ul className='general-channels-list channels-list'>
                 {generalChannelElements}
               </ul>
-
           </div>
-
-
-
-
 
           <div className='dm-channels'>
             <button onClick={this.handleNewDMClick} className='channel-type direct-messages-button'>Direct Messages</button>
@@ -105,7 +100,10 @@ class ChannelPicker extends React.Component {
               onRequestClose={this.handleEscape}
               >
 
-              <button className='modal-close-btn' onClick={this.handleEscape}><div className='x-icon'>x</div><div className='esc-text'>esc</div></button>
+              <button className='modal-close-btn' onClick={this.handleEscape}>
+                <div className='x-icon'>x</div>
+                <div className='esc-text'>esc</div>
+              </button>
               <NewDMFormContainer handleEscape={this.handleEscape} />
 
             </Modal>
@@ -113,7 +111,6 @@ class ChannelPicker extends React.Component {
               <ul className='dm-channels-list channels-list'>
                 {dmChannelElements}
               </ul>
-
           </div>
         </div>
       );

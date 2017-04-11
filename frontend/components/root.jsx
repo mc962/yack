@@ -5,8 +5,10 @@ import App from './app';
 import SessionFormContainer from './session_form_container';
 import HomeContainer from './home_container';
 import Display from './display';
-import CurrentChannel from './current_channel/current_channel';
+
 import CurrentChannelContainer from './current_channel/current_channel_container'
+
+import { fetchCurrentChannel } from '../actions/channel_actions'
 
 const Root = ({ store }) => {
     const _redirectIfLogggedIn = (nextState, replace) => {
@@ -15,12 +17,15 @@ const Root = ({ store }) => {
       }
     }
     const _redirectIfNotLoggedIn = (nextState, replace) => {
-      
+
       if (!store.getState().session.currentUser){
         replace('/login')
     }
   }
 
+  const _fetchCurrentChannel = (nextState, replace) => {
+    store.dispatch(fetchCurrentChannel(nextState.params.id))    
+  }
 
   let indexRedirect = null;
   return(
@@ -31,7 +36,7 @@ const Root = ({ store }) => {
           <Route path="login" component={ SessionFormContainer } onEnter={_redirectIfLogggedIn} />
           <Route path="signup" component={ SessionFormContainer } onEnter={_redirectIfLogggedIn} />
           <Route path="channels" component={ Display } onEnter={_redirectIfNotLoggedIn}>
-            <Route path=":id" component={ CurrentChannelContainer } />
+            <Route path=":id" component={ CurrentChannelContainer } onEnter={_fetchCurrentChannel} />
           </Route>
         </Route>
       </Router>
