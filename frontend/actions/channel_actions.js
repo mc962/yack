@@ -119,8 +119,6 @@ export const deleteChannelMessage = (message) => {
 
 
 
-
-
 export const startLoadingCurrentChannel = () => ({
   type: START_LOADING_CURRENT_CHANNEL
 });

@@ -4,11 +4,10 @@ import { fetchAllChannels, joinChannel } from '../../../actions/channel_actions'
 import { fetchCurrentUser } from '../../../actions/session_actions';
 
 const mapStateToProps = (state) => {
-// refactor this into just the channels reducer if possible
   const currentUser = state.session.currentUser;
   let fetchedChannels = {};
-  if (state.allChannels) {
-    fetchedChannels = state.allChannels.chatrooms;
+  if (state.channels.chatrooms) {
+    fetchedChannels = state.channels.chatrooms;
   }
 
   return {

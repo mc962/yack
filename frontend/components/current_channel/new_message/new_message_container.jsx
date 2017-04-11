@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import NewMessageForm from './new_message_form';
 
+import NewMessageForm from './new_message_form';
 import { createMessage } from '../../../actions/message_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -13,10 +13,10 @@ const mapStateToProps = (state, ownProps) => {
     channelId = parseInt(ownProps.params.id);
   }
 
-  if (state.currentChannel.fetchedChannel) {
+  if (state.channels.currentChannel) {
 
-    roomTitle = state.currentChannel.fetchedChannel.room_title;
-    users = state.currentChannel.fetchedChannel.users;
+    roomTitle = state.channels.currentChannel.room_title;
+    users = state.channels.currentChannel.users;
 
   }
   currentUser = state.session.currentUser;
@@ -31,8 +31,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-
-
   return {
     createMessage: (newMessage) => dispatch(createMessage(newMessage))
   };

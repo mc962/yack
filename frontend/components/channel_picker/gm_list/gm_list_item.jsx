@@ -2,8 +2,6 @@ import React from 'react';
 
 const GMListItem = ({roomTitle, chatroomId, dateCreated, numUsers, handleItemClick}) => {
 
-
-
   let listEl = (
     <li className='chatroom-table-element' onClick={handleItemClick}
       value={chatroomId}>

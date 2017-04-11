@@ -9,10 +9,8 @@ const mapStateToProps = (state, ownProps) => {
   let channelId;
 
   let users;
-  if (state.currentChannel.fetchedChannel) {
-
-
-    users = state.currentChannel.fetchedChannel.users;
+  if (state.channels.currentChannel) {
+    users = state.channels.currentChannel.users;
 
    }
 
@@ -23,7 +21,6 @@ const mapStateToProps = (state, ownProps) => {
     channelName = "";
     channelId = 0;
   }
-
 
   return {
     channelName: channelName,
@@ -42,7 +39,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     currentChannelId = 0; // there will never be 0 in the database, but we dont want null error
   }
 
-  return {    
+  return {
     fetchCurrentChannel: (currentChannelId) => dispatch(fetchCurrentChannel(currentChannelId))
   };
 };

@@ -10,4 +10,4 @@ chatrooms_hash = {}
 end
 
 
-  json.chatrooms chatrooms_hash
+json.chatrooms chatrooms_hash

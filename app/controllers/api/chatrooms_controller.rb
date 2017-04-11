@@ -23,7 +23,7 @@ class Api::ChatroomsController < ApplicationController
 
   def show
 
-    @chatroom = Chatroom.find(params[:id])
+    @chatroom = Chatroom.includes(messages: [:user]).find(params[:id])
     render :show
   end
 

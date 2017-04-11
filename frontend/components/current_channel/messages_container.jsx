@@ -9,8 +9,8 @@ import Messages from './messages'
 const mapStateToProps = (state, ownProps) => {
 
   let messages = [];
-  if (state.currentChannel.fetchedMessages) {    
-    messages = state.currentChannel.fetchedMessages.channel_messages
+  if (state.channels.currentChannel.channel_messages) {
+    messages = state.channels.currentChannel.channel_messages
   }
 
   return {
@@ -23,8 +23,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   const channelId = ownProps.channelId;
 
-  return {
-    fetchChannelMessages: (channelId) => dispatch(fetchChannelMessages(channelId)),
+  return {    
     fetchChannelMessage: (messageId, channelId) => dispatch(fetchChannelMessage(messageId, channelId)),
     receiveChannelMessage: (message) => dispatch(receiveChannelMessage(message)),
     removeChannelMessage: (messageId) => dispatch(removeChannelMessage(messageId))

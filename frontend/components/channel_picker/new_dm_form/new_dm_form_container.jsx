@@ -10,18 +10,18 @@ const mapStateToProps = (state) => {
   const recentDirectMessages= getDirectMessageChannels(state);
   let fetchedUsers;
 
-  if (state.users.users.users) {
-    fetchedUsers = state.users.users.users;
+  if (state.users.allUsers) {
+    fetchedUsers = state.users.allUsers;
   } else {
     fetchedUsers = {};
   }
-  let currentUserId = state.session.currentUser.id;
+
 
   return {
     fetchedUsers: fetchedUsers,
     recentDirectMessages: recentDirectMessages,
-    currentUserUsername: currentUser.username,
-    currentUserId: currentUserId
+    currentUserUsername: state.session.currentUser.username,
+    currentUserId: state.session.currentUser.id
   };
 };
 

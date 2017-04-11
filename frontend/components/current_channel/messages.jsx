@@ -9,7 +9,6 @@ class Messages extends React.Component {
   }
 
   componentDidMount() {
-
     // this.pusher = new Pusher('<NOKEYFORYOU>', {
     //   encrypted: true
     // });
@@ -33,19 +32,13 @@ class Messages extends React.Component {
             this.props.removeChannelMessage(receivedMessageData)
             break;
           default:
-            // throw 'Invalid Action!'
+            throw 'Invalid Action!'
 
         }
       }
     });
 
     this.channel = App.messages;
-
-    // check this if messages aren't rendering
-
-
-    this.props.fetchChannelMessages(this.props.channelId);
-
   }
 
   componentDidUpdate() {
@@ -69,8 +62,6 @@ class Messages extends React.Component {
     let channelId = this.props.channelId;
 
     if (this.props.messages) {
-
-
       messageElements = Object.keys(this.props.messages).map((message_id, idx) => {
         let message = this.props.messages[message_id]
         let userImageLink = message.user_url;
@@ -105,7 +96,6 @@ class Messages extends React.Component {
     let processedMessages = [];
     if (this.props.messages) {
       processedMessages = this._processMessages(this.props.messages)
-
     }
     //
     return (

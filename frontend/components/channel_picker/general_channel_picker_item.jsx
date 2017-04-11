@@ -11,7 +11,7 @@ class GeneralChannelPickerItem extends React.Component {
 
     e.preventDefault();
     const newChannelId = parseInt(this.props.params.id);
-    this.props.fetchCurrentChannel(this.props.channelId);
+    // this.props.fetchCurrentChannel(this.props.channelId);
     hashHistory.push(`/channels/${this.props.channelId}`);
   }
 
@@ -24,7 +24,7 @@ class GeneralChannelPickerItem extends React.Component {
     } else {
       classList.push('general-hoverable');
     }
-    
+
     classList = classList.join(' ')
     let listEl = (
       <button className={classList} onClick={this.linkClickHandler}>

@@ -14,11 +14,11 @@ class CurrentChannel extends React.Component {
 
   }
   componentDidMount(){
-    const channelId = parseInt(this.props.params.id);
-    this.props.fetchCurrentChannel(channelId);
+    // const channelId = parseInt(this.props.params.id);
+    // this.props.fetchCurrentChannel(channelId);
   }
   render() {
-    
+
         return this.props.loading ?
           <LoadingIcon /> :
 

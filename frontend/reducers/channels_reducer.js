@@ -15,29 +15,23 @@ const ChannelsReducer = (state = initialState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_ALL_CHANNELS:
-      return Object.assign({}, state, action.channels);
+      return merge({}, state, action.channels);
     case RECEIVE_CURRENT_CHANNEL:
-      return Object.assign({}, state, {fetchedChannel: action.currentChannel});
-    case RECEIVE_CHANNEL_MESSAGES:
-      return Object.assign({}, state, {fetchedMessages: action.receivedChannelMessages});
+        return Object.assign({}, state, { currentChannel: action.currentChannel })    
     case RECEIVE_CHANNEL_MESSAGE:
-      nextState = {fetchedMessages: {channel_messages: {[action.receivedChannelMessage.message.id]: action.receivedChannelMessage.message}}}
-      return merge({}, state, nextState);
+      return merge({}, state, { currentChannel: {channel_messages: { [action.receivedChannelMessage.message.id]: action.receivedChannelMessage.message }}});
     case REMOVE_CHANNEL_MESSAGE:
       nextState = Object.assign({}, state);
-
       // Prevents double deletion error from received delete request through thunk action and websocket action
       // look into how to prevent this
       const messageData = action.removedChannelMessageData.message
-
-      if (messageData && state.fetchedMessages.channel_messages) {
-        delete nextState.fetchedMessages.channel_messages[messageData.id]
+      if (messageData && state.currentChannel.channel_messages) {
+        delete nextState.currentChannel.channel_messages[messageData.id]
       }
       return merge({}, nextState);
     case REMOVE_CHANNEL:
       nextState = Object.assign({}, state);
       delete nextState[action.channel.id];
-
       return nextState;
     default:
       return state;

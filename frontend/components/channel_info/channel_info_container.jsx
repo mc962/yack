@@ -3,8 +3,6 @@ import ChannelInfo from './channel_info';
 import { leaveChannel, fetchAllChannels } from '../../actions/channel_actions';
 import { fetchCurrentUser } from '../../actions/session_actions';
 
-import { _size } from 'lodash';
-
 const mapStateToProps = (state) => {
 
   let roomTitle;
@@ -19,14 +17,14 @@ const mapStateToProps = (state) => {
     currentUserId = '';
   }
 
-  if (state.currentChannel.fetchedChannel) {
-    
-    roomTitle = state.currentChannel.fetchedChannel.room_title;
-    roomUsers = _.size(state.currentChannel.fetchedChannel.users);
-    roomType = state.currentChannel.fetchedChannel.room_type
-    roomId = state.currentChannel.fetchedChannel.id;
+  if (state.channels.currentChannel) {
 
-    roomPurpose = state.currentChannel.fetchedChannel.purpose;
+    roomTitle = state.channels.currentChannel.room_title;
+    roomUsers = state.channels.currentChannel.users_count;
+    roomType = state.channels.currentChannel.room_type;
+    roomId = state.channels.currentChannel.id;
+    roomPurpose = state.channels.currentChannel.purpose;
+
   } else {
     roomTitle = '';
     roomUsers = '';
