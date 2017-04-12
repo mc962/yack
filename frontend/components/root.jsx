@@ -2,7 +2,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
-import SessionFormContainer from './session_form_container';
+
+import LoginFormContainer from './session/login_form_container';
+import SignupFormContainer from './session/signup_form_container';
+
 import HomeContainer from './home_container';
 import Display from './display';
 
@@ -24,7 +27,7 @@ const Root = ({ store }) => {
   }
 
   const _fetchCurrentChannel = (nextState, replace) => {
-    store.dispatch(fetchCurrentChannel(nextState.params.id))    
+    store.dispatch(fetchCurrentChannel(nextState.params.id))
   }
 
   let indexRedirect = null;
@@ -33,8 +36,8 @@ const Root = ({ store }) => {
       <Router history={ hashHistory }>
         <Route path="/" component= { App }>
           <IndexRoute component={HomeContainer} />
-          <Route path="login" component={ SessionFormContainer } onEnter={_redirectIfLogggedIn} />
-          <Route path="signup" component={ SessionFormContainer } onEnter={_redirectIfLogggedIn} />
+          <Route path="login" component={ LoginFormContainer } onEnter={_redirectIfLogggedIn} />
+          <Route path="signup" component={ SignupFormContainer } onEnter={_redirectIfLogggedIn} />
           <Route path="channels" component={ Display } onEnter={_redirectIfNotLoggedIn}>
             <Route path=":id" component={ CurrentChannelContainer } onEnter={_fetchCurrentChannel} />
           </Route>

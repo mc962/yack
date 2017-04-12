@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import NewMessageForm from './new_message_form';
-import { createMessage } from '../../../actions/message_actions';
+import { createMessage } from '../../../../actions/message_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let channelId;

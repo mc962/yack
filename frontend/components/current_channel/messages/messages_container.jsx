@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
-import { fetchChannelMessages } from '../../actions/channel_actions';
-import { fetchChannelMessage } from '../../actions/channel_actions';
-import { receiveChannelMessage } from '../../actions/channel_actions';
-import { removeChannelMessage } from '../../actions/channel_actions';
+
+import { fetchChannelMessage, receiveChannelMessage, removeChannelMessage } from '../../../actions/channel_actions';
 
 import Messages from './messages'
 
@@ -23,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   const channelId = ownProps.channelId;
 
-  return {    
+  return {
     fetchChannelMessage: (messageId, channelId) => dispatch(fetchChannelMessage(messageId, channelId)),
     receiveChannelMessage: (message) => dispatch(receiveChannelMessage(message)),
     removeChannelMessage: (messageId) => dispatch(removeChannelMessage(messageId))

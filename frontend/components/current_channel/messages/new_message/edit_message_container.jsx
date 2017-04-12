@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import EditMessageForm from './edit_message_form';
 
-import { updateChannelMessage } from '../../../actions/channel_actions';
+import { updateChannelMessage } from '../../../../actions/channel_actions';
 
 const mapStateToProps = (state, ownProps) => {
 

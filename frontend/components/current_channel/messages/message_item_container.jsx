@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-// import { updateMessage, deleteMessage } from '../../actions/message_actions';
-import { deleteChannelMessage } from '../../actions/channel_actions';
+
+import { deleteChannelMessage } from '../../../actions/channel_actions';
 
 import MessageItem from './message_item';
 
