@@ -9,9 +9,7 @@ class GeneralChannelPickerItem extends React.Component {
 
   linkClickHandler(e) {
 
-    e.preventDefault();
-    const newChannelId = parseInt(this.props.params.id);
-    // this.props.fetchCurrentChannel(this.props.channelId);
+    e.preventDefault();    
     hashHistory.push(`/channels/${this.props.channelId}`);
   }
 

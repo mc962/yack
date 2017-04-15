@@ -9,11 +9,9 @@ class DMChannelPickerItem extends React.Component {
 
   linkClickHandler(e) {
     e.preventDefault();
-    const newChannelId = parseInt(this.props.params.id);
-    // potential buggy fix
-    // this.props.fetchCurrentChannel(this.props.channelId).then(() => {
-      hashHistory.push(`/channels/${this.props.channelId}`);
-    // })
+
+    hashHistory.push(`/channels/${this.props.channelId}`);
+
   }
 
   constructRoomTitle(title) {
