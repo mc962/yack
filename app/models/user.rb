@@ -28,6 +28,12 @@ class User < ApplicationRecord
 
   has_many :chatrooms, through: :user_chats, source: :chatroom
 
+  # profile picture uploading
+  has_many :pictures, as: :imageable
+
+
+
+
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
   end
@@ -82,7 +88,7 @@ class User < ApplicationRecord
 
   def ensure_gravatar_url
     self.gravatar_url ||= User.gravatar_for(self)
-    
+
   end
 
 end
