@@ -1,11 +1,11 @@
-.messages-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-  overflow: auto;
-
-}
+// .messages-container {
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//
+//   overflow: auto;
+//
+// }
 .message-element {
 
   width: 100%;
@@ -14,6 +14,10 @@
   display: flex;
   justify-content: space-between;
 
+}
+
+li.message-element:first-child {
+  // margin-top: 1vh;
 }
 
 .user-picture {
@@ -116,12 +120,7 @@ div.picture-display-time:hover {
   width: 100%;
 }
 
-.current-channel-sections {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
+
 
 
 .message-actions {

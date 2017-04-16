@@ -1,0 +1,35 @@
+// modal styling
+
+.profile-picture-upload-modal {
+  position                   : absolute;
+   top                        : 5%;
+   left                       : 30%;
+   right                      : 30%;
+   bottom                     : 20%;
+   border                     : 1px solid #ccc;
+   background                 : #fff;
+   overflow                   : auto;
+   -webkit-overflow-scrolling : touch;
+   border-radius              : 4px;
+   outline                    : none;
+   padding                    : 20px;
+   height                     : 85vh;
+   width                      : 40%;
+   z-index                    : 20;
+}
+
+.profile-picture-upload-overlay {
+  position          : fixed;
+    top               : 0;
+    left              : 0;
+    right             : 0;
+    bottom            : 0;
+    background-color  : rgba(62, 61, 61, 0.75);
+    z-index           : 15;
+}
+
+.modal-close-btn {
+  float: right;
+}
+
+// form styling

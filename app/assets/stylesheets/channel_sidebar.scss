@@ -47,6 +47,8 @@ span.public-channels-button:hover {
   font-family: 'Lato', sans-serif;
   // text-indent: 15px;
   flex-direction: column;
+  max-height: 36.3vh;
+  overflow-y: auto;
 }
 
 

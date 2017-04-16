@@ -1,8 +1,8 @@
 import React from 'react'
 
 import ChannelPickerContainer from './channel_picker/channel_picker_container';
-
 import ProfileContainer from './profile/profile_container'
+
 
 const Display = ({children}) => {
 
@@ -22,10 +22,9 @@ const Display = ({children}) => {
             {children}
           </section>
 
+
       </div>
     )
-
-
 }
 
 export default Display;

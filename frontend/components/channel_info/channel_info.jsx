@@ -59,8 +59,9 @@ class ChannelInfo extends React.Component {
     if (!displayRoomPurpose) {
       displayRoomPurpose = '-'
     }
+    // <div className='leave-channel-btn' onClick={this.leaveHandler}>{btnTxt}</div>
     return(
-      <section className='information-container'>
+      <header className='channel-information-container'>
         <div className='room-text-container'>
 
           <div className='info-room-title'>{filteredRoomTitle}</div>
@@ -72,9 +73,8 @@ class ChannelInfo extends React.Component {
             <div className='room-purpose'>{displayRoomPurpose}</div>
           </div>
 
-          <div className='leave-channel-btn' onClick={this.leaveHandler}>{btnTxt}</div>
         </div>
-      </section>
+      </header>
     );
   }
 }
