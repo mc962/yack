@@ -9,27 +9,26 @@ import ChannelInfoContainer from '../channel_info/channel_info_container';
 
 import MessagesContainer from './messages/messages_container';
 import NewMessageFormContainer from './messages/new_message/new_message_container';
-import ChannelSidebarContainer from '../channel_info/channel_sidebar_container'
+import InformationSidebarContainer from '../information_sidebar/information_sidebar_container'
 
 class CurrentChannel extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  render() {
+  currentSidebarComponent() {
 
+  }
+
+  render() {
+// sidebar will render particular component based on dispatched actions from state
         return this.props.loading ?
           <LoadingIcon /> :
 
 
 
-
-
-
-
-          <div className='current-channel-sections'>            
+          <div className='current-channel-sections'>
               <ChannelInfoContainer />
-
 
             <div className='dynamic-channel-info'>
 
@@ -44,9 +43,7 @@ class CurrentChannel extends React.Component {
                 </footer>
               </div>
 
-
-
-              <ChannelSidebarContainer />
+              {this.props.children}
 
             </div>
 

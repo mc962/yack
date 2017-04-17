@@ -22,7 +22,7 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @user.gravatar_url = User.gravatar_for(@user)
+    @user.image_url = User.gravatar_for(@user)
     render :show
   end
 

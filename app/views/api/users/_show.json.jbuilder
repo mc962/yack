@@ -1,4 +1,4 @@
-json.extract! user, :id, :username, :first_name, :last_name, :gravatar_url
+json.extract! user, :id, :username, :first_name, :last_name, :image_url, :email
 
 
 json.channels do

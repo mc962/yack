@@ -61,7 +61,7 @@ class Messages extends React.Component {
     let channelUsers = this.props.users;
     let channelId = this.props.channelId;
 
-    if (this.props.messages) {
+    if (this.props.messages) {      
       messageElements = Object.keys(this.props.messages).map((message_id, idx) => {
         let message = this.props.messages[message_id]
         let userImageLink = message.user_url;
