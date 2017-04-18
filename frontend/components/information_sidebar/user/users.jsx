@@ -29,6 +29,7 @@ class Users extends React.Component {
 
     return (
       <section className='user-directory'>
+        <header className='directory-header'>Team Directory</header>
         <ul className='user-directory-list'>
           {userDirectory}
         </ul>

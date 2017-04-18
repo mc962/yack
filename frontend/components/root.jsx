@@ -19,31 +19,43 @@ import { fetchAllUsers, fetchUser } from '../actions/user_actions';
 
 const Root = ({ store }) => {
     const _redirectIfLogggedIn = (nextState, replace) => {
-      if (store.getState().session.currentUser) {
-        replace('/');
+      const currentUser = store.getState().session.currentUser;
+      if (currentUser) {
+        replace(`/channels/${currentUser.gen_channel_id}`);
       }
     }
+
     const _redirectIfNotLoggedIn = (nextState, replace) => {
 
       if (!store.getState().session.currentUser){
         replace('/login')
+      }
     }
-  }
 
-  const _fetchCurrentChannel = (nextState, replace) => {
-    store.dispatch(fetchCurrentChannel(nextState.params.id))
-  }
+    const _fetchCurrentChannel = (nextState, replace) => {
+      // temp fix
+      let channelId
+      if (Array.isArray(nextState.params.id)) {
+        channelId = nextState.params.id[0]
+      } else {
+        channelId = nextState.params.id
+      }
+      
 
-  const _fetchAllUsers = (nextState, replace) => {
-    store.dispatch(fetchAllUsers())
-  }
-
-  const _fetchInfoUser = (nextState, replace) => {
-    const userId = nextState.params.id[1]
-    if (!store.getState().users.userId) {
-      store.dispatch(fetchUser(userId))
+      store.dispatch(fetchCurrentChannel(channelId))
     }
-  }
+
+    const _fetchAllUsers = (nextState, replace) => {
+      store.dispatch(fetchAllUsers())
+    }
+
+    const _fetchInfoUser = (nextState, replace) => {
+
+      const userId = nextState.params.id[1]
+      if (!store.getState().users.userId) {
+        store.dispatch(fetchUser(userId))
+      }
+    }
 
   let indexRedirect = null;
   return(

@@ -9,7 +9,7 @@ class DirectoryListItem extends React.Component {
 
   handleUserClick(e) {
     const userId = this.props.userId;
-    this.props.router.push(`/channels/${this.props.params.id[0]}/information/users/${userId}`)
+    this.props.router.push(`/channels/${this.props.params.id}/information/users/${userId}`)
   }
 
   render() {

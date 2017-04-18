@@ -8,7 +8,7 @@ class EditProfile extends React.Component {
   render() {
     return (
       <div className='edit-profile-container'>
-        Im awesome
+        
       </div>
     )
   }

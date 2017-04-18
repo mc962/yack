@@ -16,7 +16,7 @@ export const signup = (user) => (dispatch) => {
   dispatch(startLoadingCurrentUser());
 
     return APIUtil.signup(user).then(
-      (fetchedUser)=>{
+      (fetchedUser)=>{        
         return dispatch(receiveCurrentUser(fetchedUser));
       },
       (fetchedErrors) => {

@@ -10,9 +10,10 @@ class Profile extends React.Component {
     this.submitLogout = this.submitLogout.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
     this.openMenu = this.openMenu.bind(this);
-    this.openPictureUpload = this.openPictureUpload.bind(this);
-    this.handleEscape = this.handleEscape.bind(this)
-    this.state = {popoverDisplay: 'hidden-popover', menuDisplay: 'hideable-menu', uploadModalOpen: false };
+    this.openProfile = this.openProfile.bind(this)
+
+
+    this.state = {popoverDisplay: 'hidden-popover', menuDisplay: 'hideable-menu' };
   }
 
   openMenu(e) {
@@ -24,21 +25,24 @@ class Profile extends React.Component {
     this.setState({popoverDisplay: ' hidden-popover', menuDisplay: ' hideable-menu'});
   }
 
-  openPictureUpload() {
-    this.setState({ uploadModalOpen: true })
+
+  openProfile(e) {
+    this.closeMenu(e)
+    // temp fix
+
+    if (Object.keys(this.props.params).length === 0) {
+      this.props.router.replace(`/channels/${this.props.currentUser.gen_channel_id}/information/users/${this.props.currentUser.id}`)
+    } else {
+      this.props.router.push(`/channels/${this.props.params.id}/information/users/${this.props.currentUser.id}`)
+    }
   }
 
-  handleEscape() {
-    this.setState({ uploadModalOpen: false })
-  }
 
   submitLogout(e) {
     e.preventDefault();
     this.props.logout();
 
-
     this.props.router.push('/');
-
   }
 
   render() {
@@ -73,8 +77,8 @@ class Profile extends React.Component {
                   </div>
                 </div>
                 <div className='menu-items'>
-                  <div className='menu-element' onClick={this.openPictureUpload}>
-                    Change Profile Picture
+                  <div className='menu-element' onClick={this.openProfile}>
+                    Profile & Account
                   </div>
                   <form className='logout-button menu-element' onSubmit={this.submitLogout}>
                     <input className='logout-button-input' type='submit' value='Logout' />
@@ -83,20 +87,7 @@ class Profile extends React.Component {
               </div>
             </div>
 
-            <Modal
-              isOpen={this.state.uploadModalOpen}
-              contentLabel="ProfilePictureUploadModal"
-              onRequestClose={this.handleEscape}
-              className={'profile-picture-upload-modal'}
-              overlayClassName={'profile-picture-upload-overlay'} >
 
-              <button className='modal-close-btn' onClick={this.handleEscape}>
-                <div className='x-icon'>x</div>
-                <div className='esc-text'>esc</div>
-              </button>
-              <ProfilePictureUploadContainer handleEscape={this.handleEscape} />
-
-            </Modal>
         </section>
     );
   }
