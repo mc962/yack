@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   let lastName = ""
   let infoUser;
   if (state.users.allUsers) {
-    infoUser = state.users.allUsers[ownProps.params.id[1]]
+    infoUser = state.users.allUsers[ownProps.params.user_id]
   }
 
 

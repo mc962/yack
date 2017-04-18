@@ -10,6 +10,7 @@ class InformationSidebar extends React.Component {
     return(
       <sidebar className='channel-sidebar-container'>
         {this.props.children}
+        <footer className='.information-footer'>The Footer</footer>
       </sidebar>
     )
   }

@@ -1,6 +1,6 @@
 .channel-sidebar-container {
   height: 92vh;
-  width: 53%;
+  width: 26%;
   display: flex;
   flex-direction: column;
   border: 1px solid #e8e8e8;
@@ -8,5 +8,10 @@
   box-sizing: border-box;
 }
 
+.information-footer {
+  align-self: flex-end;
+  height: 10vh;
+  width: 100%;
+}
 // clicking on edit profile stuff will
 // trigger dropdown close cb and reveal the channel sidebar

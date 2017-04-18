@@ -11,6 +11,7 @@ import Display from './display';
 
 import CurrentChannelContainer from './current_channel/current_channel_container'
 import InformationSidebarContainer from './information_sidebar/information_sidebar_container'
+import InformationContainer from './information_sidebar/information/information_container'
 import UsersContainer from './information_sidebar/user/users_container';
 import UserInfoContainer from './information_sidebar/user/user_info_container'
 
@@ -40,18 +41,20 @@ const Root = ({ store }) => {
       } else {
         channelId = nextState.params.id
       }
-      
+
 
       store.dispatch(fetchCurrentChannel(channelId))
     }
 
     const _fetchAllUsers = (nextState, replace) => {
-      store.dispatch(fetchAllUsers())
+      if (!store.getState.users) {
+        store.dispatch(fetchAllUsers())
+      }
     }
 
     const _fetchInfoUser = (nextState, replace) => {
 
-      const userId = nextState.params.id[1]
+      const userId = nextState.params.user_id
       if (!store.getState().users.userId) {
         store.dispatch(fetchUser(userId))
       }
@@ -69,12 +72,9 @@ const Root = ({ store }) => {
 
           <Route path="channels" component={ Display } onEnter={_redirectIfNotLoggedIn}>
             <Route path=":id" component={ CurrentChannelContainer } onEnter={_fetchCurrentChannel}>
-              <Route path="information" component={ InformationSidebarContainer }>
-                <Route path="users" component={ UsersContainer } onEnter={_fetchAllUsers}>
-
-                </Route>
-                <Route path="users/:id" component= { UserInfoContainer } onEnter={_fetchInfoUser}/>
-              </Route>
+                <Route path="information" component={ InformationContainer } onEnter={_fetchAllUsers}/>
+                <Route path="users" component={ UsersContainer } onEnter={_fetchAllUsers} />
+                <Route path="users/:user_id" component= { UserInfoContainer } onEnter={_fetchInfoUser}/>
             </Route>
           </Route>
         </Route>
