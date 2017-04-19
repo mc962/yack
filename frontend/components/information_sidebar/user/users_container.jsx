@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import Users from './users';
 
 const mapStateToProps = (state, ownProps) => {
-
+  let users = []
+  if (state.channels.currentChannel) {    
+    users = state.channels.currentChannel.users
+  }
   return {
-    users: state.channels.currentChannel.users
+    users: users
   }
 }
 

@@ -8,6 +8,8 @@ class Information extends React.Component {
     super(props)
     this.togglePurpose = this.togglePurpose.bind(this);
     this.togglePeople = this.togglePeople.bind(this);
+    this.escapeInfo = this.escapeInfo.bind(this);
+
     this.state = {detailsStatus: 'hidden-purpose', peopleStatus: 'hidden-people'}
   }
 
@@ -43,6 +45,10 @@ class Information extends React.Component {
     }
 
     return items;
+  }
+
+  escapeInfo(e) {
+    this.props.router.replace(`/channels/${this.props.params.id}`)
   }
 
   render() {
@@ -82,7 +88,7 @@ class Information extends React.Component {
           <div className='channel-details-title'>
             About #{this.props.roomTitle}
           </div>
-          <div className='details-x-icon'>
+          <div className='details-x-icon' onClick={this.escapeInfo}>
             x
           </div>
         </header>

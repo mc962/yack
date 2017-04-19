@@ -15,5 +15,17 @@ messages_hash = {}
                               }
 end
 
-json.users @chatroom.users
+users_hash = {}
+
+@chatroom.users.each do |user|
+  users_hash[user.id] = {
+    id: user.id,
+    first_name: user.first_name,
+    last_name: user.last_name,
+    image_url: user.image_url,
+    username: user.username
+  }
+end
+
+json.users users_hash
 json.channel_messages messages_hash

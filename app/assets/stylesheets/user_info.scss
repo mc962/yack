@@ -5,11 +5,31 @@
   font-family: 'Lato', sans-serif;
 }
 
-.directory-header {
+.profile-details-header {
   width: 100%;
-  height: 8vh;
-  border-bottom: 1px solid #e8e8e8
+  height: 9.5vh;
+  border-bottom: 1px solid #e8e8e8;
 
+  padding: 5% 4.5%;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #2c2d30;
+
+}
+
+.user-profile-information-container {
+    width: 36%;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+
+.profile-details-title {
+  font-size: 1.2em;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .directory-user-details {

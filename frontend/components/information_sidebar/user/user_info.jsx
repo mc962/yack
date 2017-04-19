@@ -1,14 +1,17 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { withRouter } from 'react-router'
 
 import EditProfileContainer from './edit_profile_container';
 
 class UserInfo extends React.Component {
   constructor(props) {
     super(props)
-    this.state = ({ profileModalIsOpen: true })
     this.handleEditProfile = this.handleEditProfile.bind(this);
     this.handleEscape = this.handleEscape.bind(this);
+    this.returnToUsers = this.returnToUsers.bind(this);
+
+    this.state = ({ profileModalIsOpen: false })
   }
 
   handleEditProfile() {
@@ -19,6 +22,9 @@ class UserInfo extends React.Component {
     this.setState({ profileModalIsOpen: false })
   }
 
+  returnToUsers() {
+    this.props.router.replace(`/channels/${this.props.params.id}/users`)
+  }
 
   render() {
     let editButton;
@@ -44,7 +50,7 @@ class UserInfo extends React.Component {
     // addd in a back caret when get font awesome
 
     return (
-      <section className='user-profile-information'>
+      <sidebar className='user-profile-information-container'>
         <Modal
           isOpen={this.state.profileModalIsOpen}
           contentLabel="EditProfileModal"
@@ -62,7 +68,15 @@ class UserInfo extends React.Component {
           <EditProfileContainer handleEscape={this.handleEscape} />
 
         </Modal>
-        <header className='directory-header'>Team Directory</header>
+
+        <header className='profile-details-header'>
+          <div className='profile-details-title' onClick={this.returnToUsers}>
+            O Team Directory
+          </div>
+          <div className='details-x-icon' onClick={this.escapeInfo}>
+            x
+          </div>
+        </header>
 
         <div className='directory-user-details'>
           <img src='' alt='Profile Picture' className='user-info-picture' />
@@ -89,7 +103,7 @@ class UserInfo extends React.Component {
         </div>
 
 
-      </section>
+      </sidebar>
     )
   }
 }

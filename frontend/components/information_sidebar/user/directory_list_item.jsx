@@ -16,9 +16,13 @@ class DirectoryListItem extends React.Component {
 
     return(
       <li className="user-directory-item-container" onClick={this.handleUserClick}>
-        <img src="" className="user-directory-thumb" alt={this.props.username} />
-        <h3 className='directory-full-name'>{`${this.props.firstName} ${this.props.lastName}`}</h3>
-        <div className='directory-username'>{`@${this.props.username}`}</div>
+        <div className='directory-thumb-container'>
+          <img src="" className="user-directory-thumb" alt={this.props.username} />
+        </div>
+        <div className='directory-name-text'>
+          <span className='directory-full-name'>{`${this.props.firstName} ${this.props.lastName}`}</span>
+          <div className='directory-username'>{`@${this.props.username}`}</div>
+        </div>
       </li>
     )
   }

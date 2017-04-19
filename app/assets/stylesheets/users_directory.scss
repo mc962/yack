@@ -1,7 +1,58 @@
-.user-directory {
-  overflow-y: auto;
-  padding: 2%;
+.user-directory-header {
+  width: 100%;
+  height: 9.5vh;
+  border-bottom: 1px solid #e8e8e8;
+
+  padding: 5% 4.5%;
   box-sizing: border-box;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #2c2d30;
+}
+
+.user-directory-container {
+  width: 36%;
+  font-family: 'Lato', sans-serif;
+  // box-sizing: border-box;
+}
+
+.user-directory-title {
+  font-size: 1.2em;
+  font-weight: 800;
+}
+
+.user-directory-list {
+  overflow-y: auto;
+  height: 70vh;
+}
+
+.user-directory-item-container {
+  padding: 4%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.directory-name-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.directory-full-name {
+  font-size: 1.17em;
+  font-weight: bold;
+}
+
+.directory-thumb-container {
+
+  width: 30%;
+  height: 12vh;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-right: 5%;
 }
 
 li.user-directory-item-container:hover {

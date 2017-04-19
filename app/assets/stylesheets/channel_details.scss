@@ -179,11 +179,10 @@ ul.details-user-list:last-child {
   justify-content: flex-start;
 }
 
-// .quick-user-picture {
-//   width: 10%;
-//   border: 1px solid black;
-//   border-radius: 4px;
-// }
+.quick-user-picture-container {
+  font-size: 0.1em;  
+}
+
 .quick-user-image-anchor {
   width: 10%;
   border-radius: 4px;

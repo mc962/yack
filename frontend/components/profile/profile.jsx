@@ -31,9 +31,9 @@ class Profile extends React.Component {
     // temp fix
 
     if (Object.keys(this.props.params).length === 0) {
-      this.props.router.replace(`/channels/${this.props.currentUser.gen_channel_id}/information/users/${this.props.currentUser.id}`)
+      this.props.router.replace(`/channels/${this.props.currentUser.gen_channel_id}/users/${this.props.currentUser.id}`)
     } else {
-      this.props.router.push(`/channels/${this.props.params.id}/information/users/${this.props.currentUser.id}`)
+      this.props.router.push(`/channels/${this.props.params.id}/users/${this.props.currentUser.id}`)
     }
   }
 
