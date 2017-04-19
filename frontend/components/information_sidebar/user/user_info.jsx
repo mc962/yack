@@ -35,7 +35,7 @@ class UserInfo extends React.Component {
           Edit Profile
         </div>
       )
-      email = this.props.email
+      email = <a href={`mailto:${this.props.email}`} className='user-detail-email'>this.props.email</a>
     }
 
     const modalChannels = {
@@ -71,7 +71,12 @@ class UserInfo extends React.Component {
 
         <header className='profile-details-header'>
           <div className='profile-details-title' onClick={this.returnToUsers}>
-            O Team Directory
+            <div className="profile-details-chevron">
+              <i className="fa fa-chevron-left" aria-hidden="true"></i>
+            </div>
+              <div className='profile-details-title-text'>
+                Team Directory
+              </div>
           </div>
           <div className='details-x-icon' onClick={this.escapeInfo}>
             x
@@ -94,7 +99,7 @@ class UserInfo extends React.Component {
               </tr>
               <tr className='detail-row email-row'>
                 <td className='detail-cell detail-label email-label'>Email</td>
-                <td className='detail-cell user-detail-data email-data'>{this.props.email}</td>
+                <td className='detail-cell user-detail-data email-data'>{email}</td>
               </tr>
             </tbody>
           </table>
