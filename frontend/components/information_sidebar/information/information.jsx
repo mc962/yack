@@ -6,13 +6,20 @@ import QuickUserItem from './quick_user_item'
 class Information extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {detailsStatus: 'hidden-purpose'}
+    this.togglePurpose = this.togglePurpose.bind(this);
+    this.togglePeople = this.togglePeople.bind(this);
+    this.state = {detailsStatus: 'hidden-purpose', peopleStatus: 'hidden-people'}
   }
 
 
   togglePurpose(e) {
     const newStatus = this.state.detailsStatus === 'hidden-purpose' ? 'revealed-purpose' : 'hidden-purpose'
     this.setState({detailsStatus: newStatus})
+  }
+
+  togglePeople(e) {
+    const newStatus = this.state.peopleStatus === 'hidden-people' ? 'revealed-people' : 'hidden-people'
+    this.setState({peopleStatus: newStatus})
   }
 
   parseDate(unprocessedDate) {
@@ -39,29 +46,79 @@ class Information extends React.Component {
   }
 
   render() {
-  let date = this.parseDate(this.props.createdAt);
-  if (this.props.createdAt) {
-    date = this.parseDate(this.props.createdAt);
-  } else {
-    date = ''
-  }
+    let displayDetails;
+    let displayDetailCaret;
+    let displayPeople;
+    let displayPeopleCaret;
 
-  const userList = this.getUsers()
+    if (this.state.detailsStatus === 'hidden-purpose') {
+      displayDetails = 'hidden-purpose';
+      displayDetailCaret = 'side-caret'
+    } else if (this.state.detailsStatus === 'revealed-purpose') {
+      displayDetails = 'revealed-purpose';
+      displayDetailCaret = 'down-caret'
+    }
+
+    if (this.state.peopleStatus === 'hidden-people') {
+      displayPeople = 'hidden-people';
+      displayPeopleCaret = 'side-caret'
+    } else if (this.state.peopleStatus === 'revealed-people') {
+      displayPeople = 'revealed-people';
+      displayPeopleCaret = 'down-caret'
+    }
+
+
+    let date;
+    if (this.props.createdAt) {
+      date = this.parseDate(this.props.createdAt);
+    } else {
+      date = ''
+    }
+    const userList = this.getUsers()
 
     return (
       <sidebar className='channel-sidebar-details-container'>
-        <header className='information-section-header channel-details-header'>About #{this.props.roomTitle}</header>
-        <section className='details-text-container'>
-          <div className='details-header details-section-header'>Channel Details</div>
-          <div className={`details-text-container ${this.state.detailsStatus}`}>
+        <header className='information-section-header channel-details-header'>
+          <div className='channel-details-title'>
+            About #{this.props.roomTitle}
+          </div>
+          <div className='details-x-icon'>
+            x
+          </div>
+        </header>
+
+        <section className='details-section-container'>
+
+          <div className='details-header details-section-header' onClick={this.togglePurpose} >
+            <div className='details-header-text-container'>
+              <span className='info-icon'><i className="fa fa-info" aria-hidden="true"></i></span>
+              <span className='details-header-text'>
+                Channel Details
+              </span>
+            </div>
+            <i className={`fa fa-caret-right info-caret ${displayDetailCaret}`} aria-hidden="true"></i>
+          </div>
+
+          <div className={`details-text-container ${displayDetails}`}>
             <div className='purpose-label'>Purpose</div>
             <p className='purpose-text'>{this.props.purpose}</p>
             <div className='room-date-created'>Created on {date}</div>
           </div>
         </section>
+
         <section className='users-text-container'>
-          <div className='details-section-header'>{this.props.usersCount} Members</div>
-          <ul className='details-user-list'>
+
+          <div className='people-header details-section-header' onClick={this.togglePeople} >
+            <div className='details-header-user-container'>
+              <span className='user-icon'><i className="fa fa-user-o" aria-hidden="true"></i></span>
+              <span className='people-header-text'>
+                {this.props.usersCount} Members
+              </span>
+            </div>
+            <i className={`fa fa-caret-right user-caret ${displayPeopleCaret}`} aria-hidden="true"></i>
+          </div>
+
+          <ul className={`details-user-list ${displayPeople}`}>
             {userList}
           </ul>
         </section>

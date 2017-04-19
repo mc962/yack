@@ -9,6 +9,7 @@ class Users extends React.Component {
   getListItems() {
     let items = []
     if (this.props.users) {
+      debugger
       const userList = this.props.users
       items = Object.keys(this.props.users).map((userId, idx) => {
         const user = userList[userId];

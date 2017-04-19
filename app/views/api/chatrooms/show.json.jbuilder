@@ -15,5 +15,5 @@ messages_hash = {}
                               }
 end
 
-json.users_count @chatroom.users.count
+json.users @chatroom.users
 json.channel_messages messages_hash

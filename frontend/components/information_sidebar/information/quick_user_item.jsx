@@ -4,10 +4,10 @@ import { Link, withRouter } from 'react-router'
 const QuickUserItem = ({userId, username, gravatarUrl, paramId}) => {
   return (
     <li className='quick-user-item-container'>
-      <Link to={`/channels/${paramId}/users/${userId}`} className='quick-user-anchor'>
+      <Link to={`/channels/${paramId}/users/${userId}`} className='quick-user-image-anchor'>
         <img src={gravatarUrl} alt={username} className='quick-user-picture' />
       </Link>
-      <Link to={`/channels/${paramId}/users/${userId}`} className='quick-user-anchor'>
+      <Link to={`/channels/${paramId}/users/${userId}`} className='quick-user-name-anchor'>
         {username}
       </Link>
     </li>

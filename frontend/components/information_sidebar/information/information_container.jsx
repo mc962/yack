@@ -13,10 +13,10 @@ const mapStateToProps = (state) => {
     createdAt = state.channels.currentChannel.created_at;
     roomPurpose = state.channels.currentChannel.purpose;
     roomTitle = state.channels.currentChannel.room_title;
-    usersCount = state.channels.currentChannel.users_count;
+    usersCount = state.channels.currentChannel.users.length;
   }
-  if (state.users) {
-    users = state.users.allUsers
+  if (state.channels.currentChannel) {
+    users = state.channels.currentChannel.users
   }
 
   return {

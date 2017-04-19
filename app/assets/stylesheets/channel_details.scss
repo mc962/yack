@@ -1,17 +1,197 @@
-.channel-sidebar-container {
-  height: 92vh;
-  width: 26%;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #e8e8e8;
-  // border: 1px solid green;
+.information-section-header {
+  width: 100%;
+  height: 9.5vh;
+  border-bottom: 1px solid #e8e8e8;
+
+  padding: 5% 4.5%;
   box-sizing: border-box;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #2c2d30;
 }
 
-.information-footer {
-  align-self: flex-end;
-  height: 10vh;
-  width: 100%;
+
+.channel-details-title {
+  font-size: 1.2em;
+  font-weight: 800;
 }
+
+.details-x-icon {
+  font-size: 1.4em;
+  line-height: 90%;
+  color: #717274;
+  cursor: pointer;
+}
+
+div.details-x-icon:hover {
+  color: #005e99
+}
+
+.channel-sidebar-details-container {
+  height: 92vh;
+  width: 36%;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #e8e8e8;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+.details-text-container {
+
+  padding-left: 4%;
+  padding-bottom: 5%;
+}
+
+.purpose-label {
+  font-size: 0.8em;
+  font-weight: 600;
+  color: #717274
+}
+
+.purpose-text {
+  color: #7e7285
+}
+
+.room-date-created {
+  color: #7e7285;
+  font-style: italic;
+}
+
+.details-section-container {
+  border-bottom: 1px solid #e8e8e8;
+  // height: 30.5vh;
+
+
+}
+
+.details-section-header {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 6%;
+  padding-bottom: 7%;
+
+
+  color: #89888b;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  cursor: pointer;
+}
+
+.details-header-text-container {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  // padding-bottom: 5%;
+}
+
+.info-icon {
+  color: #5ab0f7;
+  margin-right: 7%;
+  font-size: 1.3em;
+  opacity: 0.8
+}
+
+.user-icon {
+  font-size: 1.3em;
+  color: #8bcd99;
+  margin-right: 2%;
+  opacity: 0.8
+}
+
+.fa-caret-right {
+  color: #c7c8cb;
+}
+
+div.details-header:hover {
+  span.info-icon {
+    color: #4297de;
+  }
+  span.details-header-text {
+    color: #555459;
+  }
+  i.info-caret {
+    color: #555459;
+  }
+}
+
+div.people-header:hover {
+  span.user-icon {
+    color: #71b77f;
+  }
+  span.people-header-text {
+    color: #555459;
+  }
+
+  i.user-caret {
+    color: #555459;
+  }
+}
+
+.hidden-purpose {
+  display: none;
+}
+
+.hidden-people {
+  display: none;
+}
+
+.down-caret {
+  transform: rotate(90deg);
+}
+
+
+
+
+
+.header-text-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.details-header-user-container {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+}
+
+
+.details-user-list {
+  height: 45vh;
+  overflow-y: auto;
+  padding-left: 5%;
+}
+
+ul.details-user-list:first-child {
+  padding-top: 2%;
+}
+
+ul.details-user-list:last-child {
+  padding-bottom: 2%;
+}
+.quick-user-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+// .quick-user-picture {
+//   width: 10%;
+//   border: 1px solid black;
+//   border-radius: 4px;
+// }
+.quick-user-image-anchor {
+  width: 10%;
+  border-radius: 4px;
+  border: 1px solid black;
+  margin-right: 3%;
+  margin-bottom: 3%;
+}
+
+
 // clicking on edit profile stuff will
 // trigger dropdown close cb and reveal the channel sidebar
