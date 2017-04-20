@@ -11,7 +11,7 @@ class UserInfo extends React.Component {
     this.handleEscape = this.handleEscape.bind(this);
     this.returnToUsers = this.returnToUsers.bind(this);
 
-    this.state = ({ profileModalIsOpen: false })
+    this.state = ({ profileModalIsOpen: true })
   }
 
   handleEditProfile() {

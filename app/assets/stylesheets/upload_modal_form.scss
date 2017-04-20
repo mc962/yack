@@ -28,8 +28,131 @@
     z-index           : 15;
 }
 
-.modal-close-btn {
-  float: right;
-}
+// .modal-close-btn {
+//   float: right;
+// }
 
 // form styling
+
+.edit-profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 89.9vh;
+  box-sizing: border-box;
+}
+
+.edit-profile-name-inputs-container {
+  width: 31.5%;
+  margin-right: 2%;
+}
+
+.edit-profile-name-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-profile-label {
+  color: #645459;
+  font-weight: 700;
+}
+
+.edit-profile-input {
+  margin-top: 1.3vh;
+
+  border: 1px solid #c5c5c5;
+  color: #645459;
+  border-radius: 4px;
+  width: 100%;
+  height: 7.5vh;
+
+  text-indent: 3%;
+}
+
+.edit-name-unit {
+  display: flex;
+  flex-direction: column;
+  height: 14vh;
+}
+
+.edit-profile-inputs-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  // height: 20vh;
+  justify-content: center;
+  padding-left: 5%;
+  padding-top: 2.4%;
+}
+
+.edit-profile-upload-container {
+  height: 29vh;
+  width: 14%;
+  border-radius: 3px;
+
+}
+
+.edit-profile-image-enclosure {
+
+}
+
+.edit-photo-label {
+  color: #645459;
+  font-weight: 700;
+}
+
+.edit-profile-file-upload {
+  visibility: hidden;
+}
+
+.profile-upload-photo {
+  margin-top: 1.2vh;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.edit-profile-submit-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #f7f7f7;
+  width: 100%;
+  height: 10vh;
+  padding: 2%;
+}
+
+.edit-profile-cancel-btn {
+  background-color: #fbfbfa;
+  color: #555463;
+  border: 1px solid #c7cacd;
+
+  border-radius: 0.25em;
+  height: 5vh;
+  width: 10%;
+  font-weight: 700;
+  text-align: center;
+  line-height: 2em;
+  cursor: pointer;
+}
+
+input.submit-profile-edit-btn:hover {
+  border-bottom: 2px solid #20865d;
+}
+
+div.edit-profile-cancel-btn:hover {
+  color: #007ab8;
+}
+
+.submit-profile-edit-btn {
+  background-color: #2ab27b;
+  color: #FFFFFF;
+  margin-left: 1%;
+  border-radius: 0.25em;
+  height: 5vh;
+  width: 10%;
+  font-weight: 700;
+  text-align: center;
+}

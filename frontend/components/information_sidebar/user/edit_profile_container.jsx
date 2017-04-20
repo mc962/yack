@@ -4,7 +4,9 @@ import EditProfile from './edit_profile';
 
 const mapStateToProps = (state) => {
   return {
-
+    firstName: state.session.currentUser.first_name,
+    lastName: state.session.currentUser.last_name,
+    imageUrl: state.session.currentUser.image_url
   }
 }
 

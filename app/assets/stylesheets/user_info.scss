@@ -125,14 +125,16 @@ div.edit-user-modal-btn:hover {
   position: absolute;
   background-color: white;
   top: 0%;
+  font-family: 'Lato', sans-serif;
 }
 
 .profie-modal-close-button {
   font-family: 'Lato', sans-serif;
   text-align: center;
   color: #717274;
-
-  float: right;
+  left: 0%;
+  // float: right;
+  // padding-right: 20%;
 }
 
 .edit-modal-header-container {
@@ -141,16 +143,19 @@ div.edit-user-modal-btn:hover {
   align-items: center;
   width: 100%;
   height: 10vh;
-  border-bottom: 1px solid pink;
+  border-bottom: 1px solid #e8e8e8;
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
 }
 
 .edit-modal-header {
-
   text-align: center;
-  width: 40%;
+  width: 97%;
   margin: 0;
+  font-size: 1.35em;
+  font-weight: 900;
 }
 
 .edit-modal-x-icon {
-  float: right;
+  color: #717274
+  // margin-right: 10%;
 }
