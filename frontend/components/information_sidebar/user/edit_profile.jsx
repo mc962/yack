@@ -8,7 +8,7 @@ class EditProfile extends React.Component {
     this.handlePhotoChange = this.handlePhotoChange.bind(this);
     this.submitProfileUpdate = this.submitProfileUpdate.bind(this);
 
-    this.state = {firstName: this.props.firstName, lastName: this.props.lastName, currentPhoto: this.props.imageUrl, fileUpload: ''}
+    this.state = {firstName: this.props.firstName, lastName: this.props.lastName, currentPhoto: this.props.imageUrl, fileUpload: '', imageFile: '', displayImage: ''}
   }
 
   handleChange(e) {
@@ -17,9 +17,21 @@ class EditProfile extends React.Component {
   }
 
   handlePhotoChange(e) {
-    const fileVal = e.currentTarget.value;
-    this.setState({[e.currentTarget.id]: fileVal})
-    // look up how to do picture previews for file uploads
+    e.preventDefault()
+
+    const targetEl = e.currentTarget
+    const targetElField = targetEl.id
+
+    const fileVal = targetEl.files[0];
+    const uploadPath = targetEl.value
+
+    // probably will want error checking here for if its a file
+    const reader  = new FileReader();
+    reader.onloadend = () => {
+      this.setState({targetElField: uploadPath, imageFile: fileVal, displayImage: reader.result })
+    }
+    reader.readAsDataURL(fileVal);
+
   }
 
   submitProfileUpdate(e) {
@@ -28,7 +40,7 @@ class EditProfile extends React.Component {
   }
 
   render() {
-    const displayUrl = this.state.fileUpload ? this.state.fileUpload : this.state.currentPhoto
+    const displayUrl = this.state.displayImage ? this.state.displayImage : this.state.currentPhoto
     return (
       <form className='edit-profile-container' onSubmit={this.submitProfileUpdate}>
 
@@ -55,7 +67,7 @@ class EditProfile extends React.Component {
         </div>
 
         <div className='edit-profile-submit-btns'>
-          <div className='edit-profile-cancel-btn'>Cancel</div>
+          <div className='edit-profile-cancel-btn' onClick={this.props.handleEscape} >Cancel</div>
           <input type='submit' className='submit-profile-edit-btn' value='Save Changes' />
         </div>
 

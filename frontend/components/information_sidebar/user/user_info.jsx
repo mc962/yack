@@ -11,7 +11,7 @@ class UserInfo extends React.Component {
     this.handleEscape = this.handleEscape.bind(this);
     this.returnToUsers = this.returnToUsers.bind(this);
 
-    this.state = ({ profileModalIsOpen: true })
+    this.state = ({ profileModalIsOpen: false })
   }
 
   handleEditProfile() {
@@ -35,7 +35,7 @@ class UserInfo extends React.Component {
           Edit Profile
         </div>
       )
-      email = <a href={`mailto:${this.props.email}`} className='user-detail-email'>this.props.email</a>
+      email = <a href={`mailto:${this.props.email}`} className='user-detail-email'>{this.props.email}</a>
     }
 
     const modalChannels = {
