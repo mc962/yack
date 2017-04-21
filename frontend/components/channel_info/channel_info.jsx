@@ -6,7 +6,8 @@ class ChannelInfo extends React.Component {
     super(props);
     this.leaveHandler = this.leaveHandler.bind(this);
     this.redirect = this.redirect.bind(this);
-    this.displayInformation = this.displayInformation.bind(this);
+    this.toggleDisplayInformation = this.toggleDisplayInformation.bind(this);
+
   }
 
   leaveHandler(e) {
@@ -19,11 +20,18 @@ class ChannelInfo extends React.Component {
   }
 
   redirect() {
-    this.props.router.push(`/channels/${this.props.genChannelRoomId}`);
+    this.props.router.replace(`/channels/${this.props.genChannelRoomId}`);
   }
 
-  displayInformation(e) {
-    this.props.router.replace(`/channels/${this.props.params.id}/information`)
+  toggleDisplayInformation(e) {
+
+    const currPath = this.props.location.pathname;
+    const channelPath = `/channels/${this.props.params.id}`
+    const infoPath = `/channels/${this.props.params.id}/information`
+    const newPath = currPath === channelPath ? infoPath : channelPath
+
+    this.props.router.replace(newPath)
+
   }
 
   constructRoomTitle(title) {
@@ -80,7 +88,7 @@ class ChannelInfo extends React.Component {
 
         </div>
         <div className='channel-information-nav-btns'>
-          <span className='info-nav' onClick={this.displayInformation}>
+          <span className='info-nav' onClick={this.toggleDisplayInformation}>
             <i className="fa fa-bars" aria-hidden="true"></i>
           </span>
         </div>
