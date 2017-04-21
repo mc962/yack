@@ -6,6 +6,7 @@ class ChannelInfo extends React.Component {
     super(props);
     this.leaveHandler = this.leaveHandler.bind(this);
     this.redirect = this.redirect.bind(this);
+    this.displayInformation = this.displayInformation.bind(this);
   }
 
   leaveHandler(e) {
@@ -19,6 +20,10 @@ class ChannelInfo extends React.Component {
 
   redirect() {
     this.props.router.push(`/channels`);
+  }
+
+  displayInformation(e) {
+    this.props.router.replace(`/channels/${this.props.params.id}/information`)
   }
 
   constructRoomTitle(title) {
@@ -75,7 +80,7 @@ class ChannelInfo extends React.Component {
 
         </div>
         <div className='channel-information-nav-btns'>
-          <span className='info-nav'>            
+          <span className='info-nav' onClick={this.displayInformation}>
             <i className="fa fa-bars" aria-hidden="true"></i>
           </span>
         </div>

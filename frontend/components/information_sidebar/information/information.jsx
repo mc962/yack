@@ -84,50 +84,55 @@ class Information extends React.Component {
 
     return (
       <sidebar className='channel-sidebar-details-container'>
-        <header className='information-section-header channel-details-header'>
-          <div className='channel-details-title'>
-            About #{this.props.roomTitle}
-          </div>
-          <div className='details-x-icon' onClick={this.escapeInfo}>
-            x
-          </div>
-        </header>
-
-        <section className='details-section-container'>
-
-          <div className='details-header details-section-header' onClick={this.togglePurpose} >
-            <div className='details-header-text-container'>
-              <span className='info-icon'><i className="fa fa-info" aria-hidden="true"></i></span>
-              <span className='details-header-text'>
-                Channel Details
-              </span>
+        <div className='info-top-content'>
+          <header className='information-section-header channel-details-header'>
+            <div className='channel-details-title'>
+              About #{this.props.roomTitle}
             </div>
-            <i className={`fa fa-caret-right info-caret ${displayDetailCaret}`} aria-hidden="true"></i>
-          </div>
-
-          <div className={`details-text-container ${displayDetails}`}>
-            <div className='purpose-label'>Purpose</div>
-            <p className='purpose-text'>{this.props.purpose}</p>
-            <div className='room-date-created'>Created on {date}</div>
-          </div>
-        </section>
-
-        <section className='users-text-container'>
-
-          <div className='people-header details-section-header' onClick={this.togglePeople} >
-            <div className='details-header-user-container'>
-              <span className='user-icon'><i className="fa fa-user-o" aria-hidden="true"></i></span>
-              <span className='people-header-text'>
-                {this.props.usersCount} Members
-              </span>
+            <div className='details-x-icon' onClick={this.escapeInfo}>
+              x
             </div>
-            <i className={`fa fa-caret-right user-caret ${displayPeopleCaret}`} aria-hidden="true"></i>
-          </div>
+          </header>
 
-          <ul className={`details-user-list ${displayPeople}`}>
-            {userList}
-          </ul>
-        </section>
+          <section className='details-section-container'>
+
+            <div className='details-header details-section-header' onClick={this.togglePurpose} >
+              <div className='details-header-text-container'>
+                <span className='info-icon'><i className="fa fa-info" aria-hidden="true"></i></span>
+                <span className='details-header-text'>
+                  Channel Details
+                </span>
+              </div>
+              <i className={`fa fa-caret-right info-caret ${displayDetailCaret}`} aria-hidden="true"></i>
+            </div>
+
+            <div className={`details-text-container ${displayDetails}`}>
+              <div className='purpose-label'>Purpose</div>
+              <p className='purpose-text'>{this.props.purpose}</p>
+              <div className='room-date-created'>Created on {date}</div>
+            </div>
+          </section>
+
+          <section className='users-text-container'>
+
+            <div className='people-header details-section-header' onClick={this.togglePeople} >
+              <div className='details-header-user-container'>
+                <span className='user-icon'><i className="fa fa-user-o" aria-hidden="true"></i></span>
+                <span className='people-header-text'>
+                  {this.props.usersCount} Members
+                </span>
+              </div>
+              <i className={`fa fa-caret-right user-caret ${displayPeopleCaret}`} aria-hidden="true"></i>
+            </div>
+
+            <ul className={`details-user-list ${displayPeople}`}>
+              {userList}
+            </ul>
+          </section>
+
+        </div>
+
+        <footer className='information-footer'>The Footer</footer>
       </sidebar>
     )
   }

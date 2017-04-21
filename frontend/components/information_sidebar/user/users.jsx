@@ -17,7 +17,7 @@ class Users extends React.Component {
 
   escapeInfo(e) {
     this.props.router.replace(`/channels/${this.props.params.id}`)
-  }  
+  }
 
   matches(users) {
     let arrayChannels = Object.keys(users).map((id) => users[id]);
@@ -60,26 +60,29 @@ class Users extends React.Component {
 
     return (
       <sidebar className='user-directory-container'>
-        <header className='user-directory-header'>
-          <div className='user-directory-title'>
-            Team Directory
+        <div className='top-content'>
+          <header className='user-directory-header'>
+            <div className='user-directory-title'>
+              Team Directory
+            </div>
+            <div className='details-x-icon' onClick={this.escapeInfo}>
+              x
+            </div>
+          </header>
+          <div className='users-directory-search-container'>
+            <i className="fa fa-search" aria-hidden="true"></i>
+            <input type='text'
+              id='userDirectorySearch'
+              className='users-directory-search'
+              placeholder='Search members'
+              onChange={this.handleInputChange}
+              value={this.state.letterVal} />
           </div>
-          <div className='details-x-icon' onClick={this.escapeInfo}>
-            x
-          </div>
-        </header>
-        <div className='users-directory-search-container'>
-          <i className="fa fa-search" aria-hidden="true"></i>
-          <input type='text'
-                 id='userDirectorySearch'
-                 className='users-directory-search'
-                 placeholder='Search members'
-                 onChange={this.handleInputChange}
-                 value={this.state.letterVal} />
+          <ul className='user-directory-list'>
+            {userDirectory}
+          </ul>          
         </div>
-        <ul className='user-directory-list'>
-          {userDirectory}
-        </ul>
+        <footer className='information-footer'>The Footer</footer>
       </sidebar>
     )
   }

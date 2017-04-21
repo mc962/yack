@@ -10,6 +10,7 @@ class UserInfo extends React.Component {
     this.handleEditProfile = this.handleEditProfile.bind(this);
     this.handleEscape = this.handleEscape.bind(this);
     this.returnToUsers = this.returnToUsers.bind(this);
+    this.escapeInfo = this.escapeInfo.bind(this);
 
     this.state = ({ profileModalIsOpen: false })
   }
@@ -18,6 +19,9 @@ class UserInfo extends React.Component {
     this.setState({ profileModalIsOpen: true })
   }
 
+  escapeInfo() {
+    this.props.router.replace(`/channels/${this.props.params.id}`)
+  }
   handleEscape() {
     this.setState({ profileModalIsOpen: false })
   }
@@ -68,46 +72,47 @@ class UserInfo extends React.Component {
           <EditProfileContainer handleEscape={this.handleEscape} />
 
         </Modal>
-
-        <header className='profile-details-header'>
-          <div className='profile-details-title' onClick={this.returnToUsers}>
-            <div className="profile-details-chevron">
-              <i className="fa fa-chevron-left" aria-hidden="true"></i>
-            </div>
+        <div className='top-content'>
+          <header className='profile-details-header'>
+            <div className='profile-details-title' onClick={this.returnToUsers}>
+              <div className="profile-details-chevron">
+                <i className="fa fa-chevron-left" aria-hidden="true"></i>
+              </div>
               <div className='profile-details-title-text'>
                 Team Directory
               </div>
+            </div>
+            <div className='details-x-icon' onClick={this.escapeInfo}>
+              x
+            </div>
+          </header>
+
+          <div className='directory-user-details'>
+            <img src='' alt='Profile Picture' className='user-info-picture' />
+            <h2 className='user-profile-fullname'>{`${this.props.firstName} ${this.props.lastName}`}</h2>
+
+            {editButton}
+
+            <hr />
+
+            <table className='user-details-table'>
+              <tbody>
+                <tr className='detail-row username-row'>
+                  <td className='detail-cell detail-label username-label'>Username</td>
+                  <td className='detail-cell user-detail-data username-data'>{`@${this.props.username}`}</td>
+                </tr>
+                <tr className='detail-row email-row'>
+                  <td className='detail-cell detail-label email-label'>Email</td>
+                  <td className='detail-cell user-detail-data email-data'>{email}</td>
+                </tr>
+              </tbody>
+            </table>
+                        
           </div>
-          <div className='details-x-icon' onClick={this.escapeInfo}>
-            x
-          </div>
-        </header>
-
-        <div className='directory-user-details'>
-          <img src='' alt='Profile Picture' className='user-info-picture' />
-          <h2 className='user-profile-fullname'>{`${this.props.firstName} ${this.props.lastName}`}</h2>
-
-          {editButton}
-
-          <hr />
-
-          <table className='user-details-table'>
-            <tbody>
-              <tr className='detail-row username-row'>
-                <td className='detail-cell detail-label username-label'>Username</td>
-                <td className='detail-cell user-detail-data username-data'>{`@${this.props.username}`}</td>
-              </tr>
-              <tr className='detail-row email-row'>
-                <td className='detail-cell detail-label email-label'>Email</td>
-                <td className='detail-cell user-detail-data email-data'>{email}</td>
-              </tr>
-            </tbody>
-          </table>
-
 
         </div>
 
-
+        <footer className='information-footer'>The Footer</footer>
       </sidebar>
     )
   }
