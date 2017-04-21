@@ -74,6 +74,11 @@ class ChannelInfo extends React.Component {
           </div>
 
         </div>
+        <div className='channel-information-nav-btns'>
+          <span className='info-nav'>            
+            <i className="fa fa-bars" aria-hidden="true"></i>
+          </span>
+        </div>
       </header>
     );
   }

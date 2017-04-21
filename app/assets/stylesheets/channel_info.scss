@@ -5,6 +5,7 @@
 
 .room-text-container {
   padding-left: .8em;
+  width: 50%;
 }
 
 .room-stats {
@@ -43,4 +44,19 @@
 
 div.leave-channel-btn:hover {
   border: 1px solid #FF0000;
+}
+
+.channel-information-nav-btns {
+  width: 40%;
+  color: #717274;
+  line-height: 2.4em;
+  font-size: 1.3em;
+}
+
+.info-nav {
+  cursor: pointer;
+}
+
+span.info-nav:hover {
+  color: #007AB8
 }

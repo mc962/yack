@@ -7,10 +7,19 @@ class NewMessageForm extends React.Component {
     this.handleNewMessageSubmit = this.handleNewMessageSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.placeholderHandler = this.placeholderHandler.bind(this);
+    this.focusAttachments = this.focusAttachments.bind(this);
+    this.blurAttachments = this.blurAttachments.bind(this);
 
-    this.state = {content: ''};
+    this.state = {content: '', attachmentFocusStatus: ''};
   }
 
+  focusAttachments(e) {
+    this.setState({attachmentFocusStatus: 'focused-attachments-btn'})
+  }
+
+  blurAttachments(e) {
+    this.setState({attachmentFocusStatus: ''})
+  }
 
   handleChange(e) {
     e.preventDefault();
@@ -42,8 +51,15 @@ class NewMessageForm extends React.Component {
     return (
       <div>
         <form className='new-message-form' onSubmit={this.handleNewMessageSubmit}>
-          <div className='attachments-btn' onClick={this.placeholderHandler}>+</div>
-          <input autoFocus type='text' className='message-input-field' id='content' onChange={this.handleChange} placeholder={`Message #${this.props.roomTitle}`} value={this.state.content} />
+          <div className={`attachments-btn ${this.state.attachmentFocusStatus}`} onClick={this.placeholderHandler}>+</div>
+          <input autoFocus
+                 type='text'
+                 className='message-input-field'
+                 id='content' onChange={this.handleChange}
+                 placeholder={`Message #${this.props.roomTitle}`}
+                 value={this.state.content}
+                 onFocus={this.focusAttachments}
+                 onBlur={this.blurAttachments} />
         </form>
       </div>
     );

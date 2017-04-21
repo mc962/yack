@@ -17,25 +17,7 @@ class Users extends React.Component {
 
   escapeInfo(e) {
     this.props.router.replace(`/channels/${this.props.params.id}`)
-  }
-
-  // getListItems() {
-  //   let items = []
-  //   if (this.props.users) {
-  //     const userList = this.props.users
-  //     items = Object.keys(this.props.users).map((userId, idx) => {
-  //       const user = userList[userId];
-  //       return <DirectoryListItem key={idx}
-  //         userId={user.id}
-  //         firstName={user.first_name}
-  //         lastName={user.last_name}
-  //         username={user.username}
-  //         imageUrl={user.image_url} />
-  //     })
-  //   }
-  //
-  //   return items;
-  // }
+  }  
 
   matches(users) {
     let arrayChannels = Object.keys(users).map((id) => users[id]);
