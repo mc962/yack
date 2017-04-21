@@ -39,7 +39,7 @@
 .new-gm-container {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 95%;
 }
 
 
@@ -77,11 +77,11 @@
 
 .modal-form {
   align-items: center;
-  margin-top: 160px;
+  margin-top: 10%;
   margin-left: auto;
   margin-right: auto;
   width: 51%;
-  height: 100%;
+  height: 70vh;
 }
 
 .new-dm-input{
@@ -164,9 +164,10 @@ input.gm-channels-search:active {
   margin-left: 3px;
   padding-bottom: 10px;
   font-family: 'Lato', sans-serif;
-  color: #CDCECE;
-  margin-top: 7px;
-  margin-bottom: 30px;
+  color: #717274;
+  height: 6.5vh;
+  line-height: 5em;
+  font-size: 0.8em;
 }
 
 .channels-heading {
@@ -174,9 +175,11 @@ input.gm-channels-search:active {
   margin-left: 3px;
   padding-bottom: 10px;
   font-family: 'Lato', sans-serif;
-  color: #CDCECE;
-  margin-top: 7px;
-  margin-bottom: 30px;
+  color: #67686e;
+  text-indent: 1.5%;
+  margin-top: 30px;
+  font-size: 0.8em;
+  font-weight: 600;
 }
 .user-table-element {
   border-top: 1px solid #E8E8E8;
@@ -311,4 +314,24 @@ li.chatroom-table-element:hover {
 .date-created {
   font-style: italic;
   margin-bottom: 20px;
+}
+
+.selectable-channels {
+  overflow-y: auto;
+  height: 58vh;
+  width: 100%;
+}
+
+.selectable-users {
+  overflow-y: auto;
+  height: 38.5vh;
+  width: 100%;
+}
+
+ul.selectable-users::-webkit-scrollbar-thumb {
+  height: 10%;
+}
+
+.search-inputs {
+  width: 100%;
 }

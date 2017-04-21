@@ -205,7 +205,7 @@ export default class NewDMForm extends React.Component {
                        value='Go'
                        disabled={this.state.disabledButton} />
             </div>
-              <h4 className='users-heading'>Available Users</h4>
+            <h4 className='users-heading'>Available Users</h4>
               <ul className='selectable-users'>
                 {availableUsers}
               </ul>
