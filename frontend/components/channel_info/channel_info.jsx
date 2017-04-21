@@ -19,7 +19,7 @@ class ChannelInfo extends React.Component {
   }
 
   redirect() {
-    this.props.router.push(`/channels`);
+    this.props.router.push(`/channels/${this.props.genChannelRoomId}`);
   }
 
   displayInformation(e) {

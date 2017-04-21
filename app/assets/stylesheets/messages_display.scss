@@ -23,7 +23,7 @@ li.message-element:first-child {
 }
 
 .gutter {
-  width: 62px;
+  min-width: 62px;
   border-radius: 4px;
 }
 
@@ -80,6 +80,9 @@ li.message-element:first-child {
 }
 .author-name {
   margin-right: 10px;
+  font-size: 0.9em;
+  line-height: 1.45em;
+  color: #2c2d30;
 }
 
 .picture-display-time {

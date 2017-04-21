@@ -51,7 +51,7 @@ class NewMessageForm extends React.Component {
     return (
       <div>
         <form className='new-message-form' onSubmit={this.handleNewMessageSubmit}>
-          <div className={`attachments-btn ${this.state.attachmentFocusStatus}`} onClick={this.placeholderHandler}>+</div>
+          <div className={`attachments-btn ${this.state.attachmentFocusStatus}`} onClick={this.placeholderHandler} title='Message attachments coming soon'>+</div>
           <input autoFocus
                  type='text'
                  className='message-input-field'

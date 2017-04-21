@@ -68,7 +68,7 @@ class EditProfile extends React.Component {
 
         <div className='edit-profile-submit-btns'>
           <div className='edit-profile-cancel-btn' onClick={this.props.handleEscape} >Cancel</div>
-          <input type='submit' className='submit-profile-edit-btn' value='Save Changes' />
+          <input type='submit' className='submit-profile-edit-btn' value='Save Changes' title='Image uploads coming soon'/>
         </div>
 
       </form>

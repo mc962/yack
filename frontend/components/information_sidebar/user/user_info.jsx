@@ -11,8 +11,14 @@ class UserInfo extends React.Component {
     this.handleEscape = this.handleEscape.bind(this);
     this.returnToUsers = this.returnToUsers.bind(this);
     this.escapeInfo = this.escapeInfo.bind(this);
+    this.leaveHandler = this.leaveHandler.bind(this);
+    this.redirect = this.redirect.bind(this);
 
     this.state = ({ profileModalIsOpen: false })
+  }
+
+  redirect() {
+    this.props.router.push(`/channels/${this.props.genChannelRoomId}`);
   }
 
   handleEditProfile() {
@@ -20,14 +26,23 @@ class UserInfo extends React.Component {
   }
 
   escapeInfo() {
-    this.props.router.replace(`/channels/${this.props.params.id}`)
+    this.props.router.replace(`/channels/${this.props.roomId}`)
   }
   handleEscape() {
     this.setState({ profileModalIsOpen: false })
   }
 
   returnToUsers() {
-    this.props.router.replace(`/channels/${this.props.params.id}/users`)
+    this.props.router.replace(`/channels/${this.props.roomId}/users`)
+  }
+
+  leaveHandler(e) {
+    e.preventDefault();
+    const currentUserId = this.props.currentUserId;
+    this.props.leaveChannel({chatroom_id: this.props.roomId, user_id: this.props.currentUserId, username: this.props.currentUserUsername}).then((receivedChannel) => {
+      this.props.fetchCurrentUser(currentUserId)
+      this.redirect();
+    })
   }
 
   render() {
@@ -39,7 +54,13 @@ class UserInfo extends React.Component {
           Edit Profile
         </div>
       )
-      email = <a href={`mailto:${this.props.email}`} className='user-detail-email'>{this.props.email}</a>
+      email = (
+        <tr className='detail-row email-row'>
+          <td className='detail-cell detail-label email-label'>Email</td>
+          <td className='detail-cell user-detail-data email-data'><a href={`mailto:${this.props.email}`} className='user-detail-email'>{this.props.email}</a></td>
+        </tr>
+      )
+
     }
 
     const modalChannels = {
@@ -51,7 +72,7 @@ class UserInfo extends React.Component {
       }
     };
 
-    // addd in a back caret when get font awesome
+
 
     return (
       <sidebar className='user-profile-information-container'>
@@ -88,7 +109,7 @@ class UserInfo extends React.Component {
           </header>
 
           <div className='directory-user-details'>
-            <img src='' alt='Profile Picture' className='user-info-picture' />
+            <img src={this.props.pictureUrl} alt='Profile Picture' className='user-info-picture' title='Image resizing coming soon'/>
             <h2 className='user-profile-fullname'>{`${this.props.firstName} ${this.props.lastName}`}</h2>
 
             {editButton}
@@ -101,18 +122,15 @@ class UserInfo extends React.Component {
                   <td className='detail-cell detail-label username-label'>Username</td>
                   <td className='detail-cell user-detail-data username-data'>{`@${this.props.username}`}</td>
                 </tr>
-                <tr className='detail-row email-row'>
-                  <td className='detail-cell detail-label email-label'>Email</td>
-                  <td className='detail-cell user-detail-data email-data'>{email}</td>
-                </tr>
+                {email}
               </tbody>
             </table>
-                        
+
           </div>
 
         </div>
 
-        <footer className='information-footer'>The Footer</footer>
+
       </sidebar>
     )
   }

@@ -29,16 +29,16 @@
 
 .leave-channel-btn {
   text-align: center;
-  float: right;
+
   padding: 4px;
-  width: 105px;
-  height: 20px;
+  width: 22vh;;
+  height: 5vh;
   color: white;
   background-color: #29AE78;
   border: 1px solid #E8E8E8;
   cursor: pointer;
   border-radius: 4px;
-  margin-right: 4%;
+  margin: auto;
   top: 40px;
 }
 
@@ -50,7 +50,8 @@ div.leave-channel-btn:hover {
   width: 40%;
   color: #717274;
   line-height: 2.4em;
-  font-size: 1.3em;
+  font-size: 1.2em;
+  padding-left: 12%;
 }
 
 .info-nav {

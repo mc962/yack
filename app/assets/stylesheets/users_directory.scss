@@ -46,13 +46,7 @@
   padding: 3%;
 }
 
-.quick-user-item-links {
-  display: flex;
-  flex-direction: row;
-  height: 13vh;
 
-  border-radius: 4px;
-}
 
 .directory-name-text {
   display: flex;
@@ -65,8 +59,9 @@
 }
 
 .directory-thumb-container {
-  // border: 1px solid black;
+
   min-width: 22%;
+  max-width: 22%;
   height: 11vh;
 
   border-radius: 3px;

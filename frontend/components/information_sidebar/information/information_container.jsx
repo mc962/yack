@@ -1,8 +1,12 @@
 import { connect } from 'react-redux';
 
+import { leaveChannel } from '../../../actions/channel_actions';
+import { fetchCurrentUser } from '../../../actions/session_actions';
+
+
 import Information from './information';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   let createdAt = '';
   let roomPurpose = '';
   let users = [];
@@ -24,13 +28,18 @@ const mapStateToProps = (state) => {
     purpose: roomPurpose,
     createdAt: createdAt,
     roomTitle: roomTitle,
-    usersCount: usersCount
+    usersCount: usersCount,
+    currentUserId: state.session.currentUser.id,
+    currentUserUsername: state.session.currentUser.username,
+    roomId: ownProps.params.id,
+    genChannelRoomId: state.session.currentUser.gen_channel_id
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    leaveChannel: (channel) => dispatch(leaveChannel(channel)),
+    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId))
   }
 }
 

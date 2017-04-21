@@ -9,10 +9,16 @@ class Information extends React.Component {
     this.togglePurpose = this.togglePurpose.bind(this);
     this.togglePeople = this.togglePeople.bind(this);
     this.escapeInfo = this.escapeInfo.bind(this);
+    this.leaveHandler = this.leaveHandler.bind(this);
+    this.redirect = this.redirect.bind(this);
 
     this.state = {detailsStatus: 'hidden-purpose', peopleStatus: 'hidden-people'}
   }
 
+  redirect() {
+
+    this.props.router.push(`/channels/${this.props.genChannelRoomId}`);
+  }
 
   togglePurpose(e) {
     const newStatus = this.state.detailsStatus === 'hidden-purpose' ? 'revealed-purpose' : 'hidden-purpose'
@@ -40,7 +46,7 @@ class Information extends React.Component {
           userId={user.id}
           username={user.username}
           gravatarUrl={user.image_url}
-          paramId={this.props.params.id} />
+          paramId={this.props.roomId} />
       })
     }
 
@@ -48,7 +54,16 @@ class Information extends React.Component {
   }
 
   escapeInfo(e) {
-    this.props.router.replace(`/channels/${this.props.params.id}`)
+    this.props.router.replace(`/channels/${this.props.roomId}`)
+  }
+
+  leaveHandler(e) {
+    e.preventDefault();
+    const currentUserId = this.props.currentUserId;
+    this.props.leaveChannel({chatroom_id: this.props.roomId, user_id: this.props.currentUserId, username: this.props.currentUserUsername}).then((receivedChannel) => {
+      this.props.fetchCurrentUser(currentUserId)
+      this.redirect();
+      })
   }
 
   render() {
@@ -81,6 +96,14 @@ class Information extends React.Component {
       date = ''
     }
     const userList = this.getUsers()
+
+    let leaveChannelButton
+
+    if (Object.keys(this.props.users).includes(`${this.props.currentUserId}`)) {
+        leaveChannelButton = <div className='leave-channel-btn' onClick={this.leaveHandler}>Leave Channel</div>
+    } else {
+      leaveChannelButton = <div className='leave-channel-btn' onClick={this.leaveHandler}>Join Channel</div>
+    }
 
     return (
       <sidebar className='channel-sidebar-details-container'>
@@ -132,7 +155,9 @@ class Information extends React.Component {
 
         </div>
 
-        <footer className='information-footer'>The Footer</footer>
+        <footer className='information-footer'>
+          {leaveChannelButton}
+        </footer>
       </sidebar>
     )
   }

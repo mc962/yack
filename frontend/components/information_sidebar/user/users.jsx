@@ -6,8 +6,14 @@ class Users extends React.Component {
     super(props)
     this.escapeInfo = this.escapeInfo.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.leaveHandler = this.leaveHandler.bind(this);
+    this.redirect = this.redirect.bind(this);
 
     this.state = { letterVal: '' };
+  }
+
+  redirect() {
+    this.props.router.push(`/channels/${this.props.genChannelRoomId}`);
   }
 
   handleInputChange(e) {
@@ -16,7 +22,7 @@ class Users extends React.Component {
   }
 
   escapeInfo(e) {
-    this.props.router.replace(`/channels/${this.props.params.id}`)
+    this.props.router.replace(`/channels/${this.props.roomId}`)
   }
 
   matches(users) {
@@ -54,9 +60,25 @@ class Users extends React.Component {
     return matchings;
   }
 
+  leaveHandler(e) {
+    e.preventDefault();
+    const currentUserId = this.props.currentUserId;
+    this.props.leaveChannel({chatroom_id: this.props.roomId, user_id: this.props.currentUserId, username: this.props.currentUserUsername}).then((receivedChannel) => {
+      this.props.fetchCurrentUser(currentUserId)
+      this.redirect();
+      })
+  }
+
 
   render() {
     const userDirectory = this.matches(this.props.users)
+
+    let leaveChannelButton;
+    if (Object.keys(this.props.users).includes(`${this.props.currentUserId}`)) {
+        leaveChannelButton = <div className='leave-channel-btn' onClick={this.leaveHandler}>Leave Channel</div>
+    } else {
+      <div className='leave-channel-btn' onClick={this.leaveHandler}>Join Channel</div>
+    }
 
     return (
       <sidebar className='user-directory-container'>
@@ -80,9 +102,11 @@ class Users extends React.Component {
           </div>
           <ul className='user-directory-list'>
             {userDirectory}
-          </ul>          
+          </ul>
         </div>
-        <footer className='information-footer'>The Footer</footer>
+        <footer className='information-footer'>
+          {leaveChannelButton}
+        </footer>
       </sidebar>
     )
   }

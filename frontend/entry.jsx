@@ -12,22 +12,23 @@ const css = (el, property) => {
   return window.getComputedStyle(el, null).getPropertyValue(property);
 }
 
-window.onload = () => {
-  let span = document.createElement('span');
-  span.className = 'fa';
-  span.style.display = 'none';
-  document.body.insertBefore(span, document.body.firstChild);
-  if ((css(span, 'font-family')) !== 'FontAwesome') {
-
-    $(document.body).find('.fa').each(function(i) {
-
-      let el = $(this)
-      el.addClass('fa-backup')
-    })
-
-  }
-  document.body.removeChild(span);
-}
+// used if fontawesome cdn is down or blocked, but nor working yet
+// window.onload = () => {
+//   let span = document.createElement('span');
+//   span.className = 'fa';
+//   span.style.display = 'none';
+//   document.body.insertBefore(span, document.body.firstChild);
+//   if ((css(span, 'font-family')) !== 'FontAwesome') {
+//
+//     $(document.body).find('.fa').each(function(i) {
+//
+//       let el = $(this)
+//       el.addClass('fa-backup')
+//     })
+//
+//   }
+//   document.body.removeChild(span);
+// }
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
