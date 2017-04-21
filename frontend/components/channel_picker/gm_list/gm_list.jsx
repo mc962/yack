@@ -108,7 +108,7 @@ class GMList extends React.Component {
             <div className='new-gm-container'>
               <div className='gm-input'>
                   <i className="fa fa-search" aria-hidden="true"></i>
-                  <input type='text' className='gm-channels-search' placeholder='Search channels' onChange={this.handleInputChange} value={this.letterVal} />
+                  <input type='text' className='gm-channels-search' placeholder='Search channels' onChange={this.handleInputChange} value={this.state.letterVal} />
               </div>
               <h4 className='channels-heading'>Channels you can join</h4>
               <ul className='selectable-channels'>
