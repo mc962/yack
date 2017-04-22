@@ -32,24 +32,27 @@ class ChannelPicker extends React.Component {
   }
 
   handleEscape() {
-    const currentUserId = this.props.currentUser.id;
-
     this.setState({ dmModalIsOpen: false, gmModalIsOpen: false })
-
-
   }
 
   render() {
 
       const generalChannelElements = this.props.generalMessageChannels.map((channel, idx) => {
         return (
-          <GeneralChannelPickerItem key={idx} roomTitle={channel.room_title} channelId={channel.id} fetchCurrentChannel={(channelId) => this.props.fetchCurrentChannel(channelId)}/>
+          <GeneralChannelPickerItem key={idx}
+                                    roomTitle={channel.room_title}
+                                    channelId={channel.id}
+                                    fetchCurrentChannel={(channelId) => this.props.fetchCurrentChannel(channelId)}/>
         );
       });
 
       const dmChannelElements = this.props.directMessageChannels.map((channel, idx) => {
         return (
-          <DMChannelPickerItem key={idx} roomTitle={channel.room_title} currentUserUsername={this.props.currentUser.username} channelId={channel.id} fetchCurrentChannel={(channelId) => this.props.fetchCurrentChannel(channelId)}/>
+          <DMChannelPickerItem key={idx}
+                               roomTitle={channel.room_title}
+                               currentUserUsername={this.props.currentUser.username}
+                               channelId={channel.id}
+                               fetchCurrentChannel={(channelId) => this.props.fetchCurrentChannel(channelId)}/>
         );
       });
 

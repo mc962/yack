@@ -109,7 +109,7 @@ class Information extends React.Component {
       <sidebar className='channel-sidebar-details-container'>
         <div className='info-top-content'>
           <header className='information-section-header channel-details-header'>
-            <div className='channel-details-title'>
+            <div className='channel-details-title' title={this.props.roomTitle}>
               About #{this.props.roomTitle}
             </div>
             <div className='details-x-icon' onClick={this.escapeInfo}>

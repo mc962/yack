@@ -9,7 +9,7 @@ class DMChannelPickerItem extends React.Component {
 
   linkClickHandler(e) {
     e.preventDefault();
-
+    
     hashHistory.push(`/channels/${this.props.channelId}`);
 
   }

@@ -16,6 +16,9 @@
 .channel-details-title {
   font-size: 1.2em;
   font-weight: 800;
+  overflow: hidden;
+  height: 4vh;
+
 }
 
 .details-x-icon {
@@ -189,7 +192,7 @@ ul.details-user-list:last-child {
   opacity: 0.8;
 }
 
-li.quick-user-item-container:hover {  
+li.quick-user-item-container:hover {
   img.quick-user-picture {
     opacity: 1;
   }
