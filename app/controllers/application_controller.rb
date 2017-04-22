@@ -33,4 +33,10 @@ class ApplicationController < ActionController::Base
     params.require(:user).permit(:username, :first_name, :last_name, :password, :email)
     ## bonus password_confirmation
   end
+
+  private
+
+  def gen_channel
+    Chatroom.find_by(room_title: 'general')
+  end
 end

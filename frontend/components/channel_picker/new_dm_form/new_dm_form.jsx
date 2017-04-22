@@ -78,7 +78,7 @@ export default class NewDMForm extends React.Component {
     let userId = e.currentTarget.value;
     let name = this.props.fetchedUsers[userId].username;
 
-    let userUrl = this.props.fetchedUsers[userId].gravatar_url;
+    let userUrl = this.props.fetchedUsers[userId].image_url;
     let numUsers = Object.keys(this.state.submittableUsers).length;
 
     if (numUsers < 7) {
@@ -135,7 +135,7 @@ export default class NewDMForm extends React.Component {
                          userId={user.id}
                          firstName={user.first_name}
                          lastName={user.last_name}
-                         gravatarUrl={user.gravatar_url}
+                         gravatarUrl={user.image_url}
                          handleItemClick={this.handleItemClick} />;
       });
       return matchings;
@@ -149,7 +149,7 @@ export default class NewDMForm extends React.Component {
                       userId={user.id}
                       firstName={user.first_name}
                       lastName={user.last_name}
-                      gravatarUrl={user.gravatar_url}
+                      gravatarUrl={user.image_url}
                       handleItemClick={this.handleItemClick} />
           );
         }
@@ -205,7 +205,7 @@ export default class NewDMForm extends React.Component {
                        value='Go'
                        disabled={this.state.disabledButton} />
             </div>
-              <h4 className='users-heading'>Available Users</h4>
+            <h4 className='users-heading'>Available Users</h4>
               <ul className='selectable-users'>
                 {availableUsers}
               </ul>

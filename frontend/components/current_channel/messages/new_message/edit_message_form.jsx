@@ -10,20 +10,20 @@ class EditMessageForm extends React.Component {
     this.removeFocus = this.removeFocus.bind(this);
     this.handleInputKeypress = this.handleInputKeypress.bind(this);
 
-    this.handleComponentClick = this.handleComponentClick.bind(this);
+    this.handleEditFormClick = this.handleEditFormClick.bind(this);
 
     this.state = {content: this.props.messageContent};
   }
 
   componentWillMount() {
-    document.addEventListener('click', this.handleComponentClick, false);
+    document.addEventListener('click', this.handleEditFormClick, false);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.handleComponentClick, false);
+    document.removeEventListener('click', this.handleEditFormClick, false);
   }
 
-  handleComponentClick(e) {
+  handleEditFormClick(e) {
     // if component represented by this does not contain click target, handle submit logic
     if(!ReactDOM.findDOMNode(this).contains(e.target)) {
       this.props.editEscapeHandler();
@@ -65,7 +65,7 @@ class EditMessageForm extends React.Component {
 
     let editContainer = document.querySelector('.edit-input-container')
     editContainer.classList.remove('focused-textarea');
-    
+
   }
 
   render() {

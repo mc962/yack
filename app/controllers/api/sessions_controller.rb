@@ -1,6 +1,7 @@
 class Api::SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(user_params[:username], user_params[:password])
+    @gen_channel ||= gen_channel
     if @user
       login!(@user)
       render "/api/users/show"

@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    gen_chat = Chatroom.find_by(room_title: 'general')
+
     if @user.save
       UserChat.new(user_id: @user.id, chatroom_id: gen_chat.id).save
       login!(@user)
@@ -21,8 +21,8 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
-    @user.gravatar_url = User.gravatar_for(@user)
+    @gen_channel ||= gen_channel
+    @user.image_url = User.gravatar_for(@user)
     render :show
   end
 

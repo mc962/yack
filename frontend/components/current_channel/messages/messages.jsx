@@ -99,7 +99,7 @@ class Messages extends React.Component {
     }
     //
     return (
-    <div>
+    <div className='message-elements-container'>
       <ul className='channel-messages-list'>
         {processedMessages}
       </ul>

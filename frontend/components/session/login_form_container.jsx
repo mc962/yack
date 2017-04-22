@@ -7,7 +7,8 @@ import { login, clearErrors } from '../../actions/session_actions';
 const mapStateToProps = (state) => {
 
   return {
-    errors: state.session.errors,
+    currentUser: state.session.currentUser,
+    errors: state.session.errors
   }
 }
 

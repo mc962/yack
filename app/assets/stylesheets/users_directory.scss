@@ -1,0 +1,79 @@
+.user-directory-header {
+  width: 100%;
+  height: 9.5vh;
+  border-bottom: 1px solid #e8e8e8;
+
+  padding: 5% 4.5%;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #2c2d30;
+}
+
+.user-directory-container {
+  width: 50%;
+  height: 90.8vh;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-between;
+  border-left: 1px solid #e8e8e8;
+}
+
+.user-directory-title {
+  font-size: 1.2em;
+  font-weight: 800;
+}
+
+.user-directory-list {
+  overflow-y: auto;
+  height: 60vh;
+  padding: 2%;
+}
+
+.user-directory-item-container {
+  // border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  cursor: pointer;
+
+  border-radius: 4px;
+  width: 100%;
+  padding: 3%;
+}
+
+
+
+.directory-name-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.directory-full-name {
+  font-size: 1.17em;
+  font-weight: bold;
+}
+
+.directory-thumb-container {
+
+  min-width: 22%;
+  max-width: 22%;
+  height: 11vh;
+
+  border-radius: 3px;
+  margin-right: 5%;
+}
+
+.user-directory-thumb {
+  min-width: 100%;
+  height: 11vh;
+  border-radius: 3px;
+}
+
+li.user-directory-item-container:hover {
+  border: 1px solid #e0e0e0;
+}

@@ -1,24 +1,19 @@
-.information-container {
-    font-family: 'Lato', sans-serif;
-    border-bottom: 1px solid #e8e8e8;
-    height: 60px;
-    padding-top: 15px;
-}
-
 .info-room-title {
     font-size: 20px;
     font-weight: 700;
 }
 
 .room-text-container {
-  margin-left: 23px;
+  padding-left: .8em;
+  width: 50%;
 }
 
 .room-stats {
   display: flex;
   flex-direction: row;
   margin-top: 5px;
-  color: #717274
+  color: #717274;
+  font-size: 13px;
 }
 
 .fa-user-o {
@@ -34,19 +29,35 @@
 
 .leave-channel-btn {
   text-align: center;
-  float: right;
+
   padding: 4px;
-  width: 105px;
-  height: 20px;
+  width: 22vh;;
+  height: 5vh;
   color: white;
   background-color: #29AE78;
   border: 1px solid #E8E8E8;
   cursor: pointer;
   border-radius: 4px;
-  margin-right: 4%;
+  margin: auto;
   top: 40px;
 }
 
 div.leave-channel-btn:hover {
   border: 1px solid #FF0000;
+}
+
+.channel-information-nav-btns {
+  width: 40%;
+  color: #717274;
+  line-height: 2.4em;
+  font-size: 1.2em;
+  padding-left: 12%;
+}
+
+.info-nav {
+  cursor: pointer;
+}
+
+span.info-nav:hover {
+  color: #007AB8
 }

@@ -10,7 +10,7 @@ class LoginForm extends React.Component {
     this.handleGuestSubmit = this.handleGuestSubmit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirect = this.redirect.bind(this);
-
+    this.getLoggedInUser = this.getLoggedInUser.bind(this);
     this.state= {
       username: "",
       password: "",
@@ -30,19 +30,30 @@ class LoginForm extends React.Component {
     this.props.router.push(newRoute);
   }
 
+  getLoggedInUser() {
+    return this.props.currentUser;
+  }
+
   handleGuestSubmit(e) {
     e.preventDefault();
     const user = { username: 'Guest', password: 'wizardhat1'};
-    this.props.guestLogin(user).then(() => this.redirect('/'));
+    this.props.guestLogin(user).then(() => {
+      const loggedInUser = this.getLoggedInUser();
+
+      this.redirect(`/channels/${loggedInUser.gen_channel_id}`)
+    })
 
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
+    this.props.login(user).then(() => {
+      const loggedInUser = this.getLoggedInUser();
 
-    this.props.login(user).then(() => this.redirect('/'),
-   this.setState({password: ""}));
+      this.redirect(`/channels/${loggedInUser.gen_channel_id}`)},
+     this.setState({password: ""})
+    )
 
   }
 

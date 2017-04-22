@@ -1,0 +1,178 @@
+.user-profile-information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Lato', sans-serif;
+}
+
+.profile-details-header {
+  width: 100%;
+  height: 9.5vh;
+  border-bottom: 1px solid #e8e8e8;
+
+  padding: 5% 4.5%;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #2c2d30;
+
+}
+
+.user-profile-information-container {
+    width: 50%;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+    justify-content: space-between;
+    border-left: 1px solid #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90.8vh;
+}
+
+.profile-details-title {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  width: 70%;
+}
+
+div.profile-details-title:hover {
+  color: #005e99
+}
+
+.profile-details-chevron {
+  font-size: 0.65em;
+  margin-right: 7.2%;
+  font-weight: 400;
+  line-height: 3.2em;
+}
+
+.profile-details-title-text {
+  font-size: 1.2em;
+  font-weight: 800;
+  width: 80%;
+}
+
+.directory-user-details {
+  padding: 2%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-info-picture {
+  width: 100%;
+  height: 33vh;
+
+  border-radius: 1%;
+  margin-bottom: 4%;
+}
+
+.user-profile-fullname {
+  font-size: 20px;
+  margin-bottom: 5%;
+}
+
+.user-details-table {
+  width: 100%;
+}
+
+.detail-row {
+  width: 100%;
+}
+
+.detail-cell {
+  padding-bottom: 2%;
+}
+
+.detail-label {
+  width: 35%;
+  color: #a5a5a7;
+  float: left;
+}
+
+.user-detail-data {
+  float: left;
+  color: #2C2D30;
+}
+
+a.user-detail-email:hover {
+  text-decoration: underline;
+  color: #0f5eac;
+}
+
+.edit-user-modal-btn {
+  height: 5.5vh;
+  width: 27%;
+  font-weight: 600;
+  border-radius: 4px;
+  line-height: 1em;
+  text-align: center;
+  padding: 2%;
+  cursor: pointer;
+  background-color: #fbfbfa;
+  color: #555459;
+  border: 1px solid #dddddd;
+}
+
+div.edit-user-modal-btn:hover {
+  color: #007ab8;
+}
+
+// Modal styling
+
+.edit-profile-modal-container {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  top: 0%;
+  font-family: 'Lato', sans-serif;
+}
+
+.profie-modal-close-button {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  color: #717274;
+  left: 0%;
+  // float: right;
+  // padding-right: 20%;
+}
+
+.edit-modal-header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 10vh;
+  border-bottom: 1px solid #e8e8e8;
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
+}
+
+.edit-modal-header {
+  text-align: center;
+  width: 97%;
+  margin: 0;
+  font-size: 1.35em;
+  font-weight: 900;
+}
+
+.edit-modal-x-icon {
+  color: #717274
+  // margin-right: 10%;
+}
+
+.users-directory-search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  border-bottom: 1px solid #e8e8e8;
+  width: 100%;
+  height: 6vh;
+  color: #a2a2a2;
+  line-height: 2.1em;
+}

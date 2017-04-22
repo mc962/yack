@@ -6,8 +6,8 @@ import Messages from './messages'
 
 const mapStateToProps = (state, ownProps) => {
 
-  let messages = [];
-  if (state.channels.currentChannel.channel_messages) {
+  let messages = [];  
+  if (state.channels.currentChannel) {
     messages = state.channels.currentChannel.channel_messages
   }
 

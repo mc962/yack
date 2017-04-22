@@ -4,7 +4,7 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const SIGNUP = 'SIGNUP';
 
-// export const START_LOADING_CURRENT_USER = 'START_LOADING_CURRENT_USER';
+export const START_LOADING_CURRENT_USER = 'START_LOADING_CURRENT_USER';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
@@ -16,7 +16,7 @@ export const signup = (user) => (dispatch) => {
   dispatch(startLoadingCurrentUser());
 
     return APIUtil.signup(user).then(
-      (fetchedUser)=>{
+      (fetchedUser)=>{        
         return dispatch(receiveCurrentUser(fetchedUser));
       },
       (fetchedErrors) => {

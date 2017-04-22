@@ -68,7 +68,7 @@ class Api::MessagesController < ApplicationController
   def attach_message_user_info(message)
     user_info = {
                  "username" => message.user.username,
-                 "user_url" => message.user.gravatar_url
+                 "user_url" => message.user.image_url
                 }
 
     message_attributes = message.attributes
@@ -77,7 +77,7 @@ class Api::MessagesController < ApplicationController
     #                    message_info: message,
     #                    user_info: {
     #                                 username: message.user.username,
-    #                                 user_url: message.user.gravatar_url
+    #                                 user_url: message.user.image_url
     #                               }
     #                   }
   end

@@ -49,7 +49,7 @@ div.profile-information:hover {
   left: 15px;
   background-color: white;
   width: 220px;
-  height: 85px;
+  height: 20%;
   border-radius: 4px;
   border: 1px solid #e8e8e8;
   z-index: 100;
@@ -77,13 +77,12 @@ div.profile-information:hover {
 }
 
 .menu-toggle-btn {
-  // background-color: white;
   height: 60px;
   width: 220px;;
-  // background-color: green;
+
   cursor: pointer;
-  // display: transparent;
-  // z-index: 5;
+
+
 }
 
 .displayed-btn-text{
@@ -133,10 +132,11 @@ i.fa-chevron-down {
   text-indent: 8px;
   padding-top: 2px;
   padding-bottom: 5px;
-  width: 100%
+  width: 100%;
+  cursor: pointer;
 }
 
-form.menu-element:hover {
+form.menu-element:hover, div.menu-element:hover{
   background-color: #2D9EE0;
   color: #FFFFFF;
 }
