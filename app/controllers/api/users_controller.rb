@@ -22,17 +22,33 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @gen_channel ||= gen_channel
-    @user.image_url = User.gravatar_for(@user)
+    # @user.image_url = User.gravatar_for(@user)
     render :show
   end
 
-private
+  def update
+    @user = User.find(params[:user][:id])
+    @gen_channel ||= gen_channel
 
-def sym_to_s(errors)
-  str_errors = errors.map do |error|
-    error.to_s
+    if @user.update(user_params)
+      
+      render :show
+    else
+      short_errors = sym_to_s(@user.errors)
+
+      render(json: short_errors, status: 422)
+    end
   end
-end
 
+  private
 
+  def sym_to_s(errors)
+    str_errors = errors.map do |error|
+      error.to_s
+    end
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :profile_picture)
+  end
 end

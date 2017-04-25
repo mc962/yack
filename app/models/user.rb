@@ -2,26 +2,32 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  username        :string           not null
-#  first_name      :string           not null
-#  last_name       :string           not null
-#  password_digest :string           not null
-#  session_token   :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  email           :string           not null
-#  image_url       :string
+#  id                           :integer          not null, primary key
+#  username                     :string           not null
+#  first_name                   :string           not null
+#  last_name                    :string           not null
+#  password_digest              :string           not null
+#  session_token                :string           not null
+#  created_at                   :datetime         not null
+#  updated_at                   :datetime         not null
+#  email                        :string           not null
+#  gravatar_url                 :string
+#  profile_picture_file_name    :string
+#  profile_picture_content_type :string
+#  profile_picture_file_size    :integer
+#  profile_picture_updated_at   :datetime
 #
 
 class User < ApplicationRecord
-  validates :username, :first_name, :last_name, :email, :session_token, :image_url, presence: true
+  validates :username, :first_name, :last_name, :email, :session_token, :gravatar_url, presence: true
   validates :username, uniqueness: true
   validates :password_digest, presence: { message: "Password can't be blank."}
   validates :password, length: { minimum: 6, allow_nil: true }
 
+
+
   after_initialize :ensure_session_token
-  before_validation :ensure_image_url
+  before_validation :ensure_gravatar_url
 
   has_many :messages
   has_many :user_chats, dependent: :destroy
@@ -29,8 +35,12 @@ class User < ApplicationRecord
   has_many :chatrooms, through: :user_chats, source: :chatroom
 
   # profile picture uploading
-  
+  has_attached_file :profile_picture, styles: {
+    thumb: '35x35>',
+    portrait: '370x210#'
+  }
 
+  validates_attachment_content_type :profile_picture, content_type: /\Aimage\/.*\Z/
 
 
 
@@ -86,8 +96,8 @@ class User < ApplicationRecord
     self.session_token ||= User.generate_session_token
   end
 
-  def ensure_image_url
-    self.image_url ||= User.gravatar_for(self)
+  def ensure_gravatar_url
+    self.gravatar_url ||= User.gravatar_for(self)
 
   end
 

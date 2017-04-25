@@ -66,20 +66,19 @@ class Api::MessagesController < ApplicationController
   end
 
   def attach_message_user_info(message)
+    message_user = message.user
+    message_picture = message_user.gravatar_url
+    if message_user.profile_picture.exists?
+      message_picture = asset_path(message_user.profile_picture.url)
+    end
     user_info = {
                  "username" => message.user.username,
-                 "user_url" => message.user.image_url
+                 "user_url" => message.user.message_picture
                 }
 
     message_attributes = message.attributes
     processed_message = message_attributes.merge(user_info)
-    # message_package = {
-    #                    message_info: message,
-    #                    user_info: {
-    #                                 username: message.user.username,
-    #                                 user_url: message.user.image_url
-    #                               }
-    #                   }
+
   end
 
 end

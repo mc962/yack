@@ -109,7 +109,7 @@ class UserInfo extends React.Component {
           </header>
 
           <div className='directory-user-details'>
-            <img src={this.props.pictureUrl} alt='Profile Picture' className='user-info-picture' title='Image resizing coming soon'/>
+            <img src={this.props.pictureUrl} alt='Profile Picture' className='user-info-picture' />
             <h2 className='user-profile-fullname'>{`${this.props.firstName} ${this.props.lastName}`}</h2>
 
             {editButton}

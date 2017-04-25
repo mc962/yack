@@ -13,8 +13,14 @@ const mapStateToProps = (state, ownProps) => {
   let lastName = ""
   let infoUser;
   let users = {}
-  if (state.users.allUsers) {
-    infoUser = state.users.allUsers[ownProps.params.user_id]
+
+  if (parseInt(ownProps.params.user_id) === parseInt(state.session.currentUser.id)) {
+    infoUser = state.session.currentUser
+    debugger
+  } else {
+    if (state.users.allUsers) {
+      infoUser = state.users.allUsers[ownProps.params.user_id]
+    }
   }
 
   if (state.channels.currentChannel) {

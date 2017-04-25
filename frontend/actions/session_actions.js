@@ -16,7 +16,7 @@ export const signup = (user) => (dispatch) => {
   dispatch(startLoadingCurrentUser());
 
     return APIUtil.signup(user).then(
-      (fetchedUser)=>{        
+      (fetchedUser)=>{
         return dispatch(receiveCurrentUser(fetchedUser));
       },
       (fetchedErrors) => {
@@ -49,6 +49,32 @@ export const logout = () => {
     );
   };
 };
+
+
+export const updateUser = (formData) => dispatch => {
+  return APIUtil.updateUser(formData).then(
+    (updatedUser) => {
+      dispatch(receiveCurrentUser(updatedUser));
+    },
+    (fetchedErrors) => {
+      return dispatch(receiveErrors(fetchedErrors.responseJSON));
+    }
+  );
+};
+
+// export const updateUser = (formData) => (dispatch) => {
+//   debugger
+//   return (dispatch) => {
+//     return APIUtil.updateUser(formData).then(
+//       (updatedUser) => {
+//         return dispatch(receiveCurrentUser(updatedUser));
+//       },
+//       (fetchedErrors) => {
+//         return dispatch(receiveErrors(fetchedErrors.responseJSON));
+//       }
+//     )
+//   }
+// }
 
 export const fetchCurrentUser = (userId) => {
 

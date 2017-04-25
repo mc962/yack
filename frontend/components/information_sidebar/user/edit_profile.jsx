@@ -36,7 +36,14 @@ class EditProfile extends React.Component {
 
   submitProfileUpdate(e) {
     e.preventDefault()
-    console.log('Will need to hook this up to container actions')
+    // console.log('Will need to hook this up to container actions')
+    let formData = new FormData();
+    formData.append('user[id]', this.props.currentUserId);
+    formData.append('user[first_name]', this.state.firstName)
+    formData.append('user[last_name]', this.state.lastName);
+    formData.append('user[profile_picture]', this.state.displayImage);
+    this.props.updateUser(formData).then(() => this.props.handleEscape())
+
   }
 
   render() {
@@ -68,7 +75,7 @@ class EditProfile extends React.Component {
 
         <div className='edit-profile-submit-btns'>
           <div className='edit-profile-cancel-btn' onClick={this.props.handleEscape} >Cancel</div>
-          <input type='submit' className='submit-profile-edit-btn' value='Save Changes' title='Image uploads coming soon'/>
+          <input type='submit' className='submit-profile-edit-btn' value='Save Changes' />
         </div>
 
       </form>
