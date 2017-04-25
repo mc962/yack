@@ -5,7 +5,7 @@ users_hash = {}
 
 @users.each do |user|
   picture = user.gravatar_url
-  if user.profile_picture.exists?
+  if user.profile_picture.present?
     picture = asset_path(user.profile_picture.url)
   end
 

@@ -40,7 +40,10 @@ class User < ApplicationRecord
     portrait: '370x210#'
   }
 
-  validates_attachment_content_type :profile_picture, content_type: /\Aimage\/.*\Z/
+  validates_attachment :profile_picture,
+    content_type: { content_type: /\Aimage\/.*\Z/ },
+    size: { in: 0..5.megabytes}
+
 
 
 

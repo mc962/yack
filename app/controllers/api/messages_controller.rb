@@ -68,7 +68,7 @@ class Api::MessagesController < ApplicationController
   def attach_message_user_info(message)
     message_user = message.user
     message_picture = message_user.gravatar_url
-    if message_user.profile_picture.exists?
+    if message_user.profile_picture.present?
       message_picture = asset_path(message_user.profile_picture.url)
     end
     user_info = {

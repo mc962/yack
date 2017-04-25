@@ -5,7 +5,7 @@ messages_hash = {}
 @chatroom.messages.each do |message|
   message_user = message.user
   message_picture = message_user.gravatar_url
-  if message_user.profile_picture.exists?
+  if message_user.profile_picture.present?
     message_picture = asset_path(message_user.profile_picture.url)
   end
   messages_hash[message.id] = {
@@ -24,7 +24,7 @@ users_hash = {}
 
 @chatroom.users.each do |user|
   picture = user.gravatar_url
-  if user.profile_picture.exists?
+  if user.profile_picture.present?
     picture = asset_path(user.profile_picture.url)
   end
   users_hash[user.id] = {
