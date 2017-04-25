@@ -18,7 +18,7 @@ users << User.new(first_name: 'Kat', last_name: 'Davidson', username: 'katty', e
 Chatroom.new(room_title: 'general', room_type: 'general', purpose: 'Main Public Chat').save!
 general_chat = Chatroom.find_by(room_title: 'general')
 users.each do |user|
-  user.gravatar_url = Faker::Avatar.image
+  user.image_url = Faker::Avatar.image
   user.save!
   ## add them all to main general chat
   # debugger
