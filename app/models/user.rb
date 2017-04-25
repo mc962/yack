@@ -29,7 +29,7 @@ class User < ApplicationRecord
   has_many :chatrooms, through: :user_chats, source: :chatroom
 
   # profile picture uploading
-  has_many :pictures, as: :imageable
+  
 
 
 

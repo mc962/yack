@@ -48,7 +48,7 @@ class UserInfo extends React.Component {
   render() {
     let editButton;
     let email;
-    if (parseInt(this.props.params.user_id) === parseInt(currentUser.id)) {
+    if (parseInt(this.props.params.user_id) === parseInt(this.props.currentUserId)) {
       editButton = (
         <div className='edit-user-modal-btn' onClick={this.handleEditProfile} >
           Edit Profile
