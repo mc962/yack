@@ -2,12 +2,17 @@
 #
 # Table name: messages
 #
-#  id          :integer          not null, primary key
-#  content     :text             not null
-#  user_id     :integer          not null
-#  chatroom_id :integer          not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id                              :integer          not null, primary key
+#  content                         :text             not null
+#  user_id                         :integer          not null
+#  chatroom_id                     :integer          not null
+#  created_at                      :datetime         not null
+#  updated_at                      :datetime         not null
+#  message_type                    :string
+#  message_attachment_file_name    :string
+#  message_attachment_content_type :string
+#  message_attachment_file_size    :integer
+#  message_attachment_updated_at   :datetime
 #
 
 class Message < ApplicationRecord
