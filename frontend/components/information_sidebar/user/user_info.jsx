@@ -8,13 +8,13 @@ class UserInfo extends React.Component {
   constructor(props) {
     super(props)
     this.handleEditProfile = this.handleEditProfile.bind(this);
-    this.handleEscape = this.handleEscape.bind(this);
+    // this.handleEscape = this.handleEscape.bind(this);
     this.returnToUsers = this.returnToUsers.bind(this);
     this.escapeInfo = this.escapeInfo.bind(this);
     this.leaveHandler = this.leaveHandler.bind(this);
     this.redirect = this.redirect.bind(this);
 
-    this.state = ({ profileModalIsOpen: false })
+    // this.state = ({ profileModalIsOpen: false })
   }
 
   redirect() {
@@ -22,15 +22,15 @@ class UserInfo extends React.Component {
   }
 
   handleEditProfile() {
-    this.setState({ profileModalIsOpen: true })
+    this.props.toggleUserInfoModal()
   }
 
   escapeInfo() {
     this.props.router.replace(`/channels/${this.props.roomId}`)
   }
-  handleEscape() {
-    this.setState({ profileModalIsOpen: false })
-  }
+  // handleEscape() {
+  //   this.setState({ profileModalIsOpen: false })
+  // }
 
   returnToUsers() {
     this.props.router.replace(`/channels/${this.props.roomId}/users`)
@@ -77,20 +77,20 @@ class UserInfo extends React.Component {
     return (
       <sidebar className='user-profile-information-container'>
         <Modal
-          isOpen={this.state.profileModalIsOpen}
+          isOpen={this.props.userInfoModalOpen}
           contentLabel="EditProfileModal"
-          onRequestClose={this.handleEscape}
+          onRequestClose={this.props.toggleUserInfoModal}
           className='edit-profile-modal-container'
           overlayClassName='edit-profile-modal-overlay'
            >
 
           <header className='edit-modal-header-container'>
             <h2 className='edit-modal-header'>Edit your profile</h2>
-            <button className='profile-modal-close-btn' onClick={this.handleEscape}>
+            <button className='profile-modal-close-btn' onClick={this.props.toggleUserInfoModal}>
               <div className='x-icon edit-modal-x-icon'>x</div>
               </button>
           </header>
-          <EditProfileContainer handleEscape={this.handleEscape} />
+          <EditProfileContainer />
 
         </Modal>
         <div className='top-content'>

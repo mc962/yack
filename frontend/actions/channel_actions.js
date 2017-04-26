@@ -24,6 +24,9 @@ export const RECEIVE_CHANNEL_MESSAGES = 'RECEIVE_CHANNEL_MESSAGES';
 export const RECEIVE_CHANNEL_MESSAGE = 'RECEIVE_CHANNEL_MESSAGE';
 export const REMOVE_CHANNEL_MESSAGE = 'REMOVE_CHANNEL_MESSAGE';
 
+export const TOGGLE_GM_MODAL = 'TOGGLE_GM_MODAL'
+export const TOGGLE_DM_MODAL = 'TOGGLE_DM_MODAL'
+
 export const fetchCurrentChannel = (channelId) => (dispatch) => {
   dispatch(startLoadingCurrentChannel());
 
@@ -167,5 +170,17 @@ export const removeChannelMessage =  (removedChannelMessageData) => {
   return {
     type: REMOVE_CHANNEL_MESSAGE,
     removedChannelMessageData
+  }
+}
+
+export const toggleGMModal = () => {
+  return {
+    type: TOGGLE_GM_MODAL,
+  }
+}
+
+export const toggleDMModal = () => {
+  return {
+    type: TOGGLE_DM_MODAL,    
   }
 }

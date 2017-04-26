@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 
-import Modal from 'react-modal';
+
 import ProfilePictureUploadContainer from './profile_picture_upload_container';
 
 class Profile extends React.Component {

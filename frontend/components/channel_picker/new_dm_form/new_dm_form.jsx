@@ -51,7 +51,7 @@ export default class NewDMForm extends React.Component {
       const newChannelId = receivedChannel.currentChannel.id;
       this.props.fetchCurrentUser(this.props.currentUserId);
       this.redirect(newChannelId);
-    }).then(this.props.handleEscape());
+    }).then(this.props.toggleDMModal());
 
 
   }
@@ -174,11 +174,6 @@ export default class NewDMForm extends React.Component {
       availableUsers = [];
 
     }
-    // if (availableUsers.length < _.size(this.props.fetchedUsers)) {
-    //   submittableColor = ' submittableButton';
-    // } else {
-    //   submittableColor = '';
-    // }
 
     return (
       <div className="modal-form">

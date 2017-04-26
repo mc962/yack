@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { updateUser } from '../../../actions/session_actions'
+import { updateUser, toggleUserInfoModal } from '../../../actions/session_actions'
 
 import EditProfile from './edit_profile';
 
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    handleEscape: () => ownProps.handleEscape(),
+    toggleUserInfoModal: () => dispatch(toggleUserInfoModal()),
     updateUser: (formData) => dispatch(updateUser(formData))
   }
 }

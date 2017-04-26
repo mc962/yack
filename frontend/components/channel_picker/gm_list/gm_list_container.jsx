@@ -1,6 +1,6 @@
 import GMList from './gm_list';
 import { connect } from 'react-redux';
-import { fetchAllChannels, joinChannel } from '../../../actions/channel_actions';
+import { fetchAllChannels, joinChannel, toggleGMModal } from '../../../actions/channel_actions';
 import { fetchCurrentUser } from '../../../actions/session_actions';
 
 const mapStateToProps = (state) => {
@@ -20,7 +20,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllChannels: () => dispatch(fetchAllChannels()),
     joinChannel: (user_chat) => dispatch(joinChannel(user_chat)),
-    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId))
+    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId)),
+    toggleGMModal: () => dispatch(toggleGMModal())
   };
 };
 

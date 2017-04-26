@@ -12,6 +12,10 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
 
+export const TOGGLE_USER_INFO_MODAL = 'TOGGLE_USER_INFO_MODAL';
+// export const SHOW_MODAL = 'SHOW_MODAL';
+// export const HIDE_MODAL = 'HIDE_MODAL';
+
 export const signup = (user) => (dispatch) => {
   dispatch(startLoadingCurrentUser());
 
@@ -62,20 +66,6 @@ export const updateUser = (formData) => dispatch => {
   );
 };
 
-// export const updateUser = (formData) => (dispatch) => {
-//   debugger
-//   return (dispatch) => {
-//     return APIUtil.updateUser(formData).then(
-//       (updatedUser) => {
-//         return dispatch(receiveCurrentUser(updatedUser));
-//       },
-//       (fetchedErrors) => {
-//         return dispatch(receiveErrors(fetchedErrors.responseJSON));
-//       }
-//     )
-//   }
-// }
-
 export const fetchCurrentUser = (userId) => {
 
   return (dispatch) => {
@@ -93,6 +83,7 @@ export const receiveCurrentUser = (currentUser) => {
   };
 };
 
+
 export const receiveErrors = (errors) => {
   return {
     type: RECEIVE_ERRORS,
@@ -109,3 +100,9 @@ export const clearErrors = () => {
 export const startLoadingCurrentUser = () => ({
   type: START_LOADING_CURRENT_USER
 });
+
+export const toggleUserInfoModal = () => {
+  return {
+    type: TOGGLE_USER_INFO_MODAL    
+  }
+}

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import NewDMForm from './new_dm_form';
-import { createChannel } from '../../../actions/channel_actions';
+import { createChannel, toggleDMModal } from '../../../actions/channel_actions';
 import { fetchAllUsers } from '../../../actions/user_actions';
 import { fetchCurrentUser } from '../../../actions/session_actions';
 import { getDirectMessageChannels } from '../../../reducers/selectors';
@@ -29,7 +29,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllUsers: () => dispatch(fetchAllUsers()),
     createChannel: (channel) => dispatch(createChannel(channel)),
-    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId))
+    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId)),
+    toggleDMModal: () => dispatch(toggleDMModal())
   };
 };
 

@@ -35,7 +35,7 @@ class GMList extends React.Component {
       const newChannelId = receivedChannel.currentChannel.id;
       this.props.fetchCurrentUser(userId)
       this.redirect(newChannelId);
-      this.props.handleEscape()
+      this.props.toggleGMModal()
     })
   }
 

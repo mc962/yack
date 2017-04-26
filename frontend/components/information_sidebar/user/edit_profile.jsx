@@ -42,7 +42,7 @@ class EditProfile extends React.Component {
     formData.append('user[first_name]', this.state.firstName)
     formData.append('user[last_name]', this.state.lastName);
     formData.append('user[profile_picture]', this.state.displayImage);
-    this.props.updateUser(formData).then(() => this.props.handleEscape())
+    this.props.updateUser(formData).then(() => this.props.toggleUserInfoModal())
 
   }
 
@@ -74,7 +74,7 @@ class EditProfile extends React.Component {
         </div>
 
         <div className='edit-profile-submit-btns'>
-          <div className='edit-profile-cancel-btn' onClick={this.props.handleEscape} >Cancel</div>
+          <div className='edit-profile-cancel-btn' onClick={this.props.toggleUserInfoModal} >Cancel</div>
           <input type='submit' className='submit-profile-edit-btn' value='Save Changes' />
         </div>
 

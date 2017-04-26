@@ -13,27 +13,27 @@ import GMListContainer from './gm_list/gm_list_container';
 class ChannelPicker extends React.Component {
   constructor(props) {
     super(props);
-    this.handleNewDMClick = this.handleNewDMClick.bind(this);
-    this.handleNewGCClick = this.handleNewGCClick.bind(this);
-    this.handleEscape = this.handleEscape.bind(this);
+    // this.handleNewDMClick = this.handleNewDMClick.bind(this);
+    // this.handleNewGCClick = this.handleNewGCClick.bind(this);
+    // this.handleEscape = this.handleEscape.bind(this);
 
-    this.state = {dmModalIsOpen: false, gmModalIsOpen: false};
+    // this.state = {dmModalIsOpen: false, gmModalIsOpen: false};
   }
 
 
-  handleNewDMClick(e) {
-    e.preventDefault();
-    this.setState({ dmModalIsOpen: true });
-  }
+  // handleNewDMClick(e) {
+  //   e.preventDefault();
+  //   this.props.toggleDMModal();
+  // }
 
-  handleNewGCClick(e) {
-    e.preventDefault();
-    this.setState({gmModalIsOpen: true});
-  }
+  // handleNewGCClick(e) {
+  //   e.preventDefault();
+  //   this.props.toggleGMModal()
+  // }
 
-  handleEscape() {
-    this.setState({ dmModalIsOpen: false, gmModalIsOpen: false })
-  }
+  // handleEscape() {
+  //   this.setState({ dmModalIsOpen: false, gmModalIsOpen: false })
+  // }
 
   render() {
 
@@ -70,21 +70,22 @@ class ChannelPicker extends React.Component {
         <div className='sidebar-channels'>
           <div className='general-channels'>
             <span className='public-channels-button'>
-              <button className='channel-type' onClick={this.handleNewGCClick}>Channels
+              <button className='channel-type' onClick={this.props.toggleGMModal}>Channels
                 <span className='public-channels-count'>({this.props.generalMessageChannels.length})</span>
               </button>
             </span>
 
             <Modal
-              isOpen={this.state.gmModalIsOpen} contentLabel="GMModal"
+              isOpen={this.props.gmModalOpen}
+              contentLabel="GMModal"
               style={modalChannels}
-              onRequestClose={this.handleEscape} >
+              onRequestClose={this.props.toggleGMModal} >
 
-              <button className='modal-close-btn' onClick={this.handleEscape}>
+              <button className='modal-close-btn' onClick={this.props.toggleGMModal}>
                 <div className='x-icon'>x</div>
                 <div className='esc-text'>esc</div>
               </button>
-              <GMListContainer handleEscape={this.handleEscape} />
+              <GMListContainer />
 
             </Modal>
 
@@ -94,20 +95,20 @@ class ChannelPicker extends React.Component {
           </div>
 
           <div className='dm-channels'>
-            <button onClick={this.handleNewDMClick} className='channel-type direct-messages-button'>Direct Messages</button>
-            <button onClick={this.handleNewDMClick} className='new-dm-button'>+</button>
+            <button onClick={this.props.toggleDMModal} className='channel-type direct-messages-button'>Direct Messages</button>
+            <button onClick={this.props.toggleDMModal} className='new-dm-button'>+</button>
 
             <Modal
-              isOpen={this.state.dmModalIsOpen} contentLabel="DMModal"
+              isOpen={this.props.dmModalOpen} contentLabel="DMModal"
               style={modalChannels}
-              onRequestClose={this.handleEscape}
+              onRequestClose={this.props.toggleDMModal}
               >
 
-              <button className='modal-close-btn' onClick={this.handleEscape}>
+              <button className='modal-close-btn' onClick={this.props.toggleDMModal}>
                 <div className='x-icon'>x</div>
                 <div className='esc-text'>esc</div>
               </button>
-              <NewDMFormContainer handleEscape={this.handleEscape} />
+              <NewDMFormContainer />
 
             </Modal>
 

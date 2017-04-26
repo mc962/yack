@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { leaveChannel } from '../../../actions/channel_actions';
-import { fetchCurrentUser } from '../../../actions/session_actions';
+import { fetchCurrentUser, toggleUserInfoModal } from '../../../actions/session_actions';
 
 import UserInfo from './user_info';
 
@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 
   if (parseInt(ownProps.params.user_id) === parseInt(state.session.currentUser.id)) {
     infoUser = state.session.currentUser
-    debugger
+    
   } else {
     if (state.users.allUsers) {
       infoUser = state.users.allUsers[ownProps.params.user_id]
@@ -45,14 +45,16 @@ const mapStateToProps = (state, ownProps) => {
     currentUserUsername: state.session.currentUser.username,
     roomId: ownProps.params.id,
     users: users,
-    genChannelRoomId: state.session.currentUser.gen_channel_id
+    genChannelRoomId: state.session.currentUser.gen_channel_id,
+    userInfoModalOpen: state.modals.userInfoModal
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     leaveChannel: (channel) => dispatch(leaveChannel(channel)),
-    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId))
+    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId)),
+    toggleUserInfoModal: () => dispatch(toggleUserInfoModal())
   }
 }
 
