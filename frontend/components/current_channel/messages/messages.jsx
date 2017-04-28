@@ -75,13 +75,16 @@ class Messages extends React.Component {
 
         prevMessage = message;
         message_id = message_id
-        return <MessageItemContainer key={idx}
+        
+        return <MessageItemContainer
+          key={idx}
           username={name}
           content={message.content}
           messageId={message_id}
           gravatarUrl={userImageLink}
           userId={message.user_id}
           channelId={channelId}
+          messageType={message.message_type}
           createdAt={message.created_at}
           updatedAt={message.updated_at} />;
       });

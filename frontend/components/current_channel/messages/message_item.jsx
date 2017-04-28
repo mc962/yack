@@ -69,7 +69,7 @@ class MessageItem extends React.Component {
 
 
   render() {
-    
+
     let pictureSpot;
     let pictureDisplayTime
     if (this.props.gravatarUrl === '') {
@@ -113,24 +113,30 @@ class MessageItem extends React.Component {
                                                 userPicture={this.props.gravatarUrl}
                                                 editEscapeHandler={this.editEscapeHandler}/>
     } else {
-      renderableContent = (
-        <li className='message-element'>
-          <div className='message-info'>
-            {pictureSpot}
-            <div className='message-text'>
-              <div className ='message-author'>
-                <div className='author-name'>
-                  {this.props.username}
+      if (this.props.messageType === 'message') {
+        renderableContent = (
+          <li className='message-element'>
+            <div className='message-info'>
+              {pictureSpot}
+              <div className='message-text'>
+                <div className ='message-author'>
+                  <div className='author-name'>
+                    {this.props.username}
+                  </div>
+                  {pictureDisplayTime}
                 </div>
-                {pictureDisplayTime}
-              </div>
 
-              <div className='message-content dont-break-out'>{this.props.content}</div>
+                <div className='message-content dont-break-out'>{this.props.content}</div>
+              </div>
             </div>
-          </div>
-          {channelMessageActions}
-        </li>
-      );
+            {channelMessageActions}
+          </li>
+        );
+      } else if (this.props.messageType === 'attachment') {
+          renderableContent = <li className='message-element'>Placeholder Content...</li>
+      } else {
+        renderableContent = <li className='message-element'>Invalid message type!</li>
+      }
     }
 
     return renderableContent;

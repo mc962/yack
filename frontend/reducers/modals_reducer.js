@@ -1,12 +1,13 @@
 import { merge } from 'lodash';
 
-import { TOGGLE_DM_MODAL, TOGGLE_GM_MODAL } from '../actions/channel_actions';
+import { TOGGLE_DM_MODAL, TOGGLE_GM_MODAL, TOGGLE_MESSAGE_ATTACHMENT_MODAL } from '../actions/channel_actions';
 import { TOGGLE_USER_INFO_MODAL } from '../actions/session_actions';
 
 const initialState = {
   'dmModal': false,
   'gmModal': false,
-  'userInfoModal': false
+  'userInfoModal': false,
+  'messageAttachmentModal': false
 }
 
 let nextState;
@@ -25,6 +26,10 @@ const ModalsReducer = (state = initialState, action) => {
       nextState = Object.assign({}, state);
       nextState['userInfoModal'] = !nextState['userInfoModal']
       return merge({}, state, nextState)
+    case TOGGLE_MESSAGE_ATTACHMENT_MODAL:
+    nextState = Object.assign({}, state);
+    nextState['messageAttachmentModal'] = !nextState['messageAttachmentModal']
+    return merge({}, state, nextState)
     default:
       return state
   }

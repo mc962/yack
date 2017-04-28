@@ -62,8 +62,18 @@ export const createChannelMessage = (message) =>  {
   });
 };
 
+export const createChannelAttachmentMessage = (messageData) => {
+  return $.ajax({
+    method: 'POST',
+    url: `/api/chatrooms/${messageData.get('message[chatroom_id]')}/messages`,
+    contentType: false,
+    processData: false,
+    data: messageData
+  })
+}
+
 export const updateChannelMessage = (message) => {
-  
+
   return $.ajax({
     method: 'PATCH',
     url: `/api/chatrooms/${message.chatroom_id}/messages/${message.id}`,

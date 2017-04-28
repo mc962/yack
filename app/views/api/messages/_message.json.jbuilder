@@ -17,6 +17,8 @@ message_object = {
                   username: message.user.username,
                   created_at: message.created_at,
                   updated_at: message.updated_at,
-                  chatroom_id: message.chatroom_id }
+                  chatroom_id: message.chatroom_id,
+                  message_type: message.message_type
+                 }
 
 json.message message_object

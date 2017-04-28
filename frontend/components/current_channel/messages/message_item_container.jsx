@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     channelId: ownProps.channelId,
     currentUserId: state.session.currentUser.id,
     userId: ownProps.userId,
+    messageType: ownProps.messageType,
     createdAt: ownProps.createdAt,
     updatedAt: ownProps.updatedAt
   };

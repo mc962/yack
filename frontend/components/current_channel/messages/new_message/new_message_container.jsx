@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import NewMessageForm from './new_message_form';
-import { createMessage } from '../../../../actions/message_actions';
+import { createChannelMessage, toggleMessageAttachmentModal } from '../../../../actions/channel_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let channelId;
@@ -26,13 +26,15 @@ const mapStateToProps = (state, ownProps) => {
     channelId: channelId,
     users: users,
     channel: ownProps.channel,
-    currentUser: currentUser
+    currentUser: currentUser,
+    messageAttachmentModalOpen: state.modals.messageAttachmentModal
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createMessage: (newMessage) => dispatch(createMessage(newMessage))
+    createChannelMessage: (newMessage) => dispatch(createChannelMessage(newMessage)),
+    toggleMessageAttachmentModal: () => dispatch(toggleMessageAttachmentModal())
   };
 };
 

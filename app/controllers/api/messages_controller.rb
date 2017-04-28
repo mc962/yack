@@ -1,8 +1,8 @@
 class Api::MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
-
-    if @message.save
+    
+    if @message.save!
       # Pusher.trigger("channel_#{@message.chatroom_id}", 'message_published', {})
 
       broadcasted_message = attach_message_user_info(@message)
@@ -62,18 +62,18 @@ class Api::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content, :user_id, :chatroom_id)
+    params.require(:message).permit(:content, :user_id, :chatroom_id, :message_type, :message_attachment)
   end
 
   def attach_message_user_info(message)
     message_user = message.user
     message_picture = message_user.gravatar_url
     if message_user.profile_picture.present?
-      message_picture = asset_path(message_user.profile_picture.url)
+      message_picture = message_user.profile_picture.url
     end
     user_info = {
                  "username" => message.user.username,
-                 "user_url" => message.user.message_picture
+                 "user_url" => message_picture
                 }
 
     message_attributes = message.attributes

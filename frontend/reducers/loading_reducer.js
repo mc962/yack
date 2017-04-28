@@ -49,7 +49,7 @@ export default (state = initialState, action) => {
     case START_LOADING_ALL_CHANNELS:
       return Object.assign({}, state, {allChannelsLoading: true});
     case START_LOADING_CURRENT_CHANNEL:
-    
+
       return Object.assign({}, state, {currentChannelLoading: true});
     case START_RECEIVING_MESSAGE:
       return Object.assign({}, state, {messageLoading: true});
