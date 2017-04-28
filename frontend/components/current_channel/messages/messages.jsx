@@ -67,15 +67,18 @@ class Messages extends React.Component {
         let userImageLink = message.user_url;
         let name = message.username;
         if (prevMessage) {
-          if (prevMessage.username === message.username) {
+          if (prevMessage.username === message.username && prevMessage.message_type !== 'attachment') {
             userImageLink = ''
             name = ''
           }
         }
-
+        if (message.message_type === 'attachment') {
+          userImageLink = message.user_url;
+          name = message.username;
+        }
         prevMessage = message;
         message_id = message_id
-        
+
         return <MessageItemContainer
           key={idx}
           username={name}
@@ -85,8 +88,12 @@ class Messages extends React.Component {
           userId={message.user_id}
           channelId={channelId}
           messageType={message.message_type}
+          contentType={message.message_attachment_content_type}
+          messageTitle={message.message_title}
           createdAt={message.created_at}
-          updatedAt={message.updated_at} />;
+          updatedAt={message.updated_at}
+          attachmentUrl={message.attachment_url}
+          previewUrl={message.preview_url} />;
       });
     } else {
       messageElements = <div className='no-messages'></div>;

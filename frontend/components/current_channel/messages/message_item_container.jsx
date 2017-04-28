@@ -15,8 +15,12 @@ const mapStateToProps = (state, ownProps) => {
     currentUserId: state.session.currentUser.id,
     userId: ownProps.userId,
     messageType: ownProps.messageType,
+    contentType: ownProps.contentType,
+    messageTitle: ownProps.messageTitle,
     createdAt: ownProps.createdAt,
-    updatedAt: ownProps.updatedAt
+    updatedAt: ownProps.updatedAt,
+    attachmentUrl: ownProps.attachmentUrl,
+    previewUrl: ownProps.previewUrl
   };
 };
 

@@ -7,7 +7,7 @@ class MessageAttachment extends React.Component {
     this.handleAttachmentUpload = this.handleAttachmentUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.state = { attachmentContent: '', messageUpload: '', displayUrl: ''}
+    this.state = { attachmentContent: '', messageUpload: '', displayUrl: '', messageTitle: '', fileName: ''}
   }
 
   handleInputChange(e) {
@@ -49,10 +49,11 @@ class MessageAttachment extends React.Component {
     const fileVal = targetEl.files[0];
     const uploadPath = targetEl.value
 
+
     // probably will want error checking here for if its a file
     const reader  = new FileReader();
     reader.onloadend = () => {
-      this.setState({uploadPath: uploadPath, displayImage: reader.result })
+      this.setState({uploadPath: uploadPath, displayImage: reader.result, fileName: fileVal.name })
     }
     reader.readAsDataURL(fileVal);
 
@@ -61,13 +62,16 @@ class MessageAttachment extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    const title = this.state.messageTitle ? this.state.messageTitle : this.state.fileName
+    
     let formData = new FormData();
     formData.append('message[content]', this.state.attachmentContent)
     formData.append('message[message_type]', 'attachment');
     formData.append('message[message_attachment]', this.state.displayImage);
     formData.append('message[user_id]', this.props.currentUserId);
-    formData.append('message[chatroom_id]', this.props.currentChannelId)
-    
+    formData.append('message[chatroom_id]', this.props.currentChannelId);
+    formData.append('message[message_title]', title);
+
     this.props.createChannelAttachmentMessage(formData).then(() => this.props.toggleMessageAttachmentModal())
   }
 
@@ -86,13 +90,19 @@ class MessageAttachment extends React.Component {
 
     return(
       <form className='message-attachment-form' onSubmit={this.handleSubmit}>
-        <div className='message-upload-box-container'>
-          <label htmlFor='message-upload-box' className='upload-box-label'>Click to Upload</label>
-          <div className='message-upload-container' id='message-upload-box'>
-            <label htmlFor='messageUpload' className='message-attachment-enclosure'>
-              {previewImage}
-              <input type='file' className='message-attachment-file-upload' id='messageUpload' value={this.state.messageUpload} onChange={this.handleAttachmentUpload} />
-            </label>
+        <div className = 'message-upload-box-inputs'>
+          <div className='message-upload-box-container'>
+            <label htmlFor='message-upload-box' className='upload-box-label'>Click to Upload</label>
+            <div className='message-upload-container' id='message-upload-box'>
+              <label htmlFor='messageUpload' className='message-attachment-enclosure'>
+                {previewImage}
+                <input type='file' className='message-attachment-file-upload' id='messageUpload' value={this.state.messageUpload} onChange={this.handleAttachmentUpload} />
+              </label>
+            </div>
+          </div>
+          <div className='message-attachment-title-container'>
+            <label htmlFor='messageTitle' className='message-attachment-title-label'>Title</label>
+            <input type='text' id="messageTitle" className='message-attachment-title' onChange={this.handleInputChange} value={this.state.messageTitle} />
           </div>
         </div>
 

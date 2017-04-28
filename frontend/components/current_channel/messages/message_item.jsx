@@ -66,6 +66,108 @@ class MessageItem extends React.Component {
     return paddedNum
   }
 
+  processImageMessage() {
+    let channelMessageActions;
+    if (this.props.userId !== this.props.currentUserId) {
+      channelMessageActions = <div className='no-actions'></div>
+    } else {
+          channelMessageActions = (
+          <div className='message-actions hoverable-btns'>
+            <div className='msg-delete-btn' onClick={this.deleteClickHandler}>
+              <i className="fa fa-trash-o" aria-hidden="true"></i>
+            </div>
+          </div>
+        )
+    }
+    return (
+      <li className='message-element'>
+        <div className='message-info'>
+          <img src={this.props.gravatarUrl} alt={this.props.username} className='user-picture' />
+          <div className='message-text'>
+            <div className ='message-author'>
+              <div className='author-name'>
+                {this.props.username}
+              </div>
+            <div className ='picture-display-time'>{this._timeStringFormatter(this.props.createdAt)}</div>
+          </div>
+
+        <div className='message-content dont-break-out'>
+
+
+          <span className='image-attachment-title' title="Click to download">
+            {this.props.messageTitle}
+          </span>
+
+          <div className='image-attachment-content' title="Click to download">
+            <a href={this.props.attachmentUrl} download={this.props.messageTitle} className='message-download-link'>
+              <img src={this.props.previewUrl} alt='' className='message-attachment-image' />
+            </a>
+          </div>
+
+          <div className='message-attachment-text'>
+            <span className='attachment-quote'><i className="fa fa-quote-left" aria-hidden="true"></i></span>
+            {this.props.content}
+          </div>
+
+
+
+
+        </div>
+          </div>
+        </div>
+        {channelMessageActions}
+      </li>
+    )
+  }
+
+  processDocumentMessage() {
+    let channelMessageActions;
+    if (this.props.userId !== this.props.currentUserId) {
+      channelMessageActions = <div className='no-actions'></div>
+    } else {
+          channelMessageActions = (
+          <div className='message-actions hoverable-btns'>
+            <div className='msg-delete-btn' onClick={this.deleteClickHandler}>
+              <i className="fa fa-trash-o" aria-hidden="true"></i>
+            </div>
+          </div>
+        )
+    }
+    return (
+      <li className='message-element'>
+        <div className='message-info'>
+          <img src={this.props.gravatarUrl} alt={this.props.username} className='user-picture' />
+          <div className='message-text'>
+            <div className ='message-author'>
+              <div className='author-name'>
+                {this.props.username}
+              </div>
+            <div className ='picture-display-time'>{this._timeStringFormatter(this.props.createdAt)}</div>
+          </div>
+
+        <div className='message-content dont-break-out'>
+          <div className='document-attachment-content'>
+            <a href={this.props.attachmentUrl} download={this.props.messageTitle} className='message-download-link'>
+              <div className='content-image-container' title="Click to download">
+                <span className="document-message-icon"><i className="fa fa-file-text-o" aria-hidden="true"></i></span>
+                <span className='document-attachment-title'>
+                  {this.props.messageTitle}
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <div className='message-attachment-text'>
+            <span className='attachment-quote'><i className="fa fa-quote-left" aria-hidden="true"></i></span>
+            {this.props.content}
+          </div>
+        </div>
+          </div>
+        </div>
+        {channelMessageActions}
+      </li>
+    )
+  }
 
 
   render() {
@@ -133,7 +235,16 @@ class MessageItem extends React.Component {
           </li>
         );
       } else if (this.props.messageType === 'attachment') {
-          renderableContent = <li className='message-element'>Placeholder Content...</li>
+          // renderableContent = <li className='message-element'>Placeholder Content...</li>
+          if (this.props.contentType.split('/').includes('image')) {
+            renderableContent = this.processImageMessage()
+          } else {
+            // since documents are covered under the relatively broad MIME type of application
+            // they will be handled in the else statement; for more specific things like image or video, they would get
+            // a singular else if block
+            renderableContent = this.processDocumentMessage()
+          }
+
       } else {
         renderableContent = <li className='message-element'>Invalid message type!</li>
       }

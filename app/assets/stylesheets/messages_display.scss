@@ -197,3 +197,66 @@ li.message-element:hover {
 .message-elements-container {
   // padding-bottom: 10vh
 }
+
+.document-attachment-content {
+
+  min-width: 10vh;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1vh;
+  cursor: pointer;
+}
+
+.content-image-container {
+  width: 39vw;
+  min-height: 11vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  padding: 3%;
+
+  cursor: pointer;
+}
+
+.document-message-icon {
+  font-size: 2.0em;
+  margin-right: 5%;
+}
+
+.document-attachment-title {
+  color: #555459;
+  font-weight: 700;
+}
+
+.attachment-quote {
+  margin-right: 8px;
+  color: #e8e8e8;
+
+}
+
+.image-attachment-title {
+  color: #007AB8;
+  cursor: pointer;
+  font-weight: 700;
+  margin-bottom: 1vh;
+}
+
+span.image-attachment-title:hover {
+  text-decoration: underline;
+  color: #005e99
+}
+
+.image-attachment-content {
+  margin-bottom: 1vh;
+  border-radius: 4px;
+}
+
+.message-attachment-image {
+  height: 40vh;
+  width: 25vw;
+  border-radius: 4px;
+  cursor: pointer;
+}

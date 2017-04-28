@@ -13,8 +13,8 @@
 #  message_attachment_content_type :string
 #  message_attachment_file_size    :integer
 #  message_attachment_updated_at   :datetime
+#  message_title                   :string           default("")
 #
-
 
 class Message < ApplicationRecord
   # pdf, doc, ppt, xls, zip, docx, pptx, xlsx, txt
@@ -46,6 +46,18 @@ class Message < ApplicationRecord
     # # if: :is_video_type?, purposely excluding video attachments due to resource constraints
 
 
+# be sure to test this as a production env before pushing to HEROKU?
+  def download_url(style = :original)    
+    if Rails.env.development?
+      self.message_attachment.url
+    elsif Rails.env.production?
+      message_attachment.s3_bucket.objects[message_attachment.s3_object(style_name).key].url_for(
+        :read,
+        secure: true,
+        expires: 24*3600,
+        response_content_disposition: "attachment; filename='#{message_attachment_file_name}'").to_s
+    end
+  end
 
   def check_file_type
     if is_image_type?

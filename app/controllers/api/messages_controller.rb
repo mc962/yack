@@ -1,7 +1,7 @@
 class Api::MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
-    
+
     if @message.save!
       # Pusher.trigger("channel_#{@message.chatroom_id}", 'message_published', {})
 
@@ -62,7 +62,7 @@ class Api::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content, :user_id, :chatroom_id, :message_type, :message_attachment)
+    params.require(:message).permit(:content, :user_id, :chatroom_id, :message_type, :message_attachment, :message_title)
   end
 
   def attach_message_user_info(message)

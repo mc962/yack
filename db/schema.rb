@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425224208) do
+ActiveRecord::Schema.define(version: 20170428031526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,17 +26,19 @@ ActiveRecord::Schema.define(version: 20170425224208) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text     "content",                         null: false
-    t.integer  "user_id",                         null: false
-    t.integer  "chatroom_id",                     null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.text     "content",                                      null: false
+    t.integer  "user_id",                                      null: false
+    t.integer  "chatroom_id",                                  null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.string   "message_type"
     t.string   "message_attachment_file_name"
     t.string   "message_attachment_content_type"
     t.integer  "message_attachment_file_size"
     t.datetime "message_attachment_updated_at"
+    t.string   "message_title",                   default: ""
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id", using: :btree
+    t.index ["message_title"], name: "index_messages_on_message_title", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
