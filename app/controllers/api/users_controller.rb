@@ -7,9 +7,9 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
+    @gen_channel ||= gen_channel
     if @user.save
-      UserChat.new(user_id: @user.id, chatroom_id: gen_chat.id).save
+      UserChat.new(user_id: @user.id, chatroom_id: @gen_channel.id).save
       login!(@user)
       render :show
     else
@@ -50,6 +50,6 @@ class Api::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :profile_picture)
+    params.require(:user).permit(:username, :first_name, :last_name, :email, :password, :profile_picture)
   end
 end

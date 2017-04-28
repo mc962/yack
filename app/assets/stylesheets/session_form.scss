@@ -56,14 +56,10 @@
   background-color: #FFFFFF;
 
 }
-// body {background-color: #F9F9F9}
-//
-// .signup-form {
-//   height: 100%;
-//
-// }
+
 .signup-form {
   margin-top: 20px;
+
 }
 .login-form {
   // height: 465px;
@@ -84,11 +80,11 @@
 
 
   color: #555459;
-  margin-bottom: 20px;
+  margin-bottom: 1em;
 }
 
 .full-name-label {
-  margin-top: 15px;
+
   display: flex;
   flex-direction: row;
 }
@@ -110,10 +106,10 @@
 
 .form-heading {
   text-align: center;
-  display: block;
+
   font-size: 2em;
-  margin-top: 45px;
-  // margin-bottom: 0.67em;
+  margin-top: 2vh;
+  margin-bottom: 0.1vh;
   margin-left: 0;
   margin-right: 0;
   font-weight: bold;
@@ -131,8 +127,9 @@
   color: #FFFFFF;
   font-size: 16pt;
   font-weight: 900;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 2vh;
+  // margin-top: 20px;
+  // margin-bottom: 20px;
 }
 
 
@@ -259,7 +256,8 @@ div.login-button-link:hover {
 
 
 .guest-login {
-  margin-top: 5px;
+  // margin-top: 5px;
+  margin-bottom: 1vh;
   text-align: center;
 }
 

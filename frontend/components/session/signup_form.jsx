@@ -39,6 +39,7 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    
     const user = Object.assign({}, this.state);
 
     this.props.signup(user).then(() => this.redirect('/'),
@@ -57,7 +58,7 @@ class SignupForm extends React.Component {
   componentWillUnmount() {
     this.props.clearErrors();
   }
-  
+
   signupErrors() {
     let errors = {
       firstNameErr: '',

@@ -73,7 +73,7 @@ class MessageAttachment extends React.Component {
     const title = this.state.messageTitle ? this.state.messageTitle : this.state.fileName
 
     let formData = new FormData();
-    formData.append('message[content]', this.state.attachmentContent)
+    formData.append('message[message_comment]', this.state.attachmentContent)
     formData.append('message[message_type]', 'attachment');
     formData.append('message[message_attachment]', this.state.displayImage);
     formData.append('message[user_id]', this.props.currentUserId);
