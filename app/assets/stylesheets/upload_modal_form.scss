@@ -103,8 +103,20 @@ input.edit-profile-input:focus {
 
 }
 
-.edit-profile-image-enclosure {
+.delete-profile-photo {
+  width: 100%;
+  height: 5vh;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid #c7cacd;
+  font-weight: 700;
+  color: #555463;
+  cursor: pointer;
+  line-height: 1.7em;
+}
 
+div.delete-profile-photo:hover {
+  color: #ec4d70
 }
 
 .edit-photo-label {
@@ -121,6 +133,8 @@ input.edit-profile-input:focus {
   height: 100%;
   width: 100%;
   cursor: pointer;
+
+  margin-bottom: 0.5vh;
 }
 
 .edit-profile-submit-btns {

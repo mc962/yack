@@ -68,7 +68,6 @@ class User < ApplicationRecord
 
   end
 
-
   attr_reader :password
 
 
@@ -92,6 +91,11 @@ class User < ApplicationRecord
   end
 
 
+  def check_profile_picture_status(delete_param = nil)
+    unless delete_param.nil?
+      self.profile_picture.clear
+    end
+  end
 
   private
 

@@ -7,6 +7,7 @@ class EditProfile extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handlePhotoChange = this.handlePhotoChange.bind(this);
     this.submitProfileUpdate = this.submitProfileUpdate.bind(this);
+    this.deleteUploadedPicture = this.deleteUploadedPicture.bind(this);
 
     this.state = {firstName: this.props.firstName, lastName: this.props.lastName, currentPhoto: this.props.imageUrl, fileUpload: '', imageFile: '', displayImage: ''}
   }
@@ -32,6 +33,14 @@ class EditProfile extends React.Component {
     }
     reader.readAsDataURL(fileVal);
 
+  }
+
+  deleteUploadedPicture(e) {
+    e.preventDefault()
+    let formData = new FormData()
+    formData.append('user[id]', this.props.currentUserId);
+    formData.append('user[delete_photo]', 'delete_photo');
+    this.props.updateUser(formData).then(() => this.props.toggleUserInfoModal())
   }
 
   submitProfileUpdate(e) {
@@ -65,10 +74,11 @@ class EditProfile extends React.Component {
           </div>
           <div className='edit-profile-upload-container'>
             <label htmlFor='pictureUpload' className='edit-photo-label'>Profile photo</label>
-            <label htmlFor='fileUpload' className='edit-profile-image-enclosure'>
+            <label htmlFor='fileUpload' className='edit-profile-image-enclosure' title='Click to upload'>
               <img src={displayUrl} className='profile-upload-photo' id='pictureUpload' alt='Current Photo' onChange={this.handleChange} />
               <input type='file' className='edit-profile-file-upload' id='fileUpload' value={this.state.fileUpload} onChange={this.handlePhotoChange} />
             </label>
+            <div className='delete-profile-photo' onClick={this.deleteUploadedPicture}>Delete Uploaded Photo</div>
           </div>
 
         </div>

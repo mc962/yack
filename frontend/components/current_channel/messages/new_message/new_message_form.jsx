@@ -8,7 +8,7 @@ class NewMessageForm extends React.Component {
     super(props);
     this.handleNewMessageSubmit = this.handleNewMessageSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.placeholderHandler = this.placeholderHandler.bind(this);
+
     this.focusAttachments = this.focusAttachments.bind(this);
     this.blurAttachments = this.blurAttachments.bind(this);
 
@@ -30,11 +30,6 @@ class NewMessageForm extends React.Component {
   }
 
 
-  // placeholderHandler(e) {
-  //   e.preventDefault();
-  //   console.log('This button is meant for message attachments. If you are seeing this, message attachments have not yet been implemented.');
-  //   console.log(`Have a random number for your troubles: ${Math.floor(Math.random()*1000000)}`);
-  // }
 
   handleNewMessageSubmit(e) {
     e.preventDefault();
@@ -65,12 +60,12 @@ class NewMessageForm extends React.Component {
               <div className='x-icon message-attchments-x-icon'>x</div>
             </button>
           </header>
-          
+
           <MessageAttachmentContainer />
 
         </Modal>
         <form className='new-message-form' onSubmit={this.handleNewMessageSubmit}>
-          <div className={`attachments-btn ${this.state.attachmentFocusStatus}`} onClick={this.props.toggleMessageAttachmentModal} title='Message attachments coming soon'>+</div>
+          <div className={`attachments-btn ${this.state.attachmentFocusStatus}`} onClick={this.props.toggleMessageAttachmentModal}>+</div>
           <input autoFocus
                  type='text'
                  className='message-input-field'

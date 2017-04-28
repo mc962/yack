@@ -28,10 +28,11 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:user][:id])
+    @user.check_profile_picture_status(params[:user][:delete_photo])
     @gen_channel ||= gen_channel
 
     if @user.update(user_params)
-      
+
       render :show
     else
       short_errors = sym_to_s(@user.errors)
