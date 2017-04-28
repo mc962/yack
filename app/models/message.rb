@@ -48,15 +48,15 @@ class Message < ApplicationRecord
 
 # be sure to test this as a production env before pushing to HEROKU?
   def download_url(style = :original)
-    
     if Rails.env.development?
       self.message_attachment.url
     elsif Rails.env.production?
-      message_attachment.s3_bucket.objects[message_attachment.s3_object(style_name).key].url_for(
-        :read,
-        secure: true,
-        expires: 24*3600,
-        response_content_disposition: "attachment; filename='#{message_attachment_file_name}'").to_s
+      message_attachment.s3_object(style).public_url({expires: 24.hours, acl: 'public_read'})
+      # message_attachment.s3_bucket.objects(message_attachment.s3_object(style)).url_for(
+      #   :public_read,
+      #   secure: true,
+      #   expires: 1.day.from_now,
+      #   response_content_disposition: "attachment; filename='#{message_attachment_file_name}'").to_s
     end
   end
 
@@ -70,7 +70,7 @@ class Message < ApplicationRecord
     end
   end
 
-  # private
+  private
 
   def is_image_type?
     message_attachment_content_type =~ %r(image)
@@ -80,15 +80,4 @@ class Message < ApplicationRecord
     CONTENT_TYPES.include?(message_attachment_content_type)
   end
 
-  # def self.supported_content_extensions
-  #   supported_document_types + supported_image_types
-  # end
-  #
-  # def self.supported_document_types
-  #   DOCUMENT_TYPES
-  # end
-  #
-  # def self.supported_image_types
-  #   [/\Aimage\/.*\Z/]
-  # end
 end

@@ -1,14 +1,3 @@
-# json.extract! message, :id, :content, :user_id, :chatroom_id
-#
-# json.user_url message.user.image_url.to_s
-#
-#
-#   # json.user_url message.user.image_url.to_s
-#   # json.id message.id
-#   # json.content message.content
-#   # json.user_id message.user_id
-#   # json.chatroom_id message.chatroom_id
-
 message_object = {
                   id: message.id,
                   content: message.content,

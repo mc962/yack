@@ -95,7 +95,9 @@ class MessageItem extends React.Component {
 
 
           <span className='image-attachment-title' title="Click to download">
-            {this.props.messageTitle}
+            <a href={this.props.attachmentUrl} download={this.props.messageTitle} className='message-download-link'>
+              {this.props.messageTitle}
+            </a>
           </span>
 
           <div className='image-attachment-content' title="Click to download">

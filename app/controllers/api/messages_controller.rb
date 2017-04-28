@@ -1,10 +1,10 @@
 class Api::MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
-    if @message.save!
+    
+    if @message.save
       # Pusher.trigger("channel_#{@message.chatroom_id}", 'message_published', {})
 
-      
       broadcasted_message = attach_message_user_info(@message)
       broadcasted_message['action'] = 'CREATE'
       ActionCable.server.broadcast 'messages',
