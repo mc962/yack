@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-
+# look into ways to preload user count queries
   def index
     @users = User.all
     render :index

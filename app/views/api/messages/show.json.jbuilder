@@ -16,6 +16,7 @@ picture = message_user.gravatar_url
 if message_user.profile_picture.present?
   picture = asset_path(message_user.profile_picture.url)
 end
+
 message_object = {
                   id: @message.id,
                   content: @message.content,
@@ -28,7 +29,7 @@ message_object = {
                   message_type: @message.message_type,
                   message_attachment_content_type: @message.message_attachment_content_type,
                   message_title: @message.message_title,
-                  attachment_url: @messsage.download_url,
+                  attachment_url: @message.download_url,
                   preview_url: @message.message_attachment.url
 
                 }

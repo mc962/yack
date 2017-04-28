@@ -47,7 +47,8 @@ class Message < ApplicationRecord
 
 
 # be sure to test this as a production env before pushing to HEROKU?
-  def download_url(style = :original)    
+  def download_url(style = :original)
+    
     if Rails.env.development?
       self.message_attachment.url
     elsif Rails.env.production?
