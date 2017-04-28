@@ -14,6 +14,7 @@
 #  message_attachment_file_size    :integer
 #  message_attachment_updated_at   :datetime
 #  message_title                   :string           default("")
+#  message_comment                 :string           default("")
 #
 
 require 'test_helper'

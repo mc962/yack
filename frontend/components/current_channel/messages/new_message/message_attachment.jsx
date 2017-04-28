@@ -7,7 +7,14 @@ class MessageAttachment extends React.Component {
     this.handleAttachmentUpload = this.handleAttachmentUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.state = { attachmentContent: '', messageUpload: '', displayUrl: '', messageTitle: '', fileName: ''}
+    this.state = {
+                  attachmentContent: '',
+                  messageUpload: '',
+                  displayUrl: '',
+                  messageTitle: '',
+                  fileName: '',
+                  disabledSubmit: false
+                }
   }
 
   handleInputChange(e) {
@@ -62,8 +69,9 @@ class MessageAttachment extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    this.setState({disabledSubmit: true})
     const title = this.state.messageTitle ? this.state.messageTitle : this.state.fileName
-    
+
     let formData = new FormData();
     formData.append('message[content]', this.state.attachmentContent)
     formData.append('message[message_type]', 'attachment');
@@ -71,8 +79,16 @@ class MessageAttachment extends React.Component {
     formData.append('message[user_id]', this.props.currentUserId);
     formData.append('message[chatroom_id]', this.props.currentChannelId);
     formData.append('message[message_title]', title);
+    formData.append('message[content]', '.');
 
-    this.props.createChannelAttachmentMessage(formData).then(() => this.props.toggleMessageAttachmentModal())
+    this.props.createChannelAttachmentMessage(formData).then(
+      () => {
+      this.props.toggleMessageAttachmentModal()
+    },
+      () => {
+        this.setState({disabledSubmit: false})
+      }
+    )
   }
 
   render() {
@@ -87,6 +103,16 @@ class MessageAttachment extends React.Component {
     } else {
       previewImage = <img src={this.state.displayImage} className='message-attachment-preview' />
     }
+    let submitButton;
+    if (this.state.displayImage) {
+      submitButton = <input type='submit'
+                            className='submit-message-attachment message-attachment-modal-close'
+                            disabled={this.state.disabledSubmit}
+                            value='Upload' />
+    } else {
+      submitButton = <div className='submit-message-attachment message-attachment-modal-close fake-submit'>Upload</div>
+    }
+
 
     return(
       <form className='message-attachment-form' onSubmit={this.handleSubmit}>
@@ -116,7 +142,7 @@ class MessageAttachment extends React.Component {
 
         <div className='message-attachment-submit-btns'>
           <div className='cancel-message-attachment message-attachment-modal-close' onClick={this.props.toggleMessageAttachmentModal}>Cancel</div>
-          <input type='submit' className='submit-message-attachment message-attachment-modal-close' value='Upload' />
+          {submitButton}
         </div>
       </form>
     )

@@ -14,6 +14,7 @@
 #  message_attachment_file_size    :integer
 #  message_attachment_updated_at   :datetime
 #  message_title                   :string           default("")
+#  message_comment                 :string           default("")
 #
 
 class Message < ApplicationRecord
@@ -36,7 +37,8 @@ class Message < ApplicationRecord
   belongs_to :user
   belongs_to :chatroom
 
-# code files appear to be parsed into code snippets
+
+  # code files appear to be parsed into code snippets on slack
   has_attached_file :message_attachment,
                     styles: lambda { |a| a.instance.check_file_type }
 
@@ -52,11 +54,6 @@ class Message < ApplicationRecord
       self.message_attachment.url
     elsif Rails.env.production?
       message_attachment.s3_object(style).public_url({expires: 24.hours, acl: 'public_read'})
-      # message_attachment.s3_bucket.objects(message_attachment.s3_object(style)).url_for(
-      #   :public_read,
-      #   secure: true,
-      #   expires: 1.day.from_now,
-      #   response_content_disposition: "attachment; filename='#{message_attachment_file_name}'").to_s
     end
   end
 

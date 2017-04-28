@@ -93,7 +93,8 @@ class Messages extends React.Component {
           createdAt={message.created_at}
           updatedAt={message.updated_at}
           attachmentUrl={message.attachment_url}
-          previewUrl={message.preview_url} />;
+          previewUrl={message.preview_url}
+          messageComment={message.message_comment} />;
       });
     } else {
       messageElements = <div className='no-messages'></div>;

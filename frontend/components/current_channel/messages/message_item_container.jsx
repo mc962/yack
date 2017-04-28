@@ -20,7 +20,8 @@ const mapStateToProps = (state, ownProps) => {
     createdAt: ownProps.createdAt,
     updatedAt: ownProps.updatedAt,
     attachmentUrl: ownProps.attachmentUrl,
-    previewUrl: ownProps.previewUrl
+    previewUrl: ownProps.previewUrl,
+    messageComment: ownProps.messageComment
   };
 };
 

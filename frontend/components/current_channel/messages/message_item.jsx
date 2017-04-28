@@ -108,7 +108,7 @@ class MessageItem extends React.Component {
 
           <div className='message-attachment-text'>
             <span className='attachment-quote'><i className="fa fa-quote-left" aria-hidden="true"></i></span>
-            {this.props.content}
+            {this.props.messageComment}
           </div>
 
 
@@ -161,7 +161,7 @@ class MessageItem extends React.Component {
 
           <div className='message-attachment-text'>
             <span className='attachment-quote'><i className="fa fa-quote-left" aria-hidden="true"></i></span>
-            {this.props.content}
+            {this.props.messageComment}
           </div>
         </div>
           </div>

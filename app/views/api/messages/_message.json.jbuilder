@@ -11,7 +11,8 @@ message_object = {
                   message_attachment_content_type: message.message_attachment_content_type,
                   message_title: message.message_title,
                   attachment_url: messsage.download_url,
-                  preview_url: message.message_attachment.url
+                  preview_url: message.message_attachment.url,
+                  message_comment: message.message_comment
                  }
 
 json.message message_object

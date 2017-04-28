@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428031526) do
+ActiveRecord::Schema.define(version: 20170428181832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170428031526) do
     t.integer  "message_attachment_file_size"
     t.datetime "message_attachment_updated_at"
     t.string   "message_title",                   default: ""
+    t.string   "message_comment",                 default: ""
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id", using: :btree
     t.index ["message_title"], name: "index_messages_on_message_title", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
