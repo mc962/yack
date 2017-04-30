@@ -27,6 +27,7 @@ export const REMOVE_CHANNEL_MESSAGE = 'REMOVE_CHANNEL_MESSAGE';
 export const TOGGLE_GM_MODAL = 'TOGGLE_GM_MODAL'
 export const TOGGLE_DM_MODAL = 'TOGGLE_DM_MODAL'
 export const TOGGLE_MESSAGE_ATTACHMENT_MODAL = 'TOGGLE_MESSAGE_ATTACHMENT_MODAL'
+export const TOGGLE_EMOJI_MODAL = 'TOGGLE_EMOJI_MODAL'
 
 export const fetchCurrentChannel = (channelId) => (dispatch) => {
   dispatch(startLoadingCurrentChannel());
@@ -200,5 +201,11 @@ export const toggleDMModal = () => {
 export const toggleMessageAttachmentModal = () => {
   return {
     type: TOGGLE_MESSAGE_ATTACHMENT_MODAL
+  }
+}
+
+export const toggleEmojiModal  =() => {
+  return {
+    type: TOGGLE_EMOJI_MODAL
   }
 }
