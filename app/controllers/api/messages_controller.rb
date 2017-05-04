@@ -1,7 +1,10 @@
 class Api::MessagesController < ApplicationController
+  include EmojiHelper
+
   def create
     @message = Message.new(message_params)
-
+    @message = emojify_message(@message)
+    debugger
     if @message.save
       # Pusher.trigger("channel_#{@message.chatroom_id}", 'message_published', {})
 

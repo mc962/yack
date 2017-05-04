@@ -7,8 +7,9 @@ class EmojiPicker extends React.Component {
     this.handleEmojiClick = this.handleEmojiClick.bind(this);
   }
 
-  handleEmojiClick(e) {
-    debugger
+  handleEmojiClick(emoji) {
+
+    this.props.attachEmoji(emoji)
     // e represents the element we got when we clicked
 // find message, and append :emoji_name: to the text, for this, i think we should bind an action
 // in new message form and pass it here, then call it and pass in :emoji_name text to add it to message box,

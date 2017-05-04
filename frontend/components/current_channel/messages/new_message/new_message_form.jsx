@@ -9,7 +9,7 @@ class NewMessageForm extends React.Component {
     super(props);
     this.handleNewMessageSubmit = this.handleNewMessageSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-
+    this.attachEmoji = this.attachEmoji.bind(this);
     this.focusAttachments = this.focusAttachments.bind(this);
     this.blurAttachments = this.blurAttachments.bind(this);
 
@@ -17,7 +17,8 @@ class NewMessageForm extends React.Component {
                    content: '',
                    attachmentFocusStatus: '',
                    containerFocusState: '',
-                   displayPicker: true
+                   displayPicker: true,
+                   emojis: []
                  };
 
   }
@@ -35,6 +36,13 @@ class NewMessageForm extends React.Component {
     e.preventDefault();
     const value = e.currentTarget.value;
     this.setState({[e.currentTarget.id]: value});
+  }
+
+  attachEmoji(emoji) {
+    this.state.emojis.push(emoji)
+    const newContent = `${this.state.content}${emoji.colons}`
+
+    this.setState({content: newContent})
   }
 
   handleNewMessageSubmit(e) {
@@ -76,8 +84,9 @@ class NewMessageForm extends React.Component {
           onRequestClose={this.props.toggleEmojiModal}
           className='emoji-modal'
           overlayClassName='emoji-modal-overlay'
+
           >
-          <EmojiPickerContainer />
+          <EmojiPickerContainer attachEmoji={this.attachEmoji} />
 
         </Modal>
 

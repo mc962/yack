@@ -8,9 +8,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-
+    attachEmoji: (emoji) => ownProps.attachEmoji(emoji)
   }
 }
 

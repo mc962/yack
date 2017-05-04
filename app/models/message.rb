@@ -38,6 +38,7 @@ class Message < ApplicationRecord
   belongs_to :chatroom
 
 
+
   # code files appear to be parsed into code snippets on slack
   has_attached_file :message_attachment,
                     styles: lambda { |a| a.instance.check_file_type }
@@ -66,6 +67,8 @@ class Message < ApplicationRecord
       {}
     end
   end
+
+
 
   private
 
