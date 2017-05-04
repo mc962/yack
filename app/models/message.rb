@@ -53,7 +53,11 @@ class Message < ApplicationRecord
     if Rails.env.development?
       self.message_attachment.url
     elsif Rails.env.production?
-      message_attachment.s3_object(style).public_url({expires: 24.hours, acl: 'public_read'})
+      if message_attachment.present?
+        message_attachment.s3_object(style).public_url({expires: 24.hours, acl: 'public_read'})
+      else
+        nil
+      end
     end
   end
 
