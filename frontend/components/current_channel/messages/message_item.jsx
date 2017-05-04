@@ -135,7 +135,7 @@ class MessageItem extends React.Component {
           </div>
         )
     }
-    debugger
+    
     return (
       <li className='message-element'>
         <div className='message-info'>

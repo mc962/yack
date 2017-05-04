@@ -6,7 +6,7 @@ messages_hash = {}
   message_user = message.user
   message_picture = message_user.gravatar_url
   if message_user.profile_picture.present?
-    message_picture = asset_path(message_user.profile_picture.url)
+    message_picture = image_url(message_user.profile_picture.url)
   end
   messages_hash[message.id] = {
                                 id: message.id,
